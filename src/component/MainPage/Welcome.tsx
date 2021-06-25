@@ -14,7 +14,7 @@ import {
 interface Props {}
 
 export const Welcome = (props: Props) => {
-  const isMobile = useWindowSize();
+  const isMobile: boolean = useWindowSize();
 
   return (
     <Container>
