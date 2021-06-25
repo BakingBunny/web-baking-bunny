@@ -1,12 +1,12 @@
 import React from 'react';
-import { Hero } from '../component/MainPage/Hero';
+import { Welcome } from '../component/MainPage/Welcome';
 
 interface Props {}
 
 export const HomePage = (props: Props) => {
   return (
     <div>
-      <Hero />
+      <Welcome />
     </div>
   );
 };
