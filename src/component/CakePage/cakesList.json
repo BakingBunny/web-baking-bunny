@@ -1,0 +1,74 @@
+[
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake1",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake2",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake3",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake4",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake5",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake6",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake7",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  },
+  {
+    "category": "cake",
+    "subcategory": "regular",
+    "name": "cake8",
+    "image": "cake1.jpeg",
+    "price": 19.99,
+    "size": [6, 8],
+    "ingredients": "Apple, Banana, Watermelon, Kiwi, Strawberry, Blueberry, Blackberry"
+  }
+]
