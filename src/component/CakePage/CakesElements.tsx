@@ -31,12 +31,12 @@ export const CardWrapper = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 160px;
+  width: 162px;
   background: #fff;
   height: 200px;
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  border-radius: 7px;
   margin: 10px;
   position: relative;
   overflow-y: hidden;
@@ -60,7 +60,7 @@ export const Detail = styled.div`
   background: #fff;
   /* box-shadow: 0 0 0 rgba(0, 0, 0, 0); */
   transition: all 0.5s ease;
-  transform: translateY(115px);
+  transform: translateY(117px);
   display: grid;
   grid-row-gap: 5px;
   grid-template-columns: 1fr auto;
@@ -74,6 +74,7 @@ export const Detail = styled.div`
 
   ${Card}:hover & {
     transform: translateY(0);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0);
   }
 `;
 

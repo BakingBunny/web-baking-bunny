@@ -29,7 +29,7 @@ export const Welcome = (props: Props) => {
       <CardWrapper>
         <Card>
           <Slogan>Baking Bunny Slogan Here</Slogan>
-          <ContinueBtn>Continue</ContinueBtn>
+          <ContinueBtn to={'/cakes'}>Continue</ContinueBtn>
         </Card>
       </CardWrapper>
     </Container>
