@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -63,7 +64,7 @@ export const Slogan = styled.h2`
   text-align: left;
 `;
 
-export const ContinueBtn = styled.button`
+export const ContinueBtn = styled(Link)`
   border: 0;
   background: #133853;
   color: #fff;
@@ -73,4 +74,5 @@ export const ContinueBtn = styled.button`
   border-radius: 10px;
   letter-spacing: 2px;
   cursor: pointer;
+  text-decoration: none;
 `;
