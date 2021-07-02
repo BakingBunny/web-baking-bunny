@@ -1,12 +1,18 @@
 import React from 'react';
-import { Cakes } from '../component/CakePage/Cakes';
+import { CakeDetail } from '../component/CakePage/CakeDetail';
 
-interface Props {}
+interface Props {
+  match: {
+    params: {
+      id: string;
+    };
+  };
+}
 
 export const CakePage = (props: Props) => {
   return (
-    <div>
-      <Cakes />
-    </div>
+    <>
+      <CakeDetail id={props.match.params.id} />
+    </>
   );
 };

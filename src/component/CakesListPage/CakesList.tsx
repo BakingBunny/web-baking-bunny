@@ -13,34 +13,32 @@ import {
   SizeWrapper,
   Size,
   DetailBtn,
-  AddCartBtn,
-} from './CakesElements';
+  OrderNowBtn,
+} from './CakesListElements';
+import { Link } from 'react-router-dom';
 import cakesList from './cakesList.json';
 
 interface Props {}
 
-export const Cakes = (props: Props) => {
+export const CakesList = (props: Props) => {
   return (
     <>
       <Container>
         <Wrapper>
-          <Title>Cakes</Title>
+          <Title>CAKES</Title>
           <CardWrapper>
             {cakesList.map((cake) => (
-              <Card>
-                <Image src={`./img/cakes/${cake.image}`} />
+              // <Card>
+              <Card to={`/cake/${cake.id}`}>
+                <Image src={`./img/cakes/${cake.image}`} alt={cake.name} />
                 <Detail>
                   <CakeName>{cake.name}</CakeName>
                   <Price>${cake.price}</Price>
-                  <SizeTitle>Sizes</SizeTitle>
-                  <SizeWrapper>
-                    <Size>6</Size>
-                    <Size>8</Size>
-                  </SizeWrapper>
-                  <DetailBtn>Detail</DetailBtn>
-                  <AddCartBtn>Add To Cart</AddCartBtn>
+                  {/* <SizeTitle>Sizes</SizeTitle> */}
                 </Detail>
+                <OrderNowBtn>Order Now</OrderNowBtn>
               </Card>
+              // </Card>
             ))}
           </CardWrapper>
         </Wrapper>
