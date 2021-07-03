@@ -20,11 +20,20 @@ export const Welcome = (props: Props) => {
     <Container>
       <BackgroundWrapper>
         {isMobile ? (
-          <Image src='img/welcome_background_mobile.jpg' alt='mobile_bg' />
+          <Image
+            src={require('../../img/welcome_background_mobile.jpg')?.default}
+            alt='mobile_bg'
+          />
         ) : (
-          <Image src='img/welcome_background_mobile.jpg' alt='desktop_bg' />
+          <Image
+            src={require('../../img/welcome_background_mobile.jpg')?.default}
+            alt='desktop_bg'
+          />
         )}
-        <Logo src='img/bunny_logo.jpg' alt='logo_img' />
+        <Logo
+          src={require('../../img/bunny_logo.jpg')?.default}
+          alt='logo_img'
+        />
       </BackgroundWrapper>
       <CardWrapper>
         <Card>

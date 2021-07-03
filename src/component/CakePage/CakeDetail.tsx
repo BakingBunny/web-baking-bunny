@@ -7,7 +7,10 @@ import {
   Image,
   CakeName,
   Price,
-  SizeQtyWrapper,
+  OptionWrapper,
+  FruitsTitle,
+  FruitsWrapper,
+  FruitsBtn,
   SizeTitle,
   SizeWrapper,
   SizeBtn,
@@ -30,16 +33,17 @@ interface cake {
   name: string;
   image: string;
   price: number;
-  size: number[];
   ingredients: string;
 }
 
-type cakeSizeType = 0 | 6 | 8;
+type cakeSizeType = 6 | 8;
+type fruitsType = 'Mango' | 'Strawberry' | 'None(Fresh-Milk)';
 
 export const CakeDetail: React.FC<Props> = ({ id }) => {
   const [selectedCake, setSelectedCake] = useState<cake>();
-  const [cakeQty, setCakeQty] = useState<number>(0);
-  const [cakeSize, setCakeSize] = useState<cakeSizeType>(0);
+  const [fruits, setFruits] = useState<fruitsType>('Mango');
+  const [cakeQty, setCakeQty] = useState<number>(1);
+  const [cakeSize, setCakeSize] = useState<cakeSizeType>(6);
   const cakeId = id;
 
   useEffect(() => {
@@ -60,7 +64,7 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
     <>
       <Container>
         <Image
-          src={`./img/cakes/${selectedCake.image}`}
+          src={require(`../../img/cakes/${selectedCake.image}`)?.default}
           alt={selectedCake.name}
         />
         <CakeName>{selectedCake.name}</CakeName>
@@ -68,7 +72,30 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
           {formatCurrency(selectedCake.price)} (6") /{' '}
           {formatCurrency(selectedCake.price * 1.2)} (8")
         </Price>
-        <SizeQtyWrapper>
+        <OptionWrapper>
+          <FruitsTitle>Fruits</FruitsTitle>
+          <FruitsWrapper>
+            <FruitsBtn
+              isSelected={fruits === 'Mango'}
+              onClick={() => setFruits('Mango')}
+            >
+              Mango
+            </FruitsBtn>
+            <FruitsBtn
+              isSelected={fruits === 'Strawberry'}
+              onClick={() => setFruits('Strawberry')}
+            >
+              Strawberry
+            </FruitsBtn>
+            <FruitsBtn
+              isSelected={fruits === 'None(Fresh-Milk)'}
+              onClick={() => setFruits('None(Fresh-Milk)')}
+            >
+              None
+              <br />
+              <span>(Fresh-Milk)</span>
+            </FruitsBtn>
+          </FruitsWrapper>
           <SizeTitle>Size (inch)</SizeTitle>
           <SizeWrapper>
             <SizeBtn isSelected={cakeSize === 6} onClick={() => setCakeSize(6)}>
@@ -78,11 +105,11 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
               8
             </SizeBtn>
           </SizeWrapper>
-          <QtyTitle>Qty.</QtyTitle>
+          <QtyTitle>Quantity</QtyTitle>
           <QtyWrapper>
             <QtyMinusBtn
               onClick={() => setCakeQty(cakeQty - 1)}
-              disabled={cakeQty <= 0}
+              disabled={cakeQty <= 1}
             >
               -
             </QtyMinusBtn>
@@ -94,13 +121,12 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
               +
             </QtyPlusBtn>
           </QtyWrapper>
-        </SizeQtyWrapper>
-
+        </OptionWrapper>
         <AddToCartBtn>
           {cakeSize === 8
             ? formatCurrency(selectedCake.price * 1.2 * cakeQty)
             : formatCurrency(selectedCake.price * cakeQty)}
-          <br /> <br />
+          <br />
           Add To Cart
         </AddToCartBtn>
       </Container>
