@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NotFoundPage } from '../../pages/NotFoundPage';
+import formatCurrency from '../../utils';
 import cakesList from '../CakesListPage/cakesList.json';
 import {
   Container,
@@ -9,10 +10,11 @@ import {
   SizeQtyWrapper,
   SizeTitle,
   SizeWrapper,
-  Size,
+  SizeBtn,
   QtyTitle,
   QtyWrapper,
-  QtyBtn,
+  QtyMinusBtn,
+  QtyPlusBtn,
   CakeQty,
   AddToCartBtn,
 } from './CakeDetailElements';
@@ -32,10 +34,12 @@ interface cake {
   ingredients: string;
 }
 
+type cakeSizeType = 0 | 6 | 8;
+
 export const CakeDetail: React.FC<Props> = ({ id }) => {
   const [selectedCake, setSelectedCake] = useState<cake>();
   const [cakeQty, setCakeQty] = useState<number>(0);
-  const [cakeSize, setCakeSize] = useState<number>(6);
+  const [cakeSize, setCakeSize] = useState<cakeSizeType>(0);
   const cakeId = id;
 
   useEffect(() => {
@@ -60,31 +64,45 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
           alt={selectedCake.name}
         />
         <CakeName>{selectedCake.name}</CakeName>
-        <Price>${selectedCake.price}</Price>
+        <Price>
+          {formatCurrency(selectedCake.price)} (6") /{' '}
+          {formatCurrency(selectedCake.price * 1.2)} (8")
+        </Price>
         <SizeQtyWrapper>
-          <SizeTitle>Size</SizeTitle>
+          <SizeTitle>Size (inch)</SizeTitle>
           <SizeWrapper>
-            <Size>6</Size>
-            <Size>8</Size>
+            <SizeBtn isSelected={cakeSize === 6} onClick={() => setCakeSize(6)}>
+              6
+            </SizeBtn>
+            <SizeBtn isSelected={cakeSize === 8} onClick={() => setCakeSize(8)}>
+              8
+            </SizeBtn>
           </SizeWrapper>
           <QtyTitle>Qty.</QtyTitle>
           <QtyWrapper>
-            <QtyBtn
+            <QtyMinusBtn
               onClick={() => setCakeQty(cakeQty - 1)}
               disabled={cakeQty <= 0}
             >
               -
-            </QtyBtn>
+            </QtyMinusBtn>
             <CakeQty>{cakeQty}</CakeQty>
-            <QtyBtn
+            <QtyPlusBtn
               onClick={() => setCakeQty(cakeQty + 1)}
               disabled={cakeQty >= 9}
             >
               +
-            </QtyBtn>
+            </QtyPlusBtn>
           </QtyWrapper>
         </SizeQtyWrapper>
-        <AddToCartBtn>Add To Cart</AddToCartBtn>
+
+        <AddToCartBtn>
+          {cakeSize === 8
+            ? formatCurrency(selectedCake.price * 1.2 * cakeQty)
+            : formatCurrency(selectedCake.price * cakeQty)}
+          <br /> <br />
+          Add To Cart
+        </AddToCartBtn>
       </Container>
     </>
   );
