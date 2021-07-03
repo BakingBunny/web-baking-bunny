@@ -1,5 +1,20 @@
 import styled from 'styled-components';
 
+//inheritance
+const CircleBtn = styled.button`
+  font-size: 1rem;
+  margin: 8px;
+  padding: 5px 10px;
+  justify-self: center;
+  border: none;
+  border-radius: 1rem;
+  outline: 0;
+  cursor: pointer;
+  background-color: #133853;
+  color: #fff;
+`;
+
+// components
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,7 +53,7 @@ export const CakeName = styled.p`
 export const Price = styled.div`
   /* grid-area: price; */
   font-size: 1.1rem;
-  margin-top: 10px;
+  margin: 10px 0;
   font-weight: lighter;
   /* justify-self: end;
   align-self: center; */
@@ -65,11 +80,13 @@ export const SizeWrapper = styled.div`
   margin: 2px 10px;
 `;
 
-export const Size = styled.button`
-  font-size: 1rem;
-  margin: 8px;
-  padding: 3px 10px;
-  justify-self: center;
+interface SizeBtnProps {
+  readonly isSelected: boolean;
+}
+
+export const SizeBtn = styled(CircleBtn)<SizeBtnProps>`
+  color: ${(props) => (props.isSelected ? '#fff' : 'rgb(160, 154, 154)')};
+  scale: ${(props) => (props.isSelected ? '1.2' : '1')};
 `;
 
 export const QtyTitle = styled.h2`
@@ -84,21 +101,24 @@ export const QtyWrapper = styled.div`
   justify-self: center;
   display: flex;
   margin: 2px 10px;
+  /* position: relative; */
 `;
 
 export const CakeQty = styled.div`
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-content: center; */
   align-self: center;
-  height: 100%;
+  width: 3rem;
+  padding: 6px 0;
+  text-align: center;
+  background-color: #ffebee;
+  color: #133853;
 `;
 
-export const QtyBtn = styled.button`
-  font-size: 1rem;
-  margin: 8px;
-  padding: 3px 10px;
-  justify-self: center;
+export const QtyMinusBtn = styled(CircleBtn)`
+  transform: translateX(1.2rem);
+`;
+
+export const QtyPlusBtn = styled(CircleBtn)`
+  transform: translateX(-1.2rem);
 `;
 
 // export const Title = styled.h2`
