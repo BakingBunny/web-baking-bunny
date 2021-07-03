@@ -25,7 +25,10 @@ export const CakesList = (props: Props) => {
           <CardWrapper>
             {cakesList.map((cake) => (
               <Card to={`/cake/${cake.id}`}>
-                <Image src={`./img/cakes/${cake.image}`} alt={cake.name} />
+                <Image
+                  src={require(`../../img/cakes/${cake.image}`)?.default}
+                  alt={cake.name}
+                />
                 <Detail>
                   <CakeName>{cake.name}</CakeName>
                   <Price>
