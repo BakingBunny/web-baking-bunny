@@ -51,6 +51,7 @@ export const Image = styled.img`
 export const CakeName = styled.p`
   /* grid-area: name; */
   font-size: 1.6rem;
+  /* padding-top: 20px; */
   /* align-self: center; */
 `;
 
