@@ -30,7 +30,7 @@ export const CakesList = (props: Props) => {
                   alt={cake.item_name}
                 />
                 <Detail>
-                  <CakeName>{cake.item_name}</CakeName>
+                  <CakeName>{cake.item_name.replaceAll('-', ' ')}</CakeName>
                   <Price>
                     {formatCurrency(cake.price)} /{' '}
                     {formatCurrency(cake.price * 1.2)}

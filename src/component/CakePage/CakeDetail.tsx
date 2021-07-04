@@ -69,35 +69,39 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
           src={require(`../../img/${selectedCake.image}`)?.default}
           alt={selectedCake.item_name}
         />
-        <CakeName>{selectedCake.item_name}</CakeName>
+        <CakeName>{selectedCake.item_name.replaceAll('-', ' ')}</CakeName>
         <Price>
           {formatCurrency(selectedCake.price)} (6") /{' '}
           {formatCurrency(selectedCake.price * 1.2)} (8")
         </Price>
         <OptionWrapper>
-          <FruitsTitle>Fruits</FruitsTitle>
-          <FruitsWrapper>
-            <FruitsBtn
-              isSelected={fruits === 'Mango'}
-              onClick={() => setFruits('Mango')}
-            >
-              Mango
-            </FruitsBtn>
-            <FruitsBtn
-              isSelected={fruits === 'Strawberry'}
-              onClick={() => setFruits('Strawberry')}
-            >
-              Strawberry
-            </FruitsBtn>
-            <FruitsBtn
-              isSelected={fruits === 'None(Fresh-Milk)'}
-              onClick={() => setFruits('None(Fresh-Milk)')}
-            >
-              None
-              <br />
-              <span>(Fresh-Milk)</span>
-            </FruitsBtn>
-          </FruitsWrapper>
+          {selectedCake.tastes.length > 0 && (
+            <>
+              <FruitsTitle>Fruits</FruitsTitle>
+              <FruitsWrapper>
+                <FruitsBtn
+                  isSelected={fruits === 'Mango'}
+                  onClick={() => setFruits('Mango')}
+                >
+                  Mango
+                </FruitsBtn>
+                <FruitsBtn
+                  isSelected={fruits === 'Strawberry'}
+                  onClick={() => setFruits('Strawberry')}
+                >
+                  Strawberry
+                </FruitsBtn>
+                <FruitsBtn
+                  isSelected={fruits === 'None(Fresh-Milk)'}
+                  onClick={() => setFruits('None(Fresh-Milk)')}
+                >
+                  None
+                  <br />
+                  <span>(Fresh-Milk)</span>
+                </FruitsBtn>
+              </FruitsWrapper>
+            </>
+          )}
           <SizeTitle>Size (inch)</SizeTitle>
           <SizeWrapper>
             <SizeBtn isSelected={cakeSize === 6} onClick={() => setCakeSize(6)}>
