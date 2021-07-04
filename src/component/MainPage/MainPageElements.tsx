@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
+  min-height: calc(100vh - 60px);
+  max-height: calc(100vh - 60px);
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 70% auto;
 
   /* overflow: hidden; */
   /* background: linear-gradient(to left, #0178bd, #368dc5); */
@@ -25,24 +26,25 @@ export const Image = styled.img`
   /* transform-origin: center center 0px; */
 `;
 
-export const Logo = styled.img`
-  height: 100px;
-  width: 100px;
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(30px, 50px);
-  padding: 10px;
-  background: #133853;
-  border-radius: 60px;
-  border: 1px solid #fff;
+export const Logo = styled.a`
+  img {
+    height: 130px;
+    width: 130px;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(30px, 100px);
+    background: #133853;
+    border-radius: 100px;
+    border: 1px solid #fff;
+  }
 `;
 
 export const CardWrapper = styled.div`
   width: 100%;
-  background: #fff;
-  height: 200px;
+  background: #ffebee;
+  /* height: 200px; */
   display: flex;
   justify-content: center;
 
@@ -51,7 +53,6 @@ export const CardWrapper = styled.div`
 
 export const Card = styled.div`
   width: 90%;
-  background: #fff;
   /* height: 200px; */
   height: auto;
   z-index: 1;

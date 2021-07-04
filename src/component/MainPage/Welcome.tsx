@@ -30,10 +30,12 @@ export const Welcome = (props: Props) => {
             alt='desktop_bg'
           />
         )}
-        <Logo
-          src={require('../../img/bunny_logo.jpg')?.default}
-          alt='logo_img'
-        />
+        <Logo href='https://www.instagram.com/baking.bunny_yyc/'>
+          <img
+            src={require('../../img/logo_circle.png')?.default}
+            alt='logo_img'
+          />
+        </Logo>
       </BackgroundWrapper>
       <CardWrapper>
         <Card>

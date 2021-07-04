@@ -32,9 +32,9 @@ export const CardWrapper = styled.div`
 `;
 
 export const Card = styled(Link)`
-  width: 162px;
   background: #fff;
-  height: 300px;
+  width: clamp(162px, 40vw, 250px);
+  height: clamp(300px, 35vh, 350px);
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
@@ -45,6 +45,11 @@ export const Card = styled(Link)`
   grid-template-rows: 55% 30% 15%;
   overflow-y: hidden;
   text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 `;
 
 // export const Card = styled.div`
