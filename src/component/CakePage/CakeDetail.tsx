@@ -26,28 +26,30 @@ interface Props {
   id: string;
 }
 
-interface cake {
-  id: string;
-  category: string;
-  subcategory: string;
-  name: string;
-  image: string;
+interface Cake {
+  type: string;
+  item_name: string;
+  item_name_kor: string;
+  tastes: string[];
+  tastes_kor: string[];
   price: number;
-  ingredients: string;
+  available_date: number[];
+  image: string;
+  special?: string;
 }
 
 type cakeSizeType = 6 | 8;
 type fruitsType = 'Mango' | 'Strawberry' | 'None(Fresh-Milk)';
 
 export const CakeDetail: React.FC<Props> = ({ id }) => {
-  const [selectedCake, setSelectedCake] = useState<cake>();
+  const [selectedCake, setSelectedCake] = useState<Cake>();
   const [fruits, setFruits] = useState<fruitsType>('Mango');
   const [cakeQty, setCakeQty] = useState<number>(1);
   const [cakeSize, setCakeSize] = useState<cakeSizeType>(6);
   const cakeId = id;
 
   useEffect(() => {
-    setSelectedCake(cakesList.find((cake) => cake.id === cakeId));
+    setSelectedCake(cakesList.find((cake) => cake.item_name === cakeId));
 
     // const fetchData = async () => {
     //   window.scrollTo(0, 0); // scroll to top
@@ -64,10 +66,10 @@ export const CakeDetail: React.FC<Props> = ({ id }) => {
     <>
       <Container>
         <Image
-          src={require(`../../img/cakes/${selectedCake.image}`)?.default}
-          alt={selectedCake.name}
+          src={require(`../../img/${selectedCake.image}`)?.default}
+          alt={selectedCake.item_name}
         />
-        <CakeName>{selectedCake.name}</CakeName>
+        <CakeName>{selectedCake.item_name}</CakeName>
         <Price>
           {formatCurrency(selectedCake.price)} (6") /{' '}
           {formatCurrency(selectedCake.price * 1.2)} (8")

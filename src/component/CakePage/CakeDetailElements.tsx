@@ -40,6 +40,7 @@ export const Image = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
 
   /* z-index: 1; */
   /* overflow: hidden; */
@@ -74,7 +75,7 @@ export const OptionWrapper = styled.div`
 
 export const FruitsTitle = styled.h2`
   grid-area: fruitstitle;
-  /* justify-self: center; */
+  justify-self: center;
   font-size: 1rem;
   margin: 2px 0;
 `;
@@ -96,8 +97,7 @@ export const FruitsBtn = styled(CircleBtn)<BtnProps>`
   font-size: 11px;
   border-radius: 5px;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
-  color: ${(props) => (props.isSelected ? '#fff' : 'rgb(160, 154, 154)')};
-  scale: ${(props) => (props.isSelected ? '1.2' : '1')};
+  opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
 
   span {
     font-size: 9px;
@@ -119,9 +119,7 @@ export const SizeWrapper = styled.div`
 `;
 
 export const SizeBtn = styled(CircleBtn)<BtnProps>`
-  background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
-  color: ${(props) => (props.isSelected ? '#fff' : 'rgb(160, 154, 154)')};
-  scale: ${(props) => (props.isSelected ? '1.2' : '1')};
+  opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
 `;
 
 export const QtyTitle = styled.h2`

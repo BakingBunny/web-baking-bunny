@@ -1,0 +1,286 @@
+[
+  {
+    "type": "dacquoise-set",
+    "item_name": "Dacquoise-Set",
+    "item_name_kor": "다쿠아즈-세트",
+    "tastes": [
+      "Cafe-Latte",
+      "Choco-Nutella",
+      "Black-Sesame",
+      "Lotus",
+      "Cheese",
+      "Ang-Butter"
+    ],
+    "tastes_kor": [
+      "카페라떼",
+      "초코누텔라",
+      "흑임자",
+      "로투스",
+      "뽀또",
+      "앙버터"
+    ],
+    "price": 20,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+
+    "image": "dac_set.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Injeolmi",
+    "item_name_kor": "인절미",
+    "price": 4.1,
+    "available_date": [
+      20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
+      20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
+      20210319, 20210320, 20210321, 20210324, 20210325, 20210326, 20210327,
+      20210328, 20210331, 20210401, 20210402, 20210403, 20210404, 20210408,
+      20210409, 20210410, 20210411, 20210412, 20210415, 20210416, 20210417,
+      20210418, 20210419, 20210422, 20210423, 20210424, 20210425, 20210426,
+      20210429, 20210430
+    ],
+    "image": "injeol.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Blueberry",
+    "price": 3.9,
+    "available_date": [],
+    "image": "blue.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Earl-Grey",
+    "item_name_kor": "얼그레이",
+    "price": 4.1,
+    "available_date": [
+      20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
+      20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
+      20210319, 20210320, 20210321, 20210324, 20210325, 20210326, 20210327,
+      20210328, 20210331
+    ],
+    "image": "earl.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Cherry",
+    "price": 3.9,
+    "available_date": [],
+    "image": "cherry.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Black-Sesame",
+    "item_name_kor": "흑임자",
+    "price": 4.1,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+    "image": "black.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Maltesers",
+    "item_name_kor": "초코몰티져스",
+    "price": 3.7,
+    "available_date": [20201119, 20201120, 20201121],
+    "image": "choco.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Lotus",
+    "item_name_kor": "로투스",
+    "price": 4.0,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+    "image": "lotus.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Matcha-Kitkat",
+    "item_name_kor": "말차킷캣",
+    "price": 3.8,
+    "available_date": [],
+    "image": "matcha.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Oreo",
+    "item_name_kor": "오레오",
+    "price": 4.0,
+    "available_date": [
+      20210401, 20210402, 20210403, 20210404, 20210408, 20210409, 20210410,
+      20210411, 20210412, 20210415, 20210416, 20210417, 20210418, 20210419,
+      20210422, 20210423, 20210424, 20210425, 20210426, 20210429, 20210430
+    ],
+    "image": "oreo.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Mugwort",
+    "item_name_kor": "쑥",
+    "price": 3.9,
+    "available_date": [
+      20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
+      20210129, 20210130
+    ],
+    "image": "ssook_dac.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Sweet-Potato",
+    "item_name_kor": "찐고구마",
+    "price": 4.1,
+    "available_date": [
+      20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
+      20210129, 20210130
+    ],
+    "image": "notyet.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Cafe-Latte",
+    "item_name_kor": "카페라떼",
+    "price": 3.9,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+    "image": "cafem.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Salted-Caramel",
+    "item_name_kor": "솔티카라멜",
+    "price": 3.7,
+    "available_date": [20201119, 20201120, 20201121],
+    "image": "solti.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Tiramisu",
+    "item_name_kor": "티라미수",
+    "price": 4.1,
+    "available_date": [
+      20210204, 20210205, 20210206, 20210211, 20210212, 20210213, 20210218,
+      20210219, 20210220, 20210225, 20210226, 20210227
+    ],
+    "image": "tira.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Bacon",
+    "item_name_kor": "베이컨",
+    "price": 3.7,
+    "available_date": [],
+    "image": "notyet.jpg"
+  },
+  {
+    "type": "dacquoise",
+    "item_name": "Tok-Tok-Corn",
+    "item_name_kor": "톡톡옥수수",
+    "price": 4.0,
+    "available_date": [
+      20210204, 20210205, 20210206, 20210211, 20210212, 20210213, 20210218,
+      20210219, 20210220, 20210225, 20210226, 20210227
+    ],
+    "image": "ccorn.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Ang-Butter",
+    "item_name_kor": "앙버터",
+    "price": 4.0,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+    "image": "notyet.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Cheese",
+    "item_name_kor": "뽀또",
+    "price": 4.0,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+    "image": "cheesep.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Chai-Latte",
+    "item_name_kor": "차이라떼",
+    "price": 3.9,
+    "available_date": [20201202, 20201203],
+    "image": "notyet.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Match-Nutella",
+    "item_name_kor": "녹차누텔라",
+    "price": 4.0,
+    "available_date": [
+      20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
+      20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
+      20210319, 20210320, 20210321, 20210324, 20210325, 20210326, 20210327,
+      20210328, 20210331
+    ],
+    "image": "notyet.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Citron",
+    "item_name_kor": "유자",
+    "price": 3.9,
+    "available_date": [
+      20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
+      20210129, 20210130
+    ],
+    "image": "notyet.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Yogurt",
+    "item_name_kor": "요거트",
+    "price": 3.9,
+    "available_date": [
+      20210401, 20210402, 20210403, 20210404, 20210408, 20210409, 20210410,
+      20210411, 20210412, 20210415, 20210416, 20210417, 20210418, 20210419,
+      20210422, 20210423, 20210424, 20210425, 20210426, 20210429, 20210430
+    ],
+    "image": "notyet.jpg"
+  },
+
+  {
+    "type": "dacquoise",
+    "item_name": "Choco-Nutella",
+    "item_name_kor": "초코누텔라",
+    "price": 3.9,
+    "available_date": [
+      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
+      20210521, 20210522, 20210527, 20210528, 20210529
+    ],
+    "image": "notyet.jpg"
+  }
+]
