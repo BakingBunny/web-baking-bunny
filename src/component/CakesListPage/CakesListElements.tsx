@@ -19,7 +19,7 @@ export const Title = styled.h2`
   font-size: 2rem;
   letter-spacing: 7px;
   text-align: center;
-  margin: 0;
+  margin: 20px 0 0;
 `;
 
 export const CardWrapper = styled.div`

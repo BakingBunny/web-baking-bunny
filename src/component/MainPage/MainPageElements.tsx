@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   min-height: calc(100vh - 60px);
-  max-height: calc(100vh - 60px);
   display: grid;
-  grid-template-rows: 70% auto;
+  grid-template-rows: repeat(2, calc((100vh - 60px) / 2));
 
   /* overflow: hidden; */
   /* background: linear-gradient(to left, #0178bd, #368dc5); */
@@ -41,39 +40,60 @@ export const Logo = styled.a`
   }
 `;
 
-export const CardWrapper = styled.div`
+export const Card = styled.div`
   width: 100%;
   background: #ffebee;
-  /* height: 200px; */
-  display: flex;
-  justify-content: center;
-
-  z-index: 1;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 60% 40%;
+  grid-template-areas: 'slogan slogan' 'cakebtn dacquoisebtn';
 `;
 
-export const Card = styled.div`
-  width: 90%;
-  /* height: 200px; */
-  height: auto;
-  z-index: 1;
-  padding-top: 20px;
-`;
+// export const Card = styled.div`
+//   width: 90%;
+//   /* height: 200px; */
+//   height: auto;
+//   z-index: 1;
+//   padding-top: 20px;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+// `;
 
 export const Slogan = styled.h2`
+  grid-area: slogan;
   /* font-size: 1.5rem; */
-  width: 100%;
   text-align: left;
+  padding: 20px;
 `;
 
-export const ContinueBtn = styled(Link)`
+const ProductBtn = styled(Link)`
+  grid-area: cakebtn;
   border: 0;
   background: #133853;
   color: #fff;
-  width: 100%;
-  padding: 10px 30px;
+  /* width: 100px; */
+  /* padding: 10px 30px; */
+  margin: 20px 20px 70px;
   font-size: 1.3rem;
   border-radius: 10px;
   letter-spacing: 2px;
   cursor: pointer;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+`;
+
+export const CakeBtn = styled(ProductBtn)`
+  grid-area: cakebtn;
+`;
+
+export const DacquoiseBtn = styled(ProductBtn)`
+  grid-area: dacquoisebtn;
 `;

@@ -24,7 +24,7 @@ export const CakesList = (props: Props) => {
           <Title>CAKES</Title>
           <CardWrapper>
             {cakesList.map((cake) => (
-              <Card to={`/cake/${cake.item_name}`}>
+              <Card to={`/cake/${cake.item_name}`} key={cake.item_name}>
                 <Image
                   src={require(`../../img/${cake.image}`)?.default}
                   alt={cake.item_name}
