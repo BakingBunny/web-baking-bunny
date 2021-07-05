@@ -3,6 +3,7 @@
     "type": "dacquoise-set",
     "item_name": "Dacquoise-Set",
     "item_name_kor": "다쿠아즈-세트",
+    "price": 20,
     "tastes": [
       "Cafe-Latte",
       "Choco-Nutella",
@@ -19,7 +20,6 @@
       "뽀또",
       "앙버터"
     ],
-    "price": 20,
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529
@@ -33,6 +33,8 @@
     "item_name": "Injeolmi",
     "item_name_kor": "인절미",
     "price": 4.1,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
       20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
@@ -48,7 +50,10 @@
   {
     "type": "dacquoise",
     "item_name": "Blueberry",
+    "item_name_kor": "블루베리",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [],
     "image": "blue.jpg"
   },
@@ -58,6 +63,8 @@
     "item_name": "Earl-Grey",
     "item_name_kor": "얼그레이",
     "price": 4.1,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
       20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
@@ -70,7 +77,10 @@
   {
     "type": "dacquoise",
     "item_name": "Cherry",
+    "item_name_kor": "체리",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [],
     "image": "cherry.jpg"
   },
@@ -80,6 +90,8 @@
     "item_name": "Black-Sesame",
     "item_name_kor": "흑임자",
     "price": 4.1,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529
@@ -91,6 +103,8 @@
     "item_name": "Maltesers",
     "item_name_kor": "초코몰티져스",
     "price": 3.7,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [20201119, 20201120, 20201121],
     "image": "choco.jpg"
   },
@@ -99,6 +113,8 @@
     "item_name": "Lotus",
     "item_name_kor": "로투스",
     "price": 4.0,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529
@@ -110,6 +126,8 @@
     "item_name": "Matcha-Kitkat",
     "item_name_kor": "말차킷캣",
     "price": 3.8,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [],
     "image": "matcha.jpg"
   },
@@ -118,6 +136,8 @@
     "item_name": "Oreo",
     "item_name_kor": "오레오",
     "price": 4.0,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210401, 20210402, 20210403, 20210404, 20210408, 20210409, 20210410,
       20210411, 20210412, 20210415, 20210416, 20210417, 20210418, 20210419,
@@ -130,6 +150,8 @@
     "item_name": "Mugwort",
     "item_name_kor": "쑥",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
       20210129, 20210130
@@ -141,6 +163,8 @@
     "item_name": "Sweet-Potato",
     "item_name_kor": "찐고구마",
     "price": 4.1,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
       20210129, 20210130
@@ -153,6 +177,8 @@
     "item_name": "Cafe-Latte",
     "item_name_kor": "카페라떼",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529
@@ -165,6 +191,8 @@
     "item_name": "Salted-Caramel",
     "item_name_kor": "솔티카라멜",
     "price": 3.7,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [20201119, 20201120, 20201121],
     "image": "solti.jpg"
   },
@@ -174,6 +202,8 @@
     "item_name": "Tiramisu",
     "item_name_kor": "티라미수",
     "price": 4.1,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210204, 20210205, 20210206, 20210211, 20210212, 20210213, 20210218,
       20210219, 20210220, 20210225, 20210226, 20210227
@@ -185,6 +215,8 @@
     "item_name": "Bacon",
     "item_name_kor": "베이컨",
     "price": 3.7,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [],
     "image": "notyet.jpg"
   },
@@ -193,6 +225,8 @@
     "item_name": "Tok-Tok-Corn",
     "item_name_kor": "톡톡옥수수",
     "price": 4.0,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210204, 20210205, 20210206, 20210211, 20210212, 20210213, 20210218,
       20210219, 20210220, 20210225, 20210226, 20210227
@@ -205,6 +239,8 @@
     "item_name": "Ang-Butter",
     "item_name_kor": "앙버터",
     "price": 4.0,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529
@@ -217,6 +253,8 @@
     "item_name": "Cheese",
     "item_name_kor": "뽀또",
     "price": 4.0,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529
@@ -229,6 +267,8 @@
     "item_name": "Chai-Latte",
     "item_name_kor": "차이라떼",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [20201202, 20201203],
     "image": "notyet.jpg"
   },
@@ -238,6 +278,8 @@
     "item_name": "Match-Nutella",
     "item_name_kor": "녹차누텔라",
     "price": 4.0,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
       20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
@@ -252,6 +294,8 @@
     "item_name": "Citron",
     "item_name_kor": "유자",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
       20210129, 20210130
@@ -264,6 +308,8 @@
     "item_name": "Yogurt",
     "item_name_kor": "요거트",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210401, 20210402, 20210403, 20210404, 20210408, 20210409, 20210410,
       20210411, 20210412, 20210415, 20210416, 20210417, 20210418, 20210419,
@@ -277,6 +323,8 @@
     "item_name": "Choco-Nutella",
     "item_name_kor": "초코누텔라",
     "price": 3.9,
+    "tastes": [],
+    "tastes_kor": [],
     "available_date": [
       20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
       20210521, 20210522, 20210527, 20210528, 20210529

@@ -77,7 +77,8 @@ const ProductBtn = styled(Link)`
   margin: 20px 20px 70px;
   font-size: 1.3rem;
   border-radius: 10px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
   text-decoration: none;
   display: flex;
