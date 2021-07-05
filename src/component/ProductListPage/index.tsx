@@ -22,9 +22,10 @@ interface Props {
 
 export const ProductList = (props: Props) => {
   const [productList, setProductList] = useState<Product[]>(dacquoisesList);
+  const { productType } = props;
 
   useEffect(() => {
-    switch (props.productType) {
+    switch (productType) {
       case '/cakes':
         setProductList(cakesList);
         break;
@@ -32,28 +33,39 @@ export const ProductList = (props: Props) => {
         setProductList(dacquoisesList);
         break;
     }
-  }, [props.productType]);
+  }, [productType]);
 
   return (
     <>
       <Container>
         <Wrapper>
-          <Title>{props.productType.replace('/', '')}</Title>
+          <Title>{productType.replace('/', '')}</Title>
           <CardWrapper>
-            {productList.map((cake) => (
+            {productList.map((product) => (
               <Card
-                to={`${props.productType}/${cake.item_name}`}
-                key={cake.item_name}
+                to={`${productType}/${product.item_name}`}
+                key={product.item_name}
               >
                 <Image
-                  src={require(`../../img/${cake.image}`)?.default}
-                  alt={cake.item_name}
+                  src={require(`../../img/${product.image}`)?.default}
+                  alt={product.item_name}
                 />
                 <Detail>
-                  <Name>{cake.item_name.replaceAll('-', ' ')}</Name>
+                  <Name>{product.item_name.replaceAll('-', ' ')}</Name>
                   <Price>
-                    {formatCurrency(cake.price)} /{' '}
-                    {formatCurrency(cake.price * 1.2)}
+                    {
+                      product.price === 0
+                        ? 'Various' // custum cakes
+                        : formatCurrency(product.price) //regular cakes and dacquoise
+                    }
+                    {
+                      product.price !== 0 && ' / ' // divider
+                    }
+                    {
+                      productType === '/cakes' && product.price !== 0
+                        ? formatCurrency(product.price * 1.2) // cake 8 inch price
+                        : '1 Piece' // dacquoise piece
+                    }
                   </Price>
                 </Detail>
                 <OrderNowBtn>Order Now</OrderNowBtn>
