@@ -1,23 +1,5 @@
 import styled from 'styled-components';
 
-//inheritance
-const CircleBtn = styled.button`
-  font-size: 1rem;
-  margin: 8px;
-  padding: 5px 10px;
-  justify-self: center;
-  border: none;
-  border-radius: 25px;
-  outline: 0;
-  cursor: pointer;
-  background-color: #133853;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  text-transform: uppercase;
-`;
-
-// components
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,7 +20,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   height: 100%;
-  width: 100%;
+  width: min(100%, 400px);
   object-fit: cover;
   border-radius: 10px;
 
@@ -74,27 +56,44 @@ export const OptionWrapper = styled.div`
   margin: 30px 0;
 `;
 
-export const FruitsTitle = styled.h2`
+export const TastesTitle = styled.h2`
   grid-area: fruitstitle;
   justify-self: center;
   font-size: 1rem;
   margin: 2px 0;
 `;
 
-export const FruitsWrapper = styled.div`
+export const TastesWrapper = styled.div`
   grid-area: fruitswrapper;
-  justify-self: center;
   display: flex;
-  margin: 2px 10px 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2px 0 30px;
+`;
+
+const CircleBtn = styled.button`
+  font-size: 1rem;
+  margin: 8px;
+  padding: 5px 10px;
+  justify-self: center;
+  border: none;
+  border-radius: 25px;
+  outline: 0;
+  cursor: pointer;
+  background-color: #133853;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  text-transform: uppercase;
 `;
 
 interface BtnProps {
   readonly isSelected: boolean;
 }
 
-export const FruitsBtn = styled(CircleBtn)<BtnProps>`
+export const TastesBtn = styled(CircleBtn)<BtnProps>`
   width: 95px;
-  height: auto;
+  height: 2.5rem;
   font-size: 11px;
   border-radius: 5px;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
@@ -121,6 +120,11 @@ export const SizeWrapper = styled.div`
 
 export const SizeBtn = styled(CircleBtn)<BtnProps>`
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
+`;
+
+export const NA = styled.div`
+  margin: 10px;
+  opacity: 0.7;
 `;
 
 export const QtyTitle = styled.h2`
