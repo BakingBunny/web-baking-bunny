@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 
 export const Container = styled.div`
@@ -22,7 +23,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 20% 20% 20%;
 `;
 
-export const Logo = styled(Link)`
+export const Logo = styled(NavLink)`
   height: 50px;
   width: 50px;
 `;
@@ -33,7 +34,7 @@ export const LogoImg = styled.img`
   /* border-radius: solid 1px #fff; */
 `;
 
-export const ProductLink = styled(Link)`
+export const ProductLink = styled(NavLink)`
   font-size: 1rem;
   text-decoration: none;
   justify-self: center;
@@ -41,7 +42,7 @@ export const ProductLink = styled(Link)`
   color: #fff;
 `;
 
-export const Cart = styled(Link)`
+export const Cart = styled(NavLink)`
   font-size: 2rem;
   justify-self: center;
   align-self: center;

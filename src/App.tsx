@@ -6,8 +6,8 @@ import {
   // Redirect,
 } from 'react-router-dom';
 import { HomePage } from './pages';
-import { CakesListPage } from './pages/CakeListPage';
-import { CakePage } from './pages/CakePage';
+import { ProductListPage } from './pages/ProductListPage';
+import { ProductPage } from './pages/ProductPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Navbar } from './component/Navbar';
 
@@ -18,8 +18,16 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' component={HomePage} exact />
-          <Route path='/cakes' component={CakesListPage} exact />
-          <Route path='/cake/:id' component={CakePage} exact />
+          <Route
+            path={['/cakes', '/dacquoises']}
+            component={ProductListPage}
+            exact
+          />
+          <Route
+            path={['/cakes/:id', '/dacquoises/:id']}
+            component={ProductPage}
+            exact
+          />
           <Route component={NotFoundPage} />
         </Switch>
       </Router>
