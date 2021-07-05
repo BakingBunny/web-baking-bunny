@@ -10,12 +10,13 @@ import {
   CakeName,
   Price,
   OptionWrapper,
-  FruitsTitle,
-  FruitsWrapper,
-  FruitsBtn,
+  TastesTitle,
+  TastesWrapper,
+  TastesBtn,
   SizeTitle,
   SizeWrapper,
   SizeBtn,
+  NA,
   QtyTitle,
   QtyWrapper,
   QtyMinusBtn,
@@ -30,12 +31,12 @@ interface Props {
 }
 
 type cakeSizeType = 6 | 8;
-type fruitsType = 'Mango' | 'Strawberry' | 'None(Fresh-Milk)';
+// type fruitsType = 'Mango' | 'Strawberry' | 'None(Fresh-Milk)';
 
 export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
   const [productList, setProductList] = useState<Product[]>(dacquoisesList);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
-  const [fruits, setFruits] = useState<fruitsType>('Mango');
+  const [tastes, setTastes] = useState<string>('');
   const [productQty, setProductQty] = useState<number>(1);
   const [cakeSize, setCakeSize] = useState<cakeSizeType>(6);
 
@@ -72,46 +73,60 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
         />
         <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
         <Price>
-          {formatCurrency(selectedProduct.price)} (6") /{' '}
-          {formatCurrency(selectedProduct.price * 1.2)} (8")
+          {
+            selectedProduct.price === 0
+              ? 'Various' // custum cakes
+              : formatCurrency(selectedProduct.price) //regular cakes and dacquoise
+          }
+          {
+            selectedProduct.price !== 0 && ' / ' // divider
+          }
+          {
+            productType === '/cakes' && selectedProduct.price !== 0
+              ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
+              : selectedProduct.item_name === 'Dacquoise-Set'
+              ? '5-Piece' // dacquoise set piece
+              : '1-Piece' // dacquoise piece
+          }
         </Price>
         <OptionWrapper>
           {selectedProduct.tastes.length > 0 && (
             <>
-              <FruitsTitle>Fruits</FruitsTitle>
-              <FruitsWrapper>
-                <FruitsBtn
-                  isSelected={fruits === 'Mango'}
-                  onClick={() => setFruits('Mango')}
-                >
-                  Mango
-                </FruitsBtn>
-                <FruitsBtn
-                  isSelected={fruits === 'Strawberry'}
-                  onClick={() => setFruits('Strawberry')}
-                >
-                  Strawberry
-                </FruitsBtn>
-                <FruitsBtn
-                  isSelected={fruits === 'None(Fresh-Milk)'}
-                  onClick={() => setFruits('None(Fresh-Milk)')}
-                >
-                  None
-                  <br />
-                  <span>(Fresh-Milk)</span>
-                </FruitsBtn>
-              </FruitsWrapper>
+              <TastesTitle>Tastes / Fruits</TastesTitle>
+              <TastesWrapper>
+                {selectedProduct.tastes.map((item) => (
+                  <TastesBtn
+                    isSelected={tastes === item}
+                    onClick={() => setTastes(item)}
+                  >
+                    {item.replaceAll('-', ' ')}
+                  </TastesBtn>
+                ))}
+              </TastesWrapper>
             </>
           )}
           <SizeTitle>Size (inch)</SizeTitle>
-          <SizeWrapper>
-            <SizeBtn isSelected={cakeSize === 6} onClick={() => setCakeSize(6)}>
-              6
-            </SizeBtn>
-            <SizeBtn isSelected={cakeSize === 8} onClick={() => setCakeSize(8)}>
-              8
-            </SizeBtn>
-          </SizeWrapper>
+          {productType === 'cakes' ? ( // cake size option
+            <SizeWrapper>
+              <SizeBtn
+                isSelected={cakeSize === 6}
+                onClick={() => setCakeSize(6)}
+              >
+                6
+              </SizeBtn>
+              <SizeBtn
+                isSelected={cakeSize === 8}
+                onClick={() => setCakeSize(8)}
+              >
+                8
+              </SizeBtn>
+            </SizeWrapper>
+          ) : (
+            // dacquoises has no size option
+            <SizeWrapper>
+              <NA>N / A</NA>
+            </SizeWrapper>
+          )}
           <QtyTitle>Quantity</QtyTitle>
           <QtyWrapper>
             <QtyMinusBtn

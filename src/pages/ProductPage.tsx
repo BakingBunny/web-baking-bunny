@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProductDetail } from '../component/ProductPage/ProductDetail';
+import { ProductDetail } from '../component/ProductPage';
 
 interface Props {
   match: {
