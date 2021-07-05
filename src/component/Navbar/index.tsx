@@ -22,8 +22,24 @@ export const Navbar = (props: Props) => {
               alt='logo_img'
             />
           </Logo>
-          <ProductLink to={'cakes'}>CAKE</ProductLink>
-          <ProductLink to={'dacquoises'}>DACQ.</ProductLink>
+          <ProductLink
+            to={'/cakes'}
+            activeStyle={{
+              fontWeight: 'bold',
+              borderBottom: '1px solid #fff',
+            }}
+          >
+            CAKE
+          </ProductLink>
+          <ProductLink
+            to={'/dacquoises'}
+            activeStyle={{
+              fontWeight: 'bold',
+              borderBottom: '1px solid #fff',
+            }}
+          >
+            DACQ.
+          </ProductLink>
           <Cart to={'cart'}>
             <CartIcon />
           </Cart>

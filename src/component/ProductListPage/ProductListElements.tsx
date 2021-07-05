@@ -5,9 +5,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-
-  /* overflow: hidden; */
-  /* background: linear-gradient(to left, #0178bd, #368dc5); */
 `;
 
 export const Wrapper = styled.div`
@@ -20,6 +17,7 @@ export const Title = styled.h2`
   letter-spacing: 7px;
   text-align: center;
   margin: 20px 0 0;
+  text-transform: uppercase;
 `;
 
 export const CardWrapper = styled.div`
@@ -33,7 +31,7 @@ export const CardWrapper = styled.div`
 
 export const Card = styled(Link)`
   background: #fff;
-  width: clamp(162px, 40vw, 250px);
+  width: clamp(162px, 44vw, 250px);
   height: clamp(300px, 35vh, 350px);
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
@@ -116,7 +114,7 @@ export const Detail = styled.div`
 //   }
 // `;
 
-export const CakeName = styled.h2`
+export const Name = styled.h2`
   /* grid-area: name; */
   font-size: 1rem;
   margin: 2px 10px;
