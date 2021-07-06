@@ -65,6 +65,7 @@ export const Slogan = styled.h2`
   /* font-size: 1.5rem; */
   text-align: left;
   padding: 20px;
+  font-family: 'Indie Flower', cursive;
 `;
 
 const ProductBtn = styled(Link)`
@@ -85,6 +86,8 @@ const ProductBtn = styled(Link)`
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
+  max-width: 200px;
+  font-family: 'Otomanopee One', sans-serif;
 
   &:hover {
     transform: translateY(-10px);

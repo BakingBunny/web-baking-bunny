@@ -35,11 +35,12 @@ export const LogoImg = styled.img`
 `;
 
 export const ProductLink = styled(NavLink)`
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-decoration: none;
   justify-self: center;
   align-self: center;
   color: #fff;
+  font-family: 'Tourney', cursive;
 `;
 
 export const Cart = styled(NavLink)`

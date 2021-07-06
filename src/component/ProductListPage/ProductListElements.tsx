@@ -18,6 +18,7 @@ export const Title = styled.h2`
   text-align: center;
   margin: 20px 0 0;
   text-transform: uppercase;
+  font-family: 'Otomanopee One', sans-serif;
 `;
 
 export const CardWrapper = styled.div`
@@ -119,6 +120,7 @@ export const Name = styled.h2`
   font-size: 1rem;
   margin: 2px 10px;
   text-align: center;
+
   /* align-self: center; */
 `;
 
