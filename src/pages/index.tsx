@@ -1,5 +1,5 @@
 import React from 'react';
-import { Welcome } from '../component/MainPage/Welcome';
+import { Welcome } from '../component/MainPage';
 
 interface Props {}
 

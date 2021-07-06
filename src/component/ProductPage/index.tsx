@@ -44,7 +44,6 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
     switch (productType) {
       case 'cakes':
         setProductList(cakesList);
-        console.log(productList);
         break;
       case 'dacquoises':
         setProductList(dacquoisesList);
@@ -96,6 +95,7 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
               <TastesWrapper>
                 {selectedProduct.tastes.map((item) => (
                   <TastesBtn
+                    key={item}
                     isSelected={tastes === item}
                     onClick={() => setTastes(item)}
                   >

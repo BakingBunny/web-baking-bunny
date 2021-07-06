@@ -21,8 +21,6 @@ export const ProductPage = (props: Props) => {
     [props.match.url]
   );
 
-  console.log(productType);
-
   return (
     <>
       <ProductDetail id={props.match.params.id} productType={productType} />
