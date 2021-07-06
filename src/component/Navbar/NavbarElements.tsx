@@ -35,7 +35,7 @@ export const LogoImg = styled.img`
 `;
 
 export const ProductLink = styled(NavLink)`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-decoration: none;
   justify-self: center;
   align-self: center;
