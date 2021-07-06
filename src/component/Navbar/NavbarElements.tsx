@@ -40,7 +40,7 @@ export const ProductLink = styled(NavLink)`
   justify-self: center;
   align-self: center;
   color: #fff;
-  font-family: 'Tourney', cursive;
+  font-family: 'Otomanopee One', sans-serif;
 `;
 
 export const Cart = styled(NavLink)`
