@@ -4,12 +4,16 @@ import styled from 'styled-components';
 export const Container = styled.div`
   min-height: calc(100vh - 60px);
   display: grid;
+  /* grid-template-rows: 1fr; */
   grid-template-columns: 60vw 40vw;
+  /* overflow: hidden; */
 
   @media screen and (max-width: 960px) {
     grid-template-rows: repeat(2, calc((100vh - 60px) / 2));
     grid-template-columns: 1fr;
   }
+
+  /* background: linear-gradient(to left, #0178bd, #368dc5); */
 `;
 
 export const BackgroundWrapper = styled.div`
@@ -28,6 +32,9 @@ export const Image = styled.img`
   @media screen and (max-width: 960px) {
     clip-path: polygon(0 0%, 100% 0%, 100% 85%, 0% 100%);
   }
+  /* overflow: hidden; */
+  /* transform: scale(1); */
+  /* transform-origin: center center 0px; */
 `;
 
 export const LogoMobile = styled.a`
@@ -42,7 +49,6 @@ export const LogoMobile = styled.a`
     background: #133853;
     border-radius: 100px;
     border: 1px solid #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   }
 `;
 
@@ -70,12 +76,23 @@ export const LogoDesktop = styled.a`
   img {
     height: 200px;
     width: 200px;
+    /* transform: translateY(50px); */
     background: #133853;
     border-radius: 100px;
     border: 1px solid #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   }
 `;
+
+// export const Card = styled.div`
+//   width: 90%;
+//   /* height: 200px; */
+//   height: auto;
+//   z-index: 1;
+//   padding-top: 20px;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+// `;
 
 export const Slogan = styled.h2`
   grid-area: slogan;
@@ -96,6 +113,8 @@ const ProductBtn = styled(Link)`
   border: 0;
   background: #133853;
   color: #fff;
+  /* width: 100px; */
+  /* padding: 10px 30px; */
   margin: 20px 20px 70px;
   font-size: 1.3rem;
   border-radius: 10px;
@@ -109,7 +128,6 @@ const ProductBtn = styled(Link)`
   transition: all 0.3s ease;
   max-width: 200px;
   height: 60px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   font-family: 'Otomanopee One', sans-serif;
 
   &:hover {

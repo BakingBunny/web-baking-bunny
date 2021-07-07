@@ -10,6 +10,7 @@ import { ProductListPage } from './pages/ProductListPage';
 import { ProductPage } from './pages/ProductPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Navbar } from './component/Navbar';
+import { CartPage } from './pages/CartPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             component={ProductPage}
             exact
           />
+          <Route path='/cart' component={CartPage} exact />
           <Route component={NotFoundPage} />
         </Switch>
       </Router>
