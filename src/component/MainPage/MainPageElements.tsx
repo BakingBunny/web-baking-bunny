@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const BackgroundWrapper = styled.div`
   width: 100%;
   background-color: #ffebee;
-  overflow: hidden;
+  position: relative;
 `;
 
 export const Image = styled.img`
@@ -43,9 +43,9 @@ export const LogoMobile = styled.a`
     width: 130px;
     z-index: 2;
     position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(30px, 100px);
+    right: 0;
+    bottom: 0;
+    transform: translate(-15px, 10px);
     background: #133853;
     border-radius: 100px;
     border: 1px solid #fff;
@@ -132,6 +132,12 @@ const ProductBtn = styled(Link)`
 
   &:hover {
     transform: translateY(-10px);
+  }
+
+  @media screen and (max-width: 960px) {
+    &:hover {
+      transform: translateY(0);
+    }
   }
 `;
 

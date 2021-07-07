@@ -49,6 +49,12 @@ export const Card = styled(Link)`
   &:hover {
     transform: translateY(-10px);
   }
+
+  @media screen and (max-width: 960px) {
+    &:hover {
+      transform: translateY(0);
+    }
+  }
 `;
 
 // export const Card = styled.div`
