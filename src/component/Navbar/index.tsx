@@ -1,4 +1,5 @@
 import React from 'react';
+import { useWindowSize } from '../../hooks/useWindowSize';
 import {
   Container,
   Wrapper,
@@ -12,6 +13,8 @@ import {
 interface Props {}
 
 export const Navbar = (props: Props) => {
+  const isMobile: boolean = useWindowSize();
+
   return (
     <>
       <Container>
@@ -38,7 +41,7 @@ export const Navbar = (props: Props) => {
               borderBottom: '1px solid #fff',
             }}
           >
-            DACQ.
+            {isMobile ? 'DACQ.' : 'DACQUOISE'}
           </ProductLink>
           <Cart to={'cart'}>
             <CartIcon />
