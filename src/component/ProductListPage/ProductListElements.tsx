@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  /* background: #ffebee; */
 `;
 
 export const Wrapper = styled.div`
@@ -23,7 +24,6 @@ export const Title = styled.h2`
 
 export const CardWrapper = styled.div`
   width: 100%;
-  background: #fff;
   display: flex;
   justify-content: center;
   z-index: 1;
