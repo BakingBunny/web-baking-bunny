@@ -39,7 +39,11 @@ export const Welcome = (props: Props) => {
       </BackgroundWrapper>
       <Card>
         {!isMobile && (
-          <LogoDesktop>
+          <LogoDesktop
+            href='https://www.instagram.com/baking.bunny_yyc/'
+            rel='noreferrer'
+            target='_blank'
+          >
             <img
               src={require('../../img/logo_circle.png')?.default}
               alt='logo_img'
