@@ -4,22 +4,22 @@ import styled from 'styled-components';
 export const Container = styled.div`
   min-height: calc(100vh - 60px);
   display: grid;
-  grid-template-rows: 1fr;
+  /* grid-template-rows: 1fr; */
   grid-template-columns: 60vw 40vw;
+  /* overflow: hidden; */
 
   @media screen and (max-width: 960px) {
     grid-template-rows: repeat(2, calc((100vh - 60px) / 2));
     grid-template-columns: 1fr;
   }
 
-  /* overflow: hidden; */
   /* background: linear-gradient(to left, #0178bd, #368dc5); */
 `;
 
 export const BackgroundWrapper = styled.div`
-  height: 100%;
   width: 100%;
   background-color: #ffebee;
+  overflow: hidden;
 `;
 
 export const Image = styled.img`
@@ -104,7 +104,7 @@ export const Slogan = styled.h2`
 
   @media screen and (max-width: 960px) {
     font-size: 1.5rem;
-    line-height: 1;
+    line-height: 1.5;
   }
 `;
 
