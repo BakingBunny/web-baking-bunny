@@ -64,7 +64,7 @@ export const ProductList = (props: Props) => {
                     {
                       productType === '/cakes' && product.price !== 0
                         ? formatCurrency(product.price * 1.2) // cake 8 inch price
-                        : '1 Piece' // dacquoise piece
+                        : productType !== '/cakes' && '1 Piece' // dacquoise piece
                     }
                   </Price>
                 </Detail>

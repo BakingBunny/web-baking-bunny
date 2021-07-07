@@ -70,25 +70,25 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
           src={require(`../../img/${selectedProduct.image}`)?.default}
           alt={selectedProduct.item_name}
         />
-        <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
-        <Price>
-          {
-            selectedProduct.price === 0
-              ? 'Various' // custum cakes
-              : formatCurrency(selectedProduct.price) //regular cakes and dacquoise
-          }
-          {
-            selectedProduct.price !== 0 && ' / ' // divider
-          }
-          {
-            productType === '/cakes' && selectedProduct.price !== 0
-              ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
-              : selectedProduct.item_name === 'Dacquoise-Set'
-              ? '5-Piece' // dacquoise set piece
-              : '1-Piece' // dacquoise piece
-          }
-        </Price>
         <OptionWrapper>
+          <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
+          <Price>
+            {
+              selectedProduct.price === 0
+                ? 'Various' // custum cakes
+                : formatCurrency(selectedProduct.price) //regular cakes and dacquoise
+            }
+            {
+              selectedProduct.price !== 0 && ' / ' // divider
+            }
+            {
+              productType === '/cakes' && selectedProduct.price !== 0
+                ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
+                : selectedProduct.item_name === 'Dacquoise-Set'
+                ? '5-Piece' // dacquoise set piece
+                : '1-Piece' // dacquoise piece
+            }
+          </Price>
           {selectedProduct.tastes.length > 0 && (
             <>
               <TastesTitle>Tastes / Fruits</TastesTitle>
@@ -143,14 +143,14 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
               +
             </QtyPlusBtn>
           </QtyWrapper>
+          <AddToCartBtn>
+            {cakeSize === 8
+              ? formatCurrency(selectedProduct.price * 1.2 * productQty)
+              : formatCurrency(selectedProduct.price * productQty)}
+            <br />
+            Add To Cart
+          </AddToCartBtn>
         </OptionWrapper>
-        <AddToCartBtn>
-          {cakeSize === 8
-            ? formatCurrency(selectedProduct.price * 1.2 * productQty)
-            : formatCurrency(selectedProduct.price * productQty)}
-          <br />
-          Add To Cart
-        </AddToCartBtn>
       </Container>
     </>
   );
