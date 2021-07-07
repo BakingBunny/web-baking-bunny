@@ -40,7 +40,12 @@ export const ProductLink = styled(NavLink)`
   justify-self: center;
   align-self: center;
   color: #fff;
+  letter-spacing: 2px;
   font-family: 'Otomanopee One', sans-serif;
+
+  @media screen and (max-width: 960px) {
+    letter-spacing: 0;
+  }
 `;
 
 export const Cart = styled(NavLink)`
