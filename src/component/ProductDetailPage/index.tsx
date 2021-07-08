@@ -24,6 +24,9 @@ import {
   CakeQty,
   AddToCartBtn,
 } from './ProductDetailElements';
+import { add } from '../../store/cartSlice';
+import { useAppDispatch } from '../../store/hooks';
+import { CartState } from '../../interface/CartState';
 
 interface Props {
   id: string;
@@ -31,7 +34,6 @@ interface Props {
 }
 
 type cakeSizeType = 6 | 8;
-// type fruitsType = 'Mango' | 'Strawberry' | 'None(Fresh-Milk)';
 
 export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
   const [productList, setProductList] = useState<Product[]>(dacquoisesList);
@@ -39,6 +41,8 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
   const [tastes, setTastes] = useState<string>('');
   const [productQty, setProductQty] = useState<number>(1);
   const [cakeSize, setCakeSize] = useState<cakeSizeType>(6);
+  const [productToCart, setproductToCart] = useState<CartState>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     switch (productType) {
@@ -62,6 +66,18 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
   }, [id, productType, productList]);
 
   if (!selectedProduct) return <NotFoundPage />;
+
+  const AddToCartHandler = () => {
+    setproductToCart({
+      type: selectedProduct.type,
+      item_name: selectedProduct.item_name,
+      tastes: tastes,
+      cakeSize: cakeSize,
+      qty: productQty,
+      special: '',
+    });
+    dispatch(add(productToCart));
+  };
 
   return (
     <>
@@ -143,7 +159,7 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
               +
             </QtyPlusBtn>
           </QtyWrapper>
-          <AddToCartBtn>
+          <AddToCartBtn onClick={() => AddToCartHandler()}>
             {cakeSize === 8
               ? formatCurrency(selectedProduct.price * 1.2 * productQty)
               : formatCurrency(selectedProduct.price * productQty)}

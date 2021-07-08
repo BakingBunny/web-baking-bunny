@@ -3,7 +3,7 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 import {
   Container,
   BackgroundWrapper,
-  Image,
+  MainImage,
   LogoMobile,
   Card,
   LogoDesktop,
@@ -20,10 +20,12 @@ export const Welcome = (props: Props) => {
   return (
     <Container>
       <BackgroundWrapper>
-        <Image
-          src={require('../../img/welcome_background.jpg')?.default}
-          alt='welcome_background'
-        />
+        <MainImage
+          style={{
+            backgroundImage: require('../../img/welcome_background.jpg')
+              ?.default,
+          }}
+        ></MainImage>
         {isMobile && (
           <LogoMobile
             href='https://www.instagram.com/baking.bunny_yyc/'
