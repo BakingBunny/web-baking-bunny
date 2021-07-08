@@ -6,13 +6,20 @@ import { FaShoppingCart } from 'react-icons/fa';
 export const Container = styled.div`
   background: #133853;
   color: #fff;
-  height: 60px;
+  height: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
   box-shadow: 0px 7px 10px -4px rgba(0, 0, 0, 0.43);
+  position: fixed;
+  bottom: 0;
+
+  @media screen and (max-width: 960px) {
+    position: static;
+    /* bottom: 0; */
+  }
 `;
 
 export const Wrapper = styled.div`

@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-height: calc(100vh - 60px);
+  min-height: calc(100% - 60px);
   display: grid;
   /* grid-template-rows: 1fr; */
-  grid-template-columns: 60vw 40vw;
+  grid-template-columns: 60% 40%;
   /* overflow: hidden; */
 
   @media screen and (max-width: 960px) {
-    grid-template-rows: repeat(2, calc((100vh - 60px) / 2));
+    grid-template-rows: repeat(2, calc((100% - 60px) / 2));
     grid-template-columns: 1fr;
   }
 

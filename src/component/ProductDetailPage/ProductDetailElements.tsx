@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 50px 1fr;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
   margin: 50px auto;
@@ -16,7 +18,6 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 100%;
   width: min(100%, 400px);
   object-fit: cover;
   border-radius: 10px;

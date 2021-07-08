@@ -7,10 +7,11 @@ import {
 } from 'react-router-dom';
 import { HomePage } from './pages';
 import { ProductListPage } from './pages/ProductListPage';
-import { ProductPage } from './pages/ProductPage';
+import { ProductPage } from './pages/ProductDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Navbar } from './component/Navbar';
 import { CartPage } from './pages/CartPage';
+import { Footer } from './component/Footer';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/cart' component={CartPage} exact />
           <Route component={NotFoundPage} />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );
