@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import formatCurrency from '../../utils';
 import cakesList from '../ProductListPage/cakesList.json';
@@ -33,15 +34,18 @@ interface Props {
   productType: string;
 }
 
-type cakeSizeType = 6 | 8;
-
 export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
   const [productList, setProductList] = useState<Product[]>(dacquoisesList);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
-  const [tastes, setTastes] = useState<string>('');
-  const [productQty, setProductQty] = useState<number>(1);
-  const [cakeSize, setCakeSize] = useState<cakeSizeType>(6);
-  const [productToCart, setproductToCart] = useState<CartState>();
+  const [productToCart, setproductToCart] = useState<CartState>({
+    id: '',
+    type: '',
+    item_name: '',
+    tastes: '',
+    cakeSize: 6,
+    qty: 1,
+    special: '',
+  });
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -56,6 +60,14 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
 
     setSelectedProduct(productList.find((product) => product.item_name === id));
 
+    selectedProduct &&
+      setproductToCart((prevState) => ({
+        ...prevState,
+        id: uuidv4(),
+        type: selectedProduct.type,
+        item_name: selectedProduct.item_name,
+      }));
+
     // const fetchData = async () => {
     //   window.scrollTo(0, 0); // scroll to top
     //   const result = await fetch(`/api/cake/${id}`);
@@ -63,21 +75,9 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
     //   setSelectedCake(body);
     // };
     // fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-  }, [id, productType, productList]);
+  }, [id, productType, productList, selectedProduct]);
 
   if (!selectedProduct) return <NotFoundPage />;
-
-  const AddToCartHandler = () => {
-    setproductToCart({
-      type: selectedProduct.type,
-      item_name: selectedProduct.item_name,
-      tastes: tastes,
-      cakeSize: cakeSize,
-      qty: productQty,
-      special: '',
-    });
-    dispatch(add(productToCart));
-  };
 
   return (
     <>
@@ -112,8 +112,13 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
                 {selectedProduct.tastes.map((item) => (
                   <TastesBtn
                     key={item}
-                    isSelected={tastes === item}
-                    onClick={() => setTastes(item)}
+                    isSelected={productToCart.tastes === item}
+                    onClick={() =>
+                      setproductToCart((prevState) => ({
+                        ...prevState,
+                        tastes: item,
+                      }))
+                    }
                   >
                     {item.replaceAll('-', ' ')}
                   </TastesBtn>
@@ -125,14 +130,24 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
           {productType === 'cakes' ? ( // cake size option
             <SizeWrapper>
               <SizeBtn
-                isSelected={cakeSize === 6}
-                onClick={() => setCakeSize(6)}
+                isSelected={productToCart.cakeSize === 6}
+                onClick={() =>
+                  setproductToCart((prevState) => ({
+                    ...prevState,
+                    cakeSize: 6,
+                  }))
+                }
               >
                 6
               </SizeBtn>
               <SizeBtn
-                isSelected={cakeSize === 8}
-                onClick={() => setCakeSize(8)}
+                isSelected={productToCart.cakeSize === 8}
+                onClick={() =>
+                  setproductToCart((prevState) => ({
+                    ...prevState,
+                    cakeSize: 8,
+                  }))
+                }
               >
                 8
               </SizeBtn>
@@ -146,23 +161,33 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
           <QtyTitle>Quantity</QtyTitle>
           <QtyWrapper>
             <QtyMinusBtn
-              onClick={() => setProductQty(productQty - 1)}
-              disabled={productQty <= 1}
+              onClick={() =>
+                setproductToCart((prevState) => ({
+                  ...prevState,
+                  qty: productToCart.qty - 1,
+                }))
+              }
+              disabled={productToCart.qty <= 1}
             >
               -
             </QtyMinusBtn>
-            <CakeQty>{productQty}</CakeQty>
+            <CakeQty>{productToCart.qty}</CakeQty>
             <QtyPlusBtn
-              onClick={() => setProductQty(productQty + 1)}
-              disabled={productQty >= 9}
+              onClick={() =>
+                setproductToCart((prevState) => ({
+                  ...prevState,
+                  qty: productToCart.qty + 1,
+                }))
+              }
+              disabled={productToCart.qty >= 9}
             >
               +
             </QtyPlusBtn>
           </QtyWrapper>
-          <AddToCartBtn onClick={() => AddToCartHandler()}>
-            {cakeSize === 8
-              ? formatCurrency(selectedProduct.price * 1.2 * productQty)
-              : formatCurrency(selectedProduct.price * productQty)}
+          <AddToCartBtn onClick={() => dispatch(add(productToCart))}>
+            {productToCart.cakeSize === 8
+              ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
+              : formatCurrency(selectedProduct.price * productToCart.qty)}
             <br />
             Add To Cart
           </AddToCartBtn>
