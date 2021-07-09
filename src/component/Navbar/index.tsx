@@ -43,7 +43,7 @@ export const Navbar = (props: Props) => {
           >
             {isMobile ? 'DACQ.' : 'DACQUOISE'}
           </ProductLink>
-          <Cart to={'cart'}>
+          <Cart to={'/cart'}>
             <CartIcon />
           </Cart>
         </Wrapper>
