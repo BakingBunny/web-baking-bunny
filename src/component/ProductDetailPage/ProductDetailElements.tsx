@@ -42,7 +42,7 @@ export const CakeName = styled.p`
   font-size: 1.6rem;
 `;
 
-export const Price = styled.div`
+export const PriceWrapper = styled.div`
   grid-area: price;
   font-size: 1.1rem;
   font-weight: lighter;

@@ -9,43 +9,40 @@ import {
   Container,
   Image,
   CakeName,
-  Price,
   OptionWrapper,
-  TastesTitle,
-  TastesWrapper,
-  TastesBtn,
   SizeTitle,
   SizeWrapper,
-  SizeBtn,
   NA,
   QtyTitle,
-  QtyWrapper,
-  QtyMinusBtn,
-  QtyPlusBtn,
-  CakeQty,
   AddToCartBtn,
 } from './ProductDetailElements';
 import { add } from '../../store/cartSlice';
 import { useAppDispatch } from '../../store/hooks';
 import { CartState } from '../../interface/CartState';
+import { Price } from './Price';
+import { Tastes } from './Tastes';
+import { Size } from './Size';
+import { Quantity } from './Quantity';
 
 interface Props {
   id: string;
   productType: string;
 }
 
+const initialCart = {
+  id: '',
+  type: '',
+  item_name: '',
+  tastes: '',
+  cakeSize: 6,
+  qty: 1,
+  special: '',
+};
+
 export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
   const [productList, setProductList] = useState<Product[]>(dacquoisesList);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
-  const [productToCart, setproductToCart] = useState<CartState>({
-    id: '',
-    type: '',
-    item_name: '',
-    tastes: '',
-    cakeSize: 6,
-    qty: 1,
-    special: '',
-  });
+  const [productToCart, setproductToCart] = useState<CartState>(initialCart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -88,102 +85,30 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
         />
         <OptionWrapper>
           <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
-          <Price>
-            {
-              selectedProduct.price === 0
-                ? 'Various' // custum cakes
-                : formatCurrency(selectedProduct.price) //regular cakes and dacquoise
-            }
-            {
-              selectedProduct.price !== 0 && ' / ' // divider
-            }
-            {
-              productType === '/cakes' && selectedProduct.price !== 0
-                ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
-                : selectedProduct.item_name === 'Dacquoise-Set'
-                ? '5-Piece' // dacquoise set piece
-                : '1-Piece' // dacquoise piece
-            }
-          </Price>
+          <Price productType={productType} selectedProduct={selectedProduct} />
           {selectedProduct.tastes.length > 0 && (
-            <>
-              <TastesTitle>Tastes / Fruits</TastesTitle>
-              <TastesWrapper>
-                {selectedProduct.tastes.map((item) => (
-                  <TastesBtn
-                    key={item}
-                    isSelected={productToCart.tastes === item}
-                    onClick={() =>
-                      setproductToCart((prevState) => ({
-                        ...prevState,
-                        tastes: item,
-                      }))
-                    }
-                  >
-                    {item.replaceAll('-', ' ')}
-                  </TastesBtn>
-                ))}
-              </TastesWrapper>
-            </>
+            <Tastes
+              selectedProduct={selectedProduct}
+              productToCart={productToCart}
+              setproductToCart={setproductToCart}
+            />
           )}
           <SizeTitle>Size (inch)</SizeTitle>
           {productType === 'cakes' ? ( // cake size option
-            <SizeWrapper>
-              <SizeBtn
-                isSelected={productToCart.cakeSize === 6}
-                onClick={() =>
-                  setproductToCart((prevState) => ({
-                    ...prevState,
-                    cakeSize: 6,
-                  }))
-                }
-              >
-                6
-              </SizeBtn>
-              <SizeBtn
-                isSelected={productToCart.cakeSize === 8}
-                onClick={() =>
-                  setproductToCart((prevState) => ({
-                    ...prevState,
-                    cakeSize: 8,
-                  }))
-                }
-              >
-                8
-              </SizeBtn>
-            </SizeWrapper>
+            <Size
+              productToCart={productToCart}
+              setproductToCart={setproductToCart}
+            />
           ) : (
-            // dacquoises has no size option
             <SizeWrapper>
               <NA>N / A</NA>
             </SizeWrapper>
           )}
           <QtyTitle>Quantity</QtyTitle>
-          <QtyWrapper>
-            <QtyMinusBtn
-              onClick={() =>
-                setproductToCart((prevState) => ({
-                  ...prevState,
-                  qty: productToCart.qty - 1,
-                }))
-              }
-              disabled={productToCart.qty <= 1}
-            >
-              -
-            </QtyMinusBtn>
-            <CakeQty>{productToCart.qty}</CakeQty>
-            <QtyPlusBtn
-              onClick={() =>
-                setproductToCart((prevState) => ({
-                  ...prevState,
-                  qty: productToCart.qty + 1,
-                }))
-              }
-              disabled={productToCart.qty >= 9}
-            >
-              +
-            </QtyPlusBtn>
-          </QtyWrapper>
+          <Quantity
+            productToCart={productToCart}
+            setproductToCart={setproductToCart}
+          />
           <AddToCartBtn onClick={() => dispatch(add(productToCart))}>
             {productToCart.cakeSize === 8
               ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
