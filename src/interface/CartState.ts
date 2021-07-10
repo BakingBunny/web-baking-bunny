@@ -1,7 +1,6 @@
 export interface CartState {
   id: string;
-  type: string;
-  item_name: string;
+  productId: number;
   tastes: string;
   cakeSize: number;
   qty: number;

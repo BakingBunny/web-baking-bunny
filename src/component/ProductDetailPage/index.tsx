@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import formatCurrency from '../../utils';
-import cakesList from '../ProductListPage/cakesList.json';
-import dacquoisesList from '../ProductListPage/dacquoisesList.json';
 import { Product } from '../../interface/Product';
+import products from '../../productList.json';
 import {
   Container,
   Image,
@@ -26,43 +25,30 @@ import { Quantity } from './Quantity';
 
 interface Props {
   id: string;
-  productType: string;
 }
 
 const initialCart = {
   id: '',
-  type: '',
-  item_name: '',
+  productId: 0,
   tastes: '',
   cakeSize: 6,
   qty: 1,
   special: '',
 };
 
-export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
-  const [productList, setProductList] = useState<Product[]>(dacquoisesList);
+export const ProductDetail: React.FC<Props> = ({ id }) => {
   const [selectedProduct, setSelectedProduct] = useState<Product>();
   const [productToCart, setproductToCart] = useState<CartState>(initialCart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    switch (productType) {
-      case 'cakes':
-        setProductList(cakesList);
-        break;
-      case 'dacquoises':
-        setProductList(dacquoisesList);
-        break;
-    }
-
-    setSelectedProduct(productList.find((product) => product.item_name === id));
+    setSelectedProduct(products.find((product) => product.id === Number(id)));
 
     selectedProduct &&
       setproductToCart((prevState) => ({
         ...prevState,
         id: uuidv4(),
-        type: selectedProduct.type,
-        item_name: selectedProduct.item_name,
+        productId: selectedProduct.id,
       }));
 
     // const fetchData = async () => {
@@ -72,7 +58,7 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
     //   setSelectedCake(body);
     // };
     // fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-  }, [id, productType, productList, selectedProduct]);
+  }, [id, selectedProduct]);
 
   if (!selectedProduct) return <NotFoundPage />;
 
@@ -85,7 +71,7 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
         />
         <OptionWrapper>
           <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
-          <Price productType={productType} selectedProduct={selectedProduct} />
+          <Price selectedProduct={selectedProduct} />
           {selectedProduct.tastes.length > 0 && (
             <Tastes
               selectedProduct={selectedProduct}
@@ -94,7 +80,7 @@ export const ProductDetail: React.FC<Props> = ({ id, productType }) => {
             />
           )}
           <SizeTitle>Size (inch)</SizeTitle>
-          {productType === 'cakes' ? ( // cake size option
+          {selectedProduct.type === 'cakes' ? ( // cake size option
             <Size
               productToCart={productToCart}
               setproductToCart={setproductToCart}
