@@ -4,12 +4,11 @@ import { PriceWrapper } from './ProductDetailElements';
 import formatCurrency from '../../utils';
 
 interface Props {
-  productType: string;
   selectedProduct: Product;
 }
 
 export const Price = (props: Props) => {
-  const { selectedProduct, productType } = props;
+  const { selectedProduct } = props;
 
   return (
     <PriceWrapper>
@@ -22,7 +21,7 @@ export const Price = (props: Props) => {
         selectedProduct.price !== 0 && ' / ' // divider
       }
       {
-        productType === '/cakes' && selectedProduct.price !== 0
+        selectedProduct.type === 'cake' && selectedProduct.price !== 0
           ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
           : selectedProduct.item_name === 'Dacquoise-Set'
           ? '5-Piece' // dacquoise set piece

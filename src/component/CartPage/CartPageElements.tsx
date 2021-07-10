@@ -1,150 +1,185 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-height: calc(100% - 60px);
-  display: grid;
-  /* grid-template-rows: 1fr; */
-  grid-template-columns: 60% 40%;
-  /* overflow: hidden; */
-
-  @media screen and (max-width: 960px) {
-    grid-template-rows: repeat(2, calc((100% - 60px) / 2));
-    grid-template-columns: 1fr;
-  }
-
-  /* background: linear-gradient(to left, #0178bd, #368dc5); */
-`;
-
-export const BackgroundWrapper = styled.div`
-  width: 100%;
-  background-color: #ffebee;
-  position: relative;
-`;
-
-export const Image = styled.img`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  /* padding: 0 20px; */
   height: 100%;
-  width: 100%;
-  object-fit: cover;
-  z-index: 1;
-  clip-path: polygon(0 0%, 100% 0%, 85% 100%, 0% 100%);
-
-  @media screen and (max-width: 960px) {
-    clip-path: polygon(0 0%, 100% 0%, 100% 85%, 0% 100%);
-  }
-  /* overflow: hidden; */
-  /* transform: scale(1); */
-  /* transform-origin: center center 0px; */
+  max-width: 850px;
 `;
 
-export const LogoMobile = styled.a`
-  img {
-    height: 130px;
-    width: 130px;
-    z-index: 2;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transform: translate(-15px, 10px);
-    background: #133853;
-    border-radius: 100px;
-    border: 1px solid #fff;
+export const Title = styled.h2`
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 20px 0 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'Otomanopee One', sans-serif;
+`;
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media screen and (max-width: 960px) {
+    grid-template-columns: 1fr;
+    /* grid-gap: 0px; */
   }
+`;
+
+export const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Card = styled.div`
-  width: 100%;
-  background: #ffebee;
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 30% 45% 25%;
-  grid-template-areas: 'logo-desktop logo-desktop' 'slogan slogan' 'cakebtn dacquoisebtn';
-  align-items: center;
-
-  @media screen and (max-width: 960px) {
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 60% 40%;
-    grid-template-areas: 'slogan slogan' 'cakebtn dacquoisebtn';
-  }
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'cake-name cake-name'
+    'price price'
+    'fruitstitle fruitstitle'
+    'fruitswrapper fruitswrapper'
+    'sizetitle qtytitle'
+    'sizewrapper qtywrapper'
+    'add-to-cart-btn add-to-cart-btn';
 `;
 
-export const LogoDesktop = styled.a`
-  grid-area: logo-desktop;
+export const Image = styled.img`
+  width: min(100%, 400px);
+  object-fit: cover;
+  border-radius: 10px;
+  margin: auto;
+`;
+
+export const CakeName = styled.p`
+  grid-area: cake-name;
+  font-size: 1.6rem;
+`;
+
+export const PriceWrapper = styled.div`
+  grid-area: price;
+  font-size: 1.1rem;
+  font-weight: lighter;
+  margin: 0 0 30px;
+`;
+
+export const TastesTitle = styled.h2`
+  grid-area: fruitstitle;
+  justify-self: center;
+  font-size: 1rem;
+  margin: 2px 0;
+`;
+
+export const TastesWrapper = styled.div`
+  grid-area: fruitswrapper;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  margin: 2px 0 30px;
+`;
 
-  img {
-    height: 200px;
-    width: 200px;
-    /* transform: translateY(50px); */
-    background: #133853;
-    border-radius: 100px;
-    border: 1px solid #fff;
+const CircleBtn = styled.button`
+  font-size: 1rem;
+  margin: 8px;
+  padding: 5px 10px;
+  justify-self: center;
+  border: none;
+  border-radius: 25px;
+  outline: 0;
+  cursor: pointer;
+  background-color: #133853;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  text-transform: uppercase;
+`;
+
+interface BtnProps {
+  readonly isSelected: boolean;
+}
+
+export const TastesBtn = styled(CircleBtn)<BtnProps>`
+  width: 95px;
+  height: 2.5rem;
+  font-size: 11px;
+  border-radius: 5px;
+  background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
+  opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
+
+  span {
+    font-size: 9px;
   }
 `;
 
-// export const Card = styled.div`
-//   width: 90%;
-//   /* height: 200px; */
-//   height: auto;
-//   z-index: 1;
-//   padding-top: 20px;
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-// `;
-
-export const Slogan = styled.h2`
-  grid-area: slogan;
-  text-align: left;
-  padding: 20px;
-  font-family: 'Indie Flower', cursive;
-  font-size: 2rem;
-  line-height: 2;
-
-  @media screen and (max-width: 960px) {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
+export const SizeTitle = styled.h2`
+  grid-area: sizetitle;
+  font-size: 1rem;
+  margin: 2px 10px;
+  justify-self: center;
 `;
 
-const ProductBtn = styled(Link)`
-  grid-area: cakebtn;
+export const SizeWrapper = styled.div`
+  grid-area: sizewrapper;
+  justify-self: center;
+  display: flex;
+  margin: 2px 10px;
+`;
+
+export const SizeBtn = styled(CircleBtn)<BtnProps>`
+  opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
+`;
+
+export const NA = styled.div`
+  margin: 10px;
+  opacity: 0.7;
+`;
+
+export const QtyTitle = styled.h2`
+  grid-area: qtytitle;
+  font-size: 1rem;
+  margin: 2px 10px;
+  justify-self: center;
+`;
+
+export const QtyWrapper = styled.div`
+  grid-area: qtywrapper;
+  justify-self: center;
+  display: flex;
+  margin: 2px 10px;
+  /* position: relative; */
+`;
+
+export const CakeQty = styled.div`
+  align-self: center;
+  width: 60px;
+  padding: 6px 0;
+  text-align: center;
+  background-color: #ffebee;
+  color: #133853;
+`;
+
+export const QtyMinusBtn = styled(CircleBtn)`
+  transform: translateX(1.2rem);
+`;
+
+export const QtyPlusBtn = styled(CircleBtn)`
+  transform: translateX(-1.2rem);
+`;
+
+export const AddToCartBtn = styled.button`
+  grid-area: add-to-cart-btn;
   border: 0;
   background: #133853;
   color: #fff;
-  /* width: 100px; */
-  /* padding: 10px 30px; */
-  margin: 20px 20px 70px;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  letter-spacing: 1px;
+  line-height: 2;
+  letter-spacing: 2px;
+  font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  max-width: 200px;
-  height: 60px;
-  font-family: 'Otomanopee One', sans-serif;
-
-  &:hover {
-    transform: translateY(-10px);
-  }
-
-  @media screen and (max-width: 960px) {
-    &:hover {
-      transform: translateY(0);
-    }
-  }
-`;
-
-export const CakeBtn = styled(ProductBtn)`
-  grid-area: cakebtn;
-`;
-
-export const DacquoiseBtn = styled(ProductBtn)`
-  grid-area: dacquoisebtn;
+  margin: 30px 0;
+  padding: 10px 15px;
+  border-radius: 5px;
 `;
