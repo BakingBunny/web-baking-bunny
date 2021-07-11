@@ -1,6 +1,8 @@
+import { Product } from './Product';
+
 export interface CartState {
-  id: string;
-  productId: number;
+  index: number;
+  product: Product | undefined;
   tastes: string;
   cakeSize: number;
   qty: number;

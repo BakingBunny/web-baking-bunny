@@ -16,7 +16,7 @@ export const Tastes = (props: Props) => {
     <>
       <TastesTitle>Tastes / Fruits</TastesTitle>
       <TastesWrapper>
-        {selectedProduct.tastes.map((item) => (
+        {selectedProduct.tastes.map((item: string) => (
           <TastesBtn
             key={item}
             isSelected={productToCart.tastes === item}
