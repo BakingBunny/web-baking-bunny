@@ -1,7 +1,7 @@
 import { Product } from './Product';
 
 export interface CartState {
-  index: number;
+  id: string;
   product: Product | undefined;
   tastes: string;
   cakeSize: number;
