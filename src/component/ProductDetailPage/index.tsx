@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import formatCurrency from '../../utils';
 import { Product } from '../../interface/Product';
@@ -22,13 +21,14 @@ import { Price } from './Price';
 import { Tastes } from './Tastes';
 import { Size } from './Size';
 import { Quantity } from './Quantity';
+import { v4 as uuidv4 } from 'uuid';
 
 interface Props {
   id: string;
 }
 
 const initialCart = {
-  index: 0,
+  id: '',
   product: undefined,
   tastes: '',
   cakeSize: 6,
@@ -55,7 +55,7 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
     selectedProduct &&
       setproductToCart((prevState) => ({
         ...prevState,
-        index: 0,
+        id: uuidv4(),
         product: selectedProduct,
       }));
   }, [id, selectedProduct]);
@@ -80,12 +80,13 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
             />
           )}
           <SizeTitle>Size (inch)</SizeTitle>
-          {selectedProduct.type === 'cakes' ? ( // cake size option
+          {selectedProduct.type === 'cake' ? ( // cake size option
             <Size
               productToCart={productToCart}
               setproductToCart={setproductToCart}
             />
           ) : (
+            // dacquoise has no size option
             <SizeWrapper>
               <NA>N / A</NA>
             </SizeWrapper>

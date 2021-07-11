@@ -1,5 +1,7 @@
 export interface CartUpdate {
-  index: number;
+  id: string;
   option: string;
   value: number | string;
 }
+
+//todo: DO I need it?

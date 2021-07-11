@@ -6,7 +6,6 @@ import {
   QtyPlusBtn,
   QtyWrapper,
 } from '../ProductDetailPage/ProductDetailElements';
-import { CartUpdate } from '../../interface/CartUpdate';
 
 interface Props {
   item: CartState;
@@ -19,14 +18,14 @@ export const Quantity = (props: Props) => {
   return (
     <QtyWrapper>
       <QtyMinusBtn
-        onClick={() => props.updateHandler(item.index, 'qty', item.qty - 1)}
+        onClick={() => props.updateHandler(item.id, 'qty', item.qty - 1)}
         disabled={item.qty <= 1}
       >
         -
       </QtyMinusBtn>
       <CakeQty>{item.qty}</CakeQty>
       <QtyPlusBtn
-        onClick={() => props.updateHandler(item.index, 'qty', item.qty + 1)}
+        onClick={() => props.updateHandler(item.id, 'qty', item.qty + 1)}
         disabled={item.qty >= 9}
       >
         +
