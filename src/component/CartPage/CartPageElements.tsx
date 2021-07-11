@@ -45,6 +45,7 @@ export const Card = styled.div`
     'sizetitle qtytitle'
     'sizewrapper qtywrapper'
     'add-to-cart-btn add-to-cart-btn';
+  border-top: 1px solid #000;
 `;
 
 export const Image = styled.img`
@@ -135,38 +136,6 @@ export const SizeBtn = styled(CircleBtn)<BtnProps>`
 export const NA = styled.div`
   margin: 10px;
   opacity: 0.7;
-`;
-
-export const QtyTitle = styled.h2`
-  grid-area: qtytitle;
-  font-size: 1rem;
-  margin: 2px 10px;
-  justify-self: center;
-`;
-
-export const QtyWrapper = styled.div`
-  grid-area: qtywrapper;
-  justify-self: center;
-  display: flex;
-  margin: 2px 10px;
-  /* position: relative; */
-`;
-
-export const CakeQty = styled.div`
-  align-self: center;
-  width: 60px;
-  padding: 6px 0;
-  text-align: center;
-  background-color: #ffebee;
-  color: #133853;
-`;
-
-export const QtyMinusBtn = styled(CircleBtn)`
-  transform: translateX(1.2rem);
-`;
-
-export const QtyPlusBtn = styled(CircleBtn)`
-  transform: translateX(-1.2rem);
 `;
 
 export const AddToCartBtn = styled.button`

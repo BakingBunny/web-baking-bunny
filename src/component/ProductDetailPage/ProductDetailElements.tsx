@@ -78,6 +78,11 @@ const CircleBtn = styled.button`
   width: 30px;
   height: 30px;
   text-transform: uppercase;
+
+  &:disabled {
+    background-color: #7698b0;
+    cursor: default;
+  }
 `;
 
 interface BtnProps {

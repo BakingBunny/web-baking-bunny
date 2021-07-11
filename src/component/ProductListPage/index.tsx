@@ -49,7 +49,7 @@ export const ProductList = (props: Props) => {
       <Wrapper>
         <Title>{productType.replace('/', '')}</Title>
         <CardWrapper>
-          {productList.map((product) => (
+          {productList.map((product: Product) => (
             <Card to={`${productType}/${product.id}`} key={product.item_name}>
               <Image
                 src={require(`../../img/${product.image}`)?.default}

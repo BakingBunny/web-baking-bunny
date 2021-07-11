@@ -28,8 +28,8 @@ interface Props {
 }
 
 const initialCart = {
-  id: '',
-  productId: 0,
+  index: 0,
+  product: undefined,
   tastes: '',
   cakeSize: 6,
   qty: 1,
@@ -44,13 +44,6 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
   useEffect(() => {
     setSelectedProduct(products.find((product) => product.id === Number(id)));
 
-    selectedProduct &&
-      setproductToCart((prevState) => ({
-        ...prevState,
-        id: uuidv4(),
-        productId: selectedProduct.id,
-      }));
-
     // const fetchData = async () => {
     //   window.scrollTo(0, 0); // scroll to top
     //   const result = await fetch(`/api/cake/${id}`);
@@ -58,6 +51,13 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
     //   setSelectedCake(body);
     // };
     // fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
+
+    selectedProduct &&
+      setproductToCart((prevState) => ({
+        ...prevState,
+        index: 0,
+        product: selectedProduct,
+      }));
   }, [id, selectedProduct]);
 
   if (!selectedProduct) return <NotFoundPage />;
