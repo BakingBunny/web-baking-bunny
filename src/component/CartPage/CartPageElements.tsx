@@ -73,25 +73,23 @@ export const OptionsWrapper = styled.div`
 export const CakeName = styled.h3`
   grid-area: cake-name;
   font-size: 1.3rem;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
 `;
 
 export const PriceWrapper = styled.div`
   grid-area: price;
   font-size: 1.1rem;
   font-weight: lighter;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
 `;
 
 export const TastesTitle = styled.h2`
-  grid-area: fruitstitle;
   justify-self: center;
   font-size: 1rem;
   margin: 2px 0;
 `;
 
 export const TastesWrapper = styled.div`
-  grid-area: fruitswrapper;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -128,8 +126,6 @@ export const SizeWrapper = styled.div`
   grid-area: sizewrapper;
   align-items: center;
   display: flex;
-  margin: 0 0 5px;
-  /* margin: 2px 10px; */
 `;
 
 export const SizeTitle = styled.h2`
@@ -146,12 +142,26 @@ export const SizeBtn = styled(CircleBtn)<BtnProps>`
   margin-left: 0;
 `;
 
+export const TastesSelect = styled.select`
+  width: 93%;
+  height: 30px;
+  margin: 10px 0;
+  background-color: #133853;
+  color: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.703);
+  border-radius: 4px;
+  font-size: 1rem;
+  padding-left: 5px;
+
+  option {
+    background-color: #426280;
+  }
+`;
+
 export const QtyWrapper = styled.div`
   grid-area: qtywrapper;
   align-items: center;
   display: flex;
-  margin: 0 0 5px;
-  /* position: relative; */
 `;
 
 export const QtyTitle = styled.h2`
@@ -213,17 +223,17 @@ export const DeleteBtn = styled.button`
   border-radius: 5px;
 `;
 
-// export const AddToCartBtn = styled.button`
-//   grid-area: add-to-cart-btn;
-//   border: 0;
-//   background: #133853;
-//   color: #fff;
-//   line-height: 2;
-//   letter-spacing: 2px;
-//   font-size: 14px;
-//   text-transform: uppercase;
-//   cursor: pointer;
-//   margin: 30px 0;
-//   padding: 10px 15px;
-//   border-radius: 5px;
-// `;
+export const ProceedBtn = styled.button`
+  grid-area: add-to-cart-btn;
+  border: 0;
+  background: #133853;
+  color: #fff;
+  line-height: 2;
+  letter-spacing: 2px;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 30px 0;
+  padding: 10px 15px;
+  border-radius: 5px;
+`;
