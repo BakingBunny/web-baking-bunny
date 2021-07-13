@@ -78,9 +78,10 @@ const CircleBtn = styled.button`
   width: 30px;
   height: 30px;
   text-transform: uppercase;
+  z-index: 2;
 
   &:disabled {
-    background-color: #7698b0;
+    background-color: #426280;
     cursor: default;
   }
 `;
@@ -117,6 +118,7 @@ export const SizeWrapper = styled.div`
 `;
 
 export const SizeBtn = styled(CircleBtn)<BtnProps>`
+  width: auto;
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
 `;
 

@@ -10,11 +10,16 @@ import {
   Wrapper,
   CardWrapper,
   Card,
+  ImageWrapper,
   Image,
+  OptionsWrapper,
+  CakeName,
+  DeleteBtn,
 } from './CartPageElements';
 import { Quantity } from './Quantity';
 import { Size } from './Size';
 import { Tastes } from './Tastes';
+import { Price } from './Price';
 
 interface Props {}
 
@@ -43,25 +48,33 @@ export const Cart = (props: Props) => {
         <CardWrapper>
           {productsList.map((item: CartState) => (
             <Card key={item.id}>
-              <Image
-                src={require(`../../img/${item.product?.image}`)?.default}
-                alt={item.product?.item_name}
-              />
-              {/* <p>{item.id}</p> */}
-              <p>{item.product?.item_name}</p>
-              {item.tastes.length > 0 && (
-                <Tastes item={item} updateHandler={updateHandler} />
-              )}
-              {item.product?.type === 'cake' && (
-                <Size item={item} updateHandler={updateHandler} />
-              )}
-              <Quantity item={item} updateHandler={updateHandler} />
-
-              <button onClick={() => dispatch(remove(item.id))}>Delete</button>
+              <ImageWrapper>
+                <Image
+                  src={require(`../../img/${item.product?.image}`)?.default}
+                  alt={item.product?.item_name}
+                />
+                <DeleteBtn onClick={() => dispatch(remove(item.id))}>
+                  Delete
+                </DeleteBtn>
+              </ImageWrapper>
+              <OptionsWrapper>
+                <CakeName>
+                  {item.product?.item_name.replaceAll('-', ' ')}
+                </CakeName>
+                <Price item={item} />
+                {item.tastes.length > 0 && (
+                  <Tastes item={item} updateHandler={updateHandler} />
+                )}
+                {item.product?.type === 'cake' && (
+                  <Size item={item} updateHandler={updateHandler} />
+                )}
+                <Quantity item={item} updateHandler={updateHandler} />
+              </OptionsWrapper>
               {/* <button onClick={() => dispatch(remove(item.id))}>Edit</button> */}
             </Card>
           ))}
         </CardWrapper>
+        <div>Subtotal</div>
       </Wrapper>
     </Container>
   );
