@@ -12,13 +12,12 @@ export const Tastes = (props: Props) => {
   return (
     <>
       <select
-        name='cars'
-        id='cars'
         onChange={(e) => props.updateHandler(item.id, 'tastes', e.target.value)}
+        value={item.tastes}
       >
-        {item.product?.tastes.map((item) => (
-          <option key={item} value={item}>
-            {item}
+        {item.product?.tastes.map((taste) => (
+          <option key={taste} value={taste}>
+            {taste}
           </option>
         ))}
       </select>

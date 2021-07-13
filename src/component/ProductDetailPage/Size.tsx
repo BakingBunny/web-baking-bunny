@@ -21,7 +21,7 @@ export const Size = (props: Props) => {
           }))
         }
       >
-        6
+        6"
       </SizeBtn>
       <SizeBtn
         isSelected={productToCart.cakeSize === 8}
@@ -32,7 +32,7 @@ export const Size = (props: Props) => {
           }))
         }
       >
-        8
+        8"
       </SizeBtn>
     </SizeWrapper>
   );

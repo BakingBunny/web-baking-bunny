@@ -1,11 +1,11 @@
 import React from 'react';
 import { CartState } from '../../interface/CartState';
 import {
-  CakeQty,
-  QtyMinusBtn,
-  QtyPlusBtn,
+  QtyTitle,
+  ProductQty,
+  CircleBtn,
   QtyWrapper,
-} from '../ProductDetailPage/ProductDetailElements';
+} from './CartPageElements';
 
 interface Props {
   item: CartState;
@@ -17,19 +17,23 @@ export const Quantity = (props: Props) => {
 
   return (
     <QtyWrapper>
-      <QtyMinusBtn
+      <QtyTitle>Quantity</QtyTitle>
+      <CircleBtn
         onClick={() => props.updateHandler(item.id, 'qty', item.qty - 1)}
         disabled={item.qty <= 1}
       >
         -
-      </QtyMinusBtn>
-      <CakeQty>{item.qty}</CakeQty>
-      <QtyPlusBtn
+      </CircleBtn>
+      <ProductQty>
+        <span>{item.qty}</span>
+      </ProductQty>
+      {/* {item.qty} */}
+      <CircleBtn
         onClick={() => props.updateHandler(item.id, 'qty', item.qty + 1)}
         disabled={item.qty >= 9}
       >
         +
-      </QtyPlusBtn>
+      </CircleBtn>
     </QtyWrapper>
   );
 };

@@ -31,7 +31,7 @@ const initialCart = {
   id: '',
   product: undefined,
   tastes: '',
-  cakeSize: 6,
+  cakeSize: 1,
   qty: 1,
   special: '',
 };
@@ -57,6 +57,8 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
         ...prevState,
         id: uuidv4(),
         product: selectedProduct,
+        tastes: selectedProduct.tastes[0] ? selectedProduct.tastes[0] : '',
+        cakeSize: selectedProduct.type === 'cake' ? 6 : 1, // default dacquoise size is 1
       }));
   }, [id, selectedProduct]);
 
@@ -79,7 +81,7 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
               setproductToCart={setproductToCart}
             />
           )}
-          <SizeTitle>Size (inch)</SizeTitle>
+          <SizeTitle>Size</SizeTitle>
           {selectedProduct.type === 'cake' ? ( // cake size option
             <Size
               productToCart={productToCart}
