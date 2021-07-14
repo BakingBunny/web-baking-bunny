@@ -15,7 +15,7 @@ export const Tastes = (props: Props) => {
       onChange={(e) => props.updateHandler(item.id, 'tastes', e.target.value)}
       value={item.tastes}
     >
-      {item.product?.tastes.map((taste) => (
+      {item.product.tastes.map((taste) => (
         <option key={taste} value={taste}>
           {taste.replaceAll('-', ' ')}
         </option>

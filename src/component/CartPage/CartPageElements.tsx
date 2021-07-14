@@ -13,7 +13,7 @@ export const Title = styled.h2`
   font-size: 2rem;
   letter-spacing: 2px;
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 0 10px;
   width: 100%;
   text-transform: uppercase;
   font-family: 'Otomanopee One', sans-serif;
@@ -22,14 +22,17 @@ export const Title = styled.h2`
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'card-wrapper subtotal';
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
+    grid-template-areas: 'subtotal' 'card-wrapper';
     /* grid-gap: 0px; */
   }
 `;
 
 export const CardWrapper = styled.div`
+  grid-area: card-wrapper;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -38,14 +41,6 @@ export const CardWrapper = styled.div`
 export const Card = styled.div`
   display: grid;
   grid-template-columns: min(35%, 300px) 1fr;
-  /* grid-template-areas:
-    'cake-name cake-name'
-    'price price'
-    'fruitstitle fruitstitle'
-    'fruitswrapper fruitswrapper'
-    'sizetitle qtytitle'
-    'sizewrapper qtywrapper'
-    'add-to-cart-btn add-to-cart-btn'; */
   border-top: 1px solid #9f9f9f87;
   padding: 10px 0;
 `;
@@ -61,7 +56,6 @@ export const Image = styled.img`
   width: min(100%, 300px);
   object-fit: cover;
   border-radius: 10px;
-  /* margin: auto; */
 `;
 
 export const OptionsWrapper = styled.div`
@@ -71,13 +65,11 @@ export const OptionsWrapper = styled.div`
 `;
 
 export const CakeName = styled.h3`
-  grid-area: cake-name;
   font-size: 1.3rem;
   margin: 0 0 10px;
 `;
 
 export const PriceWrapper = styled.div`
-  grid-area: price;
   font-size: 1.1rem;
   font-weight: lighter;
   margin: 0 0 10px;
@@ -123,16 +115,13 @@ interface BtnProps {
 }
 
 export const SizeWrapper = styled.div`
-  grid-area: sizewrapper;
   align-items: center;
   display: flex;
 `;
 
 export const SizeTitle = styled.h2`
-  grid-area: sizetitle;
   font-size: 1rem;
   flex-grow: 1;
-  /* margin: 2px 0; */
   margin: 0;
 `;
 
@@ -159,13 +148,11 @@ export const TastesSelect = styled.select`
 `;
 
 export const QtyWrapper = styled.div`
-  grid-area: qtywrapper;
   align-items: center;
   display: flex;
 `;
 
 export const QtyTitle = styled.h2`
-  grid-area: qtytitle;
   font-size: 1rem;
   flex-grow: 1;
   margin: 0;
@@ -174,7 +161,6 @@ export const QtyTitle = styled.h2`
 export const ProductQty = styled.div`
   align-self: center;
   position: relative;
-  /* width: 30px; */
 
   span {
     position: absolute;
@@ -190,26 +176,6 @@ export const ProductQty = styled.div`
   }
 `;
 
-// export const ProductQty = styled.div`
-//   align-self: center;
-//   padding: 6px 0;
-//   text-align: center;
-//   color: #133853;
-//   position: relative;
-//   width: 10px;
-
-//   &::after {
-//     content: '';
-//     position: absolute;
-//     width: 60px;
-//     height: 30px;
-//     background-color: #ffebee;
-//     left: 0;
-//     top: 0;
-//     transform: translate(-50%, 0);
-//   }
-// `;
-
 export const DeleteBtn = styled.button`
   border: 0;
   background: none;
@@ -223,17 +189,38 @@ export const DeleteBtn = styled.button`
   border-radius: 5px;
 `;
 
+export const SubtotalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: min(100%, 400px);
+  height: 80px;
+  border-top: 1px solid #9f9f9f87;
+  padding: 15px 0;
+  margin: 10px 0 0 0;
+`;
+
+export const SubtotalText = styled.b`
+  font-size: 1.5rem;
+`;
+
 export const ProceedBtn = styled.button`
-  grid-area: add-to-cart-btn;
   border: 0;
-  background: #133853;
-  color: #fff;
+  background: #f4ba29;
   line-height: 2;
-  letter-spacing: 2px;
-  font-size: 14px;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
   text-transform: uppercase;
   cursor: pointer;
-  margin: 30px 0;
+  margin: 10px 0 0;
   padding: 10px 15px;
   border-radius: 5px;
+`;
+
+export const EmptyCart = styled.div`
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 50px 0;
 `;
