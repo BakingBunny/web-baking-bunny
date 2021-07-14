@@ -223,4 +223,5 @@ export const EmptyCart = styled.div`
   font-size: 1.5rem;
   text-align: center;
   margin: 50px 0;
+  font-family: 'Indie Flower', cursive;
 `;
