@@ -29,7 +29,18 @@ interface Props {
 
 const initialCart = {
   id: '',
-  product: undefined,
+  product: {
+    id: 0,
+    type: '',
+    item_name: '',
+    item_name_kor: '',
+    tastes: [],
+    tastes_kor: [],
+    price: 0,
+    available_date: [],
+    image: '',
+    special: '',
+  },
   tastes: '',
   cakeSize: 1,
   qty: 1,
