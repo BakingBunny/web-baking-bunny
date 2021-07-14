@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 50px 1fr;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
   margin: 50px auto;
@@ -16,7 +18,6 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 100%;
   width: min(100%, 400px);
   object-fit: cover;
   border-radius: 10px;
@@ -41,7 +42,7 @@ export const CakeName = styled.p`
   font-size: 1.6rem;
 `;
 
-export const Price = styled.div`
+export const PriceWrapper = styled.div`
   grid-area: price;
   font-size: 1.1rem;
   font-weight: lighter;
@@ -77,6 +78,12 @@ const CircleBtn = styled.button`
   width: 30px;
   height: 30px;
   text-transform: uppercase;
+  z-index: 2;
+
+  &:disabled {
+    background-color: #426280;
+    cursor: default;
+  }
 `;
 
 interface BtnProps {
@@ -111,6 +118,7 @@ export const SizeWrapper = styled.div`
 `;
 
 export const SizeBtn = styled(CircleBtn)<BtnProps>`
+  width: auto;
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
 `;
 

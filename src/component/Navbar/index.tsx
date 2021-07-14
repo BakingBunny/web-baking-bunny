@@ -1,4 +1,5 @@
 import React from 'react';
+import { useCountCartItems } from '../../hooks/useCountCartItems';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import {
   Container,
@@ -8,12 +9,14 @@ import {
   ProductLink,
   Cart,
   CartIcon,
+  CountCartItems,
 } from './NavbarElements';
 
 interface Props {}
 
 export const Navbar = (props: Props) => {
   const isMobile: boolean = useWindowSize();
+  const countCartItems = useCountCartItems();
 
   return (
     <>
@@ -43,8 +46,15 @@ export const Navbar = (props: Props) => {
           >
             {isMobile ? 'DACQ.' : 'DACQUOISE'}
           </ProductLink>
-          <Cart to={'cart'}>
+          <Cart to={'/cart'}>
             <CartIcon />
+            {countCartItems ? (
+              <CountCartItems>
+                <div>{countCartItems}</div>
+              </CountCartItems>
+            ) : (
+              ''
+            )}
           </Cart>
         </Wrapper>
       </Container>

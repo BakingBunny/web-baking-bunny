@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import mainImage from '../../img/welcome_background.jpg';
 
 export const Container = styled.div`
-  min-height: calc(100vh - 60px);
+  /* min-height: calc(100vh - 60px); */
+  height: calc(100vh - 60px - 30px);
+  /* min-height: 100%; */
+  /* height: 100%; */
   display: grid;
-  grid-template-columns: 60vw 40vw;
+  grid-template-columns: 60% auto;
 
   @media screen and (max-width: 960px) {
-    grid-template-rows: repeat(2, calc((100vh - 60px) / 2));
+    grid-template-rows: repeat(2, calc((100vh - 60px - 30px) / 2));
     grid-template-columns: 1fr;
   }
 `;
@@ -18,10 +22,13 @@ export const BackgroundWrapper = styled.div`
   position: relative;
 `;
 
-export const Image = styled.img`
+export const MainImage = styled.div`
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: unset;
+  background-image: url(${mainImage});
   z-index: 1;
   clip-path: polygon(0 0%, 100% 0%, 85% 100%, 0% 100%);
 
@@ -54,6 +61,7 @@ export const Card = styled.div`
   grid-template-rows: 30% 45% 25%;
   grid-template-areas: 'logo-desktop logo-desktop' 'slogan slogan' 'cakebtn dacquoisebtn';
   align-items: center;
+  justify-items: center;
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 50% 50%;
@@ -96,7 +104,7 @@ const ProductBtn = styled(Link)`
   border: 0;
   background: #133853;
   color: #fff;
-  margin: 20px 20px 70px;
+  margin: 20px;
   font-size: 1.3rem;
   border-radius: 10px;
   letter-spacing: 1px;
@@ -107,7 +115,7 @@ const ProductBtn = styled(Link)`
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
-  max-width: 200px;
+  width: clamp(150px, 75%, 200px);
   height: 60px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   font-family: 'Otomanopee One', sans-serif;

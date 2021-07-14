@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FaShoppingCart } from 'react-icons/fa';
 
 export const Container = styled.div`
   background: #133853;
   color: #fff;
-  height: 60px;
+  height: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
   box-shadow: 0px 7px 10px -4px rgba(0, 0, 0, 0.43);
+  position: fixed;
+  bottom: 0;
+
+  @media screen and (max-width: 960px) {
+    position: static;
+    /* bottom: 0; */
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -50,35 +57,12 @@ export const ProductLink = styled(NavLink)`
 `;
 
 export const Cart = styled(NavLink)`
-  position: relative;
-`;
-
-export const CartIcon = styled(FiShoppingCart)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(-50%, 30%);
   font-size: 2rem;
-  /* transform: translateY(2px); */
-  color: #fff;
+  justify-self: center;
+  align-self: center;
 `;
 
-export const CountCartItems = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  /* transform: translate(50%, 50%); */
-  background: #f4ba29;
-  /* padding: 10px; */
-  width: 25px;
-  height: 25px;
-  border-radius: 20px;
-
-  div {
-    margin: auto;
-    line-height: 25px;
-    width: 25px;
-    font-size: 1rem;
-    text-align: center;
-  }
+export const CartIcon = styled(FaShoppingCart)`
+  transform: translateY(2px);
+  color: #fff;
 `;

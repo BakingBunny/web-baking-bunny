@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface Product {
+  id: number;
   type: string;
   item_name: string;
   item_name_kor: string;
