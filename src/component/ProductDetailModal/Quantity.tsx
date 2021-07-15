@@ -1,6 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { CartState } from '../../interface/CartState';
-import { ProductQty, CircleBtn, QtyWrapper } from './ProductDetailElements';
+import {
+  ProductQty,
+  OptionTitle,
+  QtyDecrementBtn,
+  QtyIncrementBtn,
+  QtyWrapper,
+} from './ProductDetailElements';
 
 interface Props {
   productToCart: CartState;
@@ -12,7 +18,8 @@ export const Quantity = (props: Props) => {
 
   return (
     <QtyWrapper>
-      <CircleBtn
+      <OptionTitle>Qty.</OptionTitle>
+      <QtyDecrementBtn
         onClick={() =>
           setproductToCart((prevState) => ({
             ...prevState,
@@ -22,11 +29,11 @@ export const Quantity = (props: Props) => {
         disabled={productToCart.qty <= 1}
       >
         -
-      </CircleBtn>
+      </QtyDecrementBtn>
       <ProductQty>
         <span>{productToCart.qty}</span>
       </ProductQty>
-      <CircleBtn
+      <QtyIncrementBtn
         onClick={() =>
           setproductToCart((prevState) => ({
             ...prevState,
@@ -36,7 +43,7 @@ export const Quantity = (props: Props) => {
         disabled={productToCart.qty >= 9}
       >
         +
-      </CircleBtn>
+      </QtyIncrementBtn>
     </QtyWrapper>
   );
 };

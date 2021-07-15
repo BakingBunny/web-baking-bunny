@@ -12,13 +12,11 @@ import { Product } from '../../interface/Product';
 import {
   Container,
   Wrapper,
+  CloseBtn,
   Image,
   CakeName,
   OptionWrapper,
-  SizeTitle,
-  SizeWrapper,
-  NA,
-  QtyTitle,
+  SubOptionWrapper,
   AddToCartBtn,
 } from './ProductDetailElements';
 import { add } from '../../store/cartSlice';
@@ -29,6 +27,7 @@ import { Tastes } from './Tastes';
 import { Size } from './Size';
 import { Quantity } from './Quantity';
 import { v4 as uuidv4 } from 'uuid';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 interface Props {
   // id: string;
@@ -108,6 +107,9 @@ export const ProductDetailModal: React.FC<Props> = ({
           src={require(`../../img/${selectedProduct.image}`)?.default}
           alt={selectedProduct.item_name}
         />
+        <CloseBtn onClick={closeModal}>
+          <AiFillCloseCircle />
+        </CloseBtn>
         <OptionWrapper>
           <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
           <Price selectedProduct={selectedProduct} />
@@ -118,23 +120,19 @@ export const ProductDetailModal: React.FC<Props> = ({
               setproductToCart={setproductToCart}
             />
           )}
-          <SizeTitle>Size</SizeTitle>
-          {selectedProduct.type === 'cake' ? ( // cake size option
-            <Size
+          <SubOptionWrapper>
+            {selectedProduct.type === 'cake' && ( // cake size option
+              <Size
+                productToCart={productToCart}
+                setproductToCart={setproductToCart}
+              />
+            )}
+            {/* <QtyTitle>Quantity</QtyTitle> */}
+            <Quantity
               productToCart={productToCart}
               setproductToCart={setproductToCart}
             />
-          ) : (
-            // dacquoise has no size option
-            <SizeWrapper>
-              <NA>N / A</NA>
-            </SizeWrapper>
-          )}
-          <QtyTitle>Quantity</QtyTitle>
-          <Quantity
-            productToCart={productToCart}
-            setproductToCart={setproductToCart}
-          />
+          </SubOptionWrapper>
           <AddToCartBtn
             onClick={() => {
               dispatch(add(productToCart));

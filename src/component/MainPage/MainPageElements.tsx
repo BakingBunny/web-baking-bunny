@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import mainImage from '../../img/welcome_background.jpg';
 
 export const Container = styled.div`
-  /* min-height: calc(100vh - 60px); */
   height: calc(100vh - 60px - 30px);
-  /* min-height: 100%; */
-  /* height: 100%; */
   display: grid;
   grid-template-columns: 60% auto;
 
