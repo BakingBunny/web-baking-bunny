@@ -7,6 +7,7 @@ export const Container = styled.div`
   /* padding: 0 20px; */
   height: 100%;
   max-width: 850px;
+  margin-bottom: 20px;
 `;
 
 export const Title = styled.h2`
