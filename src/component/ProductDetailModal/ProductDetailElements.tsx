@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
   border: 5px solid #b3b2b2;
   border-radius: 10px;
   position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
   animation: popup 0.2s ease-out;
 
@@ -92,6 +93,7 @@ export const CakeName = styled.div`
   font-size: 1.6rem;
   margin: 10px 0 5px;
   text-align: center;
+  font-family: 'Otomanopee One', sans-serif;
 `;
 
 export const PriceWrapper = styled.div`
