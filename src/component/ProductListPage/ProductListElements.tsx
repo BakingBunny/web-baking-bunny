@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -7,7 +6,6 @@ export const Container = styled.div`
   align-content: center;
   padding-bottom: 30px;
 `;
-
 export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
@@ -30,7 +28,8 @@ export const CardWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Card = styled(Link)`
+// export const Card = styled(Link)`
+export const Card = styled.div`
   background: #fff;
   width: clamp(162px, 44%, 250px);
   height: clamp(300px, 35vh, 350px);
@@ -44,6 +43,7 @@ export const Card = styled(Link)`
   overflow-y: hidden;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-10px);
