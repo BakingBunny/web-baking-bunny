@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Product } from '../../interface/Product';
 import { CartState } from '../../interface/CartState';
-import { TastesBtn, TastesTitle, TastesWrapper } from './ProductDetailElements';
+import { TastesBtn, TastesWrapper } from './ProductDetailElements';
 
 interface Props {
   selectedProduct: Product;
@@ -14,7 +14,6 @@ export const Tastes = (props: Props) => {
 
   return (
     <>
-      <TastesTitle>Tastes / Fruits</TastesTitle>
       <TastesWrapper>
         {selectedProduct.tastes.map((item: string) => (
           <TastesBtn

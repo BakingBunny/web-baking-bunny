@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { CartState } from '../../interface/CartState';
-import { SizeBtn, SizeWrapper } from './ProductDetailElements';
+import { SizeBtn, OptionTitle, SizeWrapper } from './ProductDetailElements';
 
 interface Props {
   productToCart: CartState;
@@ -12,6 +12,7 @@ export const Size = (props: Props) => {
 
   return (
     <SizeWrapper>
+      <OptionTitle>Size</OptionTitle>
       <SizeBtn
         isSelected={productToCart.cakeSize === 6}
         onClick={() =>
