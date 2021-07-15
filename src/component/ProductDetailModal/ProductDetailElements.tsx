@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   max-width: 800px;
   min-width: 320px;
   background: #fff;
-  border: 5px solid #b3b2b2;
+  border: 3px solid #133853;
   border-radius: 10px;
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
@@ -54,10 +54,11 @@ export const CloseBtn = styled.div`
   font-size: 3rem;
   color: #133853;
   cursor: pointer;
-  background: #b3b2b2;
+  background: #fff;
   width: 3rem;
   height: 3rem;
   border-radius: 3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
   @media screen and (max-width: 960px) {
     transform: translate(10%, 10%);
