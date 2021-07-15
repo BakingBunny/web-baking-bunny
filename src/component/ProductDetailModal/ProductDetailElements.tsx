@@ -52,7 +52,7 @@ export const CloseBtn = styled.div`
   transform: translate(-50%, -50%);
   z-index: 5;
   font-size: 3rem;
-  color: #e8500fde;
+  color: #133853;
   cursor: pointer;
   background: #b3b2b2;
   width: 3rem;
