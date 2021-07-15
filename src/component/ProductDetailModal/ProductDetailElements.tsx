@@ -13,15 +13,17 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 350px 350px;
+  grid-template-columns: 350px auto;
   /* grid-template-columns: 1fr 1fr; */
   grid-gap: 50px;
   /* margin: 50px auto; */
   padding: 20px;
-  /* max-width: 800px; */
+  max-width: 800px;
+  min-width: 320px;
   background: #fff;
-  border: 5px solid #1338536e;
+  border: 5px solid #b3b2b2;
   border-radius: 10px;
+  position: relative;
 
   animation: popup 0.2s ease-out;
 
@@ -42,6 +44,25 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const CloseBtn = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  font-size: 3rem;
+  color: #e8500fde;
+  cursor: pointer;
+  background: #b3b2b2;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
+
+  @media screen and (max-width: 960px) {
+    transform: translate(10%, 10%);
+  }
+`;
+
 export const Image = styled.img`
   width: min(100%, 350px);
   object-fit: cover;
@@ -50,48 +71,56 @@ export const Image = styled.img`
 `;
 
 export const OptionWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    'cake-name cake-name'
-    'price price'
-    'fruitstitle fruitstitle'
-    'fruitswrapper fruitswrapper'
-    'sizetitle qtytitle'
-    'sizewrapper qtywrapper'
-    'add-to-cart-btn add-to-cart-btn';
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: 100%; */
 `;
+// export const OptionWrapper = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-areas:
+//     'cake-name cake-name'
+//     'price price'
+//     'fruitstitle fruitstitle'
+//     'fruitswrapper fruitswrapper'
+//     'sizewrapper qtywrapper'
+//     'add-to-cart-btn add-to-cart-btn';
+// `;
 
 export const CakeName = styled.div`
-  grid-area: cake-name;
   font-size: 1.6rem;
   margin: 10px 0 5px;
+  text-align: center;
 `;
 
 export const PriceWrapper = styled.div`
-  grid-area: price;
+  /* grid-area: price; */
   font-size: 1.1rem;
   font-weight: lighter;
   margin: 5px 0;
+  text-align: center;
+  margin-top: 10px;
 `;
 
-export const TastesTitle = styled.h2`
-  grid-area: fruitstitle;
-  justify-self: center;
-  font-size: 1rem;
-  margin: 2px 0;
-`;
+// export const TastesTitle = styled.h2`
+//   /* grid-area: fruitstitle; */
+//   justify-self: center;
+//   font-size: 1rem;
+//   margin: 2px 0;
+// `;
 
 export const TastesWrapper = styled.div`
-  grid-area: fruitswrapper;
+  /* grid-area: fruitswrapper; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 10px;
 `;
 
 export const CircleBtn = styled.button`
   font-size: 1rem;
-  margin: 8px 14px;
+  /* margin: 8px 14px; */
   padding: 5px 10px;
   justify-self: center;
   border: none;
@@ -129,42 +158,50 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   }
 `;
 
-export const SizeTitle = styled.h2`
-  grid-area: sizetitle;
-  font-size: 1rem;
-  margin: 2px 10px;
-  justify-self: center;
+export const SubOptionWrapper = styled.div`
+  /* align-items: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+
+  @media screen and (max-width: 960px) {
+    flex-direction: row;
+  }
 `;
 
 export const SizeWrapper = styled.div`
   grid-area: sizewrapper;
-  justify-self: center;
+  align-items: center;
   display: flex;
-  margin: 2px 10px;
+`;
+
+export const OptionTitle = styled.h2`
+  font-size: 1rem;
+  justify-self: center;
 `;
 
 export const SizeBtn = styled(CircleBtn)<BtnProps>`
   width: auto;
+  margin: 10px 0 10px 10px;
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
-`;
-
-export const NA = styled.div`
-  margin: 10px;
-  opacity: 0.7;
-`;
-
-export const QtyTitle = styled.h2`
-  grid-area: qtytitle;
-  font-size: 1rem;
-  margin: 2px 10px;
-  justify-self: center;
 `;
 
 export const QtyWrapper = styled.div`
   grid-area: qtywrapper;
-  justify-self: center;
-  display: flex;
+  justify-self: end;
   align-items: center;
+  display: flex;
+`;
+
+export const QtyDecrementBtn = styled(CircleBtn)`
+  margin-right: 15px;
+  margin-left: 10px;
+`;
+
+export const QtyIncrementBtn = styled(CircleBtn)`
+  margin-left: 15px;
 `;
 
 export const ProductQty = styled.div`
@@ -201,7 +238,8 @@ export const AddToCartBtn = styled.button`
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  /* margin: 0px 0; */
+  margin-top: auto;
   padding: 5px;
   border-radius: 5px;
+  min-width: 200px;
 `;
