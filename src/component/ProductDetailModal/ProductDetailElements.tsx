@@ -47,9 +47,9 @@ export const Wrapper = styled.div`
 
 export const CloseBtn = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
+  top: -25px;
+  left: -25px;
+  /* transform: translate(-50%, -50%); */
   z-index: 5;
   font-size: 3rem;
   color: #133853;
@@ -60,8 +60,29 @@ export const CloseBtn = styled.div`
   border-radius: 3rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
+  &:hover {
+    animation: rotateBtn 0.5s ease-in-out forwards;
+
+    @keyframes rotateBtn {
+      0% {
+        transform: rotate(0deg);
+      }
+      90% {
+        transform: rotate(200deg);
+      }
+      100% {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
   @media screen and (max-width: 960px) {
-    transform: translate(10%, 10%);
+    top: 0;
+    left: 0;
+
+    &:hover {
+      animation: none;
+    }
   }
 `;
 
@@ -76,6 +97,7 @@ export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   /* height: 100%; */
 `;
 // export const OptionWrapper = styled.div`
@@ -155,6 +177,17 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   margin: 8px 6px;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media screen and (max-width: 960px) {
+    &:hover {
+      transform: translateY(0);
+    }
+  }
 
   span {
     font-size: 9px;
@@ -244,5 +277,16 @@ export const AddToCartBtn = styled.button`
   margin-top: auto;
   padding: 5px;
   border-radius: 5px;
-  min-width: 200px;
+  width: 200px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  @media screen and (max-width: 960px) {
+    &:hover {
+      transform: translateY(0);
+    }
+  }
 `;

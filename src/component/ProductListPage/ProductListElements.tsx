@@ -42,8 +42,8 @@ export const Card = styled.div`
   grid-template-rows: 55% 30% 15%;
   overflow-y: hidden;
   text-decoration: none;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
     transform: translateY(-10px);
