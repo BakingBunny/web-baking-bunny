@@ -73,6 +73,19 @@ export const CountCartItems = styled.div`
   width: 25px;
   height: 25px;
   border-radius: 20px;
+  animation: itemAdded 0.2s ease-out;
+
+  @keyframes itemAdded {
+    0% {
+      scale: 0.1;
+    }
+    90% {
+      scale: 1.2;
+    }
+    100% {
+      scale: 1;
+    }
+  }
 
   div {
     margin: auto;
