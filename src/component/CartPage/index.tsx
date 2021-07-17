@@ -1,7 +1,7 @@
 import React from 'react';
 import { products, update, remove } from '../../store/cartSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import {
   Container,
   Title,
@@ -47,7 +47,7 @@ export const Cart = (props: Props) => {
       {cartList.length > 0 ? (
         <Wrapper>
           <CardWrapper>
-            {cartList.map((item: CartState) => {
+            {cartList.map((item: CartInterface) => {
               // item.product && setSubTotal(subTotal + item.product?.price);
 
               return (

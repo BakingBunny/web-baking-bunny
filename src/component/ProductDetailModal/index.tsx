@@ -21,7 +21,7 @@ import {
 } from './ProductDetailElements';
 import { add } from '../../store/cartSlice';
 import { useAppDispatch } from '../../store/hooks';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import { Price } from './Price';
 import { Tastes } from './Tastes';
 import { Size } from './Size';
@@ -61,7 +61,8 @@ export const ProductDetailModal: React.FC<Props> = ({
   showModal,
   setShowModal,
 }) => {
-  const [productToCart, setproductToCart] = useState<CartState>(initialCart);
+  const [productToCart, setproductToCart] =
+    useState<CartInterface>(initialCart);
   const dispatch = useAppDispatch();
   const ModalRef = useRef<HTMLHeadingElement>(null);
 

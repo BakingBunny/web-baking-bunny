@@ -72,6 +72,7 @@ export const CloseBtn = styled.div`
       }
       100% {
         transform: rotate(180deg);
+        box-shadow: none;
       }
     }
   }
@@ -201,6 +202,7 @@ export const SubOptionWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   margin: 10px 0;
+  width: 100%;
 
   @media screen and (max-width: 960px) {
     flex-direction: row;
