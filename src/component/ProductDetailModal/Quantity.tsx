@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import {
   ProductQty,
   OptionTitle,
@@ -9,8 +9,8 @@ import {
 } from './ProductDetailElements';
 
 interface Props {
-  productToCart: CartState;
-  setproductToCart: Dispatch<SetStateAction<CartState>>;
+  productToCart: CartInterface;
+  setproductToCart: Dispatch<SetStateAction<CartInterface>>;
 }
 
 export const Quantity = (props: Props) => {

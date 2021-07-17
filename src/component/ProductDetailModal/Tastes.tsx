@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Product } from '../../interface/Product';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import { TastesBtn, TastesWrapper } from './ProductDetailElements';
 
 interface Props {
   selectedProduct: Product;
-  productToCart: CartState;
-  setproductToCart: Dispatch<SetStateAction<CartState>>;
+  productToCart: CartInterface;
+  setproductToCart: Dispatch<SetStateAction<CartInterface>>;
 }
 
 export const Tastes = (props: Props) => {

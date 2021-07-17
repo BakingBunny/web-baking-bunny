@@ -1,6 +1,6 @@
 import { Product } from './Product';
 
-export interface CartState {
+export interface CartInterface {
   id: string;
   product: Product;
   tastes: string;

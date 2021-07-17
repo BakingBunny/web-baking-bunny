@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import {
   QtyTitle,
   ProductQty,
@@ -8,7 +8,7 @@ import {
 } from './CartPageElements';
 
 interface Props {
-  item: CartState;
+  item: CartInterface;
   updateHandler: any; //TODO: specify later
 }
 

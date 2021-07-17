@@ -1,10 +1,10 @@
 import React from 'react';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import { PriceWrapper } from './CartPageElements';
 import formatCurrency from '../../utils';
 
 interface Props {
-  item: CartState;
+  item: CartInterface;
 }
 
 export const Price = (props: Props) => {

@@ -1,9 +1,9 @@
 import React from 'react';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import { TastesSelect } from './CartPageElements';
 
 interface Props {
-  item: CartState;
+  item: CartInterface;
   updateHandler: any; //TODO: specify later}
 }
 
