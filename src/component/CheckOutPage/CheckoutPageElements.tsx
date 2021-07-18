@@ -49,6 +49,7 @@ export const DeliveryBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: auto;
+  overflow: hidden;
 `;
 
 export const DeliveryOptionBtn = styled.button<BtnProps>`
@@ -88,7 +89,7 @@ export const DeliveryRequirement = styled.div`
   flex-direction: column;
   /* justify-content: space-between; */
   margin: auto;
-  /* height: 76px; */
+  height: 76px;
   /* padding: 20px 0; */
   /* padding: 0 20px; */
 
