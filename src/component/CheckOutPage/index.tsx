@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Title } from './CheckoutPageElements';
-import { Dates } from './Dates';
 import { DeliveryOption } from './DeliveryOption';
+import { Dates } from './Dates';
+import { ClientInformation } from './ClientInformation';
 
 interface Props {}
 
@@ -11,6 +12,7 @@ export const CheckOut = (props: Props) => {
       <Title>Checkout</Title>
       <DeliveryOption />
       <Dates />
+      <ClientInformation />
     </Container>
   );
 };
