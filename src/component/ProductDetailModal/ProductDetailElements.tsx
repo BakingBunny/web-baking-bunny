@@ -52,7 +52,7 @@ export const CloseBtn = styled.div`
   /* transform: translate(-50%, -50%); */
   z-index: 5;
   font-size: 3rem;
-  color: #133853;
+  color: #133853b9;
   cursor: pointer;
   background: #fff;
   width: 3rem;
@@ -73,6 +73,7 @@ export const CloseBtn = styled.div`
       100% {
         transform: rotate(180deg);
         box-shadow: none;
+        color: #133853;
       }
     }
   }

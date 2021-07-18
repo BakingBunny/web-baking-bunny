@@ -7,6 +7,12 @@ export const store = configureStore({
     cart: cartReducer,
     checkout: checkoutReducer,
   },
+  middleware: (
+    getDefaultMiddleware // because react-date-range (CheckoutSlice)
+  ) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;
