@@ -89,7 +89,7 @@ export const DeliveryRequirement = styled.div`
   flex-direction: column;
   /* justify-content: space-between; */
   margin: auto;
-  height: 76px;
+  height: 95px;
   /* padding: 20px 0; */
   /* padding: 0 20px; */
 
@@ -101,7 +101,7 @@ export const DeliveryRequirement = styled.div`
       /* padding: 0; */
     }
     to {
-      height: 76px;
+      height: 95px;
       /* height: auto; */
       /* padding: 20px 0; */
     }

@@ -46,10 +46,11 @@ export const DeliveryOption = (props: Props) => {
       </DeliveryBtnWrapper>
       {checkoutState.isDelivery && (
         <DeliveryRequirement>
-          {'>'} Delivery service is available only for more than $ 50 purchase
-          on Saturday. <br />
-          {'>'} Additional delivery fee can range from 0 to 10 dollars by
-          distance.
+          {'< Note >'}
+          <br />
+          1. Delivery service is available only for more than $ 50 purchase on
+          Saturday. <br />
+          2. Additional delivery fee can range from 0 to 10 dollars by distance.
         </DeliveryRequirement>
       )}
     </DeliveryOptionWrapper>

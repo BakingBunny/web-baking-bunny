@@ -25,7 +25,7 @@ export const Price = (props: Props) => {
           ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
           : selectedProduct.name === 'Dacquoise-Set'
           ? '5-Piece' // dacquoise set piece
-          : '1-Piece' // dacquoise piece
+          : selectedProduct.categoryId === 2 && '1-Piece' // dacquoise piece
       }
     </PriceWrapper>
   );
