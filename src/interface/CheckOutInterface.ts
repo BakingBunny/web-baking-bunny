@@ -4,7 +4,7 @@ import { CustomCakeInterface } from './CustomCakeInterface';
 export interface CheckOutInterface {
   firstName: string;
   lastName: string;
-  phone: string;
+  mobileNumber: string;
   email: string;
   cart: CartInterface[];
   customCake: CustomCakeInterface;

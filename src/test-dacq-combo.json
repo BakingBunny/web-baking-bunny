@@ -1,0 +1,68 @@
+[
+  {
+    "id": 11,
+    "name": "Maltesers 초코몰티져스",
+    "price": 3.7,
+    "description": "Description here",
+    "productImage": "TBD",
+    "comment": null,
+    "active": 0,
+    "categoryId": 2,
+    "category": null
+  },
+  {
+    "id": 13,
+    "name": "Matcha Kitkat 말차킷캣",
+    "price": 3.8,
+    "description": "Description here",
+    "productImage": "TBD",
+    "comment": null,
+    "active": 0,
+    "categoryId": 2,
+    "category": null
+  },
+  {
+    "id": 18,
+    "name": "Salted Caremel 솔티카라멜",
+    "price": 3.7,
+    "description": "Description here",
+    "productImage": "TBD",
+    "comment": null,
+    "active": 0,
+    "categoryId": 2,
+    "category": null
+  },
+  {
+    "id": 23,
+    "name": "Cheese 뽀또",
+    "price": 4,
+    "description": "Description here",
+    "productImage": "TBD",
+    "comment": null,
+    "active": 0,
+    "categoryId": 2,
+    "category": null
+  },
+  {
+    "id": 24,
+    "name": "Chai Latte 차이라테",
+    "price": 3.9,
+    "description": "Description here",
+    "productImage": "TBD",
+    "comment": null,
+    "active": 0,
+    "categoryId": 2,
+    "category": null
+  },
+  {
+    "id": 29,
+    "name": "Dacquoise combo 다쿠아즈콤보",
+    "price": 20,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dac_set.jpg",
+    "comment": null,
+    "active": 1,
+    "categoryId": 2,
+    "category": null
+  }
+]

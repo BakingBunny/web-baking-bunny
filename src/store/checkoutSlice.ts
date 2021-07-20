@@ -6,7 +6,7 @@ import { OnChangeProps } from 'react-date-range';
 const initialState: CheckOutInterface = {
   firstName: '',
   lastName: '',
-  phone: '',
+  mobileNumber: '',
   email: '',
   cart: [],
   customCake: {

@@ -23,7 +23,7 @@ export const Price = (props: Props) => {
         item.product?.type === 'cake' && item.product?.price !== 0
           ? formatCurrency(item.product?.price * 1.2) // cake 8 inch price          
       } */}
-      {item.product.item_name === 'Dacquoise-Set'
+      {item.product.name === 'Dacquoise-Set'
         ? ' / 5-Piece' // dacquoise set piece
         : ''}
     </PriceWrapper>

@@ -115,6 +115,82 @@ export const DatesWrapper = styled.div`
   align-items: center;
 `;
 
+export const ClientInfoForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ClientInputWrapper = styled.div`
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  margin: 15px 0 0;
+`;
+
+export const ClientInfoInput = styled.input`
+  width: calc(100%-20px);
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 20px;
+  color: rgb(12, 21, 29);
+  border: none;
+  outline: none;
+  background-color: rgb(249, 250, 251);
+
+  &:focus + label span,
+  &:valid + label span {
+    transform: translateY(-70%);
+    font-size: 0.7rem;
+    color: rgb(4, 43, 159);
+  }
+
+  // border-bottom
+  &:focus + label::after,
+  &:valid + label::after {
+    transform: translateX(0%);
+  }
+`;
+
+export const ClientInfoLabel = styled.label`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // background: blue;
+  pointer-events: none; // to be clicked the input
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: -1px;
+    border-bottom: 2px solid #125fca;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+
+  span {
+    position: absolute;
+    bottom: 30%;
+    left: 20px;
+    transition: transform 0.3s ease;
+  }
+`;
+
+export const ClientInfoErrorMsg = styled.div`
+  text-align: start;
+  left: 0;
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 0;
+`;
+
 // export const Card = styled.div`
 //   display: grid;
 //   grid-template-columns: min(35%, 300px) 1fr;

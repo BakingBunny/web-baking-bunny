@@ -23,15 +23,12 @@ interface Props {
 
 const initialProduct = {
   id: 0,
-  type: '',
-  item_name: '',
-  item_name_kor: '',
-  tastes: [],
-  tastes_kor: [],
+  name: '',
   price: 0,
-  available_date: [],
-  image: '',
-  special: '',
+  description: '',
+  tastes: [],
+  productImage: '',
+  categoryId: 0,
 };
 
 export const ProductList = (props: Props) => {
@@ -53,19 +50,11 @@ export const ProductList = (props: Props) => {
         // };
         // fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
 
-        setProductList(
-          products.filter(
-            (item) => item.type === 'cake' || item.type === 'custom-cake'
-          )
-        );
+        setProductList(products.filter((item) => item.categoryId === 1));
         break;
       case '/dacquoises':
         //TODO: fetch API here in production
-        setProductList(
-          products.filter(
-            (item) => item.type === 'dacquoise' || item.type === 'dacquoise-set'
-          )
-        );
+        setProductList(products.filter((item) => item.categoryId === 2));
         break;
     }
   }, [productType]);
@@ -87,16 +76,13 @@ export const ProductList = (props: Props) => {
         <Title>{productType.replace('/', '')}</Title>
         <CardWrapper>
           {productList.map((product: Product) => (
-            <Card
-              key={product.item_name}
-              onClick={() => CardHandler(product.id)}
-            >
+            <Card key={product.name} onClick={() => CardHandler(product.id)}>
               <Image
-                src={require(`../../img/${product.image}`)?.default}
-                alt={product.item_name}
+                src={require(`../../img/${product.productImage}`)?.default}
+                alt={product.name}
               />
               <Detail>
-                <Name>{product.item_name.replaceAll('-', ' ')}</Name>
+                <Name>{product.name.replaceAll('-', ' ')}</Name>
                 <Price>
                   {
                     product.price === 0
