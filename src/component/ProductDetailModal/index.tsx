@@ -40,15 +40,12 @@ const initialCart = {
   id: '',
   product: {
     id: 0,
-    type: '',
-    item_name: '',
-    item_name_kor: '',
-    tastes: [],
-    tastes_kor: [],
+    name: '',
     price: 0,
-    available_date: [],
-    image: '',
-    special: '',
+    description: '',
+    tastes: [],
+    productImage: '',
+    categoryId: 0,
   },
   tastes: '',
   cakeSize: 1,
@@ -95,7 +92,7 @@ export const ProductDetailModal: React.FC<Props> = ({
       id: uuidv4(),
       product: selectedProduct,
       tastes: selectedProduct.tastes[0] ? selectedProduct.tastes[0] : '',
-      cakeSize: selectedProduct.type === 'cake' ? 6 : 1, // default dacquoise size is 1
+      cakeSize: selectedProduct.categoryId === 1 ? 6 : 1, // default dacquoise size is 1
     }));
   }, [selectedProduct]);
 
@@ -105,14 +102,14 @@ export const ProductDetailModal: React.FC<Props> = ({
     <Container ref={ModalRef} onClick={clickBackgroundToClose}>
       <Wrapper>
         <Image
-          src={require(`../../img/${selectedProduct.image}`)?.default}
-          alt={selectedProduct.item_name}
+          src={require(`../../img/${selectedProduct.productImage}`)?.default}
+          alt={selectedProduct.name}
         />
         <CloseBtn onClick={closeModal}>
           <AiFillCloseCircle />
         </CloseBtn>
         <OptionWrapper>
-          <CakeName>{selectedProduct.item_name.replaceAll('-', ' ')}</CakeName>
+          <CakeName>{selectedProduct.name.replaceAll('-', ' ')}</CakeName>
           <Price selectedProduct={selectedProduct} />
           {selectedProduct.tastes.length > 0 && (
             <Tastes
@@ -122,7 +119,7 @@ export const ProductDetailModal: React.FC<Props> = ({
             />
           )}
           <SubOptionWrapper>
-            {selectedProduct.type === 'cake' && ( // cake size option
+            {selectedProduct.categoryId === 1 && ( // cake size option
               <Size
                 productToCart={productToCart}
                 setproductToCart={setproductToCart}
