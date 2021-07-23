@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckOut } from '../component/CheckOutPage';
+import { CheckOut } from '../components/CheckOutPage';
 
 interface Props {}
 

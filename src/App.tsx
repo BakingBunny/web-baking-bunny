@@ -5,12 +5,12 @@ import {
   Route,
   // Redirect,
 } from 'react-router-dom';
-import { Navbar } from './component/Navbar';
+import { Navbar } from './components/Navbar';
 import { HomePage } from './pages';
 import { ProductListPage } from './pages/ProductListPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
-import { Footer } from './component/Footer';
+import { Footer } from './components/Footer';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
