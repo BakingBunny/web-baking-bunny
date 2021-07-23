@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductList } from '../component/ProductListPage';
+import { ProductList } from '../components/ProductListPage';
 
 interface Props {
   match: {
