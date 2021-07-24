@@ -1,17 +1,14 @@
+import { UserInterface } from './UserInterface';
 import { CartInterface } from './CartInterface';
 import { CustomCakeInterface } from './CustomCakeInterface';
+import { OrderListInterface } from './OrderListInterface';
 
+// when a user checkout (API-POST)
 export interface CheckOutInterface {
-  firstName: string;
-  lastName: string;
-  mobileNumber: string;
-  email: string;
+  user: UserInterface;
   cart: CartInterface[];
   customCake: CustomCakeInterface;
-  allergy: string;
-  isDelivery: boolean;
-  pickupDate: string;
-  address: string;
-  postalCode: string;
-  comment: string;
+  orderList: OrderListInterface;
+  // allergy: string;
+  // comment: string;
 }

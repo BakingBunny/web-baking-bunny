@@ -4,22 +4,26 @@ import { CheckOutInterface } from '../interface/CheckOutInterface';
 import { OnChangeProps } from 'react-date-range';
 
 const initialState: CheckOutInterface = {
-  firstName: '',
-  lastName: '',
-  mobileNumber: '',
-  email: '',
+  user: {
+    firstname: '',
+    lastname: '',
+    email: '',
+    address: '',
+    postalCode: '',
+    phone: '',
+    city: '',
+  },
   cart: [],
   customCake: {
     cakeSize: 6,
     qty: 1,
     ExampleImage: '',
   },
-  allergy: '',
-  isDelivery: false,
-  pickupDate: '',
-  address: '',
-  postalCode: '',
-  comment: '',
+  orderList: {
+    deliveryFee: 0,
+    isDelivery: false,
+    pickupDeliveryDate: '',
+  },
 };
 export const checkoutSlice = createSlice({
   name: 'checkout',
@@ -33,7 +37,6 @@ export const checkoutSlice = createSlice({
       }>
     ) => {
       const { name, value } = action.payload;
-      console.log(value);
       Object.assign(state, {
         [name]: value,
       });
