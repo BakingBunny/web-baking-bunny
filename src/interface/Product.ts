@@ -1,5 +1,4 @@
-import React from 'react';
-
+//Product details (cake, dacquoise, etc.) - API GET
 export interface Product {
   id: number;
   name: string;

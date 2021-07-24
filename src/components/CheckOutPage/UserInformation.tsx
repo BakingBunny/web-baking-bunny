@@ -8,17 +8,17 @@ import {
   ClientInfoErrorMsg,
 } from './CheckoutPageElements';
 // import { DevTool } from '@hookform/devtools';
-import { CheckOutInterface } from '../../interface/CheckOutInterface';
+import { UserInterface } from '../../interface/UserInterface';
 
 interface Props {}
 
-export const ClientInformation = (props: Props) => {
+export const UserInformation = (props: Props) => {
   const {
     register,
     // control,
     handleSubmit,
     formState: { errors },
-  } = useForm<CheckOutInterface>();
+  } = useForm<UserInterface>();
   const onSubmit = (data: any) => console.log(data);
   console.log(errors);
 
@@ -28,7 +28,7 @@ export const ClientInformation = (props: Props) => {
         <ClientInfoInput
           type='text'
           // required
-          {...register('firstName', {
+          {...register('firstname', {
             required: 'This is required',
             maxLength: { value: 30, message: 'Max length exceeded' },
           })}
@@ -37,14 +37,14 @@ export const ClientInformation = (props: Props) => {
           <span>First name</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
-      {errors.firstName && (
-        <ClientInfoErrorMsg>{errors.firstName.message}</ClientInfoErrorMsg>
+      {errors.firstname && (
+        <ClientInfoErrorMsg>{errors.firstname.message}</ClientInfoErrorMsg>
       )}
       <ClientInputWrapper>
         <ClientInfoInput
           type='text'
           // required
-          {...register('lastName', {
+          {...register('lastname', {
             required: 'This is required',
             maxLength: { value: 30, message: 'Max length exceeded' },
           })}
@@ -71,7 +71,7 @@ export const ClientInformation = (props: Props) => {
         <ClientInfoInput
           type='tel'
           // required
-          {...register('mobileNumber', {
+          {...register('phone', {
             required: 'This is required',
             minLength: 6,
             maxLength: { value: 15, message: 'Max length exceeded' },
@@ -81,14 +81,14 @@ export const ClientInformation = (props: Props) => {
           <span>Mobile number</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
-      <textarea {...register('allergy', {})} placeholder='Allergy' />
+      {/* <textarea {...register('allergy', {})} placeholder='Allergy' /> */}
       <input type='text' placeholder='Address' {...register('address', {})} />
       <input
         type='text'
         placeholder='postalCode'
         {...register('postalCode', {})}
       />
-      <textarea {...register('comment', {})} />
+      {/* <textarea {...register('comment', {})} /> */}
 
       {/* {errors.length > 0 && <div>{errors}</div>} */}
       <input type='submit' />

@@ -15,7 +15,7 @@ export const Dates = (props: Props) => {
   return (
     <DatesWrapper>
       <Calendar
-        date={checkoutState.pickupDate}
+        date={checkoutState.orderList.pickupDeliveryDate}
         onChange={(date: OnChangeProps) =>
           dispatch(
             update({

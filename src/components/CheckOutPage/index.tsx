@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Title } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { Dates } from './Dates';
-import { ClientInformation } from './ClientInformation';
+import { UserInformation } from './UserInformation';
 
 interface Props {}
 
@@ -12,7 +12,7 @@ export const CheckOut = (props: Props) => {
       <Title>Checkout</Title>
       <DeliveryOption />
       <Dates />
-      <ClientInformation />
+      <UserInformation />
     </Container>
   );
 };

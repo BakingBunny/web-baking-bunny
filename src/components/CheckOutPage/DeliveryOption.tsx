@@ -18,7 +18,7 @@ export const DeliveryOption = (props: Props) => {
     <DeliveryOptionWrapper>
       <DeliveryBtnWrapper>
         <DeliveryOptionBtn
-          isSelected={checkoutState.isDelivery === false}
+          isSelected={checkoutState.orderList.isDelivery === false}
           onClick={() =>
             dispatch(
               update({
@@ -31,7 +31,7 @@ export const DeliveryOption = (props: Props) => {
           Pick Up
         </DeliveryOptionBtn>
         <DeliveryOptionBtn
-          isSelected={checkoutState.isDelivery === true}
+          isSelected={checkoutState.orderList.isDelivery === true}
           onClick={() =>
             dispatch(
               update({
@@ -44,7 +44,7 @@ export const DeliveryOption = (props: Props) => {
           Delivery
         </DeliveryOptionBtn>
       </DeliveryBtnWrapper>
-      {checkoutState.isDelivery && (
+      {checkoutState.orderList.isDelivery && (
         <DeliveryRequirement>
           {'< Note >'}
           <br />
