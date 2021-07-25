@@ -115,7 +115,7 @@ export const DatesWrapper = styled.div`
   align-items: center;
 `;
 
-export const ClientInfoForm = styled.form`
+export const ClientInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

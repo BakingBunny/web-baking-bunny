@@ -1,7 +1,7 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import {
-  ClientInfoForm,
+  ClientInfoContainer,
   ClientInputWrapper,
   ClientInfoInput,
   ClientInfoLabel,
@@ -16,14 +16,12 @@ export const UserInformation = (props: Props) => {
   const {
     register,
     // control,
-    handleSubmit,
     formState: { errors },
-  } = useForm<UserInterface>();
-  const onSubmit = (data: any) => console.log(data);
+  } = useFormContext<UserInterface>();
   console.log(errors);
 
   return (
-    <ClientInfoForm onSubmit={handleSubmit(onSubmit)}>
+    <ClientInfoContainer>
       <ClientInputWrapper>
         <ClientInfoInput
           type='text'
@@ -93,6 +91,6 @@ export const UserInformation = (props: Props) => {
       {/* {errors.length > 0 && <div>{errors}</div>} */}
       <input type='submit' />
       {/* <DevTool control={control} /> */}
-    </ClientInfoForm>
+    </ClientInfoContainer>
   );
 };
