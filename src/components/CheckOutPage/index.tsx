@@ -1,26 +1,30 @@
 import React from 'react';
-import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
+import { CheckOutInterface } from '../../interface/CheckOutInterface';
 import { Container, Title } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { Dates } from './Dates';
 import { UserInformation } from './UserInformation';
+import { DevTool } from '@hookform/devtools'; //TODO: Delete later
 
 interface Props {}
 
 export const CheckOut = (props: Props) => {
   const methods = useForm();
-  const onSubmit = (data: any) => console.log(data);
+  const { control } = useForm({
+    mode: 'onChange',
+  });
+  const onSubmit = (data: CheckOutInterface) => console.log(data);
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <Container>
-          <Title>Checkout</Title>
-          <DeliveryOption />
-          <Dates />
-          <UserInformation />
-        </Container>
-      </form>
+      <Container onSubmit={methods.handleSubmit(onSubmit)}>
+        <Title>Checkout</Title>
+        <DeliveryOption />
+        <Dates />
+        <UserInformation />
+      </Container>
+      <DevTool control={control} placement='bottom-right' />
     </FormProvider>
   );
 };

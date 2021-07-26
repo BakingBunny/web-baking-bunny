@@ -7,7 +7,6 @@ import {
   ClientInfoLabel,
   ClientInfoErrorMsg,
 } from './CheckoutPageElements';
-// import { DevTool } from '@hookform/devtools';
 import { UserInterface } from '../../interface/UserInterface';
 
 interface Props {}
@@ -90,7 +89,6 @@ export const UserInformation = (props: Props) => {
 
       {/* {errors.length > 0 && <div>{errors}</div>} */}
       <input type='submit' />
-      {/* <DevTool control={control} /> */}
     </ClientInfoContainer>
   );
 };
