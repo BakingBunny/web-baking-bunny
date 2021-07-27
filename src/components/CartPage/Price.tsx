@@ -4,28 +4,23 @@ import { PriceWrapper } from './CartPageElements';
 import formatCurrency from '../../utils';
 
 interface Props {
-  item: CartInterface;
+  cartItem: CartInterface;
 }
 
 export const Price = (props: Props) => {
-  const { item } = props;
+  const { cartItem } = props;
 
   return (
     <PriceWrapper>
       {
-        item.product.price === 0
+        cartItem.product.price === 0
           ? 'Various' // custum cakes
-          : item.cakeSizeId === 1 || item.cakeSizeId === 6
-          ? formatCurrency(item.product.price) //regular cakes and dacquoise
-          : formatCurrency(item.product.price * 1.2) // cake 8 inch price
+          : cartItem.product.categoryId === 2 || cartItem.sizeId === 1
+          ? formatCurrency(cartItem.product.price) //regular cakes and dacquoise
+          : formatCurrency(cartItem.product.price * 1.2) // cake 8 inch price
       }
-      {/* {
-        item.product?.type === 'cake' && item.product?.price !== 0
-          ? formatCurrency(item.product?.price * 1.2) // cake 8 inch price          
-      } */}
-      {item.product.productName === 'Dacquoise-Set'
-        ? ' / 5-Piece' // dacquoise set piece
-        : ''}
+      {cartItem.product.productId === 29 && // dacquoise combo ?
+        ' / 5-Piece'}
     </PriceWrapper>
   );
 };

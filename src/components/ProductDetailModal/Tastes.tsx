@@ -23,7 +23,7 @@ export const Tastes = (props: Props) => {
             onClick={() =>
               setproductToCart((prevState) => ({
                 ...prevState,
-                tastes: item,
+                tasteId: item.id,
               }))
             }
           >

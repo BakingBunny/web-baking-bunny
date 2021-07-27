@@ -16,7 +16,7 @@ export const Subtotal = (props: Props) => {
     setSubTotal(
       cartList.reduce((total, item) => {
         const priceOfSize =
-          item.cakeSizeId === 8 ? item.product.price * 1.2 : item.product.price;
+          item.sizeId === 8 ? item.product.price * 1.2 : item.product.price;
         return total + priceOfSize * item.qty;
       }, 0)
     );
