@@ -14,22 +14,22 @@ export const Size = (props: Props) => {
     <SizeWrapper>
       <OptionTitle>Size</OptionTitle>
       <SizeBtn
-        isSelected={productToCart.cakeSize === 6}
+        isSelected={productToCart.cakeSizeId === 6}
         onClick={() =>
           setproductToCart((prevState) => ({
             ...prevState,
-            cakeSize: 6,
+            cakeSizeId: 6,
           }))
         }
       >
         6"
       </SizeBtn>
       <SizeBtn
-        isSelected={productToCart.cakeSize === 8}
+        isSelected={productToCart.cakeSizeId === 8}
         onClick={() =>
           setproductToCart((prevState) => ({
             ...prevState,
-            cakeSize: 8,
+            cakeSizeId: 8,
           }))
         }
       >

@@ -11,9 +11,9 @@ import {
   Price,
   OrderNowBtn,
 } from './ProductListElements';
-import products from '../../productList.json';
+// import productList from '../../productList.json';
 import formatCurrency from '../../utils';
-import { Product } from '../../interface/Product';
+import { ProductInterface } from '../../interface/ProductInterface';
 import { ProductDetailModal } from '../ProductDetailModal';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 
@@ -22,45 +22,58 @@ interface Props {
 }
 
 const initialProduct = {
-  id: 0,
-  name: '',
+  productId: 0,
+  productName: '',
   price: 0,
   description: '',
-  tastes: [],
   productImage: '',
+  comment: '',
+  tasteList: [],
+  sizeList: [],
   categoryId: 0,
 };
 
 export const ProductList = (props: Props) => {
-  const [productList, setProductList] = useState<Product[]>([]);
+  const [productList, setProductList] = useState<ProductInterface[]>([]);
+  const [filteredProductList, setFilteredProductList] = useState<
+    ProductInterface[]
+  >([]);
   const [selectedProduct, setSelectedProduct] =
-    useState<Product>(initialProduct);
+    useState<ProductInterface>(initialProduct);
   const [showModal, setShowModal] = useState<boolean>(false);
   const { productType } = props;
 
   useEffect(() => {
+    const fetchData = async () => {
+      window.scrollTo(0, 0); // scroll to top
+      const result = await fetch(`/api/product`);
+      console.log(result);
+      const body = await result.json();
+      console.log(body);
+      setProductList(body);
+    };
+    fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
+  }, []);
+
+  useEffect(() => {
     switch (productType) {
       case '/cakes':
-        //TODO: fetch API here in production
-        // const fetchData = async () => {
-        //   window.scrollTo(0, 0); // scroll to top
-        //   const result = await fetch(`/api/cake`);
-        //   const body = await result.json();
-        //   setSelectedCake(body);
-        // };
-        // fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-
-        setProductList(products.filter((item) => item.categoryId === 1));
+        setFilteredProductList(
+          productList.filter((item) => item.categoryId === 1)
+        );
         break;
       case '/dacquoises':
-        //TODO: fetch API here in production
-        setProductList(products.filter((item) => item.categoryId === 2));
+        setFilteredProductList(
+          productList.filter((item) => item.categoryId === 2)
+        );
         break;
     }
-  }, [productType]);
+  }, [productType, productList]);
 
   const CardHandler = (id: number) => {
-    const findProduct = products.find((product) => product.id === id);
+    const findProduct = filteredProductList.find(
+      (product) => product.productId === id
+    );
     if (findProduct) {
       setSelectedProduct(findProduct);
       setShowModal(true);
@@ -75,14 +88,18 @@ export const ProductList = (props: Props) => {
       <Wrapper>
         <Title>{productType.replace('/', '')}</Title>
         <CardWrapper>
-          {productList.map((product: Product) => (
-            <Card key={product.name} onClick={() => CardHandler(product.id)}>
+          {productList.map((product: ProductInterface) => (
+            <Card
+              key={product.productName}
+              onClick={() => CardHandler(product.productId)}
+            >
               <Image
-                src={require(`../../img/${product.productImage}`)?.default}
-                alt={product.name}
+                // src={require(`../../img/${product.productImage}`)?.default}
+                src={product.productImage}
+                alt={product.productName}
               />
               <Detail>
-                <Name>{product.name.replaceAll('-', ' ')}</Name>
+                <Name>{product.productName.replaceAll('-', ' ')}</Name>
                 <Price>
                   {
                     product.price === 0

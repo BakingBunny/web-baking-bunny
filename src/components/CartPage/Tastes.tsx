@@ -13,11 +13,11 @@ export const Tastes = (props: Props) => {
   return (
     <TastesSelect
       onChange={(e) => props.updateHandler(item.id, 'tastes', e.target.value)}
-      value={item.tastes}
+      value={item.tasteId}
     >
-      {item.product.tastes.map((taste) => (
-        <option key={taste} value={taste}>
-          {taste.replaceAll('-', ' ')}
+      {item.product.tasteList.map((taste) => (
+        <option key={taste.id} value={taste.id}>
+          {taste.tasteName.replaceAll('-', ' ')}
         </option>
       ))}
     </TastesSelect>

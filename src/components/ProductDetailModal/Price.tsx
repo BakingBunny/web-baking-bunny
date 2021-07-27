@@ -1,10 +1,10 @@
 import React from 'react';
-import { Product } from '../../interface/Product';
+import { ProductInterface } from '../../interface/ProductInterface';
 import { PriceWrapper } from './ProductDetailElements';
 import formatCurrency from '../../utils';
 
 interface Props {
-  selectedProduct: Product;
+  selectedProduct: ProductInterface;
 }
 
 export const Price = (props: Props) => {
@@ -23,7 +23,7 @@ export const Price = (props: Props) => {
       {
         selectedProduct.categoryId === 1 && selectedProduct.price !== 0
           ? formatCurrency(selectedProduct.price * 1.2) // cake 8 inch price
-          : selectedProduct.name === 'Dacquoise-Set'
+          : selectedProduct.productName === 'Dacquoise-Set'
           ? '5-Piece' // dacquoise set piece
           : selectedProduct.categoryId === 2 && '1-Piece' // dacquoise piece
       }

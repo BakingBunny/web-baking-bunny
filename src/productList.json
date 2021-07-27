@@ -1,314 +1,149 @@
 [
   {
-    "id": 1001,
-    "name": "Fresh-Whiped-Cream",
+    "productId": 1,
+    "productName": "Black Sesame 흑임자",
+    "price": 45,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_black.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
+  },
+  {
+    "productId": 2,
+    "productName": "Fresh Whiped Cream 생크림",
     "price": 41,
     "description": "Description here",
-    "tastes": ["Mango", "Strawberry", "None-(Fresh-Milk)"],
-    "productImage": "fresh.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_fresh.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [
+      { "id": 1, "tasteName": "Strawberry" },
+      { "id": 2, "tasteName": "Mango" },
+      { "id": 3, "tasteName": "None (Fresh Milk)" }
+    ],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1002,
-    "name": "Lotus",
+    "productId": 3,
+    "productName": "Injeolmi 인절미",
     "price": 45,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "lotus_cake.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_injeol.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1003,
-    "name": "Kabocha-Cheese",
+    "productId": 4,
+    "productName": "Mugwort 쑥절미",
     "price": 45,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "pumpkin_cake.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_ssook.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1004,
-    "name": "Mugwort-Cake",
+    "productId": 5,
+    "productName": "Kabocha Cheese 단호박 치즈",
     "price": 45,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "ssook.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/kambocha.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1005,
-    "name": "Carrot-Cake",
-    "price": 0,
+    "productId": 8,
+    "productName": "Early Grey 얼그레이",
+    "price": 4.2,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "carrot.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_earl.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1006,
-    "name": "Black-Sesame-Cake",
-    "price": 45,
+    "productId": 12,
+    "productName": "Lotus 로투스",
+    "price": 4.1,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "cake_3.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_lotus.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1007,
-    "name": "Injeolmi-Cake",
-    "price": 45,
+    "productId": 14,
+    "productName": "Oreo 오레오",
+    "price": 4.1,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "cake_1.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_oreo.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1008,
-    "name": "Design-Cake",
-    "price": 0,
+    "productId": 15,
+    "productName": "Mugwort 쑥",
+    "price": 4,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "whip-letter.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_ssook.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1009,
-    "name": "Flower-Cake",
-    "price": 0,
+    "productId": 17,
+    "productName": "Cafe Latte 카페라떼",
+    "price": 4,
     "description": "Description here",
-    "tastes": [],
-    "productImage": "custom.jpg",
-    "categoryId": 1
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_cafe.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 2001,
-    "name": "Dacquoise-Set",
+    "productId": 29,
+    "productName": "Dacquoise combo 다쿠아즈콤보",
     "price": 20,
     "description": "Description here",
-    "tastes": [
-      "Cafe-Latte",
-      "dacquoise-set",
-      "Choco-Nutella",
-      "Black-Sesame",
-      "Lotus",
-      "Cheese",
-      "Ang-Butter"
-    ],
-    "productImage": "dac_set.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2002,
-    "name": "Injeolmi",
-    "price": 4.1,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "injeol.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2003,
-    "name": "Blueberry",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "blue.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2004,
-    "name": "Earl-Grey",
-    "price": 4.1,
-    "description": "Description here",
-    "tastes": [],
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dac_set.jpg",
+    "comment": null,
     "categoryId": 2,
-    "productImage": "earl.jpg"
-  },
-  {
-    "id": 2005,
-    "name": "Cherry",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "cherry.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2006,
-    "name": "Black-Sesame",
-    "price": 4.1,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "black.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2007,
-    "name": "Maltesers",
-    "price": 3.7,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "choco.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2008,
-    "name": "Lotus",
-    "price": 4.0,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "lotus.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2009,
-    "name": "Matcha-Kitkat",
-    "price": 3.8,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "matcha.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2010,
-    "name": "Oreo",
-    "price": 4.0,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "oreo.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2011,
-    "name": "Mugwort",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "ssook_dac.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2012,
-    "name": "Sweet-Potato",
-    "price": 4.1,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2013,
-    "name": "Cafe-Latte",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "cafem.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2014,
-    "name": "Salted-Caramel",
-    "price": 3.7,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "solti.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2015,
-    "name": "Tiramisu",
-    "price": 4.1,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "tira.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2016,
-    "name": "Bacon",
-    "price": 3.7,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2017,
-    "name": "Tok-Tok-Corn",
-    "price": 4.0,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "ccorn.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2018,
-    "name": "Ang-Butter",
-    "price": 4.0,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2019,
-    "name": "Cheese",
-    "price": 4.0,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "cheesep.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2020,
-    "name": "Chai-Latte",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2021,
-    "name": "Match-Nutella",
-    "price": 4.0,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2022,
-    "name": "Citron",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-
-  {
-    "id": 2023,
-    "name": "Yogurt",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 2024,
-    "name": "Choco-Nutella",
-    "price": 3.9,
-    "description": "Description here",
-    "tastes": [],
-    "productImage": "notyet.jpg",
-    "categoryId": 2
+    "tasteList": [
+      { "id": 4, "tasteName": "Cafe Latte 카페라떼" },
+      { "id": 5, "tasteName": "Choco Nutella 초코누텔라" },
+      { "id": 6, "tasteName": "Black-Sesame 흑임자" },
+      { "id": 7, "tasteName": "Lotus 로투스" },
+      { "id": 8, "tasteName": "Cheese 뽀또" },
+      { "id": 9, "tasteName": "Ang Butter 앙버터" }
+    ],
+    "sizeList": []
   }
 ]

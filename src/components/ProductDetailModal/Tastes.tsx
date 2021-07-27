@@ -1,10 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { Product } from '../../interface/Product';
+import { ProductInterface } from '../../interface/ProductInterface';
 import { CartInterface } from '../../interface/CartInterface';
 import { TastesBtn, TastesWrapper } from './ProductDetailElements';
+import { TasteListInterface } from '../../interface/TasteListInterface';
 
 interface Props {
-  selectedProduct: Product;
+  selectedProduct: ProductInterface;
   productToCart: CartInterface;
   setproductToCart: Dispatch<SetStateAction<CartInterface>>;
 }
@@ -15,10 +16,10 @@ export const Tastes = (props: Props) => {
   return (
     <>
       <TastesWrapper>
-        {selectedProduct.tastes.map((item: string) => (
+        {selectedProduct.tasteList.map((item: TasteListInterface) => (
           <TastesBtn
-            key={item}
-            isSelected={productToCart.tastes === item}
+            key={item.id}
+            isSelected={productToCart.tasteId === item.id}
             onClick={() =>
               setproductToCart((prevState) => ({
                 ...prevState,
@@ -26,7 +27,7 @@ export const Tastes = (props: Props) => {
               }))
             }
           >
-            {item.replaceAll('-', ' ')}
+            {item.tasteName.replaceAll('-', ' ')}
           </TastesBtn>
         ))}
       </TastesWrapper>
