@@ -58,7 +58,7 @@ export const Cart = (props: Props) => {
                         require(`../../img/${item.product.productImage}`)
                           ?.default
                       }
-                      alt={item.product.name}
+                      alt={item.product.productName}
                     />
                     <DeleteBtn onClick={() => dispatch(remove(item.id))}>
                       Delete
@@ -66,10 +66,10 @@ export const Cart = (props: Props) => {
                   </ImageWrapper>
                   <OptionsWrapper>
                     <CakeName>
-                      {item.product.name.replaceAll('-', ' ')}
+                      {item.product.productName.replaceAll('-', ' ')}
                     </CakeName>
                     <Price item={item} />
-                    {item.tastes.length > 0 && (
+                    {item.product.tasteList.length > 0 && (
                       <Tastes item={item} updateHandler={updateHandler} />
                     )}
                     {item.product.categoryId === 1 && (

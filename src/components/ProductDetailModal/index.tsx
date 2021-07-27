@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import formatCurrency from '../../utils';
-import { Product } from '../../interface/Product';
+import { ProductInterface } from '../../interface/ProductInterface';
 import {
   Container,
   Wrapper,
@@ -31,7 +31,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 
 interface Props {
   // id: string;
-  selectedProduct: Product;
+  selectedProduct: ProductInterface;
   showModal: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
@@ -39,16 +39,18 @@ interface Props {
 const initialCart = {
   id: '',
   product: {
-    id: 0,
-    name: '',
+    productId: 0,
+    productName: '',
     price: 0,
     description: '',
-    tastes: [],
     productImage: '',
+    comment: '',
+    tasteList: [],
+    sizeList: [],
     categoryId: 0,
   },
-  tastes: '',
-  cakeSize: 1,
+  tasteId: 0,
+  cakeSizeId: 0,
   qty: 1,
   special: '',
 };
@@ -91,8 +93,10 @@ export const ProductDetailModal: React.FC<Props> = ({
       ...prevState,
       id: uuidv4(),
       product: selectedProduct,
-      tastes: selectedProduct.tastes[0] ? selectedProduct.tastes[0] : '',
-      cakeSize: selectedProduct.categoryId === 1 ? 6 : 1, // default dacquoise size is 1
+      tastes: selectedProduct.tasteList[0]
+        ? selectedProduct.tasteList[0].id
+        : '',
+      cakeSizeId: selectedProduct.categoryId === 1 ? 6 : 1, // default dacquoise size is 1
     }));
   }, [selectedProduct]);
 
@@ -103,15 +107,17 @@ export const ProductDetailModal: React.FC<Props> = ({
       <Wrapper>
         <Image
           src={require(`../../img/${selectedProduct.productImage}`)?.default}
-          alt={selectedProduct.name}
+          alt={selectedProduct.productName}
         />
         <CloseBtn onClick={closeModal}>
           <AiFillCloseCircle />
         </CloseBtn>
         <OptionWrapper>
-          <CakeName>{selectedProduct.name.replaceAll('-', ' ')}</CakeName>
+          <CakeName>
+            {selectedProduct.productName.replaceAll('-', ' ')}
+          </CakeName>
           <Price selectedProduct={selectedProduct} />
-          {selectedProduct.tastes.length > 0 && (
+          {selectedProduct.tasteList.length > 0 && (
             <Tastes
               selectedProduct={selectedProduct}
               productToCart={productToCart}
@@ -137,7 +143,7 @@ export const ProductDetailModal: React.FC<Props> = ({
               closeModal();
             }}
           >
-            {productToCart.cakeSize === 8
+            {productToCart.cakeSizeId === 8
               ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
               : formatCurrency(selectedProduct.price * productToCart.qty)}
             <br />

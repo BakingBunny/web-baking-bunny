@@ -14,13 +14,13 @@ export const Size = (props: Props) => {
     <SizeWrapper>
       <SizeTitle>Size</SizeTitle>
       <SizeBtn
-        isSelected={item.cakeSize === 6}
+        isSelected={item.cakeSizeId === 6}
         onClick={() => props.updateHandler(item.id, 'cakeSize', 6)}
       >
         6"
       </SizeBtn>
       <SizeBtn
-        isSelected={item.cakeSize === 8}
+        isSelected={item.cakeSizeId === 8}
         onClick={() => props.updateHandler(item.id, 'cakeSize', 8)}
       >
         8"
