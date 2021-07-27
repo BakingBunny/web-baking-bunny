@@ -3,28 +3,29 @@ import { CartInterface } from '../../interface/CartInterface';
 import { SizeWrapper, SizeTitle, SizeBtn } from './CartPageElements';
 
 interface Props {
-  item: CartInterface;
-  updateHandler: any; //TODO: specify later
+  cartItem: CartInterface;
+  updateHandler: (
+    id: string, // product id
+    option: string, // option name (sizeId)
+    value: number // size id
+  ) => void;
 }
 
 export const Size = (props: Props) => {
-  const { item } = props;
+  const { cartItem } = props;
 
   return (
     <SizeWrapper>
       <SizeTitle>Size</SizeTitle>
-      <SizeBtn
-        isSelected={item.cakeSizeId === 6}
-        onClick={() => props.updateHandler(item.id, 'cakeSize', 6)}
-      >
-        6"
-      </SizeBtn>
-      <SizeBtn
-        isSelected={item.cakeSizeId === 8}
-        onClick={() => props.updateHandler(item.id, 'cakeSize', 8)}
-      >
-        8"
-      </SizeBtn>
+      {cartItem.product.sizeList.map((size) => (
+        <SizeBtn
+          isSelected={cartItem.sizeId === size.id}
+          onClick={() => props.updateHandler(cartItem.id, 'sizeId', size.id)}
+          key={size.id}
+        >
+          {size.sizeName}
+        </SizeBtn>
+      ))}
     </SizeWrapper>
   );
 };

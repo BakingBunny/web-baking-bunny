@@ -43,13 +43,12 @@ export const ProductList = (props: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const { productType } = props;
 
+  // fetch product list from the server
   useEffect(() => {
     const fetchData = async () => {
       window.scrollTo(0, 0); // scroll to top
       const result = await fetch(`/api/product`);
-      console.log(result);
       const body = await result.json();
-      console.log(body);
       setProductList(body);
     };
     fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
@@ -70,6 +69,7 @@ export const ProductList = (props: Props) => {
     }
   }, [productType, productList]);
 
+  // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
     const findProduct = filteredProductList.find(
       (product) => product.productId === id
@@ -88,7 +88,7 @@ export const ProductList = (props: Props) => {
       <Wrapper>
         <Title>{productType.replace('/', '')}</Title>
         <CardWrapper>
-          {productList.map((product: ProductInterface) => (
+          {filteredProductList.map((product: ProductInterface) => (
             <Card
               key={product.productName}
               onClick={() => CardHandler(product.productId)}
@@ -110,9 +110,9 @@ export const ProductList = (props: Props) => {
                     product.price !== 0 && ' / ' // divider
                   }
                   {
-                    productType === '/cakes' && product.price !== 0
+                    product.categoryId === 1 && product.price !== 0
                       ? formatCurrency(product.price * 1.2) // cake 8 inch price
-                      : productType !== '/cakes' && '1 Piece' // dacquoise piece
+                      : product.categoryId === 2 && '1 Piece' // dacquoise piece
                   }
                 </Price>
               </Detail>

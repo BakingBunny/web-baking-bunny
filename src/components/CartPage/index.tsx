@@ -54,10 +54,7 @@ export const Cart = (props: Props) => {
                 <Card key={item.id}>
                   <ImageWrapper>
                     <Image
-                      src={
-                        require(`../../img/${item.product.productImage}`)
-                          ?.default
-                      }
+                      src={item.product.productImage}
                       alt={item.product.productName}
                     />
                     <DeleteBtn onClick={() => dispatch(remove(item.id))}>
@@ -68,14 +65,14 @@ export const Cart = (props: Props) => {
                     <CakeName>
                       {item.product.productName.replaceAll('-', ' ')}
                     </CakeName>
-                    <Price item={item} />
-                    {item.product.tasteList.length > 0 && (
-                      <Tastes item={item} updateHandler={updateHandler} />
+                    <Price cartItem={item} />
+                    {item.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                      <Tastes cartItem={item} updateHandler={updateHandler} />
                     )}
-                    {item.product.categoryId === 1 && (
-                      <Size item={item} updateHandler={updateHandler} />
+                    {item.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
+                      <Size cartItem={item} updateHandler={updateHandler} />
                     )}
-                    <Quantity item={item} updateHandler={updateHandler} />
+                    <Quantity cartItem={item} updateHandler={updateHandler} />
                   </OptionsWrapper>
                 </Card>
               );

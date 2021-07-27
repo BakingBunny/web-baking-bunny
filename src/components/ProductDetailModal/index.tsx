@@ -14,7 +14,7 @@ import {
   Wrapper,
   CloseBtn,
   Image,
-  CakeName,
+  ProductName,
   OptionWrapper,
   SubOptionWrapper,
   AddToCartBtn,
@@ -49,8 +49,8 @@ const initialCart = {
     sizeList: [],
     categoryId: 0,
   },
-  tasteId: 0,
-  cakeSizeId: 0,
+  tasteId: -1,
+  sizeId: -1,
   qty: 1,
   special: '',
 };
@@ -70,12 +70,14 @@ export const ProductDetailModal: React.FC<Props> = ({
     document.body.style.overflow = 'unset'; // allow scrolling once modal close
   }, [setShowModal]);
 
+  // click background (greyed out) to close modal
   const clickBackgroundToClose = (e: React.FormEvent<EventTarget>) => {
     if (ModalRef.current === e.target) {
       closeModal();
     }
   };
 
+  // press 'esc' to close modal
   const keyPress = useCallback(
     (e) => {
       if (e.key === 'Escape' && showModal) closeModal();
@@ -83,41 +85,46 @@ export const ProductDetailModal: React.FC<Props> = ({
     [showModal, closeModal]
   );
 
+  // press 'esc' to close modal
   useEffect(() => {
     document.addEventListener('keydown', keyPress);
     return () => document.addEventListener('keydown', keyPress);
   }, [keyPress]);
 
+  // initialize product to add to the cart
   useEffect(() => {
     setproductToCart((prevState) => ({
       ...prevState,
       id: uuidv4(),
       product: selectedProduct,
-      tastes: selectedProduct.tasteList[0]
+      tasteId: selectedProduct.tasteList.length
         ? selectedProduct.tasteList[0].id
-        : '',
-      cakeSizeId: selectedProduct.categoryId === 1 ? 6 : 1, // default dacquoise size is 1
+        : -1, // default taste is -1 (no taste option product is -1)
+      sizeId: selectedProduct.sizeList.length
+        ? selectedProduct.sizeList[0].id
+        : -1, // default size is -1 (dacquoise is -1)
     }));
   }, [selectedProduct]);
 
+  // no product(id) found
   if (!selectedProduct) return <NotFoundPage />;
 
   return (
     <Container ref={ModalRef} onClick={clickBackgroundToClose}>
       <Wrapper>
         <Image
-          src={require(`../../img/${selectedProduct.productImage}`)?.default}
+          src={selectedProduct.productImage}
           alt={selectedProduct.productName}
         />
         <CloseBtn onClick={closeModal}>
           <AiFillCloseCircle />
         </CloseBtn>
         <OptionWrapper>
-          <CakeName>
+          <ProductName>
             {selectedProduct.productName.replaceAll('-', ' ')}
-          </CakeName>
+          </ProductName>
           <Price selectedProduct={selectedProduct} />
-          {selectedProduct.tasteList.length > 0 && (
+          {selectedProduct.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
             <Tastes
               selectedProduct={selectedProduct}
               productToCart={productToCart}
@@ -125,13 +132,12 @@ export const ProductDetailModal: React.FC<Props> = ({
             />
           )}
           <SubOptionWrapper>
-            {selectedProduct.categoryId === 1 && ( // cake size option
+            {selectedProduct.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
               <Size
                 productToCart={productToCart}
                 setproductToCart={setproductToCart}
               />
             )}
-            {/* <QtyTitle>Quantity</QtyTitle> */}
             <Quantity
               productToCart={productToCart}
               setproductToCart={setproductToCart}
@@ -143,7 +149,7 @@ export const ProductDetailModal: React.FC<Props> = ({
               closeModal();
             }}
           >
-            {productToCart.cakeSizeId === 8
+            {productToCart.sizeId === 2
               ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
               : formatCurrency(selectedProduct.price * productToCart.qty)}
             <br />

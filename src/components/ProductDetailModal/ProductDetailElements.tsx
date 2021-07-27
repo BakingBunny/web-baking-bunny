@@ -114,7 +114,7 @@ export const OptionWrapper = styled.div`
 //     'add-to-cart-btn add-to-cart-btn';
 // `;
 
-export const CakeName = styled.div`
+export const ProductName = styled.div`
   font-size: 1.6rem;
   margin: 10px 0 5px;
   text-align: center;
