@@ -1,46 +1,40 @@
 import React from 'react';
-// import { Calendar, OnChangeProps } from 'react-date-range';
+import { Calendar, OnChangeProps } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-// import { useFormContext } from 'react-hook-form';
-// import { checkout, update } from '../../store/checkoutSlice';
-// import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { orderList, update } from '../../store/orderListSlice';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { DatesWrapper } from './CheckoutPageElements';
-// import { OrderListInterface } from '../../interface/OrderListInterface';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {}
 
+let minDate = new Date(),
+  maxDate = new Date();
+minDate.setDate(minDate.getDate() + 7);
+maxDate.setDate(maxDate.getDate() + 60);
+
 export const Dates = (props: Props) => {
-  // const checkoutState = useAppSelector(checkout);
-  // const dispatch = useAppDispatch();
-  // const {
-  //   register,
-  //   // control,
-  //   watch,
-  //   formState: { errors },
-  // } = useFormContext<OrderListInterface>();
-  // const watchPickupDeliveryDate = watch('pickupDeliveryDate', new Date());
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
+  const dispatch = useAppDispatch();
 
   return (
     <DatesWrapper>
-      {/* <Calendar
-        // date={checkoutState.orderList.pickupDeliveryDate}
-        date={watchPickupDeliveryDate}
+      <Calendar
+        date={orderListState.pickupDeliveryDate}
+        // date={new Date()}
         onChange={(date: OnChangeProps) =>
-          // dispatch(
-          //   update({
-          //     name: 'pickupDate',
-          //     value: date,
-          //   })
-          // )
-          {...register('pickupDeliveryDate', {
-            // required: 'This is required',
-            // maxLength: { value: 30, message: 'Max length exceeded' },
-          })}
+          dispatch(
+            update({
+              name: 'pickupDeliveryDate',
+              value: date,
+            })
+          )
         }
-        // minDate={new Date().setDate(new Date().getDate() + 1)}
-        minDate={new Date()}
-      /> */}
+        // minDate={new Date()}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
     </DatesWrapper>
   );
 };

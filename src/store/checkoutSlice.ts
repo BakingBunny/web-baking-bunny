@@ -3,6 +3,7 @@ import { RootState } from './store';
 import { CheckOutInterface } from '../interface/CheckOutInterface';
 import { OnChangeProps } from 'react-date-range';
 
+//TODO: Delete this function?
 const initialState: CheckOutInterface = {
   user: {
     firstname: '',
@@ -22,7 +23,7 @@ const initialState: CheckOutInterface = {
   orderList: {
     deliveryFee: 0,
     isDelivery: false,
-    pickupDeliveryDate: '',
+    pickupDeliveryDate: new Date(),
   },
 };
 export const checkoutSlice = createSlice({
