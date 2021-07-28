@@ -27,7 +27,8 @@ export const Subtotal = (props: Props) => {
       <SubtotalWrapper>
         <SubtotalText>Subtotal {formatCurrency(subTotal)}</SubtotalText>
         {/* <ProceedBtn to='/pick-a-date'> */}
-        <ProceedBtn to='/checkout'>
+        <ProceedBtn to='/cart'>
+          {/* <ProceedBtn to='/checkout'> */}
           Proceed to checkout ({countCartItems} items)
         </ProceedBtn>
       </SubtotalWrapper>
