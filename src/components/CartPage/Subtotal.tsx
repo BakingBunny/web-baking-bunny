@@ -16,7 +16,7 @@ export const Subtotal = (props: Props) => {
     setSubTotal(
       cartList.reduce((total, item) => {
         const priceOfSize =
-          item.cakeSize === 8 ? item.product.price * 1.2 : item.product.price;
+          item.sizeId === 8 ? item.product.price * 1.2 : item.product.price;
         return total + priceOfSize * item.qty;
       }, 0)
     );
@@ -27,7 +27,8 @@ export const Subtotal = (props: Props) => {
       <SubtotalWrapper>
         <SubtotalText>Subtotal {formatCurrency(subTotal)}</SubtotalText>
         {/* <ProceedBtn to='/pick-a-date'> */}
-        <ProceedBtn to='/pick-a-date'>
+        <ProceedBtn to='/cart'>
+          {/* <ProceedBtn to='/checkout'> */}
           Proceed to checkout ({countCartItems} items)
         </ProceedBtn>
       </SubtotalWrapper>

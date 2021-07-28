@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { CartState } from '../interface/CartState';
+import { CartInterface } from '../interface/CartInterface';
 
-const initialState: CartState[] = [];
+const initialState: CartInterface[] = [];
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<CartState>) => {
+    add: (state, action: PayloadAction<CartInterface>) => {
       state.push(action.payload);
     },
     remove: (state, action: PayloadAction<string>) => {
@@ -28,17 +28,9 @@ export const cartSlice = createSlice({
       const index = state.findIndex((item) => item.id === id);
 
       if (index !== -1) {
-        switch (option) {
-          case 'tastes':
-            state[index].tastes = value.toString();
-            break;
-          case 'cakeSize':
-            state[index].cakeSize = Number(value);
-            break;
-          case 'qty':
-            state[index].qty = Number(value);
-            break;
-        }
+        Object.assign(state[index], {
+          [option]: value,
+        });
       }
     },
   },

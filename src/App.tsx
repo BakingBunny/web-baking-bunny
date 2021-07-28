@@ -5,12 +5,12 @@ import {
   Route,
   // Redirect,
 } from 'react-router-dom';
-import { Navbar } from './component/Navbar';
+import { Navbar } from './components/Navbar';
 import { HomePage } from './pages';
 import { ProductListPage } from './pages/ProductListPage';
 import { CartPage } from './pages/CartPage';
-import { PickADatePage } from './pages/PickADatePage';
-import { Footer } from './component/Footer';
+import { CheckoutPage } from './pages/CheckoutPage';
+import { Footer } from './components/Footer';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
             exact
           />
           <Route path='/cart' component={CartPage} exact />
-          <Route path='/pick-a-date' component={PickADatePage} exact />
+          <Route path='/checkout' component={CheckoutPage} exact />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />

@@ -1,507 +1,149 @@
 [
   {
-    "id": 1001,
-    "type": "cake",
-    "item_name": "Fresh-Whiped-Cream",
-    "item_name_kor": "생크림",
-    "tastes": ["Mango", "Strawberry", "None-(Fresh-Milk)"],
-    "tastes_kor": ["망고", "딸기", "없음-(신선한-우유)"],
+    "productId": 1,
+    "productName": "Black Sesame 흑임자",
+    "price": 45,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_black.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
+  },
+  {
+    "productId": 2,
+    "productName": "Fresh Whiped Cream 생크림",
     "price": 41,
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_fresh.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [
+      { "id": 1, "tasteName": "Strawberry" },
+      { "id": 2, "tasteName": "Mango" },
+      { "id": 3, "tasteName": "None (Fresh Milk)" }
     ],
-    "image": "fresh.jpg"
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1002,
-    "type": "cake",
-    "item_name": "Lotus",
-    "item_name_kor": "로투스",
+    "productId": 3,
+    "productName": "Injeolmi 인절미",
     "price": 45,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [],
-    "image": "lotus_cake.jpg",
-    "special": "10"
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_injeol.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1003,
-    "type": "cake",
-    "item_name": "Kabocha-Cheese",
-    "item_name_kor": "단호박치즈",
+    "productId": 4,
+    "productName": "Mugwort 쑥절미",
     "price": 45,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
-    ],
-    "image": "pumpkin_cake.jpg",
-    "special": "10"
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/cake_ssook.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1004,
-    "type": "cake",
-    "item_name": "Mugwort-Cake",
-    "item_name_kor": "쑥케이크",
+    "productId": 5,
+    "productName": "Kabocha Cheese 단호박 치즈",
     "price": 45,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
-    ],
-    "image": "ssook.jpg",
-    "special": "09"
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/kambocha.jpg",
+    "comment": null,
+    "categoryId": 1,
+    "tasteList": [],
+    "sizeList": [
+      { "id": 1, "sizeName": "6 inch" },
+      { "id": 2, "sizeName": "8 inch" }
+    ]
   },
   {
-    "id": 1005,
-    "type": "cake",
-    "item_name": "Carrot-Cake",
-    "item_name_kor": "",
-    "price": 0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [],
-    "image": "carrot.jpg",
-    "special": "07"
+    "productId": 8,
+    "productName": "Early Grey 얼그레이",
+    "price": 4.2,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_earl.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1006,
-    "type": "cake",
-    "item_name": "Black-Sesame-Cake",
-    "item_name_kor": "흑임자케이크",
-    "price": 45,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
-    ],
-    "image": "cake_3.jpg",
-    "special": ""
+    "productId": 12,
+    "productName": "Lotus 로투스",
+    "price": 4.1,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_lotus.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1007,
-    "type": "cake",
-    "item_name": "Injeolmi-Cake",
-    "item_name_kor": "인절미케이크",
-    "price": 45,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
-    ],
-    "image": "cake_1.jpg",
-    "special": ""
-  },
-
-  {
-    "id": 1008,
-    "type": "custom-cake",
-    "item_name": "Design-Cake",
-    "item_name_kor": "디자인케이크",
-    "price": 0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
-    ],
-    "image": "whip-letter.jpg",
-    "special": ""
+    "productId": 14,
+    "productName": "Oreo 오레오",
+    "price": 4.1,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_oreo.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 1009,
-    "type": "custom-cake",
-    "item_name": "Flower-Cake",
-    "item_name_kor": "생화케이크",
-    "price": 0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210627, 20210628, 20210629, 20210630, 20210701, 20210702, 20210703,
-      20210704, 20210705, 20210706, 20210707, 20210708, 20210709, 20210710,
-      20210711, 20210712, 20210713, 20210714, 20210715, 20210716, 20210717,
-      20210718, 20210719, 20210720, 20210721, 20210722, 20210723, 20210724,
-      20210725, 20210726, 20210727, 20210728, 20210729, 20210730, 20210731
-    ],
-    "image": "custom.jpg",
-    "special": ""
+    "productId": 15,
+    "productName": "Mugwort 쑥",
+    "price": 4,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_ssook.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
   },
   {
-    "id": 2001,
-    "type": "dacquoise-set",
-    "item_name": "Dacquoise-Set",
-    "item_name_kor": "다쿠아즈-세트",
+    "productId": 17,
+    "productName": "Cafe Latte 카페라떼",
+    "price": 4,
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dacq_cafe.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [],
+    "sizeList": []
+  },
+  {
+    "productId": 29,
+    "productName": "Dacquoise combo 다쿠아즈콤보",
     "price": 20,
-    "tastes": [
-      "Cafe-Latte",
-      "Choco-Nutella",
-      "Black-Sesame",
-      "Lotus",
-      "Cheese",
-      "Ang-Butter"
+    "description": "Description here",
+    "productImage": "https://bbproject20210623.s3.us-west-2.amazonaws.com/dac_set.jpg",
+    "comment": null,
+    "categoryId": 2,
+    "tasteList": [
+      { "id": 4, "tasteName": "Cafe Latte 카페라떼" },
+      { "id": 5, "tasteName": "Choco Nutella 초코누텔라" },
+      { "id": 6, "tasteName": "Black-Sesame 흑임자" },
+      { "id": 7, "tasteName": "Lotus 로투스" },
+      { "id": 8, "tasteName": "Cheese 뽀또" },
+      { "id": 9, "tasteName": "Ang Butter 앙버터" }
     ],
-    "tastes_kor": [
-      "카페라떼",
-      "초코누텔라",
-      "흑임자",
-      "로투스",
-      "뽀또",
-      "앙버터"
-    ],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "dac_set.jpg"
-  },
-
-  {
-    "id": 2002,
-    "type": "dacquoise",
-    "item_name": "Injeolmi",
-    "item_name_kor": "인절미",
-    "price": 4.1,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
-      20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
-      20210319, 20210320, 20210321, 20210324, 20210325, 20210326, 20210327,
-      20210328, 20210331, 20210401, 20210402, 20210403, 20210404, 20210408,
-      20210409, 20210410, 20210411, 20210412, 20210415, 20210416, 20210417,
-      20210418, 20210419, 20210422, 20210423, 20210424, 20210425, 20210426,
-      20210429, 20210430
-    ],
-    "image": "injeol.jpg"
-  },
-
-  {
-    "id": 2003,
-    "type": "dacquoise",
-    "item_name": "Blueberry",
-    "item_name_kor": "블루베리",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [],
-    "image": "blue.jpg"
-  },
-
-  {
-    "id": 2004,
-    "type": "dacquoise",
-    "item_name": "Earl-Grey",
-    "item_name_kor": "얼그레이",
-    "price": 4.1,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
-      20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
-      20210319, 20210320, 20210321, 20210324, 20210325, 20210326, 20210327,
-      20210328, 20210331
-    ],
-    "image": "earl.jpg"
-  },
-
-  {
-    "id": 2005,
-    "type": "dacquoise",
-    "item_name": "Cherry",
-    "item_name_kor": "체리",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [],
-    "image": "cherry.jpg"
-  },
-
-  {
-    "id": 2006,
-    "type": "dacquoise",
-    "item_name": "Black-Sesame",
-    "item_name_kor": "흑임자",
-    "price": 4.1,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "black.jpg"
-  },
-  {
-    "id": 2007,
-    "type": "dacquoise",
-    "item_name": "Maltesers",
-    "item_name_kor": "초코몰티져스",
-    "price": 3.7,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [20201119, 20201120, 20201121],
-    "image": "choco.jpg"
-  },
-  {
-    "id": 2008,
-    "type": "dacquoise",
-    "item_name": "Lotus",
-    "item_name_kor": "로투스",
-    "price": 4.0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "lotus.jpg"
-  },
-  {
-    "id": 2009,
-    "type": "dacquoise",
-    "item_name": "Matcha-Kitkat",
-    "item_name_kor": "말차킷캣",
-    "price": 3.8,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [],
-    "image": "matcha.jpg"
-  },
-  {
-    "id": 2010,
-    "type": "dacquoise",
-    "item_name": "Oreo",
-    "item_name_kor": "오레오",
-    "price": 4.0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210401, 20210402, 20210403, 20210404, 20210408, 20210409, 20210410,
-      20210411, 20210412, 20210415, 20210416, 20210417, 20210418, 20210419,
-      20210422, 20210423, 20210424, 20210425, 20210426, 20210429, 20210430
-    ],
-    "image": "oreo.jpg"
-  },
-  {
-    "id": 2011,
-    "type": "dacquoise",
-    "item_name": "Mugwort",
-    "item_name_kor": "쑥",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
-      20210129, 20210130
-    ],
-    "image": "ssook_dac.jpg"
-  },
-  {
-    "id": 2012,
-    "type": "dacquoise",
-    "item_name": "Sweet-Potato",
-    "item_name_kor": "찐고구마",
-    "price": 4.1,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
-      20210129, 20210130
-    ],
-    "image": "notyet.jpg"
-  },
-
-  {
-    "id": 2013,
-    "type": "dacquoise",
-    "item_name": "Cafe-Latte",
-    "item_name_kor": "카페라떼",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "cafem.jpg"
-  },
-
-  {
-    "id": 2014,
-    "type": "dacquoise",
-    "item_name": "Salted-Caramel",
-    "item_name_kor": "솔티카라멜",
-    "price": 3.7,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [20201119, 20201120, 20201121],
-    "image": "solti.jpg"
-  },
-
-  {
-    "id": 2015,
-    "type": "dacquoise",
-    "item_name": "Tiramisu",
-    "item_name_kor": "티라미수",
-    "price": 4.1,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210204, 20210205, 20210206, 20210211, 20210212, 20210213, 20210218,
-      20210219, 20210220, 20210225, 20210226, 20210227
-    ],
-    "image": "tira.jpg"
-  },
-  {
-    "id": 2016,
-    "type": "dacquoise",
-    "item_name": "Bacon",
-    "item_name_kor": "베이컨",
-    "price": 3.7,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [],
-    "image": "notyet.jpg"
-  },
-  {
-    "id": 2017,
-    "type": "dacquoise",
-    "item_name": "Tok-Tok-Corn",
-    "item_name_kor": "톡톡옥수수",
-    "price": 4.0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210204, 20210205, 20210206, 20210211, 20210212, 20210213, 20210218,
-      20210219, 20210220, 20210225, 20210226, 20210227
-    ],
-    "image": "ccorn.jpg"
-  },
-
-  {
-    "id": 2018,
-    "type": "dacquoise",
-    "item_name": "Ang-Butter",
-    "item_name_kor": "앙버터",
-    "price": 4.0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "notyet.jpg"
-  },
-
-  {
-    "id": 2019,
-    "type": "dacquoise",
-    "item_name": "Cheese",
-    "item_name_kor": "뽀또",
-    "price": 4.0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "cheesep.jpg"
-  },
-
-  {
-    "id": 2020,
-    "type": "dacquoise",
-    "item_name": "Chai-Latte",
-    "item_name_kor": "차이라떼",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [20201202, 20201203],
-    "image": "notyet.jpg"
-  },
-
-  {
-    "id": 2021,
-    "type": "dacquoise",
-    "item_name": "Match-Nutella",
-    "item_name_kor": "녹차누텔라",
-    "price": 4.0,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210302, 20210303, 20210304, 20210305, 20210306, 20210307, 20210309,
-      20210310, 20210311, 20210312, 20210313, 20210314, 20210317, 20210318,
-      20210319, 20210320, 20210321, 20210324, 20210325, 20210326, 20210327,
-      20210328, 20210331
-    ],
-    "image": "notyet.jpg"
-  },
-
-  {
-    "id": 2022,
-    "type": "dacquoise",
-    "item_name": "Citron",
-    "item_name_kor": "유자",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210114, 20210115, 20210116, 20210121, 20210122, 20210123, 20210128,
-      20210129, 20210130
-    ],
-    "image": "notyet.jpg"
-  },
-
-  {
-    "id": 2023,
-    "type": "dacquoise",
-    "item_name": "Yogurt",
-    "item_name_kor": "요거트",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210401, 20210402, 20210403, 20210404, 20210408, 20210409, 20210410,
-      20210411, 20210412, 20210415, 20210416, 20210417, 20210418, 20210419,
-      20210422, 20210423, 20210424, 20210425, 20210426, 20210429, 20210430
-    ],
-    "image": "notyet.jpg"
-  },
-
-  {
-    "id": 2024,
-    "type": "dacquoise",
-    "item_name": "Choco-Nutella",
-    "item_name_kor": "초코누텔라",
-    "price": 3.9,
-    "tastes": [],
-    "tastes_kor": [],
-    "available_date": [
-      20210506, 20210507, 20210508, 20210513, 20210514, 20210515, 20210520,
-      20210521, 20210522, 20210527, 20210528, 20210529
-    ],
-    "image": "notyet.jpg"
+    "sizeList": []
   }
 ]

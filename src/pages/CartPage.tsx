@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cart } from '../component/CartPage';
+import { Cart } from '../components/CartPage';
 
 interface Props {}
 

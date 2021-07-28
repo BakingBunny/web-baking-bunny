@@ -1,7 +1,7 @@
 import React from 'react';
 import { products, update, remove } from '../../store/cartSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import {
   Container,
   Title,
@@ -47,15 +47,15 @@ export const Cart = (props: Props) => {
       {cartList.length > 0 ? (
         <Wrapper>
           <CardWrapper>
-            {cartList.map((item: CartState) => {
+            {cartList.map((item: CartInterface) => {
               // item.product && setSubTotal(subTotal + item.product?.price);
 
               return (
                 <Card key={item.id}>
                   <ImageWrapper>
                     <Image
-                      src={require(`../../img/${item.product.image}`)?.default}
-                      alt={item.product.item_name}
+                      src={item.product.productImage}
+                      alt={item.product.productName}
                     />
                     <DeleteBtn onClick={() => dispatch(remove(item.id))}>
                       Delete
@@ -63,16 +63,16 @@ export const Cart = (props: Props) => {
                   </ImageWrapper>
                   <OptionsWrapper>
                     <CakeName>
-                      {item.product.item_name.replaceAll('-', ' ')}
+                      {item.product.productName.replaceAll('-', ' ')}
                     </CakeName>
-                    <Price item={item} />
-                    {item.tastes.length > 0 && (
-                      <Tastes item={item} updateHandler={updateHandler} />
+                    <Price cartItem={item} />
+                    {item.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                      <Tastes cartItem={item} updateHandler={updateHandler} />
                     )}
-                    {item.product.type === 'cake' && (
-                      <Size item={item} updateHandler={updateHandler} />
+                    {item.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
+                      <Size cartItem={item} updateHandler={updateHandler} />
                     )}
-                    <Quantity item={item} updateHandler={updateHandler} />
+                    <Quantity cartItem={item} updateHandler={updateHandler} />
                   </OptionsWrapper>
                 </Card>
               );

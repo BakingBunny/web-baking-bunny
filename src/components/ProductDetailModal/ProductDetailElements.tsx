@@ -52,7 +52,7 @@ export const CloseBtn = styled.div`
   /* transform: translate(-50%, -50%); */
   z-index: 5;
   font-size: 3rem;
-  color: #133853;
+  color: #133853b9;
   cursor: pointer;
   background: #fff;
   width: 3rem;
@@ -72,6 +72,8 @@ export const CloseBtn = styled.div`
       }
       100% {
         transform: rotate(180deg);
+        box-shadow: none;
+        color: #133853;
       }
     }
   }
@@ -112,7 +114,7 @@ export const OptionWrapper = styled.div`
 //     'add-to-cart-btn add-to-cart-btn';
 // `;
 
-export const CakeName = styled.div`
+export const ProductName = styled.div`
   font-size: 1.6rem;
   margin: 10px 0 5px;
   text-align: center;
@@ -201,6 +203,7 @@ export const SubOptionWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   margin: 10px 0;
+  width: 100%;
 
   @media screen and (max-width: 960px) {
     flex-direction: row;

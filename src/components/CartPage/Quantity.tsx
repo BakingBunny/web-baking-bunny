@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartState } from '../../interface/CartState';
+import { CartInterface } from '../../interface/CartInterface';
 import {
   QtyTitle,
   ProductQty,
@@ -8,12 +8,16 @@ import {
 } from './CartPageElements';
 
 interface Props {
-  item: CartState;
-  updateHandler: any; //TODO: specify later
+  cartItem: CartInterface;
+  updateHandler: (
+    id: string, // product id
+    option: string, // option name (qty)
+    value: number // product quantity
+  ) => void;
 }
 
 export const Quantity = (props: Props) => {
-  const { item } = props;
+  const { cartItem: item } = props;
 
   return (
     <QtyWrapper>

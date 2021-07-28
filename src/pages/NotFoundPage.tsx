@@ -1,5 +1,5 @@
 import React from 'react';
-import { NotFound } from '../component/NotFound';
+import { NotFound } from '../components/NotFound';
 
 interface Props {}
 
