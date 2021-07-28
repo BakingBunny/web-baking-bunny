@@ -1,5 +1,5 @@
 import React from 'react';
-import { checkout, update } from '../../store/checkoutSlice';
+import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import {
   DeliveryOptionWrapper,
@@ -11,14 +11,14 @@ import {
 interface Props {}
 
 export const DeliveryOption = (props: Props) => {
-  const checkoutState = useAppSelector(checkout);
+  const orderListState = useAppSelector(orderList);
   const dispatch = useAppDispatch();
 
   return (
     <DeliveryOptionWrapper>
       <DeliveryBtnWrapper>
         <DeliveryOptionBtn
-          isSelected={checkoutState.orderList.isDelivery === false}
+          isSelected={orderListState.isDelivery === false}
           onClick={() =>
             dispatch(
               update({
@@ -31,7 +31,7 @@ export const DeliveryOption = (props: Props) => {
           Pick Up
         </DeliveryOptionBtn>
         <DeliveryOptionBtn
-          isSelected={checkoutState.orderList.isDelivery === true}
+          isSelected={orderListState.isDelivery === true}
           onClick={() =>
             dispatch(
               update({
@@ -44,7 +44,7 @@ export const DeliveryOption = (props: Props) => {
           Delivery
         </DeliveryOptionBtn>
       </DeliveryBtnWrapper>
-      {checkoutState.orderList.isDelivery && (
+      {orderListState.isDelivery && (
         <DeliveryRequirement>
           {'< Note >'}
           <br />

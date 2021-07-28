@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import {
   ClientInfoContainer,
   ClientInputWrapper,
@@ -8,15 +8,16 @@ import {
   ClientInfoErrorMsg,
 } from './CheckoutPageElements';
 import { UserInterface } from '../../interface/UserInterface';
+import { DevTool } from '@hookform/devtools'; //TODO: Delete later
 
 interface Props {}
 
 export const UserInformation = (props: Props) => {
   const {
     register,
-    // control,
+    control,
     formState: { errors },
-  } = useFormContext<UserInterface>();
+  } = useForm<UserInterface>();
   console.log(errors);
 
   return (
@@ -83,12 +84,15 @@ export const UserInformation = (props: Props) => {
       <input
         type='text'
         placeholder='postalCode'
-        {...register('postalCode', {})}
+        {...register('postalCode', {
+          maxLength: { value: 6, message: 'Max length exceeded' },
+        })}
       />
       {/* <textarea {...register('comment', {})} /> */}
 
       {/* {errors.length > 0 && <div>{errors}</div>} */}
       <input type='submit' />
+      <DevTool control={control} placement='bottom-right' />
     </ClientInfoContainer>
   );
 };
