@@ -6,6 +6,8 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import formatCurrency from '../../utils';
 import { ProductInterface } from '../../interface/ProductInterface';
@@ -28,6 +30,8 @@ import { Size } from './Size';
 import { Quantity } from './Quantity';
 import { v4 as uuidv4 } from 'uuid';
 import { AiFillCloseCircle } from 'react-icons/ai';
+
+toast.configure();
 
 interface Props {
   // id: string;
@@ -147,6 +151,9 @@ export const ProductDetailModal: React.FC<Props> = ({
             onClick={() => {
               dispatch(add(productToCart));
               closeModal();
+              toast('Item successfully added to your cart.', {
+                type: 'success',
+              });
             }}
           >
             {productToCart.sizeId === 2
