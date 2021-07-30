@@ -4,9 +4,9 @@ import {
   ClientInputWrapper,
   ClientInfoInput,
   ClientInfoLabel,
-  ClientInfoErrorMsg,
+  // ClientInfoErrorMsg,
 } from './CheckoutPageElements';
-import { UserInterface } from '../../interface/UserInterface';
+// import { UserInterface } from '../../interface/UserInterface';
 
 interface Props {}
 

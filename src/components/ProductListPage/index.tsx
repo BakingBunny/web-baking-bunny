@@ -81,7 +81,7 @@ export const ProductList = (props: Props) => {
         break;
     }
     setLoading(false);
-  }, [productType, productList]);
+  }, [productType]);
 
   // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
