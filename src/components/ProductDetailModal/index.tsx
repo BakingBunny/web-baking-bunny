@@ -1,18 +1,10 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import formatCurrency from '../../utils';
 import { ProductInterface } from '../../interface/ProductInterface';
 import {
-  Container,
   Wrapper,
   CloseBtn,
   Image,
@@ -38,6 +30,7 @@ interface Props {
   selectedProduct: ProductInterface;
   showModal: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
+  closeModal: () => void;
 }
 
 const initialCart = {
@@ -63,37 +56,11 @@ export const ProductDetailModal: React.FC<Props> = ({
   selectedProduct,
   showModal,
   setShowModal,
+  closeModal,
 }) => {
   const [productToCart, setproductToCart] =
     useState<CartInterface>(initialCart);
   const dispatch = useAppDispatch();
-  const ModalRef = useRef<HTMLHeadingElement>(null);
-
-  const closeModal = useCallback(() => {
-    setShowModal(false);
-    document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setShowModal]);
-
-  // click background (greyed out) to close modal
-  const clickBackgroundToClose = (e: React.FormEvent<EventTarget>) => {
-    if (ModalRef.current === e.target) {
-      closeModal();
-    }
-  };
-
-  // press 'esc' to close modal
-  const keyPress = useCallback(
-    (e) => {
-      if (e.key === 'Escape' && showModal) closeModal();
-    },
-    [showModal, closeModal]
-  );
-
-  // press 'esc' to close modal
-  useEffect(() => {
-    document.addEventListener('keydown', keyPress);
-    return () => document.addEventListener('keydown', keyPress);
-  }, [keyPress]);
 
   // initialize product to add to the cart
   useEffect(() => {
@@ -114,56 +81,54 @@ export const ProductDetailModal: React.FC<Props> = ({
   if (!selectedProduct) return <NotFoundPage />;
 
   return (
-    <Container ref={ModalRef} onClick={clickBackgroundToClose}>
-      <Wrapper>
-        <Image
-          src={selectedProduct.productImage}
-          alt={selectedProduct.productName}
-        />
-        <CloseBtn onClick={closeModal}>
-          <AiFillCloseCircle />
-        </CloseBtn>
-        <OptionWrapper>
-          <ProductName>
-            {selectedProduct.productName.replaceAll('-', ' ')}
-          </ProductName>
-          <Price selectedProduct={selectedProduct} />
-          {selectedProduct.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
-            <Tastes
-              selectedProduct={selectedProduct}
+    <Wrapper>
+      <Image
+        src={selectedProduct.productImage}
+        alt={selectedProduct.productName}
+      />
+      <CloseBtn onClick={closeModal}>
+        <AiFillCloseCircle />
+      </CloseBtn>
+      <OptionWrapper>
+        <ProductName>
+          {selectedProduct.productName.replaceAll('-', ' ')}
+        </ProductName>
+        <Price selectedProduct={selectedProduct} />
+        {selectedProduct.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+          <Tastes
+            selectedProduct={selectedProduct}
+            productToCart={productToCart}
+            setproductToCart={setproductToCart}
+          />
+        )}
+        <SubOptionWrapper>
+          {selectedProduct.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
+            <Size
               productToCart={productToCart}
               setproductToCart={setproductToCart}
             />
           )}
-          <SubOptionWrapper>
-            {selectedProduct.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
-              <Size
-                productToCart={productToCart}
-                setproductToCart={setproductToCart}
-              />
-            )}
-            <Quantity
-              productToCart={productToCart}
-              setproductToCart={setproductToCart}
-            />
-          </SubOptionWrapper>
-          <AddToCartBtn
-            onClick={() => {
-              dispatch(add(productToCart));
-              closeModal();
-              toast('Item successfully added to your cart.', {
-                type: 'success',
-              });
-            }}
-          >
-            {productToCart.sizeId === 2
-              ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
-              : formatCurrency(selectedProduct.price * productToCart.qty)}
-            <br />
-            Add To Cart
-          </AddToCartBtn>
-        </OptionWrapper>
-      </Wrapper>
-    </Container>
+          <Quantity
+            productToCart={productToCart}
+            setproductToCart={setproductToCart}
+          />
+        </SubOptionWrapper>
+        <AddToCartBtn
+          onClick={() => {
+            dispatch(add(productToCart));
+            closeModal();
+            toast('Item successfully added to your cart.', {
+              type: 'success',
+            });
+          }}
+        >
+          {productToCart.sizeId === 2
+            ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
+            : formatCurrency(selectedProduct.price * productToCart.qty)}
+          <br />
+          Add To Cart
+        </AddToCartBtn>
+      </OptionWrapper>
+    </Wrapper>
   );
 };
