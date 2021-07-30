@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -18,6 +18,7 @@ import formatCurrency from '../../utils';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { ProductDetailModal } from '../ProductDetailModal';
 import { NotFoundPage } from '../../pages/NotFoundPage';
+import { ModalWindow } from '../ModalWindow';
 
 toast.configure();
 
@@ -94,6 +95,11 @@ export const ProductList = (props: Props) => {
     }
   };
 
+  const closeModal = useCallback(() => {
+    setShowModal(false);
+    document.body.style.overflow = 'unset'; // allow scrolling once modal close
+  }, [setShowModal]);
+
   return (
     <Container>
       <Wrapper>
@@ -135,11 +141,23 @@ export const ProductList = (props: Props) => {
         </CardWrapper>
       </Wrapper>
       {showModal && ( // once the product card is selected, popup the product detail modal window
-        <ProductDetailModal
-          selectedProduct={selectedProduct}
+        // <ProductDetailModal
+        //   selectedProduct={selectedProduct}
+        //   showModal={showModal}
+        //   setShowModal={setShowModal}
+        // />
+        <ModalWindow
           showModal={showModal}
           setShowModal={setShowModal}
-        />
+          closeModal={closeModal}
+        >
+          <ProductDetailModal
+            selectedProduct={selectedProduct}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            closeModal={closeModal}
+          />
+        </ModalWindow>
       )}
     </Container>
   );
