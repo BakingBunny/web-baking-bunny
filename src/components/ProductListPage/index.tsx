@@ -16,7 +16,7 @@ import {
 // import productList from '../../productList.json';
 import formatCurrency from '../../utils';
 import { ProductInterface } from '../../interface/ProductInterface';
-import { ProductDetailModal } from '../ProductDetailModal';
+import { ProductDetail } from '../ProductDetail';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import { ModalWindow } from '../ModalWindow';
 
@@ -141,20 +141,10 @@ export const ProductList = (props: Props) => {
         </CardWrapper>
       </Wrapper>
       {showModal && ( // once the product card is selected, popup the product detail modal window
-        // <ProductDetailModal
-        //   selectedProduct={selectedProduct}
-        //   showModal={showModal}
-        //   setShowModal={setShowModal}
-        // />
-        <ModalWindow
-          showModal={showModal}
-          setShowModal={setShowModal}
-          closeModal={closeModal}
-        >
-          <ProductDetailModal
+        <ModalWindow showModal={showModal} closeModal={closeModal}>
+          <ProductDetail
             selectedProduct={selectedProduct}
             showModal={showModal}
-            setShowModal={setShowModal}
             closeModal={closeModal}
           />
         </ModalWindow>

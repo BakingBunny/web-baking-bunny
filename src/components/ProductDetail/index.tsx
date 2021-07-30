@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NotFoundPage } from '../../pages/NotFoundPage';
@@ -29,7 +29,6 @@ interface Props {
   // id: string;
   selectedProduct: ProductInterface;
   showModal: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
   closeModal: () => void;
 }
 
@@ -52,10 +51,9 @@ const initialCart = {
   special: '',
 };
 
-export const ProductDetailModal: React.FC<Props> = ({
+export const ProductDetail: React.FC<Props> = ({
   selectedProduct,
   showModal,
-  setShowModal,
   closeModal,
 }) => {
   const [productToCart, setproductToCart] =

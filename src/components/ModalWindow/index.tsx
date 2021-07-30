@@ -1,32 +1,18 @@
-import React, {
-  useEffect,
-  useRef,
-  useCallback,
-  Dispatch,
-  SetStateAction,
-  ReactElement,
-} from 'react';
+import React, { useEffect, useRef, useCallback, ReactElement } from 'react';
 import { Container } from './ModalWindowElements';
 
 interface Props {
   showModal: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
   children: ReactElement<any, any>;
   closeModal: () => void;
 }
 
 export const ModalWindow: React.FC<Props> = ({
   showModal,
-  setShowModal,
   children,
   closeModal,
 }) => {
   const ModalRef = useRef<HTMLHeadingElement>(null);
-
-  // const closeModal = useCallback(() => {
-  //   setShowModal(false);
-  //   document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  // }, [setShowModal]);
 
   // click background (greyed out) to close modal
   const clickBackgroundToClose = (e: React.FormEvent<EventTarget>) => {
@@ -51,8 +37,7 @@ export const ModalWindow: React.FC<Props> = ({
 
   return (
     <Container ref={ModalRef} onClick={clickBackgroundToClose}>
-      {/* {children} */}
-      {React.cloneElement(children, { closeModal: closeModal })}
+      {children}
     </Container>
   );
 };
