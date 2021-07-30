@@ -13,7 +13,7 @@ import {
   Price,
   OrderNowBtn,
 } from './ProductListElements';
-// import productList from '../../productList.json';
+import productList from '../../productList.json';
 import formatCurrency from '../../utils';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { ProductDetail } from '../ProductDetail';
@@ -50,36 +50,38 @@ export const ProductList = (props: Props) => {
   const { productType } = props;
 
   // fetch product list from the server
-  useEffect(() => {
-    try {
-      const fetchData = async () => {
-        setLoading(true);
-        window.scrollTo(0, 0); // scroll to top
-        const result = await fetch(`/api/product/${productType}`);
-        const body = await result.json();
-        setFilteredProductList(body);
-        setLoading(false);
-      };
-      fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-    } catch (error) {
-      toast('Sorry, something went wrong. Try it later.', { type: 'error' });
-    }
-  }, [productType]);
-
   // useEffect(() => {
-  //   switch (productType) {
-  //     case '/cakes':
-  //       setFilteredProductList(
-  //         productList.filter((item) => item.categoryId === 1)
-  //       );
-  //       break;
-  //     case '/dacquoises':
-  //       setFilteredProductList(
-  //         productList.filter((item) => item.categoryId === 2)
-  //       );
-  //       break;
+  //   try {
+  //     const fetchData = async () => {
+  //       setLoading(true);
+  //       window.scrollTo(0, 0); // scroll to top
+  //       const result = await fetch(`/api/product/${productType}`);
+  //       const body = await result.json();
+  //       setFilteredProductList(body);
+  //       setLoading(false);
+  //     };
+  //     fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
+  //   } catch (error) {
+  //     toast('Sorry, something went wrong. Try it later.', { type: 'error' });
   //   }
-  // }, [productType, productList]);
+  // }, [productType]);
+
+  useEffect(() => {
+    setLoading(true);
+    switch (productType) {
+      case '/cakes':
+        setFilteredProductList(
+          productList.filter((item) => item.categoryId === 1)
+        );
+        break;
+      case '/dacquoises':
+        setFilteredProductList(
+          productList.filter((item) => item.categoryId === 2)
+        );
+        break;
+    }
+    setLoading(false);
+  }, [productType, productList]);
 
   // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
