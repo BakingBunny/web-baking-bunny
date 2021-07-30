@@ -1,30 +1,34 @@
-import React from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
-import { CheckOutInterface } from '../../interface/CheckOutInterface';
-import { Container, Title } from './CheckoutPageElements';
+import React, { useState, useCallback } from 'react';
+import { Wrapper, Title } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
-import { Dates } from './Dates';
+import { SelectDate } from './SelectDate';
 import { UserInformation } from './UserInformation';
-import { DevTool } from '@hookform/devtools'; //TODO: Delete later
+import { ModalWindow } from '../ModalWindow';
+import { DisplayDate } from './DisplayDate';
 
 interface Props {}
 
 export const CheckOut = (props: Props) => {
-  const methods = useForm();
-  const { control } = useForm({
-    mode: 'onChange',
-  });
-  const onSubmit = (data: CheckOutInterface) => console.log(data);
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const closeModal = useCallback(() => {
+    setShowModal(false);
+    document.body.style.overflow = 'unset'; // allow scrolling once modal close
+  }, [setShowModal]);
 
   return (
-    <FormProvider {...methods}>
-      <Container onSubmit={methods.handleSubmit(onSubmit)}>
+    <>
+      <Wrapper>
         <Title>Checkout</Title>
-        <DeliveryOption />
-        <Dates />
+        <DeliveryOption setShowModal={setShowModal} />
+        <DisplayDate setShowModal={setShowModal} />
         <UserInformation />
-      </Container>
-      <DevTool control={control} placement='bottom-right' />
-    </FormProvider>
+      </Wrapper>
+      {showModal && (
+        <ModalWindow showModal={showModal} closeModal={closeModal}>
+          <SelectDate closeModal={closeModal} />
+        </ModalWindow>
+      )}
+    </>
   );
 };

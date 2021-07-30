@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8) !important;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 350px auto;
@@ -25,7 +14,6 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-
   animation: popup 0.2s ease-out;
 
   @keyframes popup {

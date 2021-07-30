@@ -1,7 +1,39 @@
 // import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Container = styled.form`
+interface BtnProps {
+  readonly isSelected: boolean;
+}
+
+export const CheckOutBtn = styled.button`
+  border: 0;
+  color: #fff;
+  margin: 20px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  font-family: 'Otomanopee One', sans-serif;
+  background-color: #133853;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media screen and (max-width: 960px) {
+    &:hover {
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -33,10 +65,6 @@ export const Title = styled.h2`
 //   }
 // `;
 
-interface BtnProps {
-  readonly isSelected: boolean;
-}
-
 export const DeliveryOptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,36 +80,16 @@ export const DeliveryBtnWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const DeliveryOptionBtn = styled.button<BtnProps>`
-  border: 0;
-  color: #fff;
-  margin: 20px;
+interface BtnProps {
+  readonly isSelected: boolean;
+}
+
+export const DeliveryOptionBtn = styled(CheckOutBtn)<BtnProps>`
   font-size: 1.3rem;
-  border-radius: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: clamp(150px, 75%, 200px);
-  padding: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  font-family: 'Otomanopee One', sans-serif;
+  text-transform: uppercase;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  @media screen and (max-width: 960px) {
-    &:hover {
-      transform: translateY(0);
-    }
-  }
 `;
 
 export const DeliveryRequirement = styled.div`
@@ -90,22 +98,15 @@ export const DeliveryRequirement = styled.div`
   /* justify-content: space-between; */
   margin: auto;
   height: 95px;
+  max-width: 95vw;
   /* padding: 20px 0; */
   /* padding: 0 20px; */
+`;
 
-  animation: deliveryRequirementHeight 0.3s ease;
-
-  @keyframes deliveryRequirementHeight {
-    from {
-      height: 0;
-      /* padding: 0; */
-    }
-    to {
-      height: 95px;
-      /* height: auto; */
-      /* padding: 20px 0; */
-    }
-  }
+export const DateBtn = styled(CheckOutBtn)`
+  font-size: 1rem;
+  width: 250px;
+  margin: 30px auto;
 `;
 
 export const DatesWrapper = styled.div`
@@ -113,6 +114,27 @@ export const DatesWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #fff;
+  padding: 20px;
+  border: 3px solid #133853;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  animation: popup 0.2s ease-out;
+
+  @keyframes popup {
+    from {
+      transform: translateY(-10%);
+      /* opacity: 0.5; */
+    }
+    to {
+      transform: translateY(0%);
+      /* opacity: 1; */
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    max-width: 85%;
+  }
 `;
 
 export const ClientInfoContainer = styled.div`
