@@ -5,6 +5,7 @@ import {
   DeliveryOptionWrapper,
   DeliveryBtnWrapper,
   DeliveryOptionBtn,
+  CheckOutQuestion,
 } from './CheckoutPageElements';
 
 interface Props {
@@ -28,6 +29,7 @@ export const DeliveryOption: React.FC<Props> = ({ setShowModal }) => {
 
   return (
     <DeliveryOptionWrapper>
+      <CheckOutQuestion>How would you like to take them?</CheckOutQuestion>
       <DeliveryBtnWrapper>
         <DeliveryOptionBtn
           isSelected={orderListState.isDelivery === false}

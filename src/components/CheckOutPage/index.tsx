@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Wrapper, Title } from './CheckoutPageElements';
+import { Wrapper, Title, SubmitBtn } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
 import { UserInformation } from './UserInformation';
@@ -23,6 +23,7 @@ export const CheckOut = (props: Props) => {
         <DeliveryOption setShowModal={setShowModal} />
         <DisplayDate setShowModal={setShowModal} />
         <UserInformation />
+        <SubmitBtn type='submit'>Submit</SubmitBtn>
       </Wrapper>
       {showModal && (
         <ModalWindow showModal={showModal} closeModal={closeModal}>

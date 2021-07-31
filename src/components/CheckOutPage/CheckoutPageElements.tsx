@@ -70,7 +70,17 @@ export const DeliveryOptionWrapper = styled.div`
   flex-direction: column;
   /* justify-content: space-between; */
   margin: auto;
-  padding: 0 20px;
+  border-top: 1px solid #42628056;
+  align-items: center;
+  width: 330px;
+`;
+
+export const CheckOutQuestion = styled.div`
+  font-size: 1.2rem;
+  padding: 1rem 0 0 0;
+  font-family: 'Georama', sans-serif;
+  font-weight: 500;
+  color: #133853;
 `;
 
 export const DeliveryBtnWrapper = styled.div`
@@ -103,10 +113,20 @@ export const DeliveryRequirement = styled.div`
   /* padding: 0 20px; */
 `;
 
+export const DateBtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  /* justify-content: space-between; */
+  margin: auto;
+  border-top: 1px solid #42628056;
+  align-items: center;
+`;
+
 export const DateBtn = styled(CheckOutBtn)`
-  font-size: 1rem;
-  width: 250px;
-  margin: 30px auto;
+  font-size: 1.2rem;
+  width: 270px;
+  margin: 20px auto;
 `;
 
 export const DatesWrapper = styled.div`
@@ -142,6 +162,9 @@ export const ClientInfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid #42628056;
+  width: 330px;
+  margin: 0 auto;
 `;
 
 export const ClientInputWrapper = styled.div`
@@ -159,13 +182,14 @@ export const ClientInfoInput = styled.input`
   color: rgb(12, 21, 29);
   border: none;
   outline: none;
+  font-size: 1rem;
   background-color: rgb(249, 250, 251);
 
   &:focus + label span,
   &:valid + label span {
-    transform: translateY(-70%);
+    transform: translateY(-90%);
     font-size: 0.7rem;
-    color: rgb(4, 43, 159);
+    color: #133853;
   }
 
   // border-bottom
@@ -184,6 +208,8 @@ export const ClientInfoLabel = styled.label`
   // background: blue;
   pointer-events: none; // to be clicked the input
   border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  font-family: 'Georama', sans-serif;
+  font-weight: 400;
 
   &::after {
     content: '';
@@ -192,7 +218,7 @@ export const ClientInfoLabel = styled.label`
     width: 100%;
     left: 0;
     bottom: -1px;
-    border-bottom: 2px solid #125fca;
+    border-bottom: 2px solid #133853;
     transform: translateX(-100%);
     transition: all 0.3s ease;
   }
@@ -211,6 +237,13 @@ export const ClientInfoErrorMsg = styled.div`
   font-size: 0.8rem;
   color: red;
   margin-top: 0;
+`;
+
+export const SubmitBtn = styled(CheckOutBtn)`
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  margin: 20px auto;
 `;
 
 // export const Card = styled.div`
