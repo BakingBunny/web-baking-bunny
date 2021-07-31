@@ -4,11 +4,11 @@ import {
   ClientInputWrapper,
   ClientInfoInput,
   ClientInfoLabel,
-  ClientInfoErrorMsg,
+  // ClientInfoErrorMsg,
   CheckOutQuestion,
-  SubmitBtn,
+  // SubmitBtn,
 } from './CheckoutPageElements';
-import { UserInterface } from '../../interface/UserInterface';
+// import { UserInterface } from '../../interface/UserInterface';
 
 interface Props {}
 
