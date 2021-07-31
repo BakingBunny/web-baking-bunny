@@ -5,6 +5,8 @@ import {
   ClientInfoInput,
   ClientInfoLabel,
   ClientInfoErrorMsg,
+  CheckOutQuestion,
+  SubmitBtn,
 } from './CheckoutPageElements';
 import { UserInterface } from '../../interface/UserInterface';
 
@@ -13,6 +15,7 @@ interface Props {}
 export const UserInformation = (props: Props) => {
   return (
     <ClientInfoContainer>
+      <CheckOutQuestion>Please tell us who you are :)</CheckOutQuestion>
       <ClientInputWrapper>
         <ClientInfoInput type='text' name='firstname' required />
         <ClientInfoLabel>
@@ -34,7 +37,7 @@ export const UserInformation = (props: Props) => {
       <ClientInputWrapper>
         <ClientInfoInput type='tel' required />
         <ClientInfoLabel>
-          <span>Mobile number</span>
+          <span>Phone number</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
       <ClientInputWrapper>
@@ -46,12 +49,10 @@ export const UserInformation = (props: Props) => {
       <ClientInputWrapper>
         <ClientInfoInput type='text' required />
         <ClientInfoLabel>
-          <span>postalCode</span>
+          <span>Postal Code</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
       {/* <textarea {...register('allergy', {})} placeholder='Allergy' /> */}
-
-      <input type='submit' />
     </ClientInfoContainer>
   );
 };
