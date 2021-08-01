@@ -45,7 +45,7 @@ export const ProductList = (props: Props) => {
   >([]);
   const [selectedProduct, setSelectedProduct] =
     useState<ProductInterface>(initialProduct);
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const { productType } = props;
 
@@ -88,17 +88,22 @@ export const ProductList = (props: Props) => {
     );
     if (findProduct) {
       setSelectedProduct(findProduct);
-      setShowModal(true);
+      openModal();
       document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
     } else {
       return <NotFoundPage />; //TODO: check if it works
     }
   };
 
+  const openModal = useCallback(() => {
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
+  }, [setIsModalOpen]);
+
   const closeModal = useCallback(() => {
-    setShowModal(false);
+    setIsModalOpen(false);
     document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setShowModal]);
+  }, [setIsModalOpen]);
 
   return (
     <Container>
@@ -140,11 +145,10 @@ export const ProductList = (props: Props) => {
               ))}
         </CardWrapper>
       </Wrapper>
-      {showModal && ( // once the product card is selected, popup the product detail modal window
-        <ModalWindow showModal={showModal} closeModal={closeModal}>
+      {isModalOpen && ( // once the product card is selected, popup the product detail modal window
+        <ModalWindow isModalOpen={isModalOpen} closeModal={closeModal}>
           <ProductDetail
             selectedProduct={selectedProduct}
-            showModal={showModal}
             closeModal={closeModal}
           />
         </ModalWindow>

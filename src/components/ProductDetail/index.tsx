@@ -28,7 +28,6 @@ toast.configure();
 interface Props {
   // id: string;
   selectedProduct: ProductInterface;
-  showModal: boolean;
   closeModal: () => void;
 }
 
@@ -53,7 +52,6 @@ const initialCart = {
 
 export const ProductDetail: React.FC<Props> = ({
   selectedProduct,
-  showModal,
   closeModal,
 }) => {
   const [productToCart, setproductToCart] =

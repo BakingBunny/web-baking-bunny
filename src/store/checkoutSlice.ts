@@ -12,7 +12,7 @@ const initialState: CheckOutInterface = {
     address: '',
     postalCode: '',
     phone: '',
-    city: '',
+    city: 'Calgary',
   },
   cart: [],
   customCake: {
@@ -21,7 +21,9 @@ const initialState: CheckOutInterface = {
     ExampleImage: '',
   },
   orderList: {
+    subtotal: 0,
     deliveryFee: 0,
+    total: 0,
     isDelivery: false,
     pickupDeliveryDate: new Date(),
   },

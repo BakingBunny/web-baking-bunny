@@ -17,8 +17,9 @@ export const Tastes = (props: Props) => {
   return (
     <TastesSelect
       onChange={(e) =>
-        props.updateHandler(cartItem.id, 'tasteId', Number(e.target.value))
+        props.updateHandler(cartItem.id, e.target.name, Number(e.target.value))
       }
+      name={'tasteId'}
       value={cartItem.tasteId}
     >
       {cartItem.product.tasteList.map((taste) => (
