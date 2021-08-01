@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useCallback, ReactElement } from 'react';
 import { Container } from './ModalWindowElements';
 
 interface Props {
-  showModal: boolean;
-  children: ReactElement<any, any>;
+  isModalOpen: boolean;
   closeModal: () => void;
+  children: ReactElement<any, any>;
 }
 
 export const ModalWindow: React.FC<Props> = ({
-  showModal,
+  isModalOpen,
   children,
   closeModal,
 }) => {
@@ -24,9 +24,9 @@ export const ModalWindow: React.FC<Props> = ({
   // press 'esc' to close modal
   const keyPress = useCallback(
     (e) => {
-      if (e.key === 'Escape' && showModal) closeModal();
+      if (e.key === 'Escape' && isModalOpen) closeModal();
     },
-    [showModal, closeModal]
+    [isModalOpen, closeModal]
   );
 
   // press 'esc' to close modal

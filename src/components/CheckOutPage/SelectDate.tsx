@@ -21,7 +21,7 @@ export const SelectDate: React.FC<Props> = ({ closeModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
 
-  const onChangeHandler = (date: OnChangeProps) => {
+  const onChangeHandler = (date: OnChangeProps): void => {
     dispatch(
       update({
         name: 'pickupDeliveryDate',
@@ -33,17 +33,25 @@ export const SelectDate: React.FC<Props> = ({ closeModal }) => {
 
   return (
     <DatesWrapper>
-      {orderListState.isDelivery && (
+      {orderListState.isDelivery ? (
         <DeliveryRequirement>
           {'< Note >'}
           <br />
-          1. Delivery service is available only for more than $ 50 purchase on
+          1. Delivery service is available only for more than $50 purchase on
           Saturday. <br />
-          2. Additional delivery fee can range from 0 to 10 dollars by distance.
+          2. Additional delivery fee can range up to $10 by distance.
+        </DeliveryRequirement>
+      ) : (
+        <DeliveryRequirement>
+          Please select a date you want to pick up.
         </DeliveryRequirement>
       )}
       <Calendar
-        date={orderListState.pickupDeliveryDate}
+        date={
+          orderListState.pickupDeliveryDate
+            ? orderListState.pickupDeliveryDate
+            : minDate
+        }
         onChange={onChangeHandler}
         minDate={minDate}
         maxDate={maxDate}

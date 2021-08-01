@@ -222,6 +222,7 @@ export const ProceedBtn = styled(Link)`
   margin: 10px 0 0;
   padding: 10px 15px;
   border-radius: 5px;
+  font-family: 'Otomanopee One', sans-serif;
 `;
 
 export const EmptyCart = styled.div`

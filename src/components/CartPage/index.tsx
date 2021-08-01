@@ -31,7 +31,7 @@ export const Cart = (props: Props) => {
     id: string,
     option: string,
     value: number | string
-  ) => {
+  ): void => {
     dispatch(
       update({
         id: id,

@@ -8,18 +8,19 @@ import {
 } from './CheckoutPageElements';
 
 interface Props {
-  setShowModal: Dispatch<SetStateAction<boolean>>;
+  openCalendarModal: () => void;
 }
 
-export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
+export const DisplayDate: React.FC<Props> = ({ openCalendarModal }) => {
   const orderListState = useAppSelector(orderList);
-  console.log(orderListState.pickupDeliveryDate);
 
   return (
     <DateBtnWrapper>
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
-      <DateBtn onClick={() => setShowModal(true)}>
-        on {orderListState.pickupDeliveryDate.toDateString()}
+      <DateBtn onClick={() => openCalendarModal()}>
+        {orderListState.pickupDeliveryDate
+          ? orderListState.pickupDeliveryDate.toDateString()
+          : 'Select a date'}
       </DateBtn>
     </DateBtnWrapper>
   );

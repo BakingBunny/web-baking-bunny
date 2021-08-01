@@ -7,9 +7,11 @@ let minDate = new Date();
 minDate.setDate(minDate.getDate() + 7);
 
 const initialState: OrderListInterface = {
+  subtotal: 0,
   deliveryFee: 0,
+  total: 0,
   isDelivery: false,
-  pickupDeliveryDate: minDate,
+  pickupDeliveryDate: null,
 };
 
 export const orderListSlice = createSlice({
@@ -20,7 +22,7 @@ export const orderListSlice = createSlice({
       state,
       action: PayloadAction<{
         name: string;
-        value: number | Date | boolean | OnChangeProps;
+        value: number | boolean | Date | OnChangeProps | null;
       }>
     ) => {
       const { name, value } = action.payload;

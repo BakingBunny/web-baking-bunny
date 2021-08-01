@@ -12,8 +12,12 @@ import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { Footer } from './components/Footer';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { useCountCartItems } from './hooks/useCountCartItems';
 
 function App() {
+  const countCartItems = useCountCartItems();
+  console.log(countCartItems);
+
   return (
     <div className='App'>
       <Router>
@@ -26,7 +30,9 @@ function App() {
             exact
           />
           <Route path='/cart' component={CartPage} exact />
-          <Route path='/checkout' component={CheckoutPage} exact />
+          {countCartItems > 0 && (
+            <Route path='/checkout' component={CheckoutPage} exact />
+          )}
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />

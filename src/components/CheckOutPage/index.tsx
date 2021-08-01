@@ -1,33 +1,51 @@
 import React, { useState, useCallback } from 'react';
-import { Wrapper, Title, SubmitBtn } from './CheckoutPageElements';
+import { orderList } from '../../store/orderListSlice';
+import { useAppSelector } from '../../store/hooks';
+import { Wrapper, Title, ConfirmBtn } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
-import { UserInformation } from './UserInformation';
+import { UserInfo } from './UserInfo';
 import { ModalWindow } from '../ModalWindow';
 import { DisplayDate } from './DisplayDate';
 
 interface Props {}
 
 export const CheckOut = (props: Props) => {
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isCalendarModalOpen, setIsCalendarModalOpen] =
+    useState<boolean>(false);
+  const [showCalcDeliveryFeeModal, setCalcDeliveryFeeModal] =
+    useState<boolean>(false);
+  const orderListState = useAppSelector(orderList);
 
-  const closeModal = useCallback(() => {
-    setShowModal(false);
+  const openCalendarModal = useCallback(() => {
+    setIsCalendarModalOpen(true);
+    document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
+  }, [setIsCalendarModalOpen]);
+
+  const closeCalendarModal = useCallback(() => {
+    setIsCalendarModalOpen(false);
     document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setShowModal]);
+  }, [setIsCalendarModalOpen]);
 
   return (
     <>
       <Wrapper>
         <Title>Checkout</Title>
-        <DeliveryOption setShowModal={setShowModal} />
-        <DisplayDate setShowModal={setShowModal} />
-        <UserInformation />
-        <SubmitBtn type='submit'>Submit</SubmitBtn>
+        <DeliveryOption setCalcDeliveryFeeModal={setCalcDeliveryFeeModal} />
+        <DisplayDate openCalendarModal={openCalendarModal} />
+        {orderListState.pickupDeliveryDate && (
+          <>
+            <UserInfo />
+            <ConfirmBtn>Confirm</ConfirmBtn>
+          </>
+        )}
       </Wrapper>
-      {showModal && (
-        <ModalWindow showModal={showModal} closeModal={closeModal}>
-          <SelectDate closeModal={closeModal} />
+      {isCalendarModalOpen && (
+        <ModalWindow
+          isModalOpen={isCalendarModalOpen}
+          closeModal={closeCalendarModal}
+        >
+          <SelectDate closeModal={closeCalendarModal} />
         </ModalWindow>
       )}
     </>
