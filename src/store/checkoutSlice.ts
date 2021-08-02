@@ -12,7 +12,7 @@ const initialState: CheckOutInterface = {
     address: '',
     postalCode: '',
     phone: '',
-    city: 'Calgary',
+    // city: 'Calgary',
   },
   cart: [],
   customCake: {

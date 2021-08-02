@@ -7,15 +7,26 @@ import { SelectDate } from './SelectDate';
 import { UserInfo } from './UserInfo';
 import { ModalWindow } from '../ModalWindow';
 import { DisplayDate } from './DisplayDate';
+import { CalcDeliveryFee } from './CalcDeliveryFee';
 
 interface Props {}
 
 export const CheckOut = (props: Props) => {
   const [isCalendarModalOpen, setIsCalendarModalOpen] =
     useState<boolean>(false);
-  const [showCalcDeliveryFeeModal, setCalcDeliveryFeeModal] =
+  const [isCalcDeliveryFeeModalOpen, setIsCalcDeliveryFeeModalOpen] =
     useState<boolean>(false);
   const orderListState = useAppSelector(orderList);
+
+  const openCalcDeliveryFeeModal = useCallback(() => {
+    setIsCalcDeliveryFeeModalOpen(true);
+    document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
+  }, [setIsCalcDeliveryFeeModalOpen]);
+
+  const closeCalcDeliveryFeeModal = useCallback(() => {
+    setIsCalcDeliveryFeeModalOpen(false);
+    document.body.style.overflow = 'unset'; // allow scrolling once modal close
+  }, [setIsCalcDeliveryFeeModalOpen]);
 
   const openCalendarModal = useCallback(() => {
     setIsCalendarModalOpen(true);
@@ -31,7 +42,7 @@ export const CheckOut = (props: Props) => {
     <>
       <Wrapper>
         <Title>Checkout</Title>
-        <DeliveryOption setCalcDeliveryFeeModal={setCalcDeliveryFeeModal} />
+        <DeliveryOption openCalcDeliveryFeeModal={openCalcDeliveryFeeModal} />
         <DisplayDate openCalendarModal={openCalendarModal} />
         {orderListState.pickupDeliveryDate && (
           <>
@@ -40,6 +51,14 @@ export const CheckOut = (props: Props) => {
           </>
         )}
       </Wrapper>
+      {isCalcDeliveryFeeModalOpen && (
+        <ModalWindow
+          isModalOpen={isCalcDeliveryFeeModalOpen}
+          closeModal={closeCalcDeliveryFeeModal}
+        >
+          <CalcDeliveryFee closeModal={closeCalcDeliveryFeeModal} />
+        </ModalWindow>
+      )}
       {isCalendarModalOpen && (
         <ModalWindow
           isModalOpen={isCalendarModalOpen}

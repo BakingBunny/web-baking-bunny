@@ -114,7 +114,7 @@ export const DateBtn = styled(CheckOutBtn)`
   margin: 20px auto;
 `;
 
-export const DatesWrapper = styled.div`
+export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -125,21 +125,28 @@ export const DatesWrapper = styled.div`
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   animation: popup 0.2s ease-out;
+  max-width: 500px;
 
   @keyframes popup {
     from {
       transform: translateY(-10%);
-      /* opacity: 0.5; */
+      opacity: 0;
     }
     to {
       transform: translateY(0%);
-      /* opacity: 1; */
+      opacity: 1;
     }
   }
 
   @media screen and (max-width: 960px) {
     max-width: 85%;
   }
+`;
+
+export const CheckAddressBtn = styled(CheckOutBtn)`
+  font-size: 1.2rem;
+  width: 200px;
+  margin: 10px auto;
 `;
 
 export const ClientInfoContainer = styled.div`
@@ -239,7 +246,7 @@ export const ConfirmBtn = styled(CheckOutBtn)`
   font-size: 1.5rem;
   text-transform: uppercase;
   padding: 10px 30px;
-  margin: 30px auto;
+  margin: 30px auto 10px;
   color: #000;
   background: #f4ba29;
 `;

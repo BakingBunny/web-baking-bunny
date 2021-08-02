@@ -6,5 +6,5 @@ export interface UserInfoInterface {
   phone: string;
   address: string;
   postalCode: string;
-  city: string;
+  // city: string;
 }

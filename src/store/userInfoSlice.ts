@@ -9,7 +9,7 @@ const initialState: UserInfoInterface = {
   address: '',
   postalCode: '',
   phone: '',
-  city: 'Calgary',
+  // city: 'Calgary',
 };
 
 export const userInfoSlice = createSlice({

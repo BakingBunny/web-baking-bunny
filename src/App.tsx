@@ -16,7 +16,6 @@ import { useCountCartItems } from './hooks/useCountCartItems';
 
 function App() {
   const countCartItems = useCountCartItems();
-  console.log(countCartItems);
 
   return (
     <div className='App'>
