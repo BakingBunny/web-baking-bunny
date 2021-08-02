@@ -4,11 +4,10 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { DatesWrapper, DeliveryRequirement } from './CheckoutPageElements';
+import { ModalWrapper, DeliveryRequirement } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {
-  // showModal: boolean;
   closeModal: () => void;
 }
 
@@ -32,20 +31,10 @@ export const SelectDate: React.FC<Props> = ({ closeModal }) => {
   };
 
   return (
-    <DatesWrapper>
-      {orderListState.isDelivery ? (
-        <DeliveryRequirement>
-          {'< Note >'}
-          <br />
-          1. Delivery service is available only for more than $50 purchase on
-          Saturday. <br />
-          2. Additional delivery fee can range up to $10 by distance.
-        </DeliveryRequirement>
-      ) : (
-        <DeliveryRequirement>
-          Please select a date you want to pick up.
-        </DeliveryRequirement>
-      )}
+    <ModalWrapper>
+      <DeliveryRequirement>
+        Please select a date you want to pick up.
+      </DeliveryRequirement>
       <Calendar
         date={
           orderListState.pickupDeliveryDate
@@ -56,6 +45,6 @@ export const SelectDate: React.FC<Props> = ({ closeModal }) => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    </DatesWrapper>
+    </ModalWrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { userInfo, update } from '../../store/userInfoSlice';
-import { orderList } from '../../store/orderListSlice';
+// import { orderList } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import {
   ClientInfoContainer,
@@ -16,7 +16,7 @@ interface Props {}
 
 export const UserInfo = (props: Props) => {
   const userInfoState = useAppSelector(userInfo);
-  const orderListState = useAppSelector(orderList);
+  // const orderListState = useAppSelector(orderList);
   const dispatch = useAppDispatch();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {

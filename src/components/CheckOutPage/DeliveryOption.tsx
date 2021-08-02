@@ -13,11 +13,11 @@ import {
 toast.configure();
 
 interface Props {
-  setCalcDeliveryFeeModal: Dispatch<SetStateAction<boolean>>;
+  openCalcDeliveryFeeModal: () => void;
 }
 
 export const DeliveryOption: React.FC<Props> = ({
-  setCalcDeliveryFeeModal,
+  openCalcDeliveryFeeModal,
 }) => {
   const orderListState = useAppSelector(orderList);
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ export const DeliveryOption: React.FC<Props> = ({
     }
 
     // if dellivery then open modal to calc the fee
-    if (isDelivery) setCalcDeliveryFeeModal(true);
+    if (isDelivery) openCalcDeliveryFeeModal();
 
     // if delliver and date is NOT Saturday then reset the date.
     if (isDelivery && orderListState.pickupDeliveryDate?.getDay() !== 6)
