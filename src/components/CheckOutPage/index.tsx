@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { orderList } from '../../store/orderListSlice';
 import { useAppSelector } from '../../store/hooks';
-import { Wrapper, Title, ConfirmBtn } from './CheckoutPageElements';
+import { Wrapper, Title, ConfirmLink } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
 import { UserInfo } from './UserInfo';
@@ -47,7 +47,7 @@ export const CheckOut = (props: Props) => {
         {orderListState.pickupDeliveryDate && (
           <>
             <UserInfo />
-            <ConfirmBtn>Confirm</ConfirmBtn>
+            <ConfirmLink to={'/review'}>Confirm</ConfirmLink>
           </>
         )}
       </Wrapper>

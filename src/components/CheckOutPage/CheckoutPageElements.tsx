@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface BtnProps {
@@ -249,4 +249,34 @@ export const ConfirmBtn = styled(CheckOutBtn)`
   margin: 30px auto 10px;
   color: #000;
   background: #f4ba29;
+`;
+
+export const ConfirmLink = styled(Link)`
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  margin: 30px auto 10px;
+  color: #000;
+  background: #f4ba29;
+  border: 0;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  font-family: 'Otomanopee One', sans-serif;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media screen and (max-width: 960px) {
+    &:hover {
+      transform: translateY(0);
+    }
+  }
 `;
