@@ -1,49 +1,35 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { orderList } from '../../store/orderListSlice';
 import { useAppSelector } from '../../store/hooks';
 import { Wrapper, Title, ConfirmLink } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
 import { UserInfo } from './UserInfo';
-import { ModalWindow } from '../ModalWindow';
+import { ModalWindow } from '../../utils/ModalWindow';
 import { DisplayDate } from './DisplayDate';
-import { CalcDeliveryFee } from './CalcDeliveryFee';
+import { ModalCalcDeliveryFee } from './ModalCalcDeliveryFee';
+import { ModalPickUpLocation } from './ModalPickUpLocation';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {}
 
 export const CheckOut = (props: Props) => {
-  const [isCalendarModalOpen, setIsCalendarModalOpen] =
+  const [showPickUpLocationModal, setShowPickUpLocationModal] =
     useState<boolean>(false);
-  const [isCalcDeliveryFeeModalOpen, setIsCalcDeliveryFeeModalOpen] =
+  const [showCalcDeliveryFeeModal, setShowCalcDeliveryFeeModal] =
     useState<boolean>(false);
-  const orderListState = useAppSelector(orderList);
-
-  const openCalcDeliveryFeeModal = useCallback(() => {
-    setIsCalcDeliveryFeeModalOpen(true);
-    document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
-  }, [setIsCalcDeliveryFeeModalOpen]);
-
-  const closeCalcDeliveryFeeModal = useCallback(() => {
-    setIsCalcDeliveryFeeModalOpen(false);
-    document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setIsCalcDeliveryFeeModalOpen]);
-
-  const openCalendarModal = useCallback(() => {
-    setIsCalendarModalOpen(true);
-    document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
-  }, [setIsCalendarModalOpen]);
-
-  const closeCalendarModal = useCallback(() => {
-    setIsCalendarModalOpen(false);
-    document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setIsCalendarModalOpen]);
+  const [showCalendarModal, setShowCalendarModal] = useState<boolean>(false);
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
 
   return (
     <>
       <Wrapper>
         <Title>Checkout</Title>
-        <DeliveryOption openCalcDeliveryFeeModal={openCalcDeliveryFeeModal} />
-        <DisplayDate openCalendarModal={openCalendarModal} />
+        <DeliveryOption
+          setShowPickUpLocationModal={setShowPickUpLocationModal}
+          setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
+        />
+        <DisplayDate setShowModal={setShowCalendarModal} />
         {orderListState.pickupDeliveryDate && (
           <>
             <UserInfo />
@@ -51,20 +37,28 @@ export const CheckOut = (props: Props) => {
           </>
         )}
       </Wrapper>
-      {isCalcDeliveryFeeModalOpen && (
+      {showPickUpLocationModal && (
         <ModalWindow
-          isModalOpen={isCalcDeliveryFeeModalOpen}
-          closeModal={closeCalcDeliveryFeeModal}
+          showModal={showPickUpLocationModal}
+          setShowModal={setShowPickUpLocationModal}
         >
-          <CalcDeliveryFee closeModal={closeCalcDeliveryFeeModal} />
+          <ModalPickUpLocation setShowModal={setShowPickUpLocationModal} />
         </ModalWindow>
       )}
-      {isCalendarModalOpen && (
+      {showCalcDeliveryFeeModal && (
         <ModalWindow
-          isModalOpen={isCalendarModalOpen}
-          closeModal={closeCalendarModal}
+          showModal={showCalcDeliveryFeeModal}
+          setShowModal={setShowCalcDeliveryFeeModal}
         >
-          <SelectDate closeModal={closeCalendarModal} />
+          <ModalCalcDeliveryFee setShowModal={setShowCalcDeliveryFeeModal} />
+        </ModalWindow>
+      )}
+      {showCalendarModal && (
+        <ModalWindow
+          showModal={showCalendarModal}
+          setShowModal={setShowCalendarModal}
+        >
+          <SelectDate setShowModal={setShowCalendarModal} />
         </ModalWindow>
       )}
     </>

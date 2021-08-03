@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { PriceWrapper } from './ProductDetailElements';
-import formatCurrency from '../../utils';
+import formatCurrency from '../../utils/formatCurrency';
 
 interface Props {
   selectedProduct: ProductInterface;

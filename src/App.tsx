@@ -14,7 +14,7 @@ import { Footer } from './components/Footer';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { useCountCartItems } from './hooks/useCountCartItems';
 import { ReviewPage } from './pages/ReviewPage';
-import useValid from './hooks/useValid';
+import useValid from './hooks/useCheckOutValid';
 
 function App() {
   const countCartItems = useCountCartItems();

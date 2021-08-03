@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { orderList } from '../../store/orderListSlice';
 import { useAppSelector } from '../../store/hooks';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 import {
   CheckOutQuestion,
   DateBtn,
@@ -8,16 +9,16 @@ import {
 } from './CheckoutPageElements';
 
 interface Props {
-  openCalendarModal: () => void;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-export const DisplayDate: React.FC<Props> = ({ openCalendarModal }) => {
-  const orderListState = useAppSelector(orderList);
+export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
 
   return (
     <DateBtnWrapper>
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
-      <DateBtn onClick={() => openCalendarModal()}>
+      <DateBtn onClick={() => setShowModal(true)}>
         {orderListState.pickupDeliveryDate
           ? orderListState.pickupDeliveryDate.toDateString()
           : 'Select a date'}

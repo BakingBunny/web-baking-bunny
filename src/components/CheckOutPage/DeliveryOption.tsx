@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 import {
   DeliveryOptionWrapper,
   DeliveryBtnWrapper,
@@ -13,13 +14,15 @@ import {
 toast.configure();
 
 interface Props {
-  openCalcDeliveryFeeModal: () => void;
+  setShowPickUpLocationModal: Dispatch<SetStateAction<boolean>>;
+  setShowCalcDeliveryFeeModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DeliveryOption: React.FC<Props> = ({
-  openCalcDeliveryFeeModal,
+  setShowPickUpLocationModal,
+  setShowCalcDeliveryFeeModal,
 }) => {
-  const orderListState = useAppSelector(orderList);
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
 
   const onClickHandler = (isDelivery: boolean): void => {
@@ -35,7 +38,9 @@ export const DeliveryOption: React.FC<Props> = ({
     }
 
     // if dellivery then open modal to calc the fee
-    if (isDelivery) openCalcDeliveryFeeModal();
+    isDelivery
+      ? setShowCalcDeliveryFeeModal(true)
+      : setShowPickUpLocationModal(true);
 
     // if delliver and date is NOT Saturday then reset the date.
     if (isDelivery && orderListState.pickupDeliveryDate?.getDay() !== 6)

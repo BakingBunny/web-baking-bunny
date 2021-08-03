@@ -3,16 +3,18 @@ import { useCountCartItems } from '../../hooks/useCountCartItems';
 import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { products } from '../../store/cartSlice';
-import formatCurrency from '../../utils';
+import { CartInterface } from '../../interface/CartInterface';
+import formatCurrency from '../../utils/formatCurrency';
 import { SubtotalWrapper, SubtotalText, ProceedBtn } from './CartPageElements';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {}
 
 export const Subtotal = (props: Props) => {
-  const cartList = useAppSelector(products);
+  const cartList = useAppSelector<CartInterface[]>(products);
   const countCartItems = useCountCartItems();
 
-  const orderListState = useAppSelector(orderList);
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
