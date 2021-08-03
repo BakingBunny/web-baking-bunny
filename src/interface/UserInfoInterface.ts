@@ -1,10 +1,10 @@
 // User information requirements
-export interface UserInterface {
+export interface UserInfoInterface {
   firstname: string;
   lastname: string;
   email: string;
+  phone: string;
   address: string;
   postalCode: string;
-  phone: string;
-  city: string;
+  // city: string;
 }

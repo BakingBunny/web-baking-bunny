@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -14,11 +14,11 @@ import {
   OrderNowBtn,
 } from './ProductListElements';
 // import productList from '../../productList.json';
-import formatCurrency from '../../utils';
+import formatCurrency from '../../utils/formatCurrency';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { ProductDetail } from '../ProductDetail';
 import { NotFoundPage } from '../../pages/NotFoundPage';
-import { ModalWindow } from '../ModalWindow';
+import { ModalWindow } from '../../utils/ModalWindow';
 
 toast.configure();
 
@@ -89,16 +89,10 @@ export const ProductList = (props: Props) => {
     if (findProduct) {
       setSelectedProduct(findProduct);
       setShowModal(true);
-      document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
     } else {
       return <NotFoundPage />; //TODO: check if it works
     }
   };
-
-  const closeModal = useCallback(() => {
-    setShowModal(false);
-    document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setShowModal]);
 
   return (
     <Container>
@@ -141,11 +135,10 @@ export const ProductList = (props: Props) => {
         </CardWrapper>
       </Wrapper>
       {showModal && ( // once the product card is selected, popup the product detail modal window
-        <ModalWindow showModal={showModal} closeModal={closeModal}>
+        <ModalWindow showModal={showModal} setShowModal={setShowModal}>
           <ProductDetail
             selectedProduct={selectedProduct}
-            showModal={showModal}
-            closeModal={closeModal}
+            setShowModal={setShowModal}
           />
         </ModalWindow>
       )}

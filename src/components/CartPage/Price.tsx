@@ -1,7 +1,7 @@
 import React from 'react';
 import { CartInterface } from '../../interface/CartInterface';
 import { PriceWrapper } from './CartPageElements';
-import formatCurrency from '../../utils';
+import formatCurrency from '../../utils/formatCurrency';
 
 interface Props {
   cartItem: CartInterface;

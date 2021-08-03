@@ -208,26 +208,19 @@ export const SubtotalText = styled.b`
   font-size: 1.5rem;
 `;
 
-// export const ProceedBtn = styled.button`
-export const ProceedBtn = styled(Link)`
+export const OrderBtn = styled.button`
   border: 0;
   color: #000;
   background: #f4ba29;
   text-decoration: none;
   line-height: 2;
   letter-spacing: 1px;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   cursor: pointer;
-  margin: 10px 0 0;
+  margin: 10px auto 0;
   padding: 10px 15px;
   border-radius: 5px;
+  width: 300px;
   font-family: 'Otomanopee One', sans-serif;
-`;
-
-export const EmptyCart = styled.div`
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 50px 0;
-  font-family: 'Indie Flower', cursive;
 `;

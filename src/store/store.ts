@@ -1,16 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import cartReducer from './cartSlice';
-import checkoutReducer from './checkoutSlice';
+import userInfoReducer from './userInfoSlice';
 import orderListReducer from './orderListSlice';
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
-    checkout: checkoutReducer,
+    userInfo: userInfoReducer,
     orderList: orderListReducer,
   },
   middleware: (
-    getDefaultMiddleware // because react-date-range (CheckoutSlice)
+    getDefaultMiddleware // because react-date-range (orderListSlice)
   ) =>
     getDefaultMiddleware({
       serializableCheck: false,
