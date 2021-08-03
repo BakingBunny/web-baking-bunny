@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import {
   orderList,
   update as orderListUpdate,
@@ -16,15 +16,16 @@ import {
   ConfirmBtn,
 } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
-import formatCurrency from '../../utils';
+import { UserInfoInterface } from '../../interface/UserInfoInterface';
+import formatCurrency from '../../utils/formatCurrency';
 
 interface Props {
-  closeModal: () => void;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-export const CalcDeliveryFee: React.FC<Props> = ({ closeModal }) => {
+export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
-  const userInfoState = useAppSelector(userInfo);
+  const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
   const dispatch = useAppDispatch();
 
   // update user info from store
@@ -45,6 +46,10 @@ export const CalcDeliveryFee: React.FC<Props> = ({ closeModal }) => {
         value: fee,
       })
     );
+  };
+
+  const onConfirmhandler = () => {
+    setShowModal(false);
   };
 
   return (
@@ -100,7 +105,7 @@ export const CalcDeliveryFee: React.FC<Props> = ({ closeModal }) => {
                 <span>Address</span>
               </ClientInfoLabel>
             </ClientInputWrapper>
-            <ConfirmBtn>Confirm</ConfirmBtn>
+            <ConfirmBtn onClick={onConfirmhandler}>Confirm</ConfirmBtn>
           </>
         )}
       {orderListState.deliveryFee !== null && // NULL is initial value

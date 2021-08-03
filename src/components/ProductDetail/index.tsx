@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NotFoundPage } from '../../pages/NotFoundPage';
-import formatCurrency from '../../utils';
+import formatCurrency from '../../utils/formatCurrency';
 import { ProductInterface } from '../../interface/ProductInterface';
 import {
   Wrapper,
@@ -28,7 +28,7 @@ toast.configure();
 interface Props {
   // id: string;
   selectedProduct: ProductInterface;
-  closeModal: () => void;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
 const initialCart = {
@@ -52,7 +52,7 @@ const initialCart = {
 
 export const ProductDetail: React.FC<Props> = ({
   selectedProduct,
-  closeModal,
+  setShowModal,
 }) => {
   const [productToCart, setproductToCart] =
     useState<CartInterface>(initialCart);
@@ -82,7 +82,7 @@ export const ProductDetail: React.FC<Props> = ({
         src={selectedProduct.productImage}
         alt={selectedProduct.productName}
       />
-      <CloseBtn onClick={closeModal}>
+      <CloseBtn onClick={() => setShowModal(false)}>
         <AiFillCloseCircle />
       </CloseBtn>
       <OptionWrapper>
@@ -112,7 +112,7 @@ export const ProductDetail: React.FC<Props> = ({
         <AddToCartBtn
           onClick={() => {
             dispatch(add(productToCart));
-            closeModal();
+            setShowModal(false);
             toast('Item successfully added to your cart.', {
               type: 'success',
             });

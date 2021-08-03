@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Calendar, OnChangeProps } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -8,7 +8,7 @@ import { ModalWrapper, DeliveryRequirement } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {
-  closeModal: () => void;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
 let minDate = new Date(),
@@ -16,7 +16,7 @@ let minDate = new Date(),
 minDate.setDate(minDate.getDate() + 7);
 maxDate.setDate(maxDate.getDate() + 60);
 
-export const SelectDate: React.FC<Props> = ({ closeModal }) => {
+export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
 
@@ -27,7 +27,7 @@ export const SelectDate: React.FC<Props> = ({ closeModal }) => {
         value: date,
       })
     );
-    closeModal();
+    setShowModal(false);
   };
 
   return (

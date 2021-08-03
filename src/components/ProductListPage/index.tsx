@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -14,11 +14,11 @@ import {
   OrderNowBtn,
 } from './ProductListElements';
 // import productList from '../../productList.json';
-import formatCurrency from '../../utils';
+import formatCurrency from '../../utils/formatCurrency';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { ProductDetail } from '../ProductDetail';
 import { NotFoundPage } from '../../pages/NotFoundPage';
-import { ModalWindow } from '../ModalWindow';
+import { ModalWindow } from '../../utils/ModalWindow';
 
 toast.configure();
 
@@ -45,7 +45,7 @@ export const ProductList = (props: Props) => {
   >([]);
   const [selectedProduct, setSelectedProduct] =
     useState<ProductInterface>(initialProduct);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const { productType } = props;
 
@@ -88,22 +88,11 @@ export const ProductList = (props: Props) => {
     );
     if (findProduct) {
       setSelectedProduct(findProduct);
-      openModal();
-      document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
+      setShowModal(true);
     } else {
       return <NotFoundPage />; //TODO: check if it works
     }
   };
-
-  const openModal = useCallback(() => {
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // prevent background scrolling when modal open
-  }, [setIsModalOpen]);
-
-  const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-    document.body.style.overflow = 'unset'; // allow scrolling once modal close
-  }, [setIsModalOpen]);
 
   return (
     <Container>
@@ -145,11 +134,11 @@ export const ProductList = (props: Props) => {
               ))}
         </CardWrapper>
       </Wrapper>
-      {isModalOpen && ( // once the product card is selected, popup the product detail modal window
-        <ModalWindow isModalOpen={isModalOpen} closeModal={closeModal}>
+      {showModal && ( // once the product card is selected, popup the product detail modal window
+        <ModalWindow showModal={showModal} setShowModal={setShowModal}>
           <ProductDetail
             selectedProduct={selectedProduct}
-            closeModal={closeModal}
+            setShowModal={setShowModal}
           />
         </ModalWindow>
       )}

@@ -2,6 +2,7 @@ import React from 'react';
 import { userInfo, update } from '../../store/userInfoSlice';
 // import { orderList } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
   ClientInfoContainer,
   ClientInputWrapper,
@@ -11,12 +12,13 @@ import {
   CheckOutQuestion,
   // SubmitBtn,
 } from './CheckoutPageElements';
+// import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {}
 
 export const UserInfo = (props: Props) => {
-  const userInfoState = useAppSelector(userInfo);
-  // const orderListState = useAppSelector(orderList);
+  const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
+  // const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
