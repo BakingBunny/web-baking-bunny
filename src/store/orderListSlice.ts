@@ -12,6 +12,8 @@ const initialState: OrderListInterface = {
   total: 0,
   isDelivery: false,
   pickupDeliveryDate: null,
+  pickupHour: 14,
+  pickupMinute: 0,
 };
 
 export const orderListSlice = createSlice({
