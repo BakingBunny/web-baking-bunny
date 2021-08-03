@@ -8,6 +8,7 @@ interface BtnProps {
 export const CheckOutBtn = styled.button`
   border: 0;
   color: #fff;
+  font-size: 1rem;
   margin: 20px 15px;
   border-radius: 10px;
   letter-spacing: 1px;
@@ -114,6 +115,29 @@ export const DateBtn = styled(CheckOutBtn)`
   margin: 20px auto;
 `;
 
+export const TimeWrapper = styled.div`
+  display: flex;
+  margin: auto;
+  align-items: center;
+  margin: 0 auto 20px;
+`;
+
+export const TimeSelect = styled.select`
+  width: 93%;
+  height: 30px;
+  margin: 0 10px;
+  background-color: #133853;
+  color: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.703);
+  border-radius: 4px;
+  font-size: 1rem;
+  padding-left: 5px;
+
+  option {
+    background-color: #426280;
+  }
+`;
+
 export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -147,6 +171,18 @@ export const CheckAddressBtn = styled(CheckOutBtn)`
   font-size: 1.2rem;
   width: 200px;
   margin: 10px auto;
+`;
+
+export const MapIframe = styled.iframe`
+  border: 1px solid #13385366;
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  margin: 20px auto;
+`;
+
+export const CloseBtn = styled(CheckOutBtn)`
+  margin: auto;
 `;
 
 export const ClientInfoContainer = styled.div`

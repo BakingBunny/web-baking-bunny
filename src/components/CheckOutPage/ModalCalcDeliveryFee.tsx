@@ -58,12 +58,14 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
         {'< Note >'}
         <br />
         1. Delivery service is available only for more than $50 purchase between
-        1PM and 4PM on Saturdays. <br />
+        1 PM and 4 PM on Saturdays. <br />
         2. The specific time will be noticed with the confirmation of order.
         <br />
         3. Additional delivery fee can range up to $10 by distance.
       </DeliveryRequirement>
-      <DeliveryRequirement>Please put your Postal Code</DeliveryRequirement>
+      <DeliveryRequirement>
+        Please put your postal code below
+      </DeliveryRequirement>
       <ClientInputWrapper>
         <ClientInfoInput
           type='text'
