@@ -24,14 +24,14 @@ import { Subtotal } from './Subtotal';
 interface Props {}
 
 export const Cart = (props: Props) => {
-  const cartList = useAppSelector(products);
+  const cartList = useAppSelector<CartInterface[]>(products);
   const dispatch = useAppDispatch();
 
   const updateHandler = (
     id: string,
     option: string,
     value: number | string
-  ) => {
+  ): void => {
     dispatch(
       update({
         id: id,

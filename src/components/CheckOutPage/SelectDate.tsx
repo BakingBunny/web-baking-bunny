@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Calendar, OnChangeProps } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { DatesWrapper, DeliveryRequirement } from './CheckoutPageElements';
+import { ModalWrapper, DeliveryRequirement } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {
-  // showModal: boolean;
-  closeModal: () => void;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
 let minDate = new Date(),
@@ -17,37 +16,35 @@ let minDate = new Date(),
 minDate.setDate(minDate.getDate() + 7);
 maxDate.setDate(maxDate.getDate() + 60);
 
-export const SelectDate: React.FC<Props> = ({ closeModal }) => {
+export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
 
-  const onChangeHandler = (date: OnChangeProps) => {
+  const onChangeHandler = (date: OnChangeProps): void => {
     dispatch(
       update({
         name: 'pickupDeliveryDate',
         value: date,
       })
     );
-    closeModal();
+    setShowModal(false);
   };
 
   return (
-    <DatesWrapper>
-      {orderListState.isDelivery && (
-        <DeliveryRequirement>
-          {'< Note >'}
-          <br />
-          1. Delivery service is available only for more than $ 50 purchase on
-          Saturday. <br />
-          2. Additional delivery fee can range from 0 to 10 dollars by distance.
-        </DeliveryRequirement>
-      )}
+    <ModalWrapper>
+      <DeliveryRequirement>
+        Please select a date you want to pick up.
+      </DeliveryRequirement>
       <Calendar
-        date={orderListState.pickupDeliveryDate}
+        date={
+          orderListState.pickupDeliveryDate
+            ? orderListState.pickupDeliveryDate
+            : minDate
+        }
         onChange={onChangeHandler}
         minDate={minDate}
         maxDate={maxDate}
       />
-    </DatesWrapper>
+    </ModalWrapper>
   );
 };
