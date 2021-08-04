@@ -55,7 +55,12 @@ export const ProductList = (props: Props) => {
       const fetchData = async () => {
         setLoading(true);
         window.scrollTo(0, 0); // scroll to top
-        const result = await fetch(`/api/product/${productType}`);
+        const result = await fetch(`/api/product/${productType}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        });
         const body = await result.json();
         setFilteredProductList(body);
         setLoading(false);
