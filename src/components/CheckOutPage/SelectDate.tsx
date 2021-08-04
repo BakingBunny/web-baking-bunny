@@ -4,7 +4,13 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { ModalWrapper, DeliveryRequirement } from './CheckoutPageElements';
+import {
+  ModalWrapper,
+  DeliveryRequirement,
+  TimeWrapper,
+  TimeSelect,
+  CloseBtn,
+} from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {
@@ -27,7 +33,16 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
         value: date,
       })
     );
-    setShowModal(false);
+    // setShowModal(false);
+  };
+
+  const onChangeHandler_ = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    dispatch(
+      update({
+        name: e.target.name,
+        value: Number(e.target.value),
+      })
+    );
   };
 
   return (
@@ -45,6 +60,47 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
         minDate={minDate}
         maxDate={maxDate}
       />
+      <TimeWrapper>
+        TIME
+        <TimeSelect
+          name={'pickupHour'}
+          value={orderListState.pickupHour}
+          onChange={onChangeHandler_}
+        >
+          {orderListState.isDelivery ? (
+            <>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+            </>
+          ) : (
+            <>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+            </>
+          )}
+        </TimeSelect>
+        :
+        <TimeSelect
+          name={'pickupMinute'}
+          value={orderListState.pickupMinute}
+          onChange={onChangeHandler_}
+        >
+          <option>00</option>
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+          <option>40</option>
+          <option>50</option>
+        </TimeSelect>
+      </TimeWrapper>
+      <CloseBtn onClick={() => setShowModal(false)}>Close</CloseBtn>
     </ModalWrapper>
   );
 };
