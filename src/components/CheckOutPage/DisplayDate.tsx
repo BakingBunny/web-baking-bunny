@@ -1,13 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { orderList, update } from '../../store/orderListSlice';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { orderList } from '../../store/orderListSlice';
+import { useAppSelector } from '../../store/hooks';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import {
   CheckOutQuestion,
   DateBtn,
   DateBtnWrapper,
-  TimeWrapper,
-  TimeSelect,
 } from './CheckoutPageElements';
 
 interface Props {
@@ -16,16 +14,6 @@ interface Props {
 
 export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
-  const dispatch = useAppDispatch();
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    dispatch(
-      update({
-        name: e.target.name,
-        value: Number(e.target.value),
-      })
-    );
-  };
 
   return (
     <DateBtnWrapper>
