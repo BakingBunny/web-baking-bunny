@@ -1,4 +1,5 @@
 import React from 'react';
+import { CartProducts } from './CartProducts';
 import { Container, OrderBtn, Title, Wrapper } from './ReviewPageElements';
 
 interface Props {}
@@ -20,7 +21,9 @@ const Review = (props: Props) => {
   return (
     <Container>
       <Title>Review</Title>
-      <Wrapper></Wrapper>
+      <Wrapper>
+        <CartProducts />
+      </Wrapper>
       <OrderBtn onClick={onClickHandler}>Place your order</OrderBtn>
     </Container>
   );
