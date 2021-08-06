@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 
 export const Container = styled.div`
+  /* align-self: end; */
+  align-content: flex-end;
   background: #133853;
   color: #fff;
   height: 30px;
@@ -18,7 +20,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 960px) {
     position: static;
-    /* bottom: 0; */
+    bottom: 0;
   }
 `;
 

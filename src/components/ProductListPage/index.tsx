@@ -55,12 +55,7 @@ export const ProductList = (props: Props) => {
       const fetchData = async () => {
         setLoading(true);
         window.scrollTo(0, 0); // scroll to top
-        const result = await fetch(`/api/product/${productType}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        });
+        const result = await fetch(`/api/product/${productType}`);
         const body = await result.json();
         setFilteredProductList(body);
         setLoading(false);
@@ -75,6 +70,7 @@ export const ProductList = (props: Props) => {
   //   switch (productType) {
   //     case '/cakes':
   //       setFilteredProductList(
+  //         // productList.filter((item) => item.categoryId === 1)
   //         productList.filter((item) => item.categoryId === 1)
   //       );
   //       break;

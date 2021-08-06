@@ -4,11 +4,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
-  /* padding: 0 20px; */
+  margin: auto auto 20px;
   height: 100%;
   max-width: 850px;
-  margin-bottom: 20px;
 `;
 
 export const Title = styled.h2`

@@ -21,7 +21,7 @@ function App() {
   const isValid: boolean = useValid();
 
   return (
-    <div className='App'>
+    <>
       <Router>
         <Navbar />
         <Switch>
@@ -40,7 +40,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </div>
+    </>
   );
 }
 

@@ -47,36 +47,32 @@ export const Cart = (props: Props) => {
       {cartList.length > 0 ? (
         <Wrapper>
           <CardWrapper>
-            {cartList.map((item: CartInterface) => {
-              // item.product && setSubTotal(subTotal + item.product?.price);
-
-              return (
-                <Card key={item.id}>
-                  <ImageWrapper>
-                    <Image
-                      src={item.product.productImage}
-                      alt={item.product.productName}
-                    />
-                    <DeleteBtn onClick={() => dispatch(remove(item.id))}>
-                      Delete
-                    </DeleteBtn>
-                  </ImageWrapper>
-                  <OptionsWrapper>
-                    <CakeName>
-                      {item.product.productName.replaceAll('-', ' ')}
-                    </CakeName>
-                    <Price cartItem={item} />
-                    {item.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
-                      <Tastes cartItem={item} updateHandler={updateHandler} />
-                    )}
-                    {item.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
-                      <Size cartItem={item} updateHandler={updateHandler} />
-                    )}
-                    <Quantity cartItem={item} updateHandler={updateHandler} />
-                  </OptionsWrapper>
-                </Card>
-              );
-            })}
+            {cartList.map((item: CartInterface) => (
+              <Card key={item.id}>
+                <ImageWrapper>
+                  <Image
+                    src={item.product.productImage}
+                    alt={item.product.productName}
+                  />
+                  <DeleteBtn onClick={() => dispatch(remove(item.id))}>
+                    Delete
+                  </DeleteBtn>
+                </ImageWrapper>
+                <OptionsWrapper>
+                  <CakeName>
+                    {item.product.productName.replaceAll('-', ' ')}
+                  </CakeName>
+                  <Price cartItem={item} />
+                  {item.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                    <Tastes cartItem={item} updateHandler={updateHandler} />
+                  )}
+                  {item.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
+                    <Size cartItem={item} updateHandler={updateHandler} />
+                  )}
+                  <Quantity cartItem={item} updateHandler={updateHandler} />
+                </OptionsWrapper>
+              </Card>
+            ))}
           </CardWrapper>
           <Subtotal />
         </Wrapper>

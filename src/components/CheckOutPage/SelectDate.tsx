@@ -100,7 +100,7 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
           <option>50</option>
         </TimeSelect>
       </TimeWrapper>
-      <CloseBtn onClick={() => setShowModal(false)}>Close</CloseBtn>
+      <CloseBtn onClick={() => setShowModal(false)}>Confirm</CloseBtn>
     </ModalWrapper>
   );
 };

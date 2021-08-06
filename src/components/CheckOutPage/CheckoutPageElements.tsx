@@ -119,23 +119,17 @@ export const TimeWrapper = styled.div`
   display: flex;
   margin: auto;
   align-items: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
 `;
 
 export const TimeSelect = styled.select`
-  width: 93%;
+  width: 3rem;
   height: 30px;
   margin: 0 10px;
-  background-color: #133853;
-  color: #fff;
-  border: 0.5px solid rgba(0, 0, 0, 0.703);
+  border: 0.5px solid #426280c1;
   border-radius: 4px;
   font-size: 1rem;
   padding-left: 5px;
-
-  option {
-    background-color: #426280;
-  }
 `;
 
 export const ModalWrapper = styled.div`
