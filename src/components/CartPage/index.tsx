@@ -6,6 +6,7 @@ import {
   Container,
   Title,
   Wrapper,
+  Subtitle,
   CardWrapper,
   Card,
   ImageWrapper,

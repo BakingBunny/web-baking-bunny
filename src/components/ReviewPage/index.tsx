@@ -28,6 +28,7 @@ const Review = (props: Props) => {
   return (
     <Container>
       <Title>Review</Title>
+      Please double-check your details before placing your order.
       <Wrapper>
         <CartProducts />
         <OtherInfo>
