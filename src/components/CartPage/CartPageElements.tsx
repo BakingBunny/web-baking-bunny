@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
   grid-gap: 1rem;
   grid-template-columns: 1fr 300px;
   grid-template-areas: 'card-wrapper subtotal';
+  padding: 10px;
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
@@ -32,18 +33,34 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Subtitle = styled.h2`
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin: 10px 0;
+`;
+
 export const CardWrapper = styled.div`
   grid-area: card-wrapper;
   display: flex;
   flex-direction: column;
   padding: 10px;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
 `;
 
 export const Card = styled.div`
   display: grid;
   grid-template-columns: min(35%, 150px) 1fr;
-  border-top: 1px solid #9f9f9f87;
   padding: 10px 0;
+
+  &:not(:first-child) {
+    border-top: 1px solid #9f9f9f87;
+  }
+
+  &:last-child {
+    padding: 10px 0 0;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -196,11 +213,13 @@ export const SubtotalWrapper = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: min(100%, 400px);
+  min-width: 330px;
   height: 80px;
-  border-top: 1px solid #9f9f9f87;
-  padding: 15px 0;
-  margin: 10px 0 0 0;
+  margin: 0 0 10px;
+  padding: 20px 0;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
 `;
 
 export const SubtotalText = styled.b`

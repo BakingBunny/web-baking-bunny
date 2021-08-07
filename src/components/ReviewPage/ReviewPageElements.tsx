@@ -38,7 +38,7 @@ export const CardWrapper = styled.div`
   grid-area: card-wrapper;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 10px 0;
 `;
 
 export const Card = styled.div`
@@ -77,7 +77,7 @@ export const ProductName = styled(OptionText)`
   font-weight: 700;
 `;
 
-export const SizeText = styled(OptionText)`
+export const PriceText = styled(OptionText)`
   font-weight: lighter;
 `;
 
@@ -85,7 +85,18 @@ export const OtherInfo = styled.div`
   grid-area: other-info;
   border-top: 1px solid #9f9f9f87;
   padding: 10px 0;
-  margin: 10px 0;
+  margin: 10px auto;
+  width: min(100%, 350px);
+  text-align: center;
+
+  @media screen and (max-width: 960px) {
+    margin: 0 auto;
+  }
+`;
+
+export const UserInfoText = styled.div`
+  font-size: 1.2rem;
+  margin: 0.5rem auto;
 `;
 
 export const CircleBtn = styled.button`

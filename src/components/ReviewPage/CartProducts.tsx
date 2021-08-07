@@ -10,7 +10,7 @@ import {
   OptionsWrapper,
   ProductName,
   OptionText,
-  SizeText,
+  PriceText,
 } from './ReviewPageElements';
 import formatCurrency from '../../utils/formatCurrency';
 import { SizeListInterface } from '../../interface/SizeListInterface';
@@ -33,7 +33,11 @@ export const CartProducts = (props: Props) => {
           </ImageWrapper>
           <OptionsWrapper>
             <ProductName>{item.product.productName}</ProductName>
-            <SizeText>{formatCurrency(item.product.price)}</SizeText>
+            <PriceText>
+              {item.sizeId === 2
+                ? formatCurrency(item.product.price * 1.2)
+                : formatCurrency(item.product.price)}
+            </PriceText>
             {item.tasteId > 0 && (
               <OptionText>
                 {item.product.tasteList
@@ -50,6 +54,7 @@ export const CartProducts = (props: Props) => {
                   .map((data) => data.sizeName)}
               </OptionText>
             )}
+            <OptionText>Quantity: {item.qty}</OptionText>
           </OptionsWrapper>
         </Card>
       ))}
