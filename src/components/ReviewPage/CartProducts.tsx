@@ -8,12 +8,9 @@ import {
   ImageWrapper,
   Image,
   OptionsWrapper,
-  CakeName,
-  PriceWrapper,
-  SizeWrapper,
-  SizeTitle,
-  TastesTitle,
-  TastesWrapper,
+  ProductName,
+  OptionText,
+  SizeText,
 } from './ReviewPageElements';
 import formatCurrency from '../../utils/formatCurrency';
 import { SizeListInterface } from '../../interface/SizeListInterface';
@@ -35,30 +32,23 @@ export const CartProducts = (props: Props) => {
             />
           </ImageWrapper>
           <OptionsWrapper>
-            <CakeName>{item.product.productName}</CakeName>
-            <PriceWrapper>{formatCurrency(item.product.price)}</PriceWrapper>
+            <ProductName>{item.product.productName}</ProductName>
+            <SizeText>{formatCurrency(item.product.price)}</SizeText>
             {item.tasteId > 0 && (
-              <TastesWrapper>
-                <TastesTitle>
-                  {item.product.tasteList
-                    .filter(
-                      (taste: TasteListInterface) => taste.id === item.tasteId
-                    )
-                    .map((data) => data.tasteName)}
-                </TastesTitle>
-              </TastesWrapper>
+              <OptionText>
+                {item.product.tasteList
+                  .filter(
+                    (taste: TasteListInterface) => taste.id === item.tasteId
+                  )
+                  .map((data) => data.tasteName)}
+              </OptionText>
             )}
             {item.sizeId > 0 && (
-              <SizeWrapper>
-                <SizeTitle>
-                  Size:{' '}
-                  {item.product.sizeList
-                    .filter(
-                      (size: SizeListInterface) => size.id === item.sizeId
-                    )
-                    .map((data) => data.sizeName)}
-                </SizeTitle>
-              </SizeWrapper>
+              <OptionText>
+                {item.product.sizeList
+                  .filter((size: SizeListInterface) => size.id === item.sizeId)
+                  .map((data) => data.sizeName)}
+              </OptionText>
             )}
           </OptionsWrapper>
         </Card>

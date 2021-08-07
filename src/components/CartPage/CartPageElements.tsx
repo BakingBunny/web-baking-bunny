@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin: auto auto 20px;
   height: 100%;
-  max-width: 850px;
+  max-width: 700px;
 `;
 
 export const Title = styled.h2`
@@ -21,13 +21,14 @@ export const Title = styled.h2`
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 300px;
   grid-template-areas: 'card-wrapper subtotal';
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
     grid-template-areas: 'subtotal' 'card-wrapper';
-    /* grid-gap: 0px; */
+    grid-gap: 0px;
   }
 `;
 
@@ -40,7 +41,7 @@ export const CardWrapper = styled.div`
 
 export const Card = styled.div`
   display: grid;
-  grid-template-columns: min(35%, 300px) 1fr;
+  grid-template-columns: min(35%, 150px) 1fr;
   border-top: 1px solid #9f9f9f87;
   padding: 10px 0;
 `;

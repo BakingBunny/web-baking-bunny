@@ -66,7 +66,7 @@ export const UserInfo = (props: Props) => {
           required
         />
         <ClientInfoLabel>
-          <span>Email</span>
+          <span>Email or Instagram ID</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
       <ClientInputWrapper>
@@ -79,6 +79,30 @@ export const UserInfo = (props: Props) => {
         />
         <ClientInfoLabel>
           <span>Phone number</span>
+        </ClientInfoLabel>
+      </ClientInputWrapper>
+      <ClientInputWrapper>
+        <ClientInfoInput
+          type='text'
+          name='allergy'
+          onChange={onChangeHandler}
+          value={userInfoState.allergy}
+          required
+        />
+        <ClientInfoLabel>
+          <span>Any food allergies?</span>
+        </ClientInfoLabel>
+      </ClientInputWrapper>
+      <ClientInputWrapper>
+        <ClientInfoInput
+          type='text'
+          name='inquiry'
+          onChange={onChangeHandler}
+          value={userInfoState.inquiry}
+          required
+        />
+        <ClientInfoLabel>
+          <span>Any other inquiries?</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
       {/* {orderListState.isDelivery && (
