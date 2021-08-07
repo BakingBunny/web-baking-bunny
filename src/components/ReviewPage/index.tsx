@@ -1,6 +1,13 @@
 import React from 'react';
 import { CartProducts } from './CartProducts';
-import { Container, OrderBtn, Title, Wrapper } from './ReviewPageElements';
+import {
+  Container,
+  Title,
+  Wrapper,
+  OtherInfo,
+  OrderBtn,
+} from './ReviewPageElements';
+import { UserInfo } from './UserInfo';
 
 interface Props {}
 
@@ -23,6 +30,9 @@ const Review = (props: Props) => {
       <Title>Review</Title>
       <Wrapper>
         <CartProducts />
+        <OtherInfo>
+          <UserInfo />
+        </OtherInfo>
       </Wrapper>
       <OrderBtn onClick={onClickHandler}>Place your order</OrderBtn>
     </Container>

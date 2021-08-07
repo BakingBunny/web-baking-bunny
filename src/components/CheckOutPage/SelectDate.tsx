@@ -48,7 +48,9 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   return (
     <ModalWrapper>
       <DeliveryRequirement>
-        Please select a date you want to pick up.
+        {orderListState.isDelivery
+          ? 'Please select a date and time you want to be delivered.'
+          : 'Please select a date and time you want to pick up.'}
       </DeliveryRequirement>
       <Calendar
         date={

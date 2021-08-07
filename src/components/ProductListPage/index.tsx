@@ -56,7 +56,12 @@ export const ProductList = (props: Props) => {
         setLoading(true);
         window.scrollTo(0, 0); // scroll to top
         const result = await fetch(`/api/product/${productType}`);
+        // const result = await fetch(
+        //   `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product${productType}`
+        //   // `https://jsonplaceholder.typicode.com/todos/1`
+        // );
         const body = await result.json();
+        console.log(body);
         setFilteredProductList(body);
         setLoading(false);
       };

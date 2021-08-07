@@ -7,7 +7,7 @@ export const Container = styled.div`
   margin: auto;
   /* padding: 0 20px; */
   height: 100%;
-  max-width: 850px;
+  max-width: 700px;
   margin-bottom: 20px;
 `;
 
@@ -23,13 +23,14 @@ export const Title = styled.h2`
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'card-wrapper subtotal';
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 300px;
+  grid-template-areas: 'card-wrapper other-info';
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
-    grid-template-areas: 'subtotal' 'card-wrapper';
-    /* grid-gap: 0px; */
+    grid-template-areas: 'card-wrapper' 'other-info';
+    grid-gap: 0px;
   }
 `;
 
@@ -42,7 +43,7 @@ export const CardWrapper = styled.div`
 
 export const Card = styled.div`
   display: grid;
-  grid-template-columns: min(35%, 300px) 1fr;
+  grid-template-columns: min(35%, 150px) 1fr;
   border-top: 1px solid #9f9f9f87;
   padding: 10px 0;
 `;
@@ -66,28 +67,25 @@ export const OptionsWrapper = styled.div`
   padding: 10px 0 10px 10px;
 `;
 
-export const CakeName = styled.h3`
-  font-size: 1.3rem;
-  margin: 0 0 10px;
-`;
-
-export const PriceWrapper = styled.div`
+export const OptionText = styled.div`
   font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+`;
+
+export const ProductName = styled(OptionText)`
+  font-size: 1.3rem;
+  font-weight: 700;
+`;
+
+export const SizeText = styled(OptionText)`
   font-weight: lighter;
-  margin: 0 0 10px;
 `;
 
-export const TastesTitle = styled.h2`
-  justify-self: center;
-  font-size: 1rem;
-  margin: 2px 0;
-`;
-
-export const TastesWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 0 5px;
+export const OtherInfo = styled.div`
+  grid-area: other-info;
+  border-top: 1px solid #9f9f9f87;
+  padding: 10px 0;
+  margin: 10px 0;
 `;
 
 export const CircleBtn = styled.button`
@@ -115,17 +113,6 @@ export const CircleBtn = styled.button`
 interface BtnProps {
   readonly isSelected: boolean;
 }
-
-export const SizeWrapper = styled.div`
-  align-items: center;
-  display: flex;
-`;
-
-export const SizeTitle = styled.h2`
-  font-size: 1rem;
-  flex-grow: 1;
-  margin: 0;
-`;
 
 export const SizeBtn = styled(CircleBtn)<BtnProps>`
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};

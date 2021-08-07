@@ -72,7 +72,7 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
           name='postalCode'
           onChange={onChangeHandler}
           value={userInfoState.postalCode}
-          required={orderListState.isDelivery}
+          // required={orderListState.isDelivery}
         />
         <ClientInfoLabel>
           <span>Postal Code</span>
@@ -101,7 +101,7 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
                 name='address'
                 onChange={onChangeHandler}
                 value={userInfoState.address}
-                required={orderListState.isDelivery}
+                // required={orderListState.isDelivery}
               />
               <ClientInfoLabel>
                 <span>Address</span>
