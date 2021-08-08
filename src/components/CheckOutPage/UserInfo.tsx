@@ -105,47 +105,6 @@ export const UserInfo = (props: Props) => {
           <span>Any other inquiries?</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
-      {/* {orderListState.isDelivery && (
-        <>
-          <ClientInputWrapper>
-            <ClientInfoInput
-              type='text'
-              name='address'
-              onChange={onChangeHandler}
-              value={userInfoState.address}
-              required={orderListState.isDelivery}
-            />
-            <ClientInfoLabel>
-              <span>Address</span>
-            </ClientInfoLabel>
-          </ClientInputWrapper>
-          <ClientInputWrapper>
-            <ClientInfoInput
-              type='text'
-              name='city'
-              onChange={onChangeHandler}
-              value={userInfoState.city}
-              required={orderListState.isDelivery}
-            />
-            <ClientInfoLabel>
-              <span>City</span>
-            </ClientInfoLabel>
-          </ClientInputWrapper>
-          <ClientInputWrapper>
-            <ClientInfoInput
-              type='text'
-              name='postalCode'
-              onChange={onChangeHandler}
-              value={userInfoState.postalCode}
-              required={orderListState.isDelivery}
-            />
-            <ClientInfoLabel>
-              <span>Postal Code</span>
-            </ClientInfoLabel>
-          </ClientInputWrapper>
-        </>
-      )} */}
-      {/* <textarea {...register('allergy', {})} placeholder='Allergy' /> */}
     </ClientInfoContainer>
   );
 };
