@@ -58,8 +58,10 @@ export const DeliveryOptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  margin: auto;
-  border-top: 1px solid #42628056;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
   align-items: center;
   width: 330px;
 `;
@@ -103,9 +105,10 @@ export const DateBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 330px;
-  /* justify-content: space-between; */
-  margin: auto;
-  border-top: 1px solid #42628056;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
   align-items: center;
 `;
 
@@ -184,9 +187,12 @@ export const ClientInfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #42628056;
+  margin: 10px auto 0;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
   width: 330px;
-  margin: 0 auto;
+  padding: 0 0 20px;
   animation: clientInfoPopup 0.3s ease-in;
 
   @keyframes clientInfoPopup {
