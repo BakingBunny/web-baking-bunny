@@ -5,7 +5,7 @@ import { OrderListInterface } from '../../interface/OrderListInterface';
 import {
   CheckOutQuestion,
   DateBtn,
-  DateBtnWrapper,
+  OptionWrapper,
 } from './CheckoutPageElements';
 
 interface Props {
@@ -16,13 +16,13 @@ export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
 
   return (
-    <DateBtnWrapper>
+    <OptionWrapper>
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
       <DateBtn onClick={() => setShowModal(true)}>
         {orderListState.pickupDeliveryDate
           ? orderListState.pickupDeliveryDate.toDateString()
           : 'Select a date'}
       </DateBtn>
-    </DateBtnWrapper>
+    </OptionWrapper>
   );
 };

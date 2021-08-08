@@ -1,13 +1,7 @@
 import React from 'react';
 import { CartProducts } from './CartProducts';
-import {
-  Container,
-  Title,
-  Wrapper,
-  OtherInfo,
-  OrderBtn,
-} from './ReviewPageElements';
-import { UserInfo } from './UserInfo';
+import { Container, Title, Wrapper, OrderBtn } from './ReviewPageElements';
+import { OptionInfo } from './OptionInfo';
 
 interface Props {}
 
@@ -28,12 +22,10 @@ const Review = (props: Props) => {
   return (
     <Container>
       <Title>Review</Title>
-      Please double-check your details before placing your order.
+      {/* Please double-check your details before placing your order. */}
       <Wrapper>
         <CartProducts />
-        <OtherInfo>
-          <UserInfo />
-        </OtherInfo>
+        <OptionInfo />
       </Wrapper>
       <OrderBtn onClick={onClickHandler}>Place your order</OrderBtn>
     </Container>

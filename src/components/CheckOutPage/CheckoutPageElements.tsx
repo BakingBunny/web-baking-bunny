@@ -9,7 +9,7 @@ export const CheckOutBtn = styled.button`
   border: 0;
   color: #fff;
   font-size: 1rem;
-  margin: 20px 15px;
+  margin: 20px 15px 0;
   border-radius: 10px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -39,9 +39,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   margin: auto;
   /* padding: 0 20px; */
-  height: 100%;
+  /* height: 100%; */
   max-width: 850px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 `;
 
 export const Title = styled.h2`
@@ -54,21 +54,30 @@ export const Title = styled.h2`
   font-family: 'Otomanopee One', sans-serif;
 `;
 
-export const DeliveryOptionWrapper = styled.div`
+export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   margin: 10px auto;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
   align-items: center;
   width: 330px;
+  animation: clientInfoPopup 0.3s ease-in;
+  padding: 20px 0;
+
+  @keyframes clientInfoPopup {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const CheckOutQuestion = styled.div`
   font-size: 1.2rem;
-  padding: 1rem 0 0 0;
   font-family: 'Georama', sans-serif;
   font-weight: 500;
   color: #133853;
@@ -101,21 +110,9 @@ export const DeliveryRequirement = styled.div`
   font-size: 1rem;
 `;
 
-export const DateBtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 330px;
-  margin: 10px auto;
-  background: #fff;
-  border: 1px solid #9f9f9f87;
-  border-radius: 10px;
-  align-items: center;
-`;
-
 export const DateBtn = styled(CheckOutBtn)`
   font-size: 1.2rem;
   width: 270px;
-  margin: 20px auto;
 `;
 
 export const TimeWrapper = styled.div`
@@ -180,29 +177,6 @@ export const MapIframe = styled.iframe`
 
 export const CloseBtn = styled(CheckOutBtn)`
   margin: auto;
-`;
-
-export const ClientInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px auto 0;
-  background: #fff;
-  border: 1px solid #9f9f9f87;
-  border-radius: 10px;
-  width: 330px;
-  padding: 0 0 20px;
-  animation: clientInfoPopup 0.3s ease-in;
-
-  @keyframes clientInfoPopup {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 `;
 
 export const ClientInputWrapper = styled.div`
