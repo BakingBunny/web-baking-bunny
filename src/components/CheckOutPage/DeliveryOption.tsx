@@ -5,7 +5,7 @@ import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import {
-  DeliveryOptionWrapper,
+  OptionWrapper,
   DeliveryBtnWrapper,
   DeliveryOptionBtn,
   CheckOutQuestion,
@@ -50,6 +50,7 @@ export const DeliveryOption: React.FC<Props> = ({
           value: null,
         })
       );
+    //TODO: hour and minutes should be reset as well.
 
     // update the store value
     dispatch(
@@ -61,7 +62,7 @@ export const DeliveryOption: React.FC<Props> = ({
   };
 
   return (
-    <DeliveryOptionWrapper>
+    <OptionWrapper>
       <CheckOutQuestion>How would you like to take them?</CheckOutQuestion>
       <DeliveryBtnWrapper>
         <DeliveryOptionBtn
@@ -79,6 +80,6 @@ export const DeliveryOption: React.FC<Props> = ({
           Delivery
         </DeliveryOptionBtn>
       </DeliveryBtnWrapper>
-    </DeliveryOptionWrapper>
+    </OptionWrapper>
   );
 };

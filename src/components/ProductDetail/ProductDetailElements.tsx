@@ -5,10 +5,10 @@ export const Wrapper = styled.div`
   grid-template-columns: 350px auto;
   /* grid-template-columns: 1fr 1fr; */
   grid-gap: 50px;
-  /* margin: 50px auto; */
   padding: 20px;
-  max-width: 800px;
-  min-width: 320px;
+  max-width: min(90vw, 800px);
+  /* max-width: 800px; */
+  min-width: 310px;
   background: #fff;
   border: 3px solid #133853;
   border-radius: 10px;

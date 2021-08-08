@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin: auto auto 20px;
   height: 100%;
-  max-width: 700px;
+  max-width: 750px;
 `;
 
 export const Title = styled.h2`
@@ -22,9 +22,9 @@ export const Title = styled.h2`
 export const Wrapper = styled.div`
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 1fr 300px;
-  grid-template-areas: 'card-wrapper subtotal';
   padding: 10px;
+  grid-template-columns: 1fr 330px;
+  grid-template-areas: 'card-wrapper subtotal';
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
@@ -33,17 +33,15 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Subtitle = styled.h2`
-  font-size: 1.3rem;
-  letter-spacing: 1px;
-  margin: 10px 0;
+export const CardContainer = styled.div`
+  grid-area: card-wrapper;
+  margin: 0 0 15px;
 `;
 
 export const CardWrapper = styled.div`
-  grid-area: card-wrapper;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 15px;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
@@ -53,9 +51,11 @@ export const Card = styled.div`
   display: grid;
   grid-template-columns: min(35%, 150px) 1fr;
   padding: 10px 0;
+  border-top: 1px solid #9f9f9f87;
 
-  &:not(:first-child) {
-    border-top: 1px solid #9f9f9f87;
+  &:first-child {
+    border-top: 0;
+    padding: 0 0 10px;
   }
 
   &:last-child {
@@ -83,7 +83,7 @@ export const OptionsWrapper = styled.div`
 `;
 
 export const CakeName = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 0 0 10px;
 `;
 

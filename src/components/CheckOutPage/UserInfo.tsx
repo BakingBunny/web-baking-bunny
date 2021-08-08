@@ -4,7 +4,7 @@ import { userInfo, update } from '../../store/userInfoSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
-  ClientInfoContainer,
+  OptionWrapper,
   ClientInputWrapper,
   ClientInfoInput,
   ClientInfoLabel,
@@ -31,7 +31,7 @@ export const UserInfo = (props: Props) => {
   };
 
   return (
-    <ClientInfoContainer>
+    <OptionWrapper>
       <CheckOutQuestion>Please tell us who you are :)</CheckOutQuestion>
       <ClientInputWrapper>
         <ClientInfoInput
@@ -105,6 +105,6 @@ export const UserInfo = (props: Props) => {
           <span>Any other inquiries?</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
-    </ClientInfoContainer>
+    </OptionWrapper>
   );
 };
