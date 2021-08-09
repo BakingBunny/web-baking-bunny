@@ -15,6 +15,9 @@ export const cartSlice = createSlice({
       const index = state.findIndex((item) => item.id === action.payload);
       if (index !== -1) state.splice(index, 1);
     },
+    removeAll: (state) => {
+      state.splice(0, state.length);
+    },
     update: (
       state,
       action: PayloadAction<{
@@ -36,7 +39,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { add, remove, update } = cartSlice.actions;
+export const { add, remove, removeAll, update } = cartSlice.actions;
 
 export const products = (state: RootState) => state.cart;
 

@@ -6,6 +6,7 @@ import {
   Container,
   Title,
   Wrapper,
+  CardContainer,
   CardWrapper,
   Card,
   ImageWrapper,
@@ -46,11 +47,9 @@ export const Cart = (props: Props) => {
       <Title>Shopping Cart</Title>
       {cartList.length > 0 ? (
         <Wrapper>
-          <CardWrapper>
-            {cartList.map((item: CartInterface) => {
-              // item.product && setSubTotal(subTotal + item.product?.price);
-
-              return (
+          <CardContainer>
+            <CardWrapper>
+              {cartList.map((item: CartInterface) => (
                 <Card key={item.id}>
                   <ImageWrapper>
                     <Image
@@ -75,9 +74,9 @@ export const Cart = (props: Props) => {
                     <Quantity cartItem={item} updateHandler={updateHandler} />
                   </OptionsWrapper>
                 </Card>
-              );
-            })}
-          </CardWrapper>
+              ))}
+            </CardWrapper>
+          </CardContainer>
           <Subtotal />
         </Wrapper>
       ) : (

@@ -29,7 +29,7 @@ export const Navbar = (props: Props) => {
             />
           </Logo>
           <ProductLink
-            to={'/cakes'}
+            to={'/product/cakes'}
             activeStyle={{
               fontWeight: 'bold',
               borderBottom: '1px solid #fff',
@@ -38,7 +38,7 @@ export const Navbar = (props: Props) => {
             CAKE
           </ProductLink>
           <ProductLink
-            to={'/dacquoises'}
+            to={'/product/dacquoises'}
             activeStyle={{
               fontWeight: 'bold',
               borderBottom: '1px solid #fff',

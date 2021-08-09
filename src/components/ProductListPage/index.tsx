@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -22,9 +23,11 @@ import { ModalWindow } from '../../utils/ModalWindow';
 
 toast.configure();
 
-interface Props {
-  productType: string;
+interface paramsInterface {
+  productCategory: string;
 }
+
+interface Props {}
 
 const initialProduct = {
   productId: 0,
@@ -47,7 +50,7 @@ export const ProductList = (props: Props) => {
     useState<ProductInterface>(initialProduct);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const { productType } = props;
+  const { productCategory } = useParams<paramsInterface>();
 
   // fetch product list from the server
   useEffect(() => {
@@ -55,12 +58,10 @@ export const ProductList = (props: Props) => {
       const fetchData = async () => {
         setLoading(true);
         window.scrollTo(0, 0); // scroll to top
-        const result = await fetch(`/api/product/${productType}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        });
+        const result = await fetch(`/api/product/${productCategory}`);
+        // const result = await fetch(
+        //   `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api${productType}`
+        // );
         const body = await result.json();
         setFilteredProductList(body);
         setLoading(false);
@@ -69,12 +70,13 @@ export const ProductList = (props: Props) => {
     } catch (error) {
       toast('Sorry, something went wrong. Try it later.', { type: 'error' });
     }
-  }, [productType]);
+  }, [productCategory]);
 
   // useEffect(() => {
   //   switch (productType) {
   //     case '/cakes':
   //       setFilteredProductList(
+  //         // productList.filter((item) => item.categoryId === 1)
   //         productList.filter((item) => item.categoryId === 1)
   //       );
   //       break;
@@ -102,7 +104,7 @@ export const ProductList = (props: Props) => {
   return (
     <Container>
       <Wrapper>
-        <Title>{productType.replace('/', '')}</Title>
+        <Title>{productCategory.replace('/', '')}</Title>
         <CardWrapper>
           {loading
             ? 'Loading...' // shows it while loading product list from the server.

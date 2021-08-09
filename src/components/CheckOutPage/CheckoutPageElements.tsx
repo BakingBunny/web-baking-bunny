@@ -9,7 +9,7 @@ export const CheckOutBtn = styled.button`
   border: 0;
   color: #fff;
   font-size: 1rem;
-  margin: 20px 15px;
+  margin: 20px 15px 0;
   border-radius: 10px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -39,9 +39,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   margin: auto;
   /* padding: 0 20px; */
-  height: 100%;
+  /* height: 100%; */
   max-width: 850px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 `;
 
 export const Title = styled.h2`
@@ -54,19 +54,30 @@ export const Title = styled.h2`
   font-family: 'Otomanopee One', sans-serif;
 `;
 
-export const DeliveryOptionWrapper = styled.div`
+export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  margin: auto;
-  border-top: 1px solid #42628056;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
   align-items: center;
   width: 330px;
+  animation: clientInfoPopup 0.3s ease-in;
+  padding: 20px 0;
+
+  @keyframes clientInfoPopup {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const CheckOutQuestion = styled.div`
   font-size: 1.2rem;
-  padding: 1rem 0 0 0;
   font-family: 'Georama', sans-serif;
   font-weight: 500;
   color: #133853;
@@ -99,43 +110,26 @@ export const DeliveryRequirement = styled.div`
   font-size: 1rem;
 `;
 
-export const DateBtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 330px;
-  /* justify-content: space-between; */
-  margin: auto;
-  border-top: 1px solid #42628056;
-  align-items: center;
-`;
-
 export const DateBtn = styled(CheckOutBtn)`
   font-size: 1.2rem;
   width: 270px;
-  margin: 20px auto;
 `;
 
 export const TimeWrapper = styled.div`
   display: flex;
   margin: auto;
   align-items: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
 `;
 
 export const TimeSelect = styled.select`
-  width: 93%;
+  width: 3rem;
   height: 30px;
   margin: 0 10px;
-  background-color: #133853;
-  color: #fff;
-  border: 0.5px solid rgba(0, 0, 0, 0.703);
+  border: 0.5px solid #426280c1;
   border-radius: 4px;
   font-size: 1rem;
   padding-left: 5px;
-
-  option {
-    background-color: #426280;
-  }
 `;
 
 export const ModalWrapper = styled.div`
@@ -183,26 +177,6 @@ export const MapIframe = styled.iframe`
 
 export const CloseBtn = styled(CheckOutBtn)`
   margin: auto;
-`;
-
-export const ClientInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #42628056;
-  width: 330px;
-  margin: 0 auto;
-  animation: clientInfoPopup 0.3s ease-in;
-
-  @keyframes clientInfoPopup {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 `;
 
 export const ClientInputWrapper = styled.div`
@@ -291,7 +265,7 @@ export const ConfirmLink = styled(Link)`
   font-size: 1.5rem;
   text-transform: uppercase;
   padding: 10px 30px;
-  margin: 30px auto 10px;
+  margin: 10px auto 30px;
   color: #000;
   background: #f4ba29;
   border: 0;

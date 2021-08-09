@@ -4,11 +4,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
-  /* padding: 0 20px; */
+  margin: auto auto 20px;
   height: 100%;
-  max-width: 850px;
-  margin-bottom: 20px;
+  max-width: 750px;
 `;
 
 export const Title = styled.h2`
@@ -23,28 +21,46 @@ export const Title = styled.h2`
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 10px;
+  grid-template-columns: 1fr 330px;
   grid-template-areas: 'card-wrapper subtotal';
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
     grid-template-areas: 'subtotal' 'card-wrapper';
-    /* grid-gap: 0px; */
+    grid-gap: 0px;
   }
 `;
 
-export const CardWrapper = styled.div`
+export const CardContainer = styled.div`
   grid-area: card-wrapper;
+  margin: 0 0 15px;
+`;
+
+export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
 `;
 
 export const Card = styled.div`
   display: grid;
-  grid-template-columns: min(35%, 300px) 1fr;
-  border-top: 1px solid #9f9f9f87;
+  grid-template-columns: min(35%, 150px) 1fr;
   padding: 10px 0;
+  border-top: 1px solid #9f9f9f87;
+
+  &:first-child {
+    border-top: 0;
+    padding: 0 0 10px;
+  }
+
+  &:last-child {
+    padding: 10px 0 0;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -67,7 +83,7 @@ export const OptionsWrapper = styled.div`
 `;
 
 export const CakeName = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 0 0 10px;
 `;
 
@@ -197,11 +213,13 @@ export const SubtotalWrapper = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: min(100%, 400px);
+  min-width: 330px;
   height: 80px;
-  border-top: 1px solid #9f9f9f87;
-  padding: 15px 0;
-  margin: 10px 0 0 0;
+  margin: 0 0 10px;
+  padding: 20px 0;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
 `;
 
 export const SubtotalText = styled.b`

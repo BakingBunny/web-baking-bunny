@@ -4,7 +4,7 @@ import { userInfo, update } from '../../store/userInfoSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
-  ClientInfoContainer,
+  OptionWrapper,
   ClientInputWrapper,
   ClientInfoInput,
   ClientInfoLabel,
@@ -31,7 +31,7 @@ export const UserInfo = (props: Props) => {
   };
 
   return (
-    <ClientInfoContainer>
+    <OptionWrapper>
       <CheckOutQuestion>Please tell us who you are :)</CheckOutQuestion>
       <ClientInputWrapper>
         <ClientInfoInput
@@ -66,7 +66,7 @@ export const UserInfo = (props: Props) => {
           required
         />
         <ClientInfoLabel>
-          <span>Email</span>
+          <span>Email or Instagram ID</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
       <ClientInputWrapper>
@@ -81,47 +81,30 @@ export const UserInfo = (props: Props) => {
           <span>Phone number</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
-      {/* {orderListState.isDelivery && (
-        <>
-          <ClientInputWrapper>
-            <ClientInfoInput
-              type='text'
-              name='address'
-              onChange={onChangeHandler}
-              value={userInfoState.address}
-              required={orderListState.isDelivery}
-            />
-            <ClientInfoLabel>
-              <span>Address</span>
-            </ClientInfoLabel>
-          </ClientInputWrapper>
-          <ClientInputWrapper>
-            <ClientInfoInput
-              type='text'
-              name='city'
-              onChange={onChangeHandler}
-              value={userInfoState.city}
-              required={orderListState.isDelivery}
-            />
-            <ClientInfoLabel>
-              <span>City</span>
-            </ClientInfoLabel>
-          </ClientInputWrapper>
-          <ClientInputWrapper>
-            <ClientInfoInput
-              type='text'
-              name='postalCode'
-              onChange={onChangeHandler}
-              value={userInfoState.postalCode}
-              required={orderListState.isDelivery}
-            />
-            <ClientInfoLabel>
-              <span>Postal Code</span>
-            </ClientInfoLabel>
-          </ClientInputWrapper>
-        </>
-      )} */}
-      {/* <textarea {...register('allergy', {})} placeholder='Allergy' /> */}
-    </ClientInfoContainer>
+      <ClientInputWrapper>
+        <ClientInfoInput
+          type='text'
+          name='allergy'
+          onChange={onChangeHandler}
+          value={userInfoState.allergy}
+          required
+        />
+        <ClientInfoLabel>
+          <span>Any food allergies?</span>
+        </ClientInfoLabel>
+      </ClientInputWrapper>
+      <ClientInputWrapper>
+        <ClientInfoInput
+          type='text'
+          name='inquiry'
+          onChange={onChangeHandler}
+          value={userInfoState.inquiry}
+          required
+        />
+        <ClientInfoLabel>
+          <span>Any other inquiries?</span>
+        </ClientInfoLabel>
+      </ClientInputWrapper>
+    </OptionWrapper>
   );
 };

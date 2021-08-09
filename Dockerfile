@@ -2,8 +2,9 @@
 FROM node:14 as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
-COPY ./package.json /app/
-COPY ./yarn.lock /app/
+COPY package.json ./
+COPY package-lock.json ./
+COPY yarn.lock /app/
 RUN yarn --silent
 COPY . /app
 RUN yarn build

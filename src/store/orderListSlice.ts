@@ -10,7 +10,7 @@ const initialState: OrderListInterface = {
   subtotal: 0,
   deliveryFee: null,
   total: 0,
-  isDelivery: false,
+  isDelivery: null,
   pickupDeliveryDate: null,
   pickupHour: 14,
   pickupMinute: 0,

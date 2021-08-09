@@ -3,13 +3,22 @@ import { RootState } from './store';
 import { UserInfoInterface } from '../interface/UserInfoInterface';
 
 const initialState: UserInfoInterface = {
-  firstname: '',
-  lastname: '',
-  email: '',
-  address: '',
-  postalCode: '',
-  phone: '',
-  // city: 'Calgary',
+  firstname: 'Peter',
+  lastname: 'Parker',
+  email: 'peter.parker@email.com',
+  phone: '4031234567',
+  allergy: 'Milk, Peanut, Cheese, Egg',
+  inquiry: 'Although I have the allergies, can I eat cake?',
+  postalCode: 'A1B2C3',
+  address: '123 Newyork Street SW',
+  // firstname: '',
+  // lastname: '',
+  // email: '',
+  // phone: '',
+  // allergy: '',
+  // inquiry: '',
+  // postalCode: '',
+  // address: '',
 };
 
 export const userInfoSlice = createSlice({
