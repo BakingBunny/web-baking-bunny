@@ -61,7 +61,7 @@ export const ProductList = (props: Props) => {
         // const result = await fetch(`/api/product/${productCategory}`);
         const result = await fetch(
           `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productCategory}`
-        );
+        ); //
         const body = await result.json();
         setFilteredProductList(body);
         setLoading(false);
