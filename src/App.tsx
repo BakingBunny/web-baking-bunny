@@ -16,6 +16,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { useCountCartItems } from './hooks/useCountCartItems';
 import { ReviewPage } from './pages/ReviewPage';
 import useValid from './hooks/useCheckOutValid';
+import { ConfirmPage } from './pages/ConfirmPage';
 
 const BodyContainer = styled.div`
   min-height: calc(100vh - 60px - 30px);
@@ -33,7 +34,7 @@ function App() {
           <Switch>
             <Route path='/' component={HomePage} exact />
             <Route
-              path={['/cakes', '/dacquoises']}
+              path={'/product/:productCategory'}
               component={ProductListPage}
               exact
             />
@@ -42,6 +43,7 @@ function App() {
               <Route path='/checkout' component={CheckoutPage} exact />
             )}
             {isValid && <Route path='/review' component={ReviewPage} exact />}
+            {isValid && <Route path='/confirm' component={ConfirmPage} exact />}
             <Route component={NotFoundPage} />
           </Switch>
         </BodyContainer>
