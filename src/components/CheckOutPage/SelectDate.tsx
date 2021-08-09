@@ -17,7 +17,7 @@ interface Props {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-let minDate = new Date(),
+let minDate: Date = new Date(),
   maxDate = new Date();
 minDate.setDate(minDate.getDate() + 7);
 maxDate.setDate(maxDate.getDate() + 60);
