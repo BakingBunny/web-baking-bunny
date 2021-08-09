@@ -60,7 +60,6 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
           value: newDate,
         })
       );
-      console.log(orderListState.pickupDeliveryDate.toLocaleTimeString());
     }
   };
 
