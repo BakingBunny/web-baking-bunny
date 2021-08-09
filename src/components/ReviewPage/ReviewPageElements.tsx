@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
   display: grid;
   grid-gap: 1rem;
   padding: 10px;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 310px;
   grid-template-areas: 'card-wrapper option-info';
 
   @media screen and (max-width: 960px) {
@@ -119,12 +119,11 @@ export const OptionInfoWrapper = styled.div`
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
   margin: 0 0 15px;
-  padding: 10px 0;
-  width: 100%;
+  padding: 15px;
 `;
 
 export const OptionInfoText = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0.5rem auto;
 `;
 

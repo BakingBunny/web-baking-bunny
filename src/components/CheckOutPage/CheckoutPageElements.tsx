@@ -265,7 +265,7 @@ export const ConfirmLink = styled(Link)`
   font-size: 1.5rem;
   text-transform: uppercase;
   padding: 10px 30px;
-  margin: 30px auto 10px;
+  margin: 10px auto 30px;
   color: #000;
   background: #f4ba29;
   border: 0;

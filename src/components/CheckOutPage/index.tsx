@@ -23,8 +23,8 @@ export const CheckOut = (props: Props) => {
 
   return (
     <>
-      <Title>Checkout</Title>
       <Wrapper>
+        <Title>Checkout</Title>
         <DeliveryOption
           setShowPickUpLocationModal={setShowPickUpLocationModal}
           setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
