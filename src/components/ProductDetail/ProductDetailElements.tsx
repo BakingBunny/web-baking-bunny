@@ -6,9 +6,8 @@ export const Wrapper = styled.div`
   /* grid-template-columns: 1fr 1fr; */
   grid-gap: 50px;
   padding: 20px;
-  max-width: min(90vw, 800px);
+  /* max-width: min(90vw, 800px); */
   /* max-width: 800px; */
-  min-width: 310px;
   background: #fff;
   border: 3px solid #133853;
   border-radius: 10px;
@@ -30,6 +29,7 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
     grid-gap: 0px;
+    margin: 5px;
   }
 `;
 
@@ -37,7 +37,6 @@ export const CloseBtn = styled.div`
   position: absolute;
   top: -25px;
   left: -25px;
-  /* transform: translate(-50%, -50%); */
   z-index: 5;
   font-size: 3rem;
   color: #133853b9;
@@ -90,17 +89,6 @@ export const OptionWrapper = styled.div`
   align-items: center;
   /* height: 100%; */
 `;
-// export const OptionWrapper = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   grid-template-areas:
-//     'cake-name cake-name'
-//     'price price'
-//     'fruitstitle fruitstitle'
-//     'fruitswrapper fruitswrapper'
-//     'sizewrapper qtywrapper'
-//     'add-to-cart-btn add-to-cart-btn';
-// `;
 
 export const ProductName = styled.div`
   font-size: 1.6rem;
@@ -117,13 +105,6 @@ export const PriceWrapper = styled.div`
   text-align: center;
   margin-top: 10px;
 `;
-
-// export const TastesTitle = styled.h2`
-//   /* grid-area: fruitstitle; */
-//   justify-self: center;
-//   font-size: 1rem;
-//   margin: 2px 0;
-// `;
 
 export const TastesWrapper = styled.div`
   /* grid-area: fruitswrapper; */
@@ -164,7 +145,7 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   height: 2.5rem;
   font-size: 11px;
   border-radius: 5px;
-  margin: 8px 6px;
+  margin: 8px 1vw;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
   transition: all 0.3s ease;
@@ -185,7 +166,6 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
 `;
 
 export const SubOptionWrapper = styled.div`
-  /* align-items: center; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -247,11 +227,6 @@ export const ProductQty = styled.div`
     text-align: center;
     transform: translate(-50%, -50%);
   }
-  /* width: 60px;
-  padding: 6px 0;
-  text-align: center;
-  background-color: #ffebee;
-  color: #133853; */
 `;
 
 export const AddToCartBtn = styled.button`

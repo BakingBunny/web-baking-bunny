@@ -77,13 +77,13 @@ export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px auto;
+  padding: 20px 0;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
   align-items: center;
   width: 330px;
   animation: clientInfoPopup 0.3s ease-in;
-  padding: 20px 0;
 
   @keyframes clientInfoPopup {
     from {
@@ -191,7 +191,7 @@ export const MapIframe = styled.iframe`
   width: 100%;
   max-width: 500px;
   height: 400px;
-  margin: 20px auto;
+  margin: 20px auto 0;
 `;
 
 export const CloseBtn = styled(CheckOutBtn)`
@@ -210,7 +210,8 @@ export const ClientInputWrapper = styled.div`
 `;
 
 export const ClientInfoInput = styled.input`
-  width: calc(100%-20px);
+  /* width: calc(100%-20px); */
+  width: 240px;
   height: 60px;
   padding-top: 10px;
   padding-left: 20px;
@@ -274,13 +275,25 @@ export const ClientInfoErrorMsg = styled.div`
   margin-top: 0;
 `;
 
+export const BtnWrapper = styled.div`
+  display: flex;
+  margin: 10px auto;
+`;
+
 export const ConfirmBtn = styled(CheckOutBtn)`
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  padding: 10px 30px;
-  margin: 30px auto 10px;
+  padding: 10px 20px;
   color: #000;
   background: #f4ba29;
+`;
+
+export const CancelBtn = styled(CheckOutBtn)`
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  color: #000;
+  background: #e4d3a6;
 `;
 
 export const ConfirmLink = styled(Link)`

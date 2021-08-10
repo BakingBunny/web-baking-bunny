@@ -14,6 +14,8 @@ import {
   CheckOutQuestion,
   CheckAddressBtn,
   ConfirmBtn,
+  BtnWrapper,
+  CancelBtn,
 } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
@@ -49,6 +51,23 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
   };
 
   const onConfirmhandler = () => {
+    dispatch(
+      orderListUpdate({
+        name: 'isDelivery',
+        value: true,
+      })
+    );
+
+    // if deliver and date is NOT Saturday then reset the date.
+    if (orderListState.pickupDeliveryDate?.getDay() !== 6)
+      dispatch(
+        //TODO: hour and minutes should be reset as well.
+        orderListUpdate({
+          name: 'pickupDeliveryDate',
+          value: null,
+        })
+      );
+
     setShowModal(false);
   };
 
@@ -107,9 +126,12 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
                 <span>Address</span>
               </ClientInfoLabel>
             </ClientInputWrapper>
-            <ConfirmBtn onClick={onConfirmhandler}>Confirm</ConfirmBtn>
           </>
         )}
+      <BtnWrapper>
+        <ConfirmBtn onClick={onConfirmhandler}>Confirm</ConfirmBtn>
+        <CancelBtn onClick={() => setShowModal(false)}>Cancel</CancelBtn>
+      </BtnWrapper>
       {orderListState.deliveryFee !== null && // NULL is initial value
         orderListState.deliveryFee < 0 && ( // delivery: IMPOSSIBLE (-1)
           <DeliveryRequirement>

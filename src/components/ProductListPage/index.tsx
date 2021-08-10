@@ -14,12 +14,12 @@ import {
   Price,
   OrderNowBtn,
 } from './ProductListElements';
-// import productList from '../../productList.json';
 import formatCurrency from '../../utils/formatCurrency';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { ProductDetail } from '../ProductDetail';
 import { NotFoundPage } from '../../pages/NotFoundPage';
 import { ModalWindow } from '../../utils/ModalWindow';
+// import productList from '../../productList.json';
 
 toast.configure();
 
@@ -42,10 +42,10 @@ const initialProduct = {
 };
 
 export const ProductList = (props: Props) => {
-  // const [productList, setProductList] = useState<ProductInterface[]>([]);
-  const [filteredProductList, setFilteredProductList] = useState<
-    ProductInterface[]
-  >([]);
+  const [productList, setProductList] = useState<ProductInterface[]>([]);
+  // const [filteredProductList, setFilteredProductList] = useState<
+  //   ProductInterface[]
+  // >([]);
   const [selectedProduct, setSelectedProduct] =
     useState<ProductInterface>(initialProduct);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -58,17 +58,18 @@ export const ProductList = (props: Props) => {
       const fetchData = async () => {
         setLoading(true);
         window.scrollTo(0, 0); // scroll to top
-        const result = await fetch(`/api/product/${productCategory}`);
-        // const result = await fetch(
-        //   `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productCategory}`
-        // );
+        // const result = await fetch(`/api/product/${productCategory}`);
+        const result = await fetch(
+          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productCategory}`
+        );
         const body = await result.json();
-        setFilteredProductList(body);
+        setProductList(body);
         setLoading(false);
       };
       fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
     } catch (error) {
-      toast('Sorry, something went wrong. Try it later.', { type: 'error' });
+      // toast('Sorry, something went wrong. Try it later.', { type: 'error' });
+      console.log(error);
     }
   }, [productCategory]);
 
@@ -90,9 +91,7 @@ export const ProductList = (props: Props) => {
 
   // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
-    const findProduct = filteredProductList.find(
-      (product) => product.productId === id
-    );
+    const findProduct = productList.find((product) => product.productId === id);
     if (findProduct) {
       setSelectedProduct(findProduct);
       setShowModal(true);
@@ -108,7 +107,7 @@ export const ProductList = (props: Props) => {
         <CardWrapper>
           {loading
             ? 'Loading...' // shows it while loading product list from the server.
-            : filteredProductList.map((product: ProductInterface) => (
+            : productList.map((product: ProductInterface) => (
                 <Card
                   key={product.productName}
                   onClick={() => CardHandler(product.productId)}
