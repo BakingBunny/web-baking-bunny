@@ -5,11 +5,12 @@ import { useAppSelector } from '../../store/hooks';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
   OptionInfoContainer,
-  OptionInfoWrapper,
+  FlexWrapper,
   OptionInfoText,
+  GridWrapper,
   TotalWrapper,
-  TotalText,
-  TotalValue,
+  TextLeft,
+  TextRight,
 } from './ReviewPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import formatCurrency from '../../utils/formatCurrency';
@@ -22,16 +23,20 @@ export const OptionInfo = (props: Props) => {
 
   return (
     <OptionInfoContainer>
-      <OptionInfoWrapper>
+      <FlexWrapper>
         <OptionInfoText>
           {userInfoState.firstname} {userInfoState.lastname}
         </OptionInfoText>
         <OptionInfoText>{userInfoState.email}</OptionInfoText>
         <OptionInfoText>{userInfoState.phone}</OptionInfoText>
-        <OptionInfoText>Allergies: {userInfoState.allergy}</OptionInfoText>
-        <OptionInfoText>Inquiries: {userInfoState.inquiry}</OptionInfoText>
-      </OptionInfoWrapper>
-      <OptionInfoWrapper>
+      </FlexWrapper>
+      <GridWrapper>
+        <TextLeft>Allergies:</TextLeft>
+        <TextLeft>{userInfoState.allergy}</TextLeft>
+        <TextLeft>Inquiries: </TextLeft>
+        <TextLeft>{userInfoState.inquiry}</TextLeft>
+      </GridWrapper>
+      <FlexWrapper>
         <OptionInfoText>
           <b>{orderListState.isDelivery ? 'DELIVERY' : 'PICK UP'}</b>
         </OptionInfoText>
@@ -53,22 +58,20 @@ export const OptionInfo = (props: Props) => {
               minute: '2-digit',
             })}
         </OptionInfoText>
-      </OptionInfoWrapper>
+      </FlexWrapper>
       <TotalWrapper>
         {orderListState.isDelivery && orderListState.deliveryFee && (
           <>
-            <TotalText>Subtotal: </TotalText>
-            <TotalValue>{formatCurrency(orderListState.subtotal)}</TotalValue>
-            <TotalText>Delivery Fee: </TotalText>
-            <TotalValue>
-              {formatCurrency(orderListState.deliveryFee)}
-            </TotalValue>
+            <TextLeft>Subtotal: </TextLeft>
+            <TextRight>{formatCurrency(orderListState.subtotal)}</TextRight>
+            <TextLeft>Delivery Fee: </TextLeft>
+            <TextRight>{formatCurrency(orderListState.deliveryFee)}</TextRight>
           </>
         )}
-        <TotalText>
+        <TextLeft>
           <b>TOTAL:</b>
-        </TotalText>
-        <TotalValue>
+        </TextLeft>
+        <TextRight>
           <b>
             {orderListState.deliveryFee
               ? formatCurrency(
@@ -76,30 +79,8 @@ export const OptionInfo = (props: Props) => {
                 )
               : formatCurrency(orderListState.subtotal)}
           </b>
-        </TotalValue>
+        </TextRight>
       </TotalWrapper>
-      {/* <OptionInfoWrapper>
-        {orderListState.isDelivery && orderListState.deliveryFee && (
-          <>
-            <OptionInfoText>
-              Subtotal: {formatCurrency(orderListState.subtotal)}
-            </OptionInfoText>
-            <OptionInfoText>
-              Delivery Fee: {formatCurrency(orderListState.deliveryFee)}
-            </OptionInfoText>
-          </>
-        )}
-        <OptionInfoText>
-          <b>
-            TOTAL:{' '}
-            {orderListState.deliveryFee
-              ? formatCurrency(
-                  orderListState.subtotal + orderListState.deliveryFee
-                )
-              : formatCurrency(orderListState.subtotal)}
-          </b>
-        </OptionInfoText>
-      </OptionInfoWrapper> */}
     </OptionInfoContainer>
   );
 };
