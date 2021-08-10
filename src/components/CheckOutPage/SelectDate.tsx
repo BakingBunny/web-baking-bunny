@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
+// import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
+import { Calendar, OnChangeProps } from 'react-date-range';
 import { addDays } from 'date-fns';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -18,7 +19,7 @@ interface Props {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const disd: Readonly<CalendarProps> | Date = new Date();
+// const disd: Readonly<CalendarProps> | Date = new Date();
 
 const minDate = addDays(new Date(), -7);
 const maxDate = addDays(new Date(), 60);
@@ -64,9 +65,9 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
     }
   };
 
-  const disabledDate = (current: Date): boolean => {
-    return current > minDate;
-  };
+  // const disabledDate = (current: Date): boolean => {
+  //   return current > minDate;
+  // };
 
   return (
     <ModalWrapper>
