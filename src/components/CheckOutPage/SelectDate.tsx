@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { Calendar, OnChangeProps } from 'react-date-range';
+import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
+import { addDays } from 'date-fns';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { orderList, update } from '../../store/orderListSlice';
@@ -17,10 +18,10 @@ interface Props {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-let minDate: Date = new Date(),
-  maxDate = new Date();
-minDate.setDate(minDate.getDate() + 7);
-maxDate.setDate(maxDate.getDate() + 60);
+const disd: Readonly<CalendarProps> | Date = new Date();
+
+const minDate = addDays(new Date(), -7);
+const maxDate = addDays(new Date(), 60);
 
 export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
@@ -63,6 +64,10 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
     }
   };
 
+  const disabledDate = (current: Date): boolean => {
+    return current > minDate;
+  };
+
   return (
     <ModalWrapper>
       <DeliveryRequirement>
@@ -79,6 +84,8 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
         onChange={onDateChangeHandler}
         minDate={minDate}
         maxDate={maxDate}
+        // disabledDates={[disd]}
+        // disabledDay={disabledDate}
       />
       {orderListState.pickupDeliveryDate && (
         <TimeWrapper>
