@@ -142,7 +142,7 @@ export const TimeWrapper = styled.div`
 `;
 
 export const TimeSelect = styled.select`
-  width: 3rem;
+  /* width: 10px; */
   height: 30px;
   margin: 0 10px;
   border: 0.5px solid #426280c1;
