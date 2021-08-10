@@ -3,14 +3,30 @@ import {
   DeliveryRequirement,
   ModalWrapper,
   MapIframe,
-  CloseBtn,
+  BtnWrapper,
+  ConfirmBtn,
+  CancelBtn,
 } from './CheckoutPageElements';
+import { update } from '../../store/orderListSlice';
+import { useAppDispatch } from '../../store/hooks';
 
 interface Props {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export const ModalPickUpLocation: React.FC<Props> = ({ setShowModal }) => {
+  const dispatch = useAppDispatch();
+
+  const onConfirmhandler = () => {
+    dispatch(
+      update({
+        name: 'isDelivery',
+        value: false,
+      })
+    );
+
+    setShowModal(false);
+  };
   return (
     <ModalWrapper>
       <DeliveryRequirement>
@@ -27,7 +43,10 @@ export const ModalPickUpLocation: React.FC<Props> = ({ setShowModal }) => {
         allowFullScreen={true}
         loading='lazy'
       ></MapIframe>
-      <CloseBtn onClick={() => setShowModal(false)}>Close</CloseBtn>
+      <BtnWrapper>
+        <ConfirmBtn onClick={onConfirmhandler}>Confrim</ConfirmBtn>
+        <CancelBtn onClick={() => setShowModal(false)}>Cancel</CancelBtn>
+      </BtnWrapper>
     </ModalWrapper>
   );
 };
