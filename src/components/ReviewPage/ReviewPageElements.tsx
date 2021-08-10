@@ -98,19 +98,25 @@ export const OptionInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* padding: 10px;
-  background: #fff;
-  border: 1px solid #9f9f9f87;
-  border-radius: 10px; */
-
   @media screen and (max-width: 960px) {
     margin: 0 auto;
   }
 `;
 
-export const OptionInfoWrapper = styled.div`
+export const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
+  margin: 0 0 15px;
+  padding: 15px;
+`;
+
+export const GridWrapper = styled.div`
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto 1fr;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
@@ -124,22 +130,16 @@ export const OptionInfoText = styled.div`
   text-align: start;
 `;
 
-export const TotalWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #fff;
-  border: 1px solid #9f9f9f87;
-  border-radius: 10px;
-  margin: 0 0 15px;
+export const TotalWrapper = styled(GridWrapper)`
   padding: 15px 40px;
 `;
 
-export const TotalText = styled(OptionInfoText)`
+export const TextLeft = styled(OptionInfoText)`
   /* text-align: start; */
   width: 100%;
 `;
 
-export const TotalValue = styled(OptionInfoText)`
+export const TextRight = styled(OptionInfoText)`
   text-align: end;
   width: 100%;
 `;

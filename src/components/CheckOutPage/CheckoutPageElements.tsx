@@ -34,14 +34,25 @@ export const CheckOutBtn = styled.button`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  /* padding: 0 20px; */
-  /* height: 100%; */
-  max-width: 850px;
-  /* margin-bottom: 20px; */
+  max-width: 700px;
+`;
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'basic-option user-info' 'confirm confirm';
+
+  @media screen and (max-width: 960px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'basic-option' 'user-info' 'confirm';
+    grid-gap: 0px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -52,6 +63,14 @@ export const Title = styled.h2`
   width: 100%;
   text-transform: uppercase;
   font-family: 'Otomanopee One', sans-serif;
+`;
+
+export const BasicOption = styled.div`
+  grid-area: basic-option;
+`;
+
+export const UserInfoForm = styled.div`
+  grid-area: user-info;
 `;
 
 export const OptionWrapper = styled.div`
@@ -181,9 +200,13 @@ export const CloseBtn = styled(CheckOutBtn)`
 
 export const ClientInputWrapper = styled.div`
   position: relative;
-  height: 60px;
   overflow: hidden;
+  height: 60px;
   margin: 15px 0 0;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
 `;
 
 export const ClientInfoInput = styled.input`
@@ -195,7 +218,6 @@ export const ClientInfoInput = styled.input`
   border: none;
   outline: none;
   font-size: 1rem;
-
   background-color: rgb(249, 250, 251);
 
   &:focus + label span,
@@ -262,6 +284,7 @@ export const ConfirmBtn = styled(CheckOutBtn)`
 `;
 
 export const ConfirmLink = styled(Link)`
+  grid-area: confirm;
   font-size: 1.5rem;
   text-transform: uppercase;
   padding: 10px 30px;
