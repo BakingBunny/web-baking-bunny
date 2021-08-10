@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { orderList } from '../../store/orderListSlice';
 import { useAppSelector } from '../../store/hooks';
-import { Wrapper, Title, ConfirmLink } from './CheckoutPageElements';
+import {
+  Container,
+  BasicOption,
+  UserInfoForm,
+  Wrapper,
+  Title,
+  ConfirmLink,
+} from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
 import { UserInfo } from './UserInfo';
@@ -23,22 +30,28 @@ export const CheckOut = (props: Props) => {
 
   return (
     <>
-      <Wrapper>
+      <Container>
         <Title>Checkout</Title>
-        <DeliveryOption
-          setShowPickUpLocationModal={setShowPickUpLocationModal}
-          setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
-        />
-        {orderListState.isDelivery !== null && (
-          <DisplayDate setShowModal={setShowCalendarModal} />
-        )}
-        {orderListState.pickupDeliveryDate && (
-          <>
-            <UserInfo />
-            <ConfirmLink to={'/review'}>Confirm</ConfirmLink>
-          </>
-        )}
-      </Wrapper>
+        <Wrapper>
+          <BasicOption>
+            <DeliveryOption
+              setShowPickUpLocationModal={setShowPickUpLocationModal}
+              setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
+            />
+            {orderListState.isDelivery !== null && (
+              <DisplayDate setShowModal={setShowCalendarModal} />
+            )}
+          </BasicOption>
+          {orderListState.pickupDeliveryDate && (
+            <>
+              <UserInfoForm>
+                <UserInfo />
+              </UserInfoForm>
+              <ConfirmLink to={'/review'}>Confirm</ConfirmLink>
+            </>
+          )}
+        </Wrapper>
+      </Container>
       {showPickUpLocationModal && (
         <ModalWindow
           showModal={showPickUpLocationModal}

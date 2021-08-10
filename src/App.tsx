@@ -18,7 +18,7 @@ import { ReviewPage } from './pages/ReviewPage';
 import useValid from './hooks/useCheckOutValid';
 import { ConfirmPage } from './pages/ConfirmPage';
 
-const BodyContainer = styled.div`
+const BodyContainer = styled.main`
   min-height: calc(100vh - 60px - 30px);
 `;
 

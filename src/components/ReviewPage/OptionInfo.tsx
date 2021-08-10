@@ -5,8 +5,12 @@ import { useAppSelector } from '../../store/hooks';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
   OptionInfoContainer,
-  OptionInfoWrapper,
+  FlexWrapper,
   OptionInfoText,
+  GridWrapper,
+  TotalWrapper,
+  TextLeft,
+  TextRight,
 } from './ReviewPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import formatCurrency from '../../utils/formatCurrency';
@@ -19,46 +23,68 @@ export const OptionInfo = (props: Props) => {
 
   return (
     <OptionInfoContainer>
-      <OptionInfoWrapper>
+      <FlexWrapper>
         <OptionInfoText>
           {userInfoState.firstname} {userInfoState.lastname}
         </OptionInfoText>
         <OptionInfoText>{userInfoState.email}</OptionInfoText>
         <OptionInfoText>{userInfoState.phone}</OptionInfoText>
-        <OptionInfoText>Allergies: {userInfoState.allergy}</OptionInfoText>
-        <OptionInfoText>Inquiries: {userInfoState.inquiry}</OptionInfoText>
-      </OptionInfoWrapper>
-      <OptionInfoWrapper>
+      </FlexWrapper>
+      <GridWrapper>
+        <TextLeft>
+          <b>Allergies:</b>
+        </TextLeft>
+        <TextLeft>{userInfoState.allergy}</TextLeft>
+        <TextLeft>
+          <b>Inquiries:</b>
+        </TextLeft>
+        <TextLeft>{userInfoState.inquiry}</TextLeft>
+      </GridWrapper>
+      <FlexWrapper>
         <OptionInfoText>
           <b>{orderListState.isDelivery ? 'DELIVERY' : 'PICK UP'}</b>
         </OptionInfoText>
+        {orderListState.isDelivery && (
+          <OptionInfoText>
+            {userInfoState.address}
+            {', '}
+            {userInfoState.postalCode}
+          </OptionInfoText>
+        )}
         <OptionInfoText>
           {orderListState.pickupDeliveryDate &&
             orderListState.pickupDeliveryDate.toDateString()}
         </OptionInfoText>
-      </OptionInfoWrapper>
-      <OptionInfoWrapper>
+        <OptionInfoText>
+          {orderListState.pickupDeliveryDate &&
+            orderListState.pickupDeliveryDate.toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+        </OptionInfoText>
+      </FlexWrapper>
+      <TotalWrapper>
         {orderListState.isDelivery && orderListState.deliveryFee && (
           <>
-            <OptionInfoText>
-              Subtotal: {formatCurrency(orderListState.subtotal)}
-            </OptionInfoText>
-            <OptionInfoText>
-              Delivery Fee: {formatCurrency(orderListState.deliveryFee)}
-            </OptionInfoText>
+            <TextLeft>Subtotal: </TextLeft>
+            <TextRight>{formatCurrency(orderListState.subtotal)}</TextRight>
+            <TextLeft>Delivery Fee: </TextLeft>
+            <TextRight>{formatCurrency(orderListState.deliveryFee)}</TextRight>
           </>
         )}
-        <OptionInfoText>
+        <TextLeft>
+          <b>TOTAL:</b>
+        </TextLeft>
+        <TextRight>
           <b>
-            TOTAL:{' '}
             {orderListState.deliveryFee
               ? formatCurrency(
                   orderListState.subtotal + orderListState.deliveryFee
                 )
               : formatCurrency(orderListState.subtotal)}
           </b>
-        </OptionInfoText>
-      </OptionInfoWrapper>
+        </TextRight>
+      </TotalWrapper>
     </OptionInfoContainer>
   );
 };

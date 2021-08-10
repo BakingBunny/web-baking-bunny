@@ -34,14 +34,25 @@ export const CheckOutBtn = styled.button`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  /* padding: 0 20px; */
-  /* height: 100%; */
-  max-width: 850px;
-  /* margin-bottom: 20px; */
+  max-width: 700px;
+`;
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-gap: 1rem;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'basic-option user-info' 'confirm confirm';
+
+  @media screen and (max-width: 960px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'basic-option' 'user-info' 'confirm';
+    grid-gap: 0px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -54,17 +65,25 @@ export const Title = styled.h2`
   font-family: 'Otomanopee One', sans-serif;
 `;
 
+export const BasicOption = styled.div`
+  grid-area: basic-option;
+`;
+
+export const UserInfoForm = styled.div`
+  grid-area: user-info;
+`;
+
 export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px auto;
+  padding: 20px 0;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
   align-items: center;
   width: 330px;
   animation: clientInfoPopup 0.3s ease-in;
-  padding: 20px 0;
 
   @keyframes clientInfoPopup {
     from {
@@ -172,7 +191,7 @@ export const MapIframe = styled.iframe`
   width: 100%;
   max-width: 500px;
   height: 400px;
-  margin: 20px auto;
+  margin: 20px auto 0;
 `;
 
 export const CloseBtn = styled(CheckOutBtn)`
@@ -181,13 +200,18 @@ export const CloseBtn = styled(CheckOutBtn)`
 
 export const ClientInputWrapper = styled.div`
   position: relative;
-  height: 60px;
   overflow: hidden;
+  height: 60px;
   margin: 15px 0 0;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
 `;
 
 export const ClientInfoInput = styled.input`
-  width: calc(100%-20px);
+  /* width: calc(100%-20px); */
+  width: 240px;
   height: 60px;
   padding-top: 10px;
   padding-left: 20px;
@@ -195,7 +219,6 @@ export const ClientInfoInput = styled.input`
   border: none;
   outline: none;
   font-size: 1rem;
-
   background-color: rgb(249, 250, 251);
 
   &:focus + label span,
@@ -252,16 +275,29 @@ export const ClientInfoErrorMsg = styled.div`
   margin-top: 0;
 `;
 
+export const BtnWrapper = styled.div`
+  display: flex;
+  margin: 10px auto;
+`;
+
 export const ConfirmBtn = styled(CheckOutBtn)`
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  padding: 10px 30px;
-  margin: 30px auto 10px;
+  padding: 10px 20px;
   color: #000;
   background: #f4ba29;
 `;
 
+export const CancelBtn = styled(CheckOutBtn)`
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  color: #000;
+  background: #e4d3a6;
+`;
+
 export const ConfirmLink = styled(Link)`
+  grid-area: confirm;
   font-size: 1.5rem;
   text-transform: uppercase;
   padding: 10px 30px;

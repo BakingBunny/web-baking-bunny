@@ -26,7 +26,7 @@ export const CartProducts = (props: Props) => {
     <CardContainer>
       <CardWrapper>
         {cartList.map((item) => (
-          <Card>
+          <Card key={item.id}>
             <ImageWrapper>
               <Image
                 src={item.product.productImage}

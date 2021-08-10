@@ -4,7 +4,7 @@ import { FaRegCheckCircle } from 'react-icons/fa';
 
 export const Container = styled.div`
   display: grid;
-  margin: 10vh 0 0;
+  padding: 10vh 0 0;
 `;
 
 export const Wrapper = styled.div`

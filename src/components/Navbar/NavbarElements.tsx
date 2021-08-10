@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { FiShoppingCart } from 'react-icons/fi';
 
-export const Container = styled.div`
+export const Container = styled.header`
   background: #133853;
   color: #fff;
   height: 60px;
@@ -15,11 +15,10 @@ export const Container = styled.div`
   box-shadow: 0px 7px 10px -4px rgba(0, 0, 0, 0.43);
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.nav`
   height: 80%;
   width: 90%;
   display: grid;
-  /* justify-content: center; */
   align-content: center;
   grid-template-columns: 1fr 20% 20% 20%;
 `;
@@ -31,8 +30,6 @@ export const Logo = styled(NavLink)`
 
 export const LogoImg = styled.img`
   height: 100%;
-  /* scale: 2; */
-  /* border-radius: solid 1px #fff; */
 `;
 
 export const ProductLink = styled(NavLink)`
@@ -59,7 +56,6 @@ export const CartIcon = styled(FiShoppingCart)`
   right: 0;
   transform: translate(-50%, 30%);
   font-size: 2rem;
-  /* transform: translateY(2px); */
   color: #fff;
 `;
 
@@ -67,9 +63,7 @@ export const CountCartItems = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  /* transform: translate(50%, 50%); */
   background: #f4ba29;
-  /* padding: 10px; */
   width: 25px;
   height: 25px;
   border-radius: 20px;

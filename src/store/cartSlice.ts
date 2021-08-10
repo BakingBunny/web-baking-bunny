@@ -2,7 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { CartInterface } from '../interface/CartInterface';
 
-const initialState: CartInterface[] = [];
+// load saved cart items from local storage.
+const getsavedCart = (): CartInterface[] => {
+  const savedCartItems = localStorage.getItem('cartList');
+  return savedCartItems && JSON.parse(savedCartItems);
+};
+const savedCart: CartInterface[] = getsavedCart();
+
+// check if savedCart exists, or return empty list.
+const initialState: CartInterface[] = savedCart || [];
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -10,13 +18,16 @@ export const cartSlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<CartInterface>) => {
       state.push(action.payload);
+      localStorage.setItem('cartList', JSON.stringify(state));
     },
     remove: (state, action: PayloadAction<string>) => {
       const index = state.findIndex((item) => item.id === action.payload);
       if (index !== -1) state.splice(index, 1);
+      localStorage.setItem('cartList', JSON.stringify(state));
     },
     removeAll: (state) => {
       state.splice(0, state.length);
+      localStorage.setItem('cartList', JSON.stringify(state));
     },
     update: (
       state,
@@ -27,14 +38,13 @@ export const cartSlice = createSlice({
       }>
     ) => {
       const { id, option, value } = action.payload;
-
       const index = state.findIndex((item) => item.id === id);
-
       if (index !== -1) {
         Object.assign(state[index], {
           [option]: value,
         });
       }
+      localStorage.setItem('cartList', JSON.stringify(state));
     },
   },
 });
