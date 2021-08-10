@@ -3,9 +3,6 @@ import { RootState } from './store';
 import { OrderListInterface } from '../interface/OrderListInterface';
 import { OnChangeProps } from 'react-date-range';
 
-let minDate = new Date();
-minDate.setDate(minDate.getDate() + 7);
-
 const initialState: OrderListInterface = {
   subtotal: 0,
   deliveryFee: null,

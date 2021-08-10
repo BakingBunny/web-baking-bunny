@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 
-export const Container = styled.div`
+export const Container = styled.footer`
   /* align-self: end; */
   align-content: flex-end;
   background: #133853;

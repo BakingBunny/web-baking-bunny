@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { FiShoppingCart } from 'react-icons/fi';
 
-export const Container = styled.div`
+export const Container = styled.header`
   background: #133853;
   color: #fff;
   height: 60px;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   box-shadow: 0px 7px 10px -4px rgba(0, 0, 0, 0.43);
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.nav`
   height: 80%;
   width: 90%;
   display: grid;

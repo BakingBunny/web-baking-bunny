@@ -41,7 +41,7 @@ export const CardContainer = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px 15px;
+  padding: 0px 15px;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
@@ -50,16 +50,13 @@ export const CardWrapper = styled.div`
 export const Card = styled.div`
   display: grid;
   grid-template-columns: min(35%, 150px) 1fr;
-  padding: 10px 0;
+  /* padding: 20px 0; */
   border-top: 1px solid #9f9f9f87;
+  margin: 5px 0;
+  padding: 10px 0 0;
 
   &:first-child {
     border-top: 0;
-    padding: 0 0 10px;
-  }
-
-  &:last-child {
-    padding: 10px 0 0;
   }
 `;
 
@@ -112,7 +109,6 @@ export const OptionInfoContainer = styled.div`
 `;
 
 export const OptionInfoWrapper = styled.div`
-  grid-area: option-info;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -125,6 +121,27 @@ export const OptionInfoWrapper = styled.div`
 export const OptionInfoText = styled.div`
   font-size: 1.1rem;
   margin: 0.5rem auto;
+  text-align: start;
+`;
+
+export const TotalWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  border: 1px solid #9f9f9f87;
+  border-radius: 10px;
+  margin: 0 0 15px;
+  padding: 15px 40px;
+`;
+
+export const TotalText = styled(OptionInfoText)`
+  /* text-align: start; */
+  width: 100%;
+`;
+
+export const TotalValue = styled(OptionInfoText)`
+  text-align: end;
+  width: 100%;
 `;
 
 export const OrderBtn = styled.button`

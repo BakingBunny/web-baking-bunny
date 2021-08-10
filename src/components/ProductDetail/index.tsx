@@ -73,6 +73,15 @@ export const ProductDetail: React.FC<Props> = ({
     }));
   }, [selectedProduct]);
 
+  const onClickHandler = (): void => {
+    dispatch(add(productToCart));
+    // localStorage.setItem('cartList', JSON.stringify(cartList));
+    setShowModal(false);
+    toast('Item successfully added to your cart.', {
+      type: 'success',
+    });
+  };
+
   // no product(id) found
   if (!selectedProduct) return <NotFoundPage />;
 
@@ -109,15 +118,7 @@ export const ProductDetail: React.FC<Props> = ({
             setproductToCart={setproductToCart}
           />
         </SubOptionWrapper>
-        <AddToCartBtn
-          onClick={() => {
-            dispatch(add(productToCart));
-            setShowModal(false);
-            toast('Item successfully added to your cart.', {
-              type: 'success',
-            });
-          }}
-        >
+        <AddToCartBtn onClick={onClickHandler}>
           {productToCart.sizeId === 2
             ? formatCurrency(selectedProduct.price * 1.2 * productToCart.qty)
             : formatCurrency(selectedProduct.price * productToCart.qty)}

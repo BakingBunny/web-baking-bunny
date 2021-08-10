@@ -47,7 +47,7 @@ export const ModalWindow: React.FC<Props> = ({
 
   // press 'esc' to close modal
   const keyPress = useCallback(
-    (e) => {
+    (e): void => {
       if (e.key === 'Escape' && showModal) setShowModal(false);
     },
     [showModal, setShowModal]
