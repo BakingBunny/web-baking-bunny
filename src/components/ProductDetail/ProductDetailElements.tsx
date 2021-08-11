@@ -80,6 +80,11 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 10px;
   margin: auto;
+
+  @media screen and (max-width: 960px) {
+    width: min(100%, 350px);
+    max-height: 40vh;
+  }
 `;
 
 export const OptionWrapper = styled.div`
@@ -95,6 +100,10 @@ export const ProductName = styled.div`
   margin: 10px 0 5px;
   text-align: center;
   font-family: 'Otomanopee One', sans-serif;
+
+  @media screen and (max-width: 960px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const PriceWrapper = styled.div`

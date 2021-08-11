@@ -66,7 +66,7 @@ export const UserInfo = (props: Props) => {
           required
         />
         <ClientInfoLabel>
-          <span>Email or Instagram ID</span>
+          <span>Email</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
       <ClientInputWrapper>
