@@ -54,7 +54,7 @@ export const Main = (props: Props) => {
         )}
         <Slogan>
           Baking Bunny is specialized in flower cakes, custom designed cakes,
-          and dacquoise in birthdays, showers, and every other occaion in
+          and dacquoise in birthdays, showers, and every other occasion in
           Calgary, Alberta{' '}
         </Slogan>
         <CakeBtn to={'/product/cakes'}>Cake</CakeBtn>
