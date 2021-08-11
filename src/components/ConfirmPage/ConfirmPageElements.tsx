@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   padding: 5vh 5vw;
   margin: auto;
   text-align: center;
+  width: min(auto, 90%);
   /* max-width: 90vw; */
 `;
 
