@@ -57,8 +57,8 @@ export const Main = (props: Props) => {
           and dacquoise in birthdays, showers, and every other occasion in
           Calgary, Alberta{' '}
         </Slogan>
-        <CakeBtn to={'/product/cakes'}>Cake</CakeBtn>
-        <DacquoiseBtn to={'/product/dacquoises'}>Dacquoise</DacquoiseBtn>
+        <CakeBtn to={'/category/cakes'}>Cake</CakeBtn>
+        <DacquoiseBtn to={'/category/dacquoises'}>Dacquoise</DacquoiseBtn>
       </Card>
     </Container>
   );
