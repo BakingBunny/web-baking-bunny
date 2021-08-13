@@ -32,7 +32,7 @@ export const ProductName = styled.div`
 export const ProductWrapper = styled.div`
   display: grid;
   grid-template-columns: 350px auto;
-  width: 720px;
+  width: 750px;
   margin: 0 auto;
   /* grid-template-columns: 1fr 1fr; *
   grid-gap: 50px;
@@ -96,7 +96,7 @@ export const Image = styled.img`
   width: min(100%, 350px);
   object-fit: cover;
   border-radius: 10px;
-  margin: auto;
+  margin: 10px auto;
 
   @media screen and (max-width: 960px) {
     width: min(100%, 350px);
@@ -118,7 +118,7 @@ export const PriceWrapper = styled.div`
   font-weight: lighter;
   margin: 5px 0;
   text-align: center;
-  margin-top: 10px;
+  margin: 10px 0;
 `;
 
 export const TastesWrapper = styled.div`
@@ -126,7 +126,10 @@ export const TastesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  margin: 10px 0;
+  border: 1px solid #4262807e;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const CircleBtn = styled.button`
@@ -185,7 +188,6 @@ export const SubOptionWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 0;
   width: 100%;
 
   @media screen and (max-width: 960px) {
@@ -197,6 +199,11 @@ export const SizeWrapper = styled.div`
   grid-area: sizewrapper;
   align-items: center;
   display: flex;
+  margin: 10px 0;
+  border: 1px solid #4262807e;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const OptionTitle = styled.h2`
@@ -215,6 +222,11 @@ export const QtyWrapper = styled.div`
   justify-self: end;
   align-items: center;
   display: flex;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px solid #4262807e;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const QtyDecrementBtn = styled(CircleBtn)`
@@ -255,11 +267,12 @@ export const AddToCartBtn = styled.button`
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  margin-top: auto;
+  margin: 10px auto;
   padding: 5px;
   border-radius: 5px;
   width: 200px;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
   &:hover {
     transform: translateY(-10px);
@@ -270,4 +283,10 @@ export const AddToCartBtn = styled.button`
       transform: translateY(0);
     }
   }
+`;
+
+export const NoteWrapper = styled.div`
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 10px;
 `;
