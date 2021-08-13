@@ -91,8 +91,9 @@ export const Slogan = styled.h2`
   line-height: 2;
 
   @media screen and (max-width: 960px) {
-    font-size: 1.5rem;
-    line-height: 1.5;
+    padding: 30px 20px 10px;
+    font-size: 1.4rem;
+    line-height: 1.4;
   }
 `;
 

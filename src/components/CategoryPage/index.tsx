@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -8,49 +8,33 @@ import {
   Title,
   CardWrapper,
   Card,
+  CheckIcon,
   Image,
   Detail,
   Name,
   Price,
   OrderNowBtn,
-} from './ProductListElements';
+} from './CategoryElements';
 import formatCurrency from '../../utils/formatCurrency';
 import { ProductInterface } from '../../interface/ProductInterface';
-import { ProductDetail } from '../ProductDetail';
-import { NotFoundPage } from '../../pages/NotFoundPage';
-import { ModalWindow } from '../../utils/ModalWindow';
+// import { NotFoundPage } from '../../pages/NotFoundPage';
 // import productList from '../../productList.json';
 
 toast.configure();
 
-interface paramsInterface {
+interface Props {
   productCategory: string;
+  selectedProductId: number | null;
 }
 
-interface Props {}
-
-const initialProduct = {
-  productId: 0,
-  productName: '',
-  price: 0,
-  description: '',
-  productImage: '',
-  comment: '',
-  tasteList: [],
-  sizeList: [],
-  categoryId: 0,
-};
-
-export const ProductList = (props: Props) => {
+export const Category = (props: Props) => {
   const [productList, setProductList] = useState<ProductInterface[]>([]);
   // const [filteredProductList, setFilteredProductList] = useState<
   //   ProductInterface[]
   // >([]);
-  const [selectedProduct, setSelectedProduct] =
-    useState<ProductInterface>(initialProduct);
-  const [showModal, setShowModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const { productCategory } = useParams<paramsInterface>();
+  const { productCategory, selectedProductId } = props;
+  const history = useHistory();
 
   // fetch product list from the server
   useEffect(() => {
@@ -91,13 +75,15 @@ export const ProductList = (props: Props) => {
 
   // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
-    const findProduct = productList.find((product) => product.productId === id);
-    if (findProduct) {
-      setSelectedProduct(findProduct);
-      setShowModal(true);
-    } else {
-      return <NotFoundPage />; //TODO: check if it works
-    }
+    // const findProduct = productList.find((product) => product.productId === id);
+    // if (findProduct) {
+    //   setSelectedProduct(findProduct);
+    // } else {
+    //   return <NotFoundPage />; //TODO: check if it works
+    // }
+
+    const path = '/product/' + id;
+    history.push(path);
   };
 
   return (
@@ -117,6 +103,7 @@ export const ProductList = (props: Props) => {
                     src={product.productImage}
                     alt={product.productName}
                   />
+                  {product.productId === selectedProductId && <CheckIcon />}
                   <Detail>
                     <Name>{product.productName.replaceAll('-', ' ')}</Name>
                     <Price>
@@ -140,14 +127,6 @@ export const ProductList = (props: Props) => {
               ))}
         </CardWrapper>
       </Wrapper>
-      {showModal && ( // once the product card is selected, popup the product detail modal window
-        <ModalWindow showModal={showModal} setShowModal={setShowModal}>
-          <ProductDetail
-            selectedProduct={selectedProduct}
-            setShowModal={setShowModal}
-          />
-        </ModalWindow>
-      )}
     </Container>
   );
 };

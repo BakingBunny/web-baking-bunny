@@ -1,89 +1,106 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto auto 20px;
+  height: 100%;
+  /* max-width: 800px; */
+  width: 100%;
+`;
+
 export const Wrapper = styled.div`
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  padding: 30px 0;
+  background: #fff;
+`;
+
+export const ProductName = styled.div`
+  font-size: 2rem;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  font-family: 'Otomanopee One', sans-serif;
+
+  @media screen and (max-width: 960px) {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+`;
+
+export const ProductWrapper = styled.div`
   display: grid;
   grid-template-columns: 350px auto;
-  /* grid-template-columns: 1fr 1fr; */
+  width: 750px;
+  margin: 0 auto;
+  /* grid-template-columns: 1fr 1fr; *
   grid-gap: 50px;
   padding: 20px;
   /* max-width: min(90vw, 800px); */
   /* max-width: 800px; */
-  background: #fff;
-  border: 3px solid #133853;
-  border-radius: 10px;
   position: relative;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  animation: popup 0.2s ease-out;
-
-  @keyframes popup {
-    from {
-      transform: translateY(-10%);
-      /* opacity: 0.5; */
-    }
-    to {
-      transform: translateY(0%);
-      /* opacity: 1; */
-    }
-  }
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
     grid-gap: 0px;
-    margin: 5px;
+    margin: 5px auto;
+    width: 100%;
+    max-width: 500px;
   }
 `;
 
-export const CloseBtn = styled.div`
-  position: absolute;
-  top: -25px;
-  left: -25px;
-  z-index: 5;
-  font-size: 3rem;
-  color: #133853b9;
-  cursor: pointer;
-  background: #fff;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 3rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+// export const CloseBtn = styled.div`
+//   position: absolute;
+//   top: -25px;
+//   left: -25px;
+//   z-index: 5;
+//   font-size: 3rem;
+//   color: #133853b9;
+//   cursor: pointer;
+//   background: #fff;
+//   width: 3rem;
+//   height: 3rem;
+//   border-radius: 3rem;
+//   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
-  &:hover {
-    animation: rotateBtn 0.5s ease-in-out forwards;
+//   &:hover {
+//     animation: rotateBtn 0.5s ease-in-out forwards;
 
-    @keyframes rotateBtn {
-      0% {
-        transform: rotate(0deg);
-      }
-      90% {
-        transform: rotate(200deg);
-      }
-      100% {
-        transform: rotate(180deg);
-        box-shadow: none;
-        color: #133853;
-      }
-    }
-  }
+//     @keyframes rotateBtn {
+//       0% {
+//         transform: rotate(0deg);
+//       }
+//       90% {
+//         transform: rotate(200deg);
+//       }
+//       100% {
+//         transform: rotate(180deg);
+//         box-shadow: none;
+//         color: #133853;
+//       }
+//     }
+//   }
 
-  @media screen and (max-width: 960px) {
-    top: 0;
-    left: 0;
+//   @media screen and (max-width: 960px) {
+//     top: 0;
+//     left: 0;
 
-    &:hover {
-      animation: none;
-    }
-  }
-`;
+//     &:hover {
+//       animation: none;
+//     }
+//   }
+// `;
 
 export const Image = styled.img`
   width: min(100%, 350px);
   object-fit: cover;
   border-radius: 10px;
-  margin: auto;
+  margin: 10px auto;
 
   @media screen and (max-width: 960px) {
     width: min(100%, 350px);
-    max-height: 40vh;
+    /* max-height: 40vh; */
   }
 `;
 
@@ -95,24 +112,13 @@ export const OptionWrapper = styled.div`
   /* height: 100%; */
 `;
 
-export const ProductName = styled.div`
-  font-size: 1.6rem;
-  margin: 10px 0 5px;
-  text-align: center;
-  font-family: 'Otomanopee One', sans-serif;
-
-  @media screen and (max-width: 960px) {
-    font-size: 1.3rem;
-  }
-`;
-
 export const PriceWrapper = styled.div`
   /* grid-area: price; */
   font-size: 1.1rem;
   font-weight: lighter;
   margin: 5px 0;
   text-align: center;
-  margin-top: 10px;
+  margin: 10px 0;
 `;
 
 export const TastesWrapper = styled.div`
@@ -120,7 +126,10 @@ export const TastesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  margin: 10px 0;
+  border: 1px solid #4262807e;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const CircleBtn = styled.button`
@@ -154,7 +163,7 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   height: 2.5rem;
   font-size: 11px;
   border-radius: 5px;
-  margin: 8px 1vw;
+  margin: 8px 10px;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
   transition: all 0.3s ease;
@@ -179,7 +188,6 @@ export const SubOptionWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 0;
   width: 100%;
 
   @media screen and (max-width: 960px) {
@@ -191,6 +199,11 @@ export const SizeWrapper = styled.div`
   grid-area: sizewrapper;
   align-items: center;
   display: flex;
+  margin: 10px 0;
+  border: 1px solid #4262807e;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const OptionTitle = styled.h2`
@@ -209,6 +222,11 @@ export const QtyWrapper = styled.div`
   justify-self: end;
   align-items: center;
   display: flex;
+  margin: 10px 0;
+  padding: 0 10px;
+  border: 1px solid #4262807e;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const QtyDecrementBtn = styled(CircleBtn)`
@@ -249,11 +267,12 @@ export const AddToCartBtn = styled.button`
   font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
-  margin-top: auto;
+  margin: 10px auto;
   padding: 5px;
   border-radius: 5px;
   width: 200px;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
   &:hover {
     transform: translateY(-10px);
@@ -264,4 +283,10 @@ export const AddToCartBtn = styled.button`
       transform: translateY(0);
     }
   }
+`;
+
+export const NoteWrapper = styled.div`
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 10px;
 `;

@@ -190,7 +190,7 @@ export const MapIframe = styled.iframe`
   border: 1px solid #13385366;
   width: 100%;
   max-width: 500px;
-  height: 400px;
+  height: 300px;
   margin: 20px auto 0;
 `;
 

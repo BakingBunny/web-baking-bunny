@@ -77,9 +77,12 @@ export const ProductDetail: React.FC<Props> = ({
     dispatch(add(productToCart));
     // localStorage.setItem('cartList', JSON.stringify(cartList));
     setShowModal(false);
-    toast('Item successfully added to your cart.', {
-      type: 'success',
-    });
+    toast(
+      selectedProduct.productName + ' is successfully added to your cart.',
+      {
+        type: 'success',
+      }
+    );
   };
 
   // no product(id) found
