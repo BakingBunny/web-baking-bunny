@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NotFoundPage } from '../../pages/NotFoundPage';
@@ -14,6 +14,7 @@ import {
   OptionWrapper,
   SubOptionWrapper,
   AddToCartBtn,
+  NoteWrapper,
 } from './ProductElements';
 import { add } from '../../store/cartSlice';
 import { useAppDispatch } from '../../store/hooks';
@@ -168,14 +169,17 @@ export const Product: React.FC<Props> = () => {
                 </AddToCartBtn>
               </OptionWrapper>
             </ProductWrapper>
-            <p>
-              This item may contain or come into contact with eggs, peanuts,
-              treenuts, and milk.
-            </p>
-            <p>
-              Please let us know if you have any food allergies or restrictions
-              when you place on order.
-            </p>
+            <NoteWrapper>
+              <h3>Note:</h3>
+              <p>
+                This item may contain or come into contact with eggs, peanuts,
+                treenuts, and milk.
+              </p>
+              <p>
+                Please let us know if you have any food allergies or
+                restrictions when you place on order.
+              </p>
+            </NoteWrapper>
           </Wrapper>
           {productToCart.product.categoryId === 1 ? (
             <Category

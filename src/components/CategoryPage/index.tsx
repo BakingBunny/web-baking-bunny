@@ -17,7 +17,7 @@ import {
 } from './CategoryElements';
 import formatCurrency from '../../utils/formatCurrency';
 import { ProductInterface } from '../../interface/ProductInterface';
-import { NotFoundPage } from '../../pages/NotFoundPage';
+// import { NotFoundPage } from '../../pages/NotFoundPage';
 // import productList from '../../productList.json';
 
 toast.configure();

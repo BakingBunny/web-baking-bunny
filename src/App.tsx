@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +18,6 @@ import { useCountCartItems } from './hooks/useCountCartItems';
 import { ReviewPage } from './pages/ReviewPage';
 import useValid from './hooks/useCheckOutValid';
 import { ConfirmPage } from './pages/ConfirmPage';
-import { ProductInterface } from './interface/ProductInterface';
 
 const BodyContainer = styled.main`
   min-height: calc(100vh - 60px - 30px);
