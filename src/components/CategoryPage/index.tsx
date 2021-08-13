@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -9,6 +8,7 @@ import {
   Title,
   CardWrapper,
   Card,
+  CheckIcon,
   Image,
   Detail,
   Name,
@@ -22,11 +22,10 @@ import { NotFoundPage } from '../../pages/NotFoundPage';
 
 toast.configure();
 
-interface paramsInterface {
+interface Props {
   productCategory: string;
+  selectedProductId: number | null;
 }
-
-interface Props {}
 
 export const Category = (props: Props) => {
   const [productList, setProductList] = useState<ProductInterface[]>([]);
@@ -34,7 +33,7 @@ export const Category = (props: Props) => {
   //   ProductInterface[]
   // >([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const { productCategory } = useParams<paramsInterface>();
+  const { productCategory, selectedProductId } = props;
   const history = useHistory();
 
   // fetch product list from the server
@@ -104,6 +103,7 @@ export const Category = (props: Props) => {
                     src={product.productImage}
                     alt={product.productName}
                   />
+                  {product.productId === selectedProductId && <CheckIcon />}
                   <Detail>
                     <Name>{product.productName.replaceAll('-', ' ')}</Name>
                     <Price>

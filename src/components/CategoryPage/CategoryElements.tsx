@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import { FaRegCheckCircle } from 'react-icons/fa';
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  padding-bottom: 30px;
 `;
 
 export const Wrapper = styled.div`
@@ -45,6 +45,7 @@ export const Card = styled.div`
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
 
   &:hover {
     transform: translateY(-10px);
@@ -55,6 +56,16 @@ export const Card = styled.div`
       transform: translateY(0);
     }
   }
+`;
+
+export const CheckIcon = styled(FaRegCheckCircle)`
+  position: absolute;
+  font-size: 3rem;
+  color: #133853;
+  background: #ffebee;
+  top: 10px;
+  left: 10px;
+  border-radius: 30px;
 `;
 
 export const Image = styled.img`

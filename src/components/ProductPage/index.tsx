@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NotFoundPage } from '../../pages/NotFoundPage';
@@ -8,7 +8,7 @@ import { ProductInterface } from '../../interface/ProductInterface';
 import {
   Container,
   Wrapper,
-  CloseBtn,
+  ProductWrapper,
   Image,
   ProductName,
   OptionWrapper,
@@ -23,7 +23,7 @@ import { Tastes } from './Tastes';
 import { Size } from './Size';
 import { Quantity } from './Quantity';
 import { v4 as uuidv4 } from 'uuid';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { Category } from '../CategoryPage';
 
 toast.configure();
 
@@ -83,11 +83,8 @@ export const Product: React.FC<Props> = () => {
           (item: ProductInterface) => item.productId === Number(productId)
         );
 
-        console.log(tempProduct);
-
         setproductToCart((prevState) => ({
           ...prevState,
-          id: uuidv4(),
           product: tempProduct,
           tasteId:
             tempProduct.tasteList.length > 0 ? tempProduct.tasteList[0].id : -1, // default taste is -1 (no taste option product is -1)
@@ -104,6 +101,10 @@ export const Product: React.FC<Props> = () => {
   }, [productId]);
 
   const onClickHandler = (): void => {
+    setproductToCart((prevState) => ({
+      ...prevState,
+      id: uuidv4(),
+    }));
     dispatch(add(productToCart));
     // localStorage.setItem('cartList', JSON.stringify(cartList));
     toast(
@@ -120,49 +121,75 @@ export const Product: React.FC<Props> = () => {
 
   return (
     <Container>
-      <ProductName>
-        {productToCart.product.productName.replaceAll('-', ' ')}
-      </ProductName>
-      <Wrapper>
-        <Image
-          src={productToCart.product.productImage}
-          alt={productToCart.product.productName}
-        />
-        {/* <CloseBtn onClick={() => setShowModal(false)}>
-        <AiFillCloseCircle />
-      </CloseBtn> */}
-        <OptionWrapper>
-          <Price selectedProduct={productToCart.product} />
-          {productToCart.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
-            <Tastes
-              selectedProduct={productToCart.product}
-              productToCart={productToCart}
-              setproductToCart={setproductToCart}
+      {loading ? (
+        'Loading...'
+      ) : (
+        <>
+          <Wrapper>
+            <ProductName>
+              {productToCart.product.productName.replaceAll('-', ' ')}
+            </ProductName>
+            <ProductWrapper>
+              <Image
+                src={productToCart.product.productImage}
+                alt={productToCart.product.productName}
+              />
+              <OptionWrapper>
+                <Price selectedProduct={productToCart.product} />
+                {productToCart.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                  <Tastes
+                    selectedProduct={productToCart.product}
+                    productToCart={productToCart}
+                    setproductToCart={setproductToCart}
+                  />
+                )}
+                <SubOptionWrapper>
+                  {productToCart.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
+                    <Size
+                      productToCart={productToCart}
+                      setproductToCart={setproductToCart}
+                    />
+                  )}
+                  <Quantity
+                    productToCart={productToCart}
+                    setproductToCart={setproductToCart}
+                  />
+                </SubOptionWrapper>
+                <AddToCartBtn onClick={onClickHandler}>
+                  {productToCart.sizeId === 2
+                    ? formatCurrency(
+                        productToCart.product.price * 1.2 * productToCart.qty
+                      )
+                    : formatCurrency(
+                        productToCart.product.price * productToCart.qty
+                      )}
+                  <br />
+                  Add To Cart
+                </AddToCartBtn>
+              </OptionWrapper>
+            </ProductWrapper>
+            <p>
+              This item may contain or come into contact with eggs, peanuts,
+              treenuts, and milk.
+            </p>
+            <p>
+              Please let us know if you have any food allergies or restrictions
+              when you place on order.
+            </p>
+          </Wrapper>
+          {productToCart.product.categoryId === 1 ? (
+            <Category
+              productCategory={'cakes'}
+              selectedProductId={productToCart.product.productId}
+            />
+          ) : (
+            <Category
+              productCategory={'dacquoises'}
+              selectedProductId={productToCart.product.productId}
             />
           )}
-          <SubOptionWrapper>
-            {productToCart.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
-              <Size
-                productToCart={productToCart}
-                setproductToCart={setproductToCart}
-              />
-            )}
-            <Quantity
-              productToCart={productToCart}
-              setproductToCart={setproductToCart}
-            />
-          </SubOptionWrapper>
-          <AddToCartBtn onClick={onClickHandler}>
-            {productToCart.sizeId === 2
-              ? formatCurrency(
-                  productToCart.product.price * 1.2 * productToCart.qty
-                )
-              : formatCurrency(productToCart.product.price * productToCart.qty)}
-            <br />
-            Add To Cart
-          </AddToCartBtn>
-        </OptionWrapper>
-      </Wrapper>
+        </>
+      )}
     </Container>
   );
 };

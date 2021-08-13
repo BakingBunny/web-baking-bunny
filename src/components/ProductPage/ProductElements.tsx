@@ -5,14 +5,21 @@ export const Container = styled.div`
   flex-direction: column;
   margin: auto auto 20px;
   height: 100%;
-  max-width: 750px;
+  /* max-width: 800px; */
+  width: 100%;
+`;
+
+export const Wrapper = styled.div`
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  padding: 30px 0;
+  background: #fff;
 `;
 
 export const ProductName = styled.div`
   font-size: 2rem;
   letter-spacing: 3px;
   text-align: center;
-  margin: 20px 0 0;
+  margin: 0 0 20px;
   text-transform: uppercase;
   font-family: 'Otomanopee One', sans-serif;
 
@@ -22,10 +29,12 @@ export const ProductName = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
+export const ProductWrapper = styled.div`
   display: grid;
   grid-template-columns: 350px auto;
-  /* grid-template-columns: 1fr 1fr; */
+  width: 720px;
+  margin: 0 auto;
+  /* grid-template-columns: 1fr 1fr; *
   grid-gap: 50px;
   padding: 20px;
   /* max-width: min(90vw, 800px); */
@@ -35,51 +44,53 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr;
     grid-gap: 0px;
-    margin: 5px;
+    margin: 5px auto;
+    width: 100%;
+    max-width: 500px;
   }
 `;
 
-export const CloseBtn = styled.div`
-  position: absolute;
-  top: -25px;
-  left: -25px;
-  z-index: 5;
-  font-size: 3rem;
-  color: #133853b9;
-  cursor: pointer;
-  background: #fff;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 3rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+// export const CloseBtn = styled.div`
+//   position: absolute;
+//   top: -25px;
+//   left: -25px;
+//   z-index: 5;
+//   font-size: 3rem;
+//   color: #133853b9;
+//   cursor: pointer;
+//   background: #fff;
+//   width: 3rem;
+//   height: 3rem;
+//   border-radius: 3rem;
+//   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
-  &:hover {
-    animation: rotateBtn 0.5s ease-in-out forwards;
+//   &:hover {
+//     animation: rotateBtn 0.5s ease-in-out forwards;
 
-    @keyframes rotateBtn {
-      0% {
-        transform: rotate(0deg);
-      }
-      90% {
-        transform: rotate(200deg);
-      }
-      100% {
-        transform: rotate(180deg);
-        box-shadow: none;
-        color: #133853;
-      }
-    }
-  }
+//     @keyframes rotateBtn {
+//       0% {
+//         transform: rotate(0deg);
+//       }
+//       90% {
+//         transform: rotate(200deg);
+//       }
+//       100% {
+//         transform: rotate(180deg);
+//         box-shadow: none;
+//         color: #133853;
+//       }
+//     }
+//   }
 
-  @media screen and (max-width: 960px) {
-    top: 0;
-    left: 0;
+//   @media screen and (max-width: 960px) {
+//     top: 0;
+//     left: 0;
 
-    &:hover {
-      animation: none;
-    }
-  }
-`;
+//     &:hover {
+//       animation: none;
+//     }
+//   }
+// `;
 
 export const Image = styled.img`
   width: min(100%, 350px);
@@ -89,7 +100,7 @@ export const Image = styled.img`
 
   @media screen and (max-width: 960px) {
     width: min(100%, 350px);
-    max-height: 40vh;
+    /* max-height: 40vh; */
   }
 `;
 
@@ -149,7 +160,7 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   height: 2.5rem;
   font-size: 11px;
   border-radius: 5px;
-  margin: 8px 1px;
+  margin: 8px 10px;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
   transition: all 0.3s ease;
@@ -159,8 +170,6 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   }
 
   @media screen and (max-width: 960px) {
-    margin: 8px 5px;
-
     &:hover {
       transform: translateY(0);
     }
