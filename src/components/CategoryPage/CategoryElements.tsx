@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { FaRegCheckCircle } from 'react-icons/fa';
+
+interface StyleProps {
+  readonly isSelected: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -30,11 +33,9 @@ export const CardWrapper = styled.div`
 `;
 
 // export const Card = styled(Link)`
-export const Card = styled.div`
-  background: #fff;
+export const Card = styled.div<StyleProps>`
   width: clamp(162px, 44%, 250px);
   height: clamp(300px, 35vh, 350px);
-  background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   margin: 20px 8px;
@@ -56,16 +57,15 @@ export const Card = styled.div`
       transform: translateY(0);
     }
   }
-`;
 
-export const CheckIcon = styled(FaRegCheckCircle)`
-  position: absolute;
-  font-size: 3rem;
-  color: #133853;
-  background: #ffebee;
-  top: 10px;
-  left: 10px;
-  border-radius: 30px;
+  ::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: ${(props) => (props.isSelected ? '0.3' : '0')};
+  }
 `;
 
 export const Image = styled.img`
@@ -78,7 +78,6 @@ export const Detail = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #fff;
   align-content: center;
   padding: 10px 0;
   color: #000;
@@ -98,39 +97,9 @@ export const Price = styled.div`
   font-weight: lighter;
 `;
 
-export const SizeTitle = styled.h2`
-  font-size: 1rem;
-  margin: 2px 10px;
-  align-self: center;
-`;
-
-export const SizeWrapper = styled.div`
-  display: flex;
-  justify-self: end;
-  margin: 2px 10px;
-`;
-
-export const Size = styled.button`
-  font-size: 0.9rem;
-  margin: 0 0 0 8px;
-  align-self: center;
-`;
-
-export const DetailBtn = styled.button`
-  grid-area: detailbtn;
+export const OrderNowBtn = styled.button<StyleProps>`
   border: 0;
-  background: #133853;
-  color: #fff;
-  padding: 5px 10px;
-  margin: 8px 10px 4px;
-  border-radius: 10px;
-  letter-spacing: 2px;
-  cursor: pointer;
-`;
-
-export const OrderNowBtn = styled.button`
-  border: 0;
-  background: #133853;
+  background: ${(props) => (props.isSelected ? '#426280c1' : '#133853')};
   color: #fff;
   padding: 5px 10px;
   letter-spacing: 1px;

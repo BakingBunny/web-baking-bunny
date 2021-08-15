@@ -25,6 +25,7 @@ import { Size } from './Size';
 import { Quantity } from './Quantity';
 import { v4 as uuidv4 } from 'uuid';
 import { Category } from '../CategoryPage';
+import { CakeType } from './CakeType';
 
 toast.configure();
 
@@ -42,6 +43,7 @@ const initialProduct = {
   productImage: '',
   comment: '',
   tasteList: [],
+  cakeTypeList: [],
   sizeList: [],
   categoryId: 0,
 };
@@ -50,6 +52,7 @@ const initialCart = {
   id: '',
   product: initialProduct,
   tasteId: -1,
+  cakeTypeId: -1,
   sizeId: -1,
   qty: 1,
   special: '',
@@ -82,6 +85,10 @@ export const Product: React.FC<Props> = () => {
           tasteId:
             productFetched.tasteList.length > 0
               ? productFetched.tasteList[0].id
+              : -1, // default taste is -1 (no taste option product is -1)
+          cakeTypeId:
+            productFetched.cakeTypeList.length > 0
+              ? productFetched.cakeTypeList[0].id
               : -1, // default taste is -1 (no taste option product is -1)
           sizeId: productFetched.sizeList.length
             ? productFetched.sizeList[0].id
@@ -136,6 +143,13 @@ export const Product: React.FC<Props> = () => {
                 <Price selectedProduct={productToCart.product} />
                 {productToCart.product.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
                   <Tastes
+                    selectedProduct={productToCart.product}
+                    productToCart={productToCart}
+                    setproductToCart={setproductToCart}
+                  />
+                )}
+                {productToCart.product.cakeTypeList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                  <CakeType
                     selectedProduct={productToCart.product}
                     productToCart={productToCart}
                     setproductToCart={setproductToCart}

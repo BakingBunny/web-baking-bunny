@@ -5,6 +5,7 @@ export interface CartInterface {
   id: string;
   product: ProductInterface;
   tasteId: number;
+  cakeTypeId: number;
   sizeId: number;
   qty: number;
   special?: string;
