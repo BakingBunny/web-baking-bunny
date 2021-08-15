@@ -29,6 +29,12 @@ export const OptionInfo = (props: Props) => {
         </OptionInfoText>
         <OptionInfoText>{userInfoState.email}</OptionInfoText>
         <OptionInfoText>{userInfoState.phone}</OptionInfoText>
+        {orderListState.isDelivery && (
+          <>
+            <OptionInfoText>{userInfoState.address}</OptionInfoText>
+            <OptionInfoText>{userInfoState.postalCode}</OptionInfoText>
+          </>
+        )}
       </FlexWrapper>
       <GridWrapper>
         <TextLeft>

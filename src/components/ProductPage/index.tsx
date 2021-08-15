@@ -32,11 +32,7 @@ interface paramsInterface {
   productId: string;
 }
 
-interface Props {
-  // id: string;
-  // selectedProduct: ProductInterface;
-  // setShowModal: Dispatch<SetStateAction<boolean>>;
-}
+interface Props {}
 
 const initialProduct = {
   productId: 0,
@@ -75,21 +71,21 @@ export const Product: React.FC<Props> = () => {
         window.scrollTo(0, 0); // scroll to top
         // const result = await fetch(`/api/product/${productCategory}`);
         const result = await fetch(
-          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/`
+          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productId}`
         );
-        const body = await result.json();
+        const productFetched: ProductInterface = await result.json();
 
-        // console.log(body);
-        const tempProduct: ProductInterface = body.find(
-          (item: ProductInterface) => item.productId === Number(productId)
-        );
-
-        setproductToCart((prevState) => ({
+        setproductToCart((prevState: CartInterface) => ({
           ...prevState,
-          product: tempProduct,
+          id: uuidv4(),
+          product: productFetched,
           tasteId:
-            tempProduct.tasteList.length > 0 ? tempProduct.tasteList[0].id : -1, // default taste is -1 (no taste option product is -1)
-          sizeId: tempProduct.sizeList.length ? tempProduct.sizeList[0].id : -1, // default size is -1 (dacquoise is -1)
+            productFetched.tasteList.length > 0
+              ? productFetched.tasteList[0].id
+              : -1, // default taste is -1 (no taste option product is -1)
+          sizeId: productFetched.sizeList.length
+            ? productFetched.sizeList[0].id
+            : -1, // default size is -1 (dacquoise is -1)
         }));
 
         setLoading(false);
@@ -102,12 +98,7 @@ export const Product: React.FC<Props> = () => {
   }, [productId]);
 
   const onClickHandler = (): void => {
-    setproductToCart((prevState) => ({
-      ...prevState,
-      id: uuidv4(),
-    }));
     dispatch(add(productToCart));
-    // localStorage.setItem('cartList', JSON.stringify(cartList));
     toast(
       productToCart.product.productName +
         ' is successfully added to your cart.',
@@ -115,6 +106,12 @@ export const Product: React.FC<Props> = () => {
         type: 'success',
       }
     );
+
+    // Set a new cart ID for the next item (if add button clicked without change pages)
+    setproductToCart((prevState) => ({
+      ...prevState,
+      id: uuidv4(),
+    }));
   };
 
   // no product(id) found

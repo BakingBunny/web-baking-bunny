@@ -29,9 +29,6 @@ interface Props {
 
 export const Category = (props: Props) => {
   const [productList, setProductList] = useState<ProductInterface[]>([]);
-  // const [filteredProductList, setFilteredProductList] = useState<
-  //   ProductInterface[]
-  // >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { productCategory, selectedProductId } = props;
   const history = useHistory();
@@ -42,9 +39,8 @@ export const Category = (props: Props) => {
       const fetchData = async () => {
         setLoading(true);
         window.scrollTo(0, 0); // scroll to top
-        // const result = await fetch(`/api/product/${productCategory}`);
         const result = await fetch(
-          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productCategory}`
+          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/category/${productCategory}`
         );
         const body = await result.json();
         setProductList(body);
@@ -75,13 +71,6 @@ export const Category = (props: Props) => {
 
   // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
-    // const findProduct = productList.find((product) => product.productId === id);
-    // if (findProduct) {
-    //   setSelectedProduct(findProduct);
-    // } else {
-    //   return <NotFoundPage />; //TODO: check if it works
-    // }
-
     const path = '/product/' + id;
     history.push(path);
   };
@@ -93,7 +82,8 @@ export const Category = (props: Props) => {
         <CardWrapper>
           {loading
             ? 'Loading...' // shows it while loading product list from the server.
-            : productList.map((product: ProductInterface) => (
+            : productList &&
+              productList.map((product: ProductInterface) => (
                 <Card
                   key={product.productName}
                   onClick={() => CardHandler(product.productId)}
