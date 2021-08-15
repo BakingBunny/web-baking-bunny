@@ -8,7 +8,6 @@ import {
   Title,
   CardWrapper,
   Card,
-  CheckIcon,
   Image,
   Detail,
   Name,
@@ -86,6 +85,7 @@ export const Category = (props: Props) => {
               productList.map((product: ProductInterface) => (
                 <Card
                   key={product.productName}
+                  isSelected={product.productId === selectedProductId}
                   onClick={() => CardHandler(product.productId)}
                 >
                   <Image
@@ -93,7 +93,7 @@ export const Category = (props: Props) => {
                     src={product.productImage}
                     alt={product.productName}
                   />
-                  {product.productId === selectedProductId && <CheckIcon />}
+                  {/* {product.productId === selectedProductId && <CheckIcon />} */}
                   <Detail>
                     <Name>{product.productName.replaceAll('-', ' ')}</Name>
                     <Price>
@@ -112,7 +112,13 @@ export const Category = (props: Props) => {
                       }
                     </Price>
                   </Detail>
-                  <OrderNowBtn>Order Now</OrderNowBtn>
+                  <OrderNowBtn
+                    isSelected={product.productId === selectedProductId}
+                  >
+                    {product.productId === selectedProductId
+                      ? 'Selected'
+                      : 'Order Now'}
+                  </OrderNowBtn>
                 </Card>
               ))}
         </CardWrapper>
