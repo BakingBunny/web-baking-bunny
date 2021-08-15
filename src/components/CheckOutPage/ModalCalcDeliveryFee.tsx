@@ -28,20 +28,29 @@ interface Props {
 export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
+  // const [postalCode, setPostalCode] = useState<string>('');
   const dispatch = useAppDispatch();
 
   // update user info from store
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const onPostalCodeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     dispatch(
       userInfoUpdate({
-        name: e.target.name,
+        name: 'postalCode',
         value: e.target.value,
       })
     );
   };
 
   // check postal code to calculate delivery fee
-  const onClickHandler = (fee: number): void => {
+  const onCheckAddrHandler = async () => {
+    const response = await fetch(
+      `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/delivery/${userInfoState.postalCode}`
+    );
+    const fee = await response.json();
+    console.log(fee);
+
     dispatch(
       orderListUpdate({
         name: 'deliveryFee',
@@ -89,55 +98,38 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
         <ClientInfoInput
           type='text'
           name='postalCode'
-          onChange={onChangeHandler}
+          onChange={onPostalCodeHandler}
           value={userInfoState.postalCode}
+          // value={postalCode}
           // required={orderListState.isDelivery}
         />
         <ClientInfoLabel>
           <span>Postal Code</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
-      <CheckAddressBtn onClick={() => onClickHandler(10)}>
+      <CheckAddressBtn onClick={onCheckAddrHandler}>
         Check Address
       </CheckAddressBtn>
       {orderListState.deliveryFee !== null && // NULL is initial value
-        orderListState.deliveryFee >= 0 && ( // delivery: POSSIBLE
-          <>
-            <CheckOutQuestion>
-              Delivery fee:{' '}
-              {orderListState.deliveryFee === 0
-                ? 'FREE'
-                : formatCurrency(orderListState.deliveryFee)}
-            </CheckOutQuestion>
-            <DeliveryRequirement>
-              Please put specific address to make a correct delivery service.
-              <br />
-              (ex. 000 0st SW)
-            </DeliveryRequirement>
-            <ClientInputWrapper>
-              <ClientInfoInput
-                type='text'
-                name='address'
-                onChange={onChangeHandler}
-                value={userInfoState.address}
-                // required={orderListState.isDelivery}
-              />
-              <ClientInfoLabel>
-                <span>Address</span>
-              </ClientInfoLabel>
-            </ClientInputWrapper>
-          </>
-        )}
+      orderListState.deliveryFee >= 0 ? ( // delivery: POSSIBLE
+        <CheckOutQuestion>
+          Delivery fee:{' '}
+          {orderListState.deliveryFee === 0
+            ? 'FREE'
+            : formatCurrency(orderListState.deliveryFee)}
+        </CheckOutQuestion>
+      ) : (
+        <DeliveryRequirement>
+          Sorry, this place is not available.
+        </DeliveryRequirement>
+      )}
       <BtnWrapper>
-        <ConfirmBtn onClick={onConfirmhandler}>Confirm</ConfirmBtn>
+        {orderListState.deliveryFee !== null && // NULL is initial value
+          orderListState.deliveryFee >= 0 && ( // delivery: POSSIBLE
+            <ConfirmBtn onClick={onConfirmhandler}>Confirm</ConfirmBtn>
+          )}
         <CancelBtn onClick={() => setShowModal(false)}>Cancel</CancelBtn>
       </BtnWrapper>
-      {orderListState.deliveryFee !== null && // NULL is initial value
-        orderListState.deliveryFee < 0 && ( // delivery: IMPOSSIBLE (-1)
-          <DeliveryRequirement>
-            Sorry, this place is not available.
-          </DeliveryRequirement>
-        )}
     </ModalWrapper>
   );
 };

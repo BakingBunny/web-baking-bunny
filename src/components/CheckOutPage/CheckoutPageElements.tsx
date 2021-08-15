@@ -267,6 +267,31 @@ export const ClientInfoLabel = styled.label`
   }
 `;
 
+export const PostalCodeDisplay = styled.div`
+  width: 240px;
+  height: 60px;
+  padding-top: 10px;
+  padding-left: 20px;
+  color: rgb(12, 21, 29);
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgb(249, 250, 251);
+  transform: translateY(30%);
+`;
+
+export const PostalCodeLabel = styled(ClientInfoLabel)`
+  &::after {
+    transform: translateX(0);
+  }
+
+  span {
+    transform: translateY(-90%);
+    font-size: 0.7rem;
+    color: #133853;
+  }
+`;
+
 export const ClientInfoErrorMsg = styled.div`
   text-align: start;
   left: 0;

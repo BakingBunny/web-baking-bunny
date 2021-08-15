@@ -97,6 +97,7 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 10px;
   margin: 10px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 
   @media screen and (max-width: 960px) {
     width: min(100%, 350px);
@@ -113,7 +114,6 @@ export const OptionWrapper = styled.div`
 `;
 
 export const PriceWrapper = styled.div`
-  /* grid-area: price; */
   font-size: 1.1rem;
   font-weight: lighter;
   margin: 5px 0;
@@ -122,10 +122,10 @@ export const PriceWrapper = styled.div`
 `;
 
 export const TastesWrapper = styled.div`
-  /* grid-area: fruitswrapper; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
+  max-width: 340px;
   margin: 10px 0;
   border: 1px solid #4262807e;
   border-radius: 10px;
@@ -163,7 +163,7 @@ export const TastesBtn = styled(CircleBtn)<BtnProps>`
   height: 2.5rem;
   font-size: 11px;
   border-radius: 5px;
-  margin: 8px 10px;
+  margin: 8px 5px;
   background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
   transition: all 0.3s ease;

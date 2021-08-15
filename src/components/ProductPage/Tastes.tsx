@@ -14,23 +14,21 @@ export const Tastes = (props: Props) => {
   const { selectedProduct, productToCart, setproductToCart } = props;
 
   return (
-    <>
-      <TastesWrapper>
-        {selectedProduct.tasteList.map((item: TasteListInterface) => (
-          <TastesBtn
-            key={item.id}
-            isSelected={productToCart.tasteId === item.id}
-            onClick={() =>
-              setproductToCart((prevState) => ({
-                ...prevState,
-                tasteId: item.id,
-              }))
-            }
-          >
-            {item.tasteName.replaceAll('-', ' ')}
-          </TastesBtn>
-        ))}
-      </TastesWrapper>
-    </>
+    <TastesWrapper>
+      {selectedProduct.tasteList.map((item: TasteListInterface) => (
+        <TastesBtn
+          key={item.id}
+          isSelected={productToCart.tasteId === item.id}
+          onClick={() =>
+            setproductToCart((prevState) => ({
+              ...prevState,
+              tasteId: item.id,
+            }))
+          }
+        >
+          {item.tasteName.replaceAll('-', ' ')}
+        </TastesBtn>
+      ))}
+    </TastesWrapper>
   );
 };

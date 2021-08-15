@@ -1,7 +1,9 @@
 import React from 'react';
 import { userInfo, update } from '../../store/userInfoSlice';
+import { orderList } from '../../store/orderListSlice';
 // import { orderList } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
   OptionWrapper,
@@ -10,6 +12,8 @@ import {
   ClientInfoLabel,
   // ClientInfoErrorMsg,
   CheckOutQuestion,
+  PostalCodeDisplay,
+  PostalCodeLabel,
   // SubmitBtn,
 } from './CheckoutPageElements';
 // import { OrderListInterface } from '../../interface/OrderListInterface';
@@ -17,6 +21,7 @@ import {
 interface Props {}
 
 export const UserInfo = (props: Props) => {
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
   // const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
@@ -81,6 +86,29 @@ export const UserInfo = (props: Props) => {
           <span>Phone number</span>
         </ClientInfoLabel>
       </ClientInputWrapper>
+      {orderListState.isDelivery && (
+        <>
+          <ClientInputWrapper>
+            <ClientInfoInput
+              type='text'
+              name='address'
+              placeholder='000 0st SW'
+              onChange={onChangeHandler}
+              value={userInfoState.address}
+              // required={orderListState.isDelivery}
+            />
+            <ClientInfoLabel>
+              <span>Address</span>
+            </ClientInfoLabel>
+          </ClientInputWrapper>
+          <ClientInputWrapper>
+            <PostalCodeDisplay>{userInfoState.postalCode}</PostalCodeDisplay>
+            <PostalCodeLabel>
+              <span>Postal Code</span>
+            </PostalCodeLabel>
+          </ClientInputWrapper>
+        </>
+      )}
       <ClientInputWrapper>
         <ClientInfoInput
           type='text'

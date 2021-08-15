@@ -9,7 +9,7 @@ const initialState: UserInfoInterface = {
   phone: '4031234567',
   allergy: 'Milk, Peanut, Cheese, Egg',
   inquiry: 'Although I have the allergies, can I eat cake?',
-  postalCode: 'A1B2C3',
+  postalCode: 'T3H3C8',
   address: '123 Newyork Street SW',
   // firstname: '',
   // lastname: '',
