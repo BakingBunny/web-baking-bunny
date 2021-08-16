@@ -6,20 +6,20 @@ import { CartInterface } from '../interface/CartInterface';
 
 // this hook counts cart items and cacluate subtotal based on items
 export const useCountCartItems = (): number => {
-  const cartList = useAppSelector<CartInterface[]>(products);
+  const cartListState = useAppSelector<CartInterface[]>(products);
   const [countCartItems, setCountCartItems] = useState<number>(0);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     // count cart items
     setCountCartItems(
-      cartList.reduce((total, item) => {
+      cartListState.reduce((total, item) => {
         return total + item.qty;
       }, 0)
     );
 
     // caculate subtotal
-    const subtotal = cartList.reduce((total, item) => {
+    const subtotal = cartListState.reduce((total, item) => {
       const priceOfSize =
         item.sizeId === 2 ? item.product.price * 1.2 : item.product.price;
       return total + priceOfSize * item.qty;
@@ -30,7 +30,7 @@ export const useCountCartItems = (): number => {
         value: subtotal,
       })
     );
-  }, [cartList, dispatch]);
+  }, [cartListState, dispatch]);
 
   return countCartItems;
 };

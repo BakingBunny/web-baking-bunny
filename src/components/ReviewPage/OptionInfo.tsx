@@ -29,12 +29,6 @@ export const OptionInfo = (props: Props) => {
         </OptionInfoText>
         <OptionInfoText>{userInfoState.email}</OptionInfoText>
         <OptionInfoText>{userInfoState.phone}</OptionInfoText>
-        {orderListState.isDelivery && (
-          <>
-            <OptionInfoText>{userInfoState.address}</OptionInfoText>
-            <OptionInfoText>{userInfoState.postalCode}</OptionInfoText>
-          </>
-        )}
       </FlexWrapper>
       <GridWrapper>
         <TextLeft>
@@ -51,11 +45,17 @@ export const OptionInfo = (props: Props) => {
           <b>{orderListState.isDelivery ? 'DELIVERY' : 'PICK UP'}</b>
         </OptionInfoText>
         {orderListState.isDelivery && (
-          <OptionInfoText>
-            {userInfoState.address}
-            {', '}
-            {userInfoState.postalCode}
-          </OptionInfoText>
+          <>
+            <OptionInfoText>
+              {userInfoState.address}
+              {', '}
+            </OptionInfoText>
+            <OptionInfoText>
+              {userInfoState.city}
+              {', '}
+              {userInfoState.postalCode}
+            </OptionInfoText>
+          </>
         )}
         <OptionInfoText>
           {orderListState.pickupDeliveryDate &&
@@ -83,11 +83,9 @@ export const OptionInfo = (props: Props) => {
         </TextLeft>
         <TextRight>
           <b>
-            {orderListState.deliveryFee
-              ? formatCurrency(
-                  orderListState.subtotal + orderListState.deliveryFee
-                )
-              : formatCurrency(orderListState.subtotal)}
+            {formatCurrency(
+              orderListState.subtotal + orderListState.deliveryFee
+            )}
           </b>
         </TextRight>
       </TotalWrapper>

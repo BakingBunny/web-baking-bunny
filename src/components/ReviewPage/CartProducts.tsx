@@ -20,12 +20,12 @@ import { TasteListInterface } from '../../interface/TasteListInterface';
 interface Props {}
 
 export const CartProducts = (props: Props) => {
-  const cartList = useAppSelector<CartInterface[]>(products);
+  const cartListState = useAppSelector<CartInterface[]>(products);
 
   return (
     <CardContainer>
       <CardWrapper>
-        {cartList.map((item) => (
+        {cartListState.map((item) => (
           <Card key={item.id}>
             <ImageWrapper>
               <Image

@@ -1,6 +1,6 @@
 export interface OrderListInterface {
   subtotal: number;
-  deliveryFee: number | null;
+  deliveryFee: number;
   total: number; // subtotal + deliveryFee
   isDelivery: boolean | null;
   pickupDeliveryDate: Date | null;

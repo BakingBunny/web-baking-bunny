@@ -8,4 +8,5 @@ export interface UserInfoInterface {
   inquiry: string;
   postalCode: string;
   address: string;
+  city: string;
 }

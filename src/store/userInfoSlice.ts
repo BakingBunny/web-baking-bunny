@@ -11,6 +11,7 @@ const initialState: UserInfoInterface = {
   inquiry: 'Although I have the allergies, can I eat cake?',
   postalCode: 'T3H3C8',
   address: '123 Newyork Street SW',
+  city: 'Calgary',
   // firstname: '',
   // lastname: '',
   // email: '',
@@ -19,6 +20,7 @@ const initialState: UserInfoInterface = {
   // inquiry: '',
   // postalCode: '',
   // address: '',
+  // city: '',
 };
 
 export const userInfoSlice = createSlice({

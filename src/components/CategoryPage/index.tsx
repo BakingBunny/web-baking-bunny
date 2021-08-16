@@ -33,7 +33,7 @@ interface Props {
 
 export const Category = (props: Props) => {
   const [productList, setProductList] = useState<ProductInterface[]>([]);
-  const cartList = useAppSelector<CartInterface[]>(products);
+  const cartListState = useAppSelector<CartInterface[]>(products);
   const [loading, setLoading] = useState<boolean>(true);
   const { productCategory, selectedProductId } = props;
   const history = useHistory();
@@ -61,11 +61,11 @@ export const Category = (props: Props) => {
   // check how many the specific items are already added to the cart
   const AddedNumberToCart = useCallback(
     (productId: number): number => {
-      return cartList.reduce((total, item) => {
+      return cartListState.reduce((total, item) => {
         return item.product.productId === productId ? total + item.qty : total;
       }, 0);
     },
-    [cartList]
+    [cartListState]
   );
 
   // useEffect(() => {
