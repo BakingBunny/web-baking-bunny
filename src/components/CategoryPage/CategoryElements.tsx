@@ -64,8 +64,29 @@ export const Card = styled.div<StyleProps>`
     width: 100%;
     height: 100%;
     background: #000;
-    opacity: ${(props) => (props.isSelected ? '0.3' : '0')};
+    opacity: ${(props) => (props.isSelected ? '0.2' : '0')};
   }
+`;
+
+export const CounterWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-10px, 10px);
+  width: 30px;
+  height: 30px;
+  z-index: 3;
+`;
+
+export const CountCartItems = styled.div`
+  background: #f4ba29;
+  border-radius: 20px;
+  animation: itemAdded 0.2s ease-out;
+  line-height: 30px;
+  width: 30px;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 `;
 
 export const Image = styled.img`
@@ -106,4 +127,5 @@ export const OrderNowBtn = styled.button<StyleProps>`
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
+  z-index: 2;
 `;

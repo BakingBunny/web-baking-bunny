@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,9 +13,14 @@ import {
   Name,
   Price,
   OrderNowBtn,
+  CountCartItems,
+  CounterWrapper,
 } from './CategoryElements';
 import formatCurrency from '../../utils/formatCurrency';
+import { products } from '../../store/cartSlice';
+import { useAppSelector } from '../../store/hooks';
 import { ProductInterface } from '../../interface/ProductInterface';
+import { CartInterface } from '../../interface/CartInterface';
 // import { NotFoundPage } from '../../pages/NotFoundPage';
 // import productList from '../../productList.json';
 
@@ -28,6 +33,7 @@ interface Props {
 
 export const Category = (props: Props) => {
   const [productList, setProductList] = useState<ProductInterface[]>([]);
+  const cartList = useAppSelector<CartInterface[]>(products);
   const [loading, setLoading] = useState<boolean>(true);
   const { productCategory, selectedProductId } = props;
   const history = useHistory();
@@ -51,6 +57,16 @@ export const Category = (props: Props) => {
       console.log(error);
     }
   }, [productCategory]);
+
+  // check how many the specific items are already added to the cart
+  const AddedNumberToCart = useCallback(
+    (productId: number): number => {
+      return cartList.reduce((total, item) => {
+        return item.product.productId === productId ? total + item.qty : total;
+      }, 0);
+    },
+    [cartList]
+  );
 
   // useEffect(() => {
   //   switch (productType) {
@@ -88,6 +104,13 @@ export const Category = (props: Props) => {
                   isSelected={product.productId === selectedProductId}
                   onClick={() => CardHandler(product.productId)}
                 >
+                  {AddedNumberToCart(product.productId) > 0 && (
+                    <CounterWrapper>
+                      <CountCartItems>
+                        {AddedNumberToCart(product.productId)}
+                      </CountCartItems>
+                    </CounterWrapper>
+                  )}
                   <Image
                     // src={require(`../../img/${product.productImage}`)?.default}
                     src={product.productImage}
