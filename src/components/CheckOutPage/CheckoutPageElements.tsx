@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-interface BtnProps {
-  readonly isSelected: boolean;
-}
-
 export const CheckOutBtn = styled.button`
   border: 0;
   color: #fff;
@@ -196,6 +192,14 @@ export const MapIframe = styled.iframe`
 
 export const CloseBtn = styled(CheckOutBtn)`
   margin: auto;
+`;
+
+interface DeliveryOnlyInputWrapperProps {
+  readonly isDisplay: boolean;
+}
+
+export const DeliveryOnlyInputWrapper = styled.div<DeliveryOnlyInputWrapperProps>`
+  display: ${(props) => (props.isDisplay ? 'block' : 'none')};
 `;
 
 export const ClientInputWrapper = styled.div`
