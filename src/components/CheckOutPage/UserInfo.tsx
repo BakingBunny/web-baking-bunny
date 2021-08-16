@@ -107,6 +107,18 @@ export const UserInfo = (props: Props) => {
               <span>Postal Code</span>
             </PostalCodeLabel>
           </ClientInputWrapper>
+          <ClientInputWrapper>
+            <ClientInfoInput
+              type='text'
+              name='city'
+              onChange={onChangeHandler}
+              value={userInfoState.city}
+              // required={orderListState.isDelivery}
+            />
+            <ClientInfoLabel>
+              <span>City</span>
+            </ClientInfoLabel>
+          </ClientInputWrapper>
         </>
       )}
       <ClientInputWrapper>

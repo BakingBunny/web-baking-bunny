@@ -5,7 +5,7 @@ import { OnChangeProps } from 'react-date-range';
 
 const initialState: OrderListInterface = {
   subtotal: 0,
-  deliveryFee: null,
+  deliveryFee: 0,
   total: 0,
   isDelivery: null,
   pickupDeliveryDate: null,

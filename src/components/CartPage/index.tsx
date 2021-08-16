@@ -25,7 +25,7 @@ import { Subtotal } from './Subtotal';
 interface Props {}
 
 export const Cart = (props: Props) => {
-  const cartList = useAppSelector<CartInterface[]>(products);
+  const cartListState = useAppSelector<CartInterface[]>(products);
   const dispatch = useAppDispatch();
 
   const updateHandler = (
@@ -45,11 +45,11 @@ export const Cart = (props: Props) => {
   return (
     <Container>
       <Title>Shopping Cart</Title>
-      {cartList.length > 0 ? (
+      {cartListState.length > 0 ? (
         <Wrapper>
           <CardContainer>
             <CardWrapper>
-              {cartList.map((item: CartInterface) => (
+              {cartListState.map((item: CartInterface) => (
                 <Card key={item.id}>
                   <ImageWrapper>
                     <Image
