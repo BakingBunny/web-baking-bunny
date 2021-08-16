@@ -277,7 +277,7 @@ export const PostalCodeDisplay = styled.div`
   outline: none;
   font-size: 1rem;
   background-color: rgb(249, 250, 251);
-  transform: translateY(30%);
+  line-height: 60px;
 `;
 
 export const PostalCodeLabel = styled(ClientInfoLabel)`

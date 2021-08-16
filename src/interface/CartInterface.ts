@@ -8,5 +8,4 @@ export interface CartInterface {
   cakeTypeId: number;
   sizeId: number;
   qty: number;
-  special?: string;
 }

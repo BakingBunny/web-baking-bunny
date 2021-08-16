@@ -17,8 +17,20 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<CartInterface>) => {
-      state.push(action.payload);
+      const { product, sizeId, tasteId, qty } = action.payload;
+      const index = state.findIndex(
+        (item) =>
+          item.product.productId === product.productId &&
+          item.sizeId === sizeId &&
+          item.tasteId === tasteId
+      );
+      if (index !== -1 && state[index].qty + qty < 10) {
+        // if it found and total qty is less than 10
+        state[index].qty = state[index].qty + qty;
+      } else state.push(action.payload);
+
       localStorage.setItem('cartList', JSON.stringify(state));
+      // update()
     },
     remove: (state, action: PayloadAction<string>) => {
       const index = state.findIndex((item) => item.id === action.payload);

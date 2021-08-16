@@ -55,7 +55,6 @@ const initialCart = {
   cakeTypeId: -1,
   sizeId: -1,
   qty: 1,
-  special: '',
 };
 
 // export const Product: React.FC<Props> = ({ selectedProduct, setShowModal }) => {
@@ -93,6 +92,7 @@ export const Product: React.FC<Props> = () => {
           sizeId: productFetched.sizeList.length
             ? productFetched.sizeList[0].id
             : -1, // default size is -1 (dacquoise is -1)
+          qty: 1,
         }));
 
         setLoading(false);

@@ -49,7 +49,6 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
       `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/delivery/${userInfoState.postalCode}`
     );
     const fee = await response.json();
-    console.log(fee);
 
     dispatch(
       orderListUpdate({
