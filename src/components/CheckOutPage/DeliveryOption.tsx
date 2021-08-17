@@ -4,11 +4,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { orderList } from '../../store/orderListSlice';
 import { useAppSelector } from '../../store/hooks';
 import { OrderListInterface } from '../../interface/OrderListInterface';
+import formatCurrency from '../../utils/formatCurrency';
 import {
   OptionWrapper,
   DeliveryBtnWrapper,
   DeliveryOptionBtn,
   CheckOutQuestion,
+  DisplayDeliveryFee,
 } from './CheckoutPageElements';
 
 toast.configure();
@@ -60,6 +62,16 @@ export const DeliveryOption: React.FC<Props> = ({
           Delivery
         </DeliveryOptionBtn>
       </DeliveryBtnWrapper>
+      {orderListState.isDelivery && //display delivery fee here
+        (orderListState.deliveryFee > 0 ? (
+          <DisplayDeliveryFee>
+            {formatCurrency(orderListState.deliveryFee)} delivery fee applied.
+          </DisplayDeliveryFee>
+        ) : (
+          orderListState.deliveryFee === 0 && (
+            <DisplayDeliveryFee>Free Delivery Service</DisplayDeliveryFee>
+          )
+        ))}
     </OptionWrapper>
   );
 };
