@@ -26,7 +26,7 @@ export const Confirm = (props: Props) => {
         </NameTitle>
         <MsgTitle>Your Order is Confirmed!</MsgTitle>
         <DescriptionText>
-          We just sent you a confirmation email. Thank you for using Babking
+          We just sent you a confirmation email. Thank you for using Baking
           Bunny.
         </DescriptionText>
         <ConfirmLink to='/'>Home</ConfirmLink>

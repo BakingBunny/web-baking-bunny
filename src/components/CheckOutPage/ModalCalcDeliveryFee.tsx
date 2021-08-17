@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import {
   orderList,
   update as orderListUpdate,
@@ -26,9 +26,10 @@ interface Props {
 }
 
 export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
+  const [isFeeFetched, setIsFeeFetched] = useState<boolean>(false);
+  const [deliveryFee, setDeliveryFee] = useState<number>(-1);
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
-  // const [postalCode, setPostalCode] = useState<string>('');
   const dispatch = useAppDispatch();
 
   // update user info from store
@@ -49,16 +50,18 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
       `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/delivery/${userInfoState.postalCode}`
     );
     const fee = await response.json();
-
-    dispatch(
-      orderListUpdate({
-        name: 'deliveryFee',
-        value: fee,
-      })
-    );
+    setIsFeeFetched(true);
+    setDeliveryFee(fee);
   };
 
   const onConfirmhandler = () => {
+    dispatch(
+      orderListUpdate({
+        name: 'deliveryFee',
+        value: deliveryFee,
+      })
+    );
+
     dispatch(
       orderListUpdate({
         name: 'isDelivery',
@@ -109,21 +112,22 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
       <CheckAddressBtn onClick={onCheckAddrHandler}>
         Check Address
       </CheckAddressBtn>
-      {orderListState.deliveryFee !== null && // NULL is initial value
-      orderListState.deliveryFee >= 0 ? ( // delivery: POSSIBLE
-        <CheckOutQuestion>
-          Delivery fee:{' '}
-          {orderListState.deliveryFee === 0
-            ? 'FREE'
-            : formatCurrency(orderListState.deliveryFee)}
-        </CheckOutQuestion>
-      ) : (
-        <DeliveryRequirement>
-          Sorry, this place is not available.
-        </DeliveryRequirement>
-      )}
+      {isFeeFetched && // fee fetched ?
+        (deliveryFee >= 0 ? ( // delivery: POSSIBLE
+          <CheckOutQuestion>
+            Delivery fee:{' '}
+            {deliveryFee === 0 // display fee
+              ? 'FREE'
+              : formatCurrency(deliveryFee)}
+          </CheckOutQuestion>
+        ) : (
+          // delivery: IMPOSSIBLE
+          <DeliveryRequirement>
+            Sorry, this place is not available.
+          </DeliveryRequirement>
+        ))}
       <BtnWrapper>
-        {orderListState.deliveryFee !== null && // NULL is initial value
+        {isFeeFetched && // fee fetched
           orderListState.deliveryFee >= 0 && ( // delivery: POSSIBLE
             <ConfirmBtn onClick={onConfirmhandler}>Confirm</ConfirmBtn>
           )}

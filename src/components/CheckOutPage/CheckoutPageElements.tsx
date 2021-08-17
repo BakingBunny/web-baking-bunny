@@ -118,6 +118,11 @@ export const DeliveryOptionBtn = styled(CheckOutBtn)<BtnProps>`
   opacity: ${(props) => (props.isSelected ? '1' : '0.7')};
 `;
 
+export const DisplayDeliveryFee = styled.div`
+  margin: 10px 0 0;
+  font-size: 1rem;
+`;
+
 export const DeliveryRequirement = styled.div`
   max-width: 95vw;
   margin: 10px 0;
