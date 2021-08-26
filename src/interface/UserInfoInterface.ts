@@ -4,8 +4,6 @@ export interface UserInfoInterface {
   lastname: string;
   email: string;
   phone: string;
-  allergy: string;
-  inquiry: string;
   postalCode: string;
   address: string;
   city: string;

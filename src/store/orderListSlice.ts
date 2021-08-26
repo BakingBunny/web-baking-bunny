@@ -9,6 +9,10 @@ const initialState: OrderListInterface = {
   total: 0,
   isDelivery: null,
   pickupDeliveryDate: null,
+  // allergy: '',
+  // inquiry: '',
+  allergy: 'Milk, Peanut, Cheese, Egg',
+  inquiry: 'Although I have the allergies, can I eat cake?',
 };
 
 export const orderListSlice = createSlice({
@@ -19,7 +23,7 @@ export const orderListSlice = createSlice({
       state,
       action: PayloadAction<{
         name: string;
-        value: number | boolean | Date | OnChangeProps | null;
+        value: number | boolean | string | Date | OnChangeProps | null;
       }>
     ) => {
       const { name, value } = action.payload;

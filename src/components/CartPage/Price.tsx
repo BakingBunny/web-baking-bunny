@@ -19,8 +19,6 @@ export const Price = (props: Props) => {
           ? formatCurrency(cartItem.product.price) //regular cakes and dacquoise
           : formatCurrency(cartItem.product.price * 1.2) // cake 8 inch price
       }
-      {cartItem.product.productId === 30 && // dacquoise combo ?
-        ' / 5-Piece'}
     </PriceWrapper>
   );
 };

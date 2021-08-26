@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   margin: auto auto 20px;
   height: 100%;
-  max-width: 700px;
+  max-width: 750px;
 `;
 
 export const Title = styled.h2`
@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
   display: grid;
   grid-gap: 1rem;
   padding: 10px;
-  grid-template-columns: 1fr 310px;
+  grid-template-columns: 1fr 350px;
   grid-template-areas: 'card-wrapper option-info';
 
   @media screen and (max-width: 960px) {
@@ -40,7 +40,7 @@ export const CardContainer = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0px 15px;
+  padding: 10px 15px;
   background: #fff;
   border: 1px solid #9f9f9f87;
   border-radius: 10px;
@@ -49,13 +49,16 @@ export const CardWrapper = styled.div`
 export const Card = styled.div`
   display: grid;
   grid-template-columns: min(35%, 150px) 1fr;
-  /* padding: 20px 0; */
+  padding: 10px 0;
   border-top: 1px solid #9f9f9f87;
-  margin: 5px 0;
-  padding: 10px 0 0;
 
   &:first-child {
     border-top: 0;
+    padding: 0 0 10px;
+  }
+
+  &:last-child {
+    /* padding: 10px 0 0; */
   }
 `;
 
@@ -75,7 +78,7 @@ export const Image = styled.img`
 export const OptionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px 0 10px 10px;
+  padding: 10px 0 10px 20px;
 `;
 
 export const OptionText = styled.div`
@@ -97,9 +100,6 @@ export const OptionInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media screen and (max-width: 960px) {
-    margin: 0 auto;
-  }
 `;
 
 export const FlexWrapper = styled.div`

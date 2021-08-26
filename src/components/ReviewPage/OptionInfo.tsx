@@ -34,11 +34,11 @@ export const OptionInfo = (props: Props) => {
         <TextLeft>
           <b>Allergies:</b>
         </TextLeft>
-        <TextLeft>{userInfoState.allergy}</TextLeft>
+        <TextLeft>{orderListState.allergy}</TextLeft>
         <TextLeft>
           <b>Inquiries:</b>
         </TextLeft>
-        <TextLeft>{userInfoState.inquiry}</TextLeft>
+        <TextLeft>{orderListState.inquiry}</TextLeft>
       </GridWrapper>
       <FlexWrapper>
         <OptionInfoText>

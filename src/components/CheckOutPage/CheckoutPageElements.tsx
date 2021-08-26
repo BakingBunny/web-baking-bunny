@@ -212,10 +212,6 @@ export const ClientInputWrapper = styled.div`
   overflow: hidden;
   height: 60px;
   margin: 15px 0 0;
-
-  &:last-child {
-    margin-bottom: 10px;
-  }
 `;
 
 export const ClientInfoInput = styled.input`
@@ -274,6 +270,38 @@ export const ClientInfoLabel = styled.label`
     left: 20px;
     transition: transform 0.3s ease;
   }
+`;
+
+export const ClientTextareaWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 15px 0 0;
+  border-bottom: 2px solid #133853;
+  background-color: rgb(249, 250, 251);
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
+`;
+
+export const ClientInfoTextAreaLabel = styled.label`
+  color: #133853;
+  font-size: 0.7rem;
+  font-family: 'Georama', sans-serif;
+  font-weight: 400;
+  padding: 10px 0 0 20px;
+`;
+
+export const ClientInfoTextarea = styled.textarea`
+  width: 240px;
+  resize: vertical;
+  padding: 5px 0 10px 20px;
+  color: rgb(12, 21, 29);
+  border: none;
+  outline: none;
+  background-color: rgb(249, 250, 251);
+  font-size: 1rem;
 `;
 
 export const PostalCodeDisplay = styled.div`
