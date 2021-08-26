@@ -18,6 +18,7 @@ import { useCountCartItems } from './hooks/useCountCartItems';
 import { ReviewPage } from './pages/ReviewPage';
 import useValid from './hooks/useCheckOutValid';
 import { ConfirmPage } from './pages/ConfirmPage';
+import { CustomCakePage } from './pages/CustomCakePage';
 
 const BodyContainer = styled.main`
   min-height: calc(100vh - 60px - 30px);
@@ -40,6 +41,7 @@ function App() {
               exact
             />
             <Route path={'/product/:productId'} component={ProductPage} exact />
+            <Route path={'/custom-cake'} component={CustomCakePage} exact />
             <Route path='/cart' component={CartPage} exact />
             {countCartItems > 0 && (
               <Route path='/checkout' component={CheckoutPage} exact />

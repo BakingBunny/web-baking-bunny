@@ -54,14 +54,13 @@ const Review = (props: Props) => {
         deliveryFee: orderListState.deliveryFee,
         total: orderListState.subtotal + orderListState.deliveryFee,
         delivery: orderListState.isDelivery,
-        allergy: userInfoState.allergy,
-        comment: userInfoState.inquiry,
+        allergy: orderListState.allergy,
+        comment: orderListState.inquiry,
         orderDate: new Date(),
         pickupDeliveryDate: orderListState.pickupDeliveryDate,
         // userId: 0,
       },
     };
-    console.log(orderSummary);
 
     const requestOptions = {
       method: 'POST',
