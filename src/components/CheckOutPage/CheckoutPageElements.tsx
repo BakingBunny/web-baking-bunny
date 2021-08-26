@@ -139,7 +139,7 @@ export const TimeWrapper = styled.div`
   display: flex;
   margin: auto;
   align-items: center;
-  margin: 0 auto 30px;
+  margin: 0 auto;
 `;
 
 export const TimeSelect = styled.select`

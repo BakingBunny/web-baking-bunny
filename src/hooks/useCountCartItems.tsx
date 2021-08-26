@@ -24,6 +24,7 @@ export const useCountCartItems = (): number => {
         item.sizeId === 2 ? item.product.price * 1.2 : item.product.price;
       return total + priceOfSize * item.qty;
     }, 0);
+
     dispatch(
       update({
         name: 'subtotal',

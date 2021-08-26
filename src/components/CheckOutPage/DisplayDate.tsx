@@ -19,9 +19,18 @@ export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
     <OptionWrapper>
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
       <DateBtn onClick={() => setShowModal(true)}>
-        {orderListState.pickupDeliveryDate
-          ? orderListState.pickupDeliveryDate.toDateString()
-          : 'Select a date'}
+        {orderListState.pickupDeliveryDate ? (
+          <>
+            {orderListState.pickupDeliveryDate.toDateString()}
+            <br />
+            {orderListState.pickupDeliveryDate.toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </>
+        ) : (
+          'Select date and time'
+        )}
       </DateBtn>
     </OptionWrapper>
   );
