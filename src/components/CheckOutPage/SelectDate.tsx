@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 // import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
-import { Calendar, OnChangeProps } from 'react-date-range';
+import { Calendar } from 'react-date-range';
 import { addDays } from 'date-fns';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -11,7 +11,9 @@ import {
   DeliveryRequirement,
   TimeWrapper,
   TimeSelect,
-  CloseBtn,
+  BtnWrapper,
+  CancelBtn,
+  ConfirmBtn,
 } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 
@@ -19,55 +21,64 @@ interface Props {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-// const disd: Readonly<CalendarProps> | Date = new Date();
+const availableDeliveryHours: number[] = [11, 12, 13, 14, 15];
+const availablePickupHours: number[] = [14, 15, 16, 17, 18, 19];
+const availableMinutes: number[] = [0, 10, 20, 30, 40, 50];
 
-const minDate = addDays(new Date(), -7);
+const minDate = addDays(new Date(), 7);
+minDate.setHours(14, 0, 0, 0);
 const maxDate = addDays(new Date(), 60);
 
 export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const dispatch = useAppDispatch();
+  const [pickupDeliveryDate, setPickupDeliveryDate] = useState<Date>(
+    orderListState.pickupDeliveryDate || minDate
+  );
 
-  const onDateChangeHandler = (date: OnChangeProps): void => {
-    dispatch(
-      update({
-        name: 'pickupDeliveryDate',
-        value: date,
-      })
-    );
+  // const onDateChangeHandler = (date: OnChangeProps): void => {
+  const onDateChangeHandler = (date: any): void => {
+    const newDate = new Date(date);
+    orderListState.isDelivery
+      ? newDate.setHours(availableDeliveryHours[0])
+      : newDate.setHours(availablePickupHours[0]);
+    newDate.setMinutes(0);
+    setPickupDeliveryDate(newDate);
   };
 
   const onTimeChangeHandler = (
     e: React.ChangeEvent<HTMLSelectElement>
   ): void => {
     const { name, value } = e.target;
+    const newDate = new Date(pickupDeliveryDate);
 
+    name === 'pickupHour'
+      ? newDate.setHours(Number(value))
+      : newDate.setMinutes(Number(value));
+    setPickupDeliveryDate(newDate);
+  };
+
+  const onConfirmHandler = () => {
     dispatch(
       update({
-        name: name,
-        value: Number(value),
+        name: 'pickupDeliveryDate',
+        value: pickupDeliveryDate,
       })
     );
-
-    if (orderListState.pickupDeliveryDate !== null) {
-      const newDate = orderListState.pickupDeliveryDate;
-
-      name === 'pickupHour'
-        ? newDate.setHours(Number(value))
-        : newDate.setMinutes(Number(value));
-
-      dispatch(
-        update({
-          name: 'pickupDeliveryDate',
-          value: newDate,
-        })
-      );
-    }
+    setShowModal(false);
   };
 
   // const disabledDate = (current: Date): boolean => {
   //   return current > minDate;
   // };
+
+  const hoursOption = (hours: number[]): any => {
+    return hours.map((hour) => (
+      <option key={hour} value={hour}>
+        {hour < 13 ? hour : hour - 12}
+      </option>
+    ));
+  };
 
   return (
     <ModalWrapper>
@@ -77,60 +88,42 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
           : 'Please select a date and time you want to pick up.'}
       </DeliveryRequirement>
       <Calendar
-        date={
-          orderListState.pickupDeliveryDate
-            ? orderListState.pickupDeliveryDate
-            : minDate
-        }
+        date={pickupDeliveryDate}
         onChange={onDateChangeHandler}
         minDate={minDate}
         maxDate={maxDate}
         // disabledDates={[disd]}
         // disabledDay={disabledDate}
       />
-      {orderListState.pickupDeliveryDate && (
-        <TimeWrapper>
-          TIME
-          <TimeSelect
-            name={'pickupHour'}
-            value={orderListState.pickupHour}
-            onChange={onTimeChangeHandler}
-          >
-            {orderListState.isDelivery ? (
-              <>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-              </>
-            ) : (
-              <>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-              </>
-            )}
-          </TimeSelect>
-          :
-          <TimeSelect
-            name={'pickupMinute'}
-            value={orderListState.pickupMinute}
-            onChange={onTimeChangeHandler}
-          >
-            <option>00</option>
-            <option>10</option>
-            <option>20</option>
-            <option>30</option>
-            <option>40</option>
-            <option>50</option>
-          </TimeSelect>
-        </TimeWrapper>
-      )}
-      <CloseBtn onClick={() => setShowModal(false)}>Confirm</CloseBtn>
+      <TimeWrapper>
+        TIME
+        <TimeSelect
+          name={'pickupHour'}
+          value={pickupDeliveryDate.getHours()}
+          onChange={onTimeChangeHandler}
+        >
+          {orderListState.isDelivery
+            ? hoursOption(availableDeliveryHours)
+            : hoursOption(availablePickupHours)}
+        </TimeSelect>
+        :
+        <TimeSelect
+          name={'pickupMinute'}
+          value={pickupDeliveryDate.getMinutes()}
+          onChange={onTimeChangeHandler}
+        >
+          {availableMinutes.map((minute) => (
+            <option key={minute} value={minute}>
+              {minute.toString().padStart(2, '0')}
+            </option>
+          ))}
+        </TimeSelect>
+        {pickupDeliveryDate.getHours() < 12 ? ' AM' : ' PM'}
+      </TimeWrapper>
+      <BtnWrapper>
+        <ConfirmBtn onClick={onConfirmHandler}>Confirm</ConfirmBtn>
+        <CancelBtn onClick={() => setShowModal(false)}>Cancel</CancelBtn>
+      </BtnWrapper>
     </ModalWrapper>
   );
 };

@@ -66,7 +66,7 @@ const Review = (props: Props) => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ orderSummary }),
+      body: JSON.stringify(orderSummary),
     };
     const response = await fetch(
       'https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/order',
