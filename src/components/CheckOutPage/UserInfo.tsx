@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { userInfo } from '../../store/userInfoSlice';
 import { orderList, update } from '../../store/orderListSlice';
-// import { orderList } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
@@ -12,13 +11,11 @@ import {
   PostalCodeDisplay,
   PostalCodeLabel,
   DeliveryOnlyInputWrapper,
-  ClientInfoLabel,
   ClientTextareaWrapper,
   ClientInfoTextarea,
   ClientInfoTextAreaLabel,
 } from './CheckoutPageElements';
 import { useUserInput } from '../../hooks/useUserInput';
-// import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {}
 

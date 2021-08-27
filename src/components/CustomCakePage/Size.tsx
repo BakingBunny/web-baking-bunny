@@ -1,26 +1,32 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { CartInterface } from '../../interface/CartInterface';
+import React from 'react';
+import { ProductInterface } from '../../interface/ProductInterface';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { customCake, update } from '../../store/customCakeSlice';
 import { SizeBtn, OptionTitle, SizeWrapper } from './CustomCakeElements';
+import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
 
 interface Props {
-  productToCart: CartInterface;
-  setproductToCart: Dispatch<SetStateAction<CartInterface>>;
+  selectedProduct: ProductInterface;
 }
 
 export const Size = (props: Props) => {
-  const { productToCart, setproductToCart } = props;
+  const { selectedProduct } = props;
+  const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
+  const dispatch = useAppDispatch();
 
   return (
     <SizeWrapper>
       <OptionTitle>Size</OptionTitle>
-      {productToCart.product.sizeList.map((item) => (
+      {selectedProduct.sizeList.map((item) => (
         <SizeBtn
-          isSelected={productToCart.sizeId === item.id}
+          isSelected={customCakeState.sizeId === item.id}
           onClick={() =>
-            setproductToCart((prevState) => ({
-              ...prevState,
-              sizeId: item.id,
-            }))
+            dispatch(
+              update({
+                name: 'sizeId',
+                value: item.id,
+              })
+            )
           }
           key={item.id}
         >
