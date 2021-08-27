@@ -1,29 +1,33 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { ProductInterface } from '../../interface/ProductInterface';
-import { CartInterface } from '../../interface/CartInterface';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { customCake, update } from '../../store/customCakeSlice';
 import { TastesBtn, TastesWrapper } from './CustomCakeElements';
 import { CakeTypeListInterface } from '../../interface/CakeTypeListInterface';
+import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
 
 interface Props {
   selectedProduct: ProductInterface;
-  productToCart: CartInterface;
-  setproductToCart: Dispatch<SetStateAction<CartInterface>>;
 }
 
 export const CakeType = (props: Props) => {
-  const { selectedProduct, productToCart, setproductToCart } = props;
+  const { selectedProduct } = props;
+  const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
+  const dispatch = useAppDispatch();
 
   return (
     <TastesWrapper>
       {selectedProduct.cakeTypeList.map((item: CakeTypeListInterface) => (
         <TastesBtn
           key={item.id}
-          isSelected={productToCart.cakeTypeId === item.id}
+          isSelected={customCakeState.cakeTypeId === item.id}
           onClick={() =>
-            setproductToCart((prevState) => ({
-              ...prevState,
-              cakeTypeId: item.id,
-            }))
+            dispatch(
+              update({
+                name: 'cakeTypeId',
+                value: item.id,
+              })
+            )
           }
         >
           {item.type.replaceAll('-', ' ')}

@@ -1,29 +1,34 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { ProductInterface } from '../../interface/ProductInterface';
-import { CartInterface } from '../../interface/CartInterface';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { customCake, update } from '../../store/customCakeSlice';
+// import { CartInterface } from '../../interface/CartInterface';
 import { TastesBtn, TastesWrapper } from './CustomCakeElements';
 import { TasteListInterface } from '../../interface/TasteListInterface';
+import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
 
 interface Props {
   selectedProduct: ProductInterface;
-  productToCart: CartInterface;
-  setproductToCart: Dispatch<SetStateAction<CartInterface>>;
 }
 
 export const Tastes = (props: Props) => {
-  const { selectedProduct, productToCart, setproductToCart } = props;
+  const { selectedProduct } = props;
+  const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
+  const dispatch = useAppDispatch();
 
   return (
     <TastesWrapper>
       {selectedProduct.tasteList.map((item: TasteListInterface) => (
         <TastesBtn
           key={item.id}
-          isSelected={productToCart.tasteId === item.id}
+          isSelected={customCakeState.tasteId === item.id}
           onClick={() =>
-            setproductToCart((prevState) => ({
-              ...prevState,
-              tasteId: item.id,
-            }))
+            dispatch(
+              update({
+                name: 'tasteId',
+                value: item.id,
+              })
+            )
           }
         >
           {item.tasteName.replaceAll('-', ' ')}

@@ -1,6 +1,9 @@
 // Custom Cake requirements
 export interface CustomCakeInterface {
-  cakeSize: number;
-  qty: number;
-  ExampleImage: string;
+  requestDescription: string;
+  requestDate: Date | null;
+  isDelivery: boolean | null;
+  tasteId: number;
+  cakeTypeId: number;
+  sizeId: number;
 }
