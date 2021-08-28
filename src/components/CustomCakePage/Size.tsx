@@ -17,22 +17,25 @@ export const Size = (props: Props) => {
   return (
     <SizeWrapper>
       <OptionTitle>Size</OptionTitle>
-      {selectedProduct.sizeList.map((item) => (
-        <SizeBtn
-          isSelected={customCakeState.sizeId === item.id}
-          onClick={() =>
-            dispatch(
-              update({
-                name: 'sizeId',
-                value: item.id,
-              })
-            )
-          }
-          key={item.id}
-        >
-          {item.sizeName}
-        </SizeBtn>
-      ))}
+      {selectedProduct.sizeList.map(
+        (item) =>
+          item.sizeName !== 'NA' && (
+            <SizeBtn
+              isSelected={customCakeState.sizeId === item.id}
+              onClick={() =>
+                dispatch(
+                  update({
+                    name: 'sizeId',
+                    value: item.id,
+                  })
+                )
+              }
+              key={item.id}
+            >
+              {item.sizeName}
+            </SizeBtn>
+          )
+      )}
     </SizeWrapper>
   );
 };

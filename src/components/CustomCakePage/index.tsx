@@ -8,26 +8,43 @@ import {
   Wrapper,
   ProductWrapper,
   Image,
-  ProductName,
+  // ProductName,
   OptionWrapper,
   SubOptionWrapper,
   AddToCartBtn,
   NoteWrapper,
   PriceWrapper,
 } from './CustomCakeElements';
-import { useAppDispatch } from '../../store/hooks';
+import {
+  BasicOption,
+  UserInfoForm,
+  ConfirmLink,
+} from '../CheckOutPage/CheckoutPageElements';
+import { DeliveryOption } from './DeliveryOption';
+import { SelectDate } from './SelectDate';
+import { UserInfo } from './UserInfo';
+import { ModalWindow } from '../../utils/ModalWindow';
+import { DisplayDate } from './DisplayDate';
+import { ModalCalcDeliveryFee } from './ModalCalcDeliveryFee';
+import { ModalPickUpLocation } from './ModalPickUpLocation';
+// import { OrderListInterface } from '../../interface/OrderListInterface';
 import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
+
 import { Tastes } from './Tastes';
 import { Size } from './Size';
 // import { v4 as uuidv4 } from 'uuid';
 import { CakeType } from './CakeType';
 import { ProductInterface } from '../../interface/ProductInterface';
+import { useAppSelector } from '../../store/hooks';
+import { customCake } from '../../store/customCakeSlice';
+import { RequestDescription } from './RequestDescription';
+import { Title } from './CheckoutPageElements';
 
 toast.configure();
 
 interface Props {}
 
-const initialProduct = {
+const initialProduct: ProductInterface = {
   productId: 0,
   productName: '',
   price: 0,
@@ -60,8 +77,13 @@ const initialProduct = {
 export const CustomCake: React.FC<Props> = () => {
   const [selectedProduct, setSelectedProduct] =
     useState<ProductInterface>(initialProduct);
+  const [showPickUpLocationModal, setShowPickUpLocationModal] =
+    useState<boolean>(false);
+  const [showCalcDeliveryFeeModal, setShowCalcDeliveryFeeModal] =
+    useState<boolean>(false);
+  const [showCalendarModal, setShowCalendarModal] = useState<boolean>(false);
   // const [customOrderList, setCustomOrderList] = useState<CustomCakeInterface>();
-  const dispatch = useAppDispatch();
+  const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
   const [loading, setLoading] = useState<boolean>(true);
 
   // initialize product to add to the cart
@@ -72,7 +94,7 @@ export const CustomCake: React.FC<Props> = () => {
         window.scrollTo(0, 0); // scroll to top
         // const result = await fetch(`/api/product/${productCategory}`);
         const result = await fetch(
-          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/7`
+          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/1`
         );
         const productFetched: ProductInterface = await result.json();
         setSelectedProduct(productFetched);
@@ -101,20 +123,18 @@ export const CustomCake: React.FC<Props> = () => {
   // if (!customCakeInfo) return <NotFoundPage />;
 
   return (
-    <Container>
-      {loading ? (
-        'Loading...'
-      ) : (
-        <>
-          <Wrapper>
-            <ProductName>Custom Cake</ProductName>
-            <ProductWrapper>
-              <Image
-                src={selectedProduct.productImage}
-                alt={selectedProduct.productName}
-              />
+    <>
+      <Container>
+        <Title>Custom Cake</Title>
+        <PriceWrapper>
+          The price is various according to your request.
+        </PriceWrapper>
+        {loading ? (
+          'Loading...'
+        ) : (
+          <>
+            <Wrapper>
               <OptionWrapper>
-                <PriceWrapper>Price: Various</PriceWrapper>
                 {selectedProduct.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
                   <Tastes selectedProduct={selectedProduct} />
                 )}
@@ -126,8 +146,26 @@ export const CustomCake: React.FC<Props> = () => {
                   <Size selectedProduct={selectedProduct} />
                 )}
                 {/* </SubOptionWrapper> */}
+                <BasicOption>
+                  <DeliveryOption
+                    setShowPickUpLocationModal={setShowPickUpLocationModal}
+                    setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
+                  />
+                  {customCakeState.isDelivery !== null && (
+                    <DisplayDate setShowModal={setShowCalendarModal} />
+                  )}
+                  {customCakeState.requestDate !== null && (
+                    <RequestDescription />
+                  )}
+                </BasicOption>
               </OptionWrapper>
-            </ProductWrapper>
+              {customCakeState.requestDate && (
+                <UserInfoForm>
+                  <UserInfo />
+                </UserInfoForm>
+              )}
+              {/* <ConfirmLink to={'/review'}>Confirm</ConfirmLink> */}
+            </Wrapper>
             <NoteWrapper>
               <h3>Note:</h3>
               <p>
@@ -139,10 +177,34 @@ export const CustomCake: React.FC<Props> = () => {
                 restrictions when you place on order.
               </p>
             </NoteWrapper>
-          </Wrapper>
-          {/* <AddToCartBtn onClick={onClickHandler}>Add To Cart</AddToCartBtn> */}
-        </>
+            {/* <AddToCartBtn onClick={onClickHandler}>Add To Cart</AddToCartBtn> */}
+          </>
+        )}
+      </Container>
+      {showPickUpLocationModal && (
+        <ModalWindow
+          showModal={showPickUpLocationModal}
+          setShowModal={setShowPickUpLocationModal}
+        >
+          <ModalPickUpLocation setShowModal={setShowPickUpLocationModal} />
+        </ModalWindow>
       )}
-    </Container>
+      {showCalcDeliveryFeeModal && (
+        <ModalWindow
+          showModal={showCalcDeliveryFeeModal}
+          setShowModal={setShowCalcDeliveryFeeModal}
+        >
+          <ModalCalcDeliveryFee setShowModal={setShowCalcDeliveryFeeModal} />
+        </ModalWindow>
+      )}
+      {showCalendarModal && (
+        <ModalWindow
+          showModal={showCalendarModal}
+          setShowModal={setShowCalendarModal}
+        >
+          <SelectDate setShowModal={setShowCalendarModal} />
+        </ModalWindow>
+      )}
+    </>
   );
 };
