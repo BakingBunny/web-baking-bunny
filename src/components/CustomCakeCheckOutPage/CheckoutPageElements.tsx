@@ -81,6 +81,10 @@ export const OptionWrapper = styled.div`
   width: 330px;
   animation: clientInfoPopup 0.3s ease-in;
 
+  &:last-child {
+    margin: 10px auto 0;
+  }
+
   @keyframes clientInfoPopup {
     from {
       opacity: 0;
@@ -294,7 +298,7 @@ export const ClientInfoTextAreaLabel = styled.label`
 `;
 
 export const ClientInfoTextarea = styled.textarea`
-  width: 240px;
+  width: 280px;
   resize: vertical;
   padding: 5px 0 10px 20px;
   color: rgb(12, 21, 29);

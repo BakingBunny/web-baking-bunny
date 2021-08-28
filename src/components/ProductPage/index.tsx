@@ -35,7 +35,7 @@ interface paramsInterface {
 
 interface Props {}
 
-const initialProduct = {
+const initialProduct: ProductInterface = {
   productId: 0,
   productName: '',
   price: 0,
@@ -48,7 +48,7 @@ const initialProduct = {
   categoryId: 0,
 };
 
-const initialCart = {
+const initialCart: CartInterface = {
   id: '',
   product: initialProduct,
   tasteId: -1,

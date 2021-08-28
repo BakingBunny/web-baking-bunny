@@ -13,20 +13,23 @@ export const Size = (props: Props) => {
   return (
     <SizeWrapper>
       <OptionTitle>Size</OptionTitle>
-      {productToCart.product.sizeList.map((item) => (
-        <SizeBtn
-          isSelected={productToCart.sizeId === item.id}
-          onClick={() =>
-            setproductToCart((prevState) => ({
-              ...prevState,
-              sizeId: item.id,
-            }))
-          }
-          key={item.id}
-        >
-          {item.sizeName}
-        </SizeBtn>
-      ))}
+      {productToCart.product.sizeList.map(
+        (item) =>
+          item.sizeName !== 'NA' && (
+            <SizeBtn
+              isSelected={productToCart.sizeId === item.id}
+              onClick={() =>
+                setproductToCart((prevState) => ({
+                  ...prevState,
+                  sizeId: item.id,
+                }))
+              }
+              key={item.id}
+            >
+              {item.sizeName}
+            </SizeBtn>
+          )
+      )}
     </SizeWrapper>
   );
 };

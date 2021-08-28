@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { userInfo } from '../../store/userInfoSlice';
-import { orderList } from '../../store/orderListSlice';
-// import { orderList } from '../../store/orderListSlice';
-import { useAppSelector } from '../../store/hooks';
+import { orderList, update } from '../../store/orderListSlice';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
@@ -12,16 +11,30 @@ import {
   PostalCodeDisplay,
   PostalCodeLabel,
   DeliveryOnlyInputWrapper,
+  ClientTextareaWrapper,
+  ClientInfoTextarea,
+  ClientInfoTextAreaLabel,
 } from './CheckoutPageElements';
 import { useUserInput } from '../../hooks/useUserInput';
-// import { OrderListInterface } from '../../interface/OrderListInterface';
 
 interface Props {}
 
 export const UserInfo = (props: Props) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
-  // const orderListState = useAppSelector<OrderListInterface>(orderList);
+  const dispatch = useAppDispatch();
+
+  const onChangeHandler = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+      dispatch(
+        update({
+          name: e.target.name,
+          value: e.target.value,
+        })
+      );
+    },
+    [dispatch]
+  );
 
   return (
     <OptionWrapper>
@@ -54,8 +67,30 @@ export const UserInfo = (props: Props) => {
           orderListState.isDelivery === true
         )}
       </DeliveryOnlyInputWrapper>
-      {useUserInput('allergy', 'Any food allergies?', userInfoState.allergy)}
-      {useUserInput('inquiry', 'Any other inquiries?', userInfoState.inquiry)}
+      <ClientTextareaWrapper>
+        <ClientInfoTextAreaLabel>
+          <span>Any food allergies?</span>
+        </ClientInfoTextAreaLabel>
+        <ClientInfoTextarea
+          name='allergy'
+          placeholder='If you have any food allergies, please leave it here.'
+          onChange={onChangeHandler}
+          value={orderListState.allergy}
+          rows={3}
+        />
+      </ClientTextareaWrapper>
+      <ClientTextareaWrapper>
+        <ClientInfoTextAreaLabel>
+          <span>Any other inquiries?</span>
+        </ClientInfoTextAreaLabel>
+        <ClientInfoTextarea
+          name='inquiry'
+          placeholder='Please leave any inquiries/comment here.'
+          onChange={onChangeHandler}
+          value={orderListState.inquiry}
+          rows={3}
+        />
+      </ClientTextareaWrapper>
     </OptionWrapper>
   );
 };
