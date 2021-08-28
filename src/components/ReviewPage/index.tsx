@@ -1,6 +1,12 @@
 import React from 'react';
 import { CartProducts } from './CartProducts';
-import { Container, Title, Wrapper, OrderBtn } from './ReviewPageElements';
+import {
+  Container,
+  Title,
+  Wrapper,
+  OrderBtn,
+  Subtitle,
+} from './ReviewPageElements';
 import { OptionInfo } from './OptionInfo';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -74,7 +80,7 @@ const Review = (props: Props) => {
 
     if (response.status === 200) {
       dispatch(removeAll()); // empty cart
-      const path = 'confirm';
+      const path = '/confirm';
       history.push(path);
     } else {
       toast('Sorry, something went wrong. Try it later.', { type: 'error' });
@@ -84,7 +90,9 @@ const Review = (props: Props) => {
   return (
     <Container>
       <Title>Review</Title>
-      {/* Please double-check your details before placing your order. */}
+      <Subtitle>
+        Please double-check your details before placing your order.
+      </Subtitle>
       <Wrapper>
         <CartProducts />
         <OptionInfo />

@@ -2,8 +2,23 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { CustomCakeInterface } from '../interface/CustomCakeInterface';
 import { OnChangeProps } from 'react-date-range';
+import { ProductInterface } from '../interface/ProductInterface';
+
+const initialProduct: ProductInterface = {
+  productId: 0,
+  productName: '',
+  price: 0,
+  description: '',
+  productImage: '',
+  comment: '',
+  tasteList: [],
+  cakeTypeList: [],
+  sizeList: [],
+  categoryList: [],
+};
 
 const initialState: CustomCakeInterface = {
+  product: initialProduct,
   requestDescription: '',
   requestDate: null,
   isDelivery: null,
@@ -20,7 +35,15 @@ export const customCakeSlice = createSlice({
       state,
       action: PayloadAction<{
         name: string;
-        value: number | boolean | string | Date | OnChangeProps | null;
+        value:
+          | number
+          | boolean
+          | string
+          | Date
+          | OnChangeProps
+          | ProductInterface
+          | undefined
+          | null;
       }>
     ) => {
       const { name, value } = action.payload;

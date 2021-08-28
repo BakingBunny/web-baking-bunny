@@ -81,6 +81,10 @@ export const OptionWrapper = styled.div`
   width: 330px;
   animation: clientInfoPopup 0.3s ease-in;
 
+  &:last-child {
+    margin: 10px auto 0;
+  }
+
   @keyframes clientInfoPopup {
     from {
       opacity: 0;

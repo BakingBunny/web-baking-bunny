@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { userInfo } from '../../store/userInfoSlice';
-import { customCake, update } from '../../store/customCakeSlice';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { customCake } from '../../store/customCakeSlice';
+import { useAppSelector } from '../../store/hooks';
 import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import {
@@ -19,19 +19,6 @@ interface Props {}
 export const UserInfo = (props: Props) => {
   const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
-  // const dispatch = useAppDispatch();
-
-  // const onChangeHandler = useCallback(
-  //   (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-  //     dispatch(
-  //       update({
-  //         name: e.target.name,
-  //         value: e.target.value,
-  //       })
-  //     );
-  //   },
-  //   [dispatch]
-  // );
 
   return (
     <OptionWrapper>
