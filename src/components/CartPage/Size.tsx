@@ -17,15 +17,20 @@ export const Size = (props: Props) => {
   return (
     <SizeWrapper>
       <SizeTitle>Size</SizeTitle>
-      {cartItem.product.sizeList.map((size) => (
-        <SizeBtn
-          isSelected={cartItem.sizeId === size.id}
-          onClick={() => props.updateHandler(cartItem.id, 'sizeId', size.id)}
-          key={size.id}
-        >
-          {size.sizeName}
-        </SizeBtn>
-      ))}
+      {cartItem.product.sizeList.map(
+        (item) =>
+          item.sizeName !== 'NA' && (
+            <SizeBtn
+              isSelected={cartItem.sizeId === item.id}
+              onClick={() =>
+                props.updateHandler(cartItem.id, 'sizeId', item.id)
+              }
+              key={item.id}
+            >
+              {item.sizeName}
+            </SizeBtn>
+          )
+      )}
     </SizeWrapper>
   );
 };

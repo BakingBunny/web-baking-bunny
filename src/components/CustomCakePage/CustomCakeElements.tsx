@@ -1,33 +1,54 @@
 import styled from 'styled-components';
 
+// export const Container = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   margin: auto auto 20px;
+//   height: 100%;
+//   /* max-width: 800px; */
+//   width: 100%;
+// `;
+
+// export const Wrapper = styled.div`
+//   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+//   padding: 30px 0;
+//   background: #fff;
+// `;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto auto 20px;
-  height: 100%;
-  /* max-width: 800px; */
-  width: 100%;
+  margin: auto;
+  max-width: 700px;
 `;
 
 export const Wrapper = styled.div`
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-  padding: 30px 0;
-  background: #fff;
-`;
-
-export const ProductName = styled.div`
-  font-size: 2rem;
-  letter-spacing: 3px;
-  text-align: center;
-  margin: 0 0 20px;
-  text-transform: uppercase;
-  font-family: 'Otomanopee One', sans-serif;
+  display: grid;
+  grid-gap: 1rem;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'basic-option user-info' 'confirm confirm';
 
   @media screen and (max-width: 960px) {
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'basic-option' 'user-info' 'confirm';
+    grid-gap: 0px;
   }
 `;
+
+// export const ProductName = styled.div`
+//   font-size: 2rem;
+//   letter-spacing: 3px;
+//   text-align: center;
+//   margin: 0 0 20px;
+//   text-transform: uppercase;
+//   font-family: 'Otomanopee One', sans-serif;
+
+//   @media screen and (max-width: 960px) {
+//     font-size: 1.3rem;
+//     letter-spacing: 1px;
+//   }
+// `;
 
 export const ProductWrapper = styled.div`
   display: grid;
@@ -64,6 +85,7 @@ export const Image = styled.img`
 `;
 
 export const OptionWrapper = styled.div`
+  grid-area: basic-option;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
