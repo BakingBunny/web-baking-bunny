@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NotFoundPage } from '../../pages/NotFoundPage';
+// import { NotFoundPage } from '../../pages/NotFoundPage';
 // import formatCurrency from '../../utils/formatCurrency';
 import {
   Container,
   Wrapper,
-  ProductWrapper,
-  Image,
   // ProductName,
-  OptionWrapper,
-  SubOptionWrapper,
-  AddToCartBtn,
+  BasicOption,
   NoteWrapper,
   PriceWrapper,
 } from './CustomCakeElements';
 import {
-  BasicOption,
   UserInfoForm,
   ConfirmLink,
 } from '../CheckOutPage/CheckoutPageElements';
+
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
 import { UserInfo } from './UserInfo';
@@ -35,10 +31,10 @@ import { Size } from './Size';
 // import { v4 as uuidv4 } from 'uuid';
 import { CakeType } from './CakeType';
 import { ProductInterface } from '../../interface/ProductInterface';
-import { useAppSelector } from '../../store/hooks';
-import { customCake } from '../../store/customCakeSlice';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { customCake, update } from '../../store/customCakeSlice';
 import { RequestDescription } from './RequestDescription';
-import { Title } from './CheckoutPageElements';
+import { CheckOutQuestion, OptionWrapper, Title } from './CheckoutPageElements';
 
 toast.configure();
 
@@ -74,7 +70,7 @@ const initialProduct: ProductInterface = {
 // };
 
 // export const Product: React.FC<Props> = ({ selectedProduct, setShowModal }) => {
-export const CustomCake: React.FC<Props> = () => {
+export const CustomCakeCheckOut: React.FC<Props> = () => {
   const [selectedProduct, setSelectedProduct] =
     useState<ProductInterface>(initialProduct);
   const [showPickUpLocationModal, setShowPickUpLocationModal] =
@@ -85,6 +81,7 @@ export const CustomCake: React.FC<Props> = () => {
   // const [customOrderList, setCustomOrderList] = useState<CustomCakeInterface>();
   const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
   const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useAppDispatch();
 
   // initialize product to add to the cart
   useEffect(() => {
@@ -99,6 +96,13 @@ export const CustomCake: React.FC<Props> = () => {
         const productFetched: ProductInterface = await result.json();
         setSelectedProduct(productFetched);
 
+        dispatch(
+          update({
+            name: 'product',
+            value: productFetched,
+          })
+        );
+
         setLoading(false);
       };
       fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
@@ -106,18 +110,7 @@ export const CustomCake: React.FC<Props> = () => {
       // toast('Sorry, something went wrong. Try it later.', { type: 'error' });
       console.log(error);
     }
-  }, []);
-
-  // const onClickHandler = (): void => {
-  //   dispatch(add(productToCart));
-  //   toast(
-  //     customCakeInfo.productName +
-  //       ' is successfully added to your cart.',
-  //     {
-  //       type: 'success',
-  //     }
-  //   );
-  // };
+  }, [dispatch]);
 
   // no product(id) found
   // if (!customCakeInfo) return <NotFoundPage />;
@@ -134,50 +127,46 @@ export const CustomCake: React.FC<Props> = () => {
         ) : (
           <>
             <Wrapper>
-              <OptionWrapper>
-                {selectedProduct.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
-                  <Tastes selectedProduct={selectedProduct} />
-                )}
-                {selectedProduct.cakeTypeList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
-                  <CakeType selectedProduct={selectedProduct} />
-                )}
-                {/* <SubOptionWrapper> */}
-                {selectedProduct.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
-                  <Size selectedProduct={selectedProduct} />
-                )}
-                {/* </SubOptionWrapper> */}
-                <BasicOption>
-                  <DeliveryOption
-                    setShowPickUpLocationModal={setShowPickUpLocationModal}
-                    setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
-                  />
-                  {customCakeState.isDelivery !== null && (
-                    <DisplayDate setShowModal={setShowCalendarModal} />
+              <BasicOption>
+                <OptionWrapper>
+                  <CheckOutQuestion>What kind of cake?</CheckOutQuestion>
+                  {selectedProduct.cakeTypeList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                    <CakeType selectedProduct={selectedProduct} />
                   )}
-                  {customCakeState.requestDate !== null && (
-                    <RequestDescription />
+                  {selectedProduct.tasteList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
+                    <Tastes selectedProduct={selectedProduct} />
                   )}
-                </BasicOption>
-              </OptionWrapper>
-              {customCakeState.requestDate && (
+                  {selectedProduct.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
+                    <Size selectedProduct={selectedProduct} />
+                  )}
+                </OptionWrapper>
+                <DeliveryOption
+                  setShowPickUpLocationModal={setShowPickUpLocationModal}
+                  setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
+                />
+                {customCakeState.isDelivery !== null && (
+                  <DisplayDate setShowModal={setShowCalendarModal} />
+                )}
+                {customCakeState.requestDate !== null && <RequestDescription />}
+              </BasicOption>
+              {customCakeState.requestDescription && (
                 <UserInfoForm>
                   <UserInfo />
+                  <NoteWrapper>
+                    <h3>Note:</h3>
+                    <p>
+                      This item may contain or come into contact with eggs,
+                      peanuts, treenuts, and milk.
+                    </p>
+                    <p>
+                      Please let us know if you have any food allergies or
+                      restrictions.
+                    </p>
+                  </NoteWrapper>
                 </UserInfoForm>
               )}
-              {/* <ConfirmLink to={'/review'}>Confirm</ConfirmLink> */}
+              <ConfirmLink to={'/custom-cake/review'}>Confirm</ConfirmLink>
             </Wrapper>
-            <NoteWrapper>
-              <h3>Note:</h3>
-              <p>
-                This item may contain or come into contact with eggs, peanuts,
-                treenuts, and milk.
-              </p>
-              <p>
-                Please let us know if you have any food allergies or
-                restrictions when you place on order.
-              </p>
-            </NoteWrapper>
-            {/* <AddToCartBtn onClick={onClickHandler}>Add To Cart</AddToCartBtn> */}
           </>
         )}
       </Container>

@@ -30,14 +30,14 @@ export const RequestDescription = (props: Props) => {
 
   return (
     <OptionWrapper>
-      <CheckOutQuestion>Request Description</CheckOutQuestion>
+      <CheckOutQuestion>Please explain the cake in detail.</CheckOutQuestion>
       <ClientTextareaWrapper>
         <ClientInfoTextAreaLabel>
           <span>Request Description</span>
         </ClientInfoTextAreaLabel>
         <ClientInfoTextarea
           name='requestDescription'
-          placeholder='If you have any food allergies, please leave it here.'
+          placeholder='Design? Color? Extra decorations?'
           onChange={onChangeHandler}
           value={customCakeState.requestDescription}
           rows={5}

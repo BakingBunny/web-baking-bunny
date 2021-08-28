@@ -84,7 +84,7 @@ export const Image = styled.img`
   }
 `;
 
-export const OptionWrapper = styled.div`
+export const BasicOption = styled.div`
   grid-area: basic-option;
   display: flex;
   flex-direction: column;
@@ -106,7 +106,7 @@ export const TastesWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   max-width: 340px;
-  margin: 10px 0;
+  margin: 20px 0 0;
   border: 1px solid #4262807e;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
@@ -179,7 +179,7 @@ export const SizeWrapper = styled.div`
   grid-area: sizewrapper;
   align-items: center;
   display: flex;
-  margin: 10px 0;
+  margin: 20px 0 0;
   border: 1px solid #4262807e;
   border-radius: 10px;
   padding: 0 10px;
@@ -268,5 +268,5 @@ export const AddToCartBtn = styled.button`
 export const NoteWrapper = styled.div`
   max-width: 750px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0 15px;
 `;

@@ -86,7 +86,7 @@ export const Category = (props: Props) => {
 
   // When a product is selected, find the product and show the detail modal.
   const CardHandler = (id: number) => {
-    const path = id === 1 ? '/custom-cake' : '/product/' + id;
+    const path = id === 1 ? '/custom-cake/checkout' : '/product/' + id;
     history.push(path);
   };
 

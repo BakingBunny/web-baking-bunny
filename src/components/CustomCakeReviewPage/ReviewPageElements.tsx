@@ -20,21 +20,7 @@ export const Title = styled.h2`
 
 export const Subtitle = styled.span`
   margin: 0 auto;
-  padding: 10px;
-`;
-
-export const Wrapper = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  padding: 10px;
-  grid-template-columns: 1fr 350px;
-  grid-template-areas: 'card-wrapper option-info';
-
-  @media screen and (max-width: 960px) {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'card-wrapper' 'option-info';
-    grid-gap: 0px;
-  }
+  padding: 10px 40px;
 `;
 
 export const CardContainer = styled.div`
@@ -104,7 +90,8 @@ export const OptionInfoContainer = styled.div`
   grid-area: option-info;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 350px;
+  margin: 10px auto 0;
 `;
 
 export const FlexWrapper = styled.div`
@@ -158,7 +145,7 @@ export const OrderBtn = styled.button`
   font-size: 1.2rem;
   text-transform: uppercase;
   cursor: pointer;
-  margin: 10px auto 0;
+  margin: 10px auto;
   padding: 10px 15px;
   border-radius: 5px;
   width: 300px;

@@ -18,7 +18,9 @@ import { useCountCartItems } from './hooks/useCountCartItems';
 import { ReviewPage } from './pages/ReviewPage';
 import useValid from './hooks/useCheckOutValid';
 import { ConfirmPage } from './pages/ConfirmPage';
-import { CustomCakePage } from './pages/CustomCakePage';
+import { CustomCakeCheckOutPage } from './pages/CustomCakeCheckOutPage';
+import { CustomCakeReviewPage } from './pages/CustomCakeReviewPage';
+import { CustomCakeConfirmPage } from './pages/CustomCakeConfirmPage';
 
 const BodyContainer = styled.main`
   min-height: calc(100vh - 60px - 30px);
@@ -41,13 +43,29 @@ function App() {
               exact
             />
             <Route path={'/product/:productId'} component={ProductPage} exact />
-            <Route path={'/custom-cake'} component={CustomCakePage} exact />
             <Route path='/cart' component={CartPage} exact />
             {countCartItems > 0 && (
               <Route path='/checkout' component={CheckoutPage} exact />
             )}
             {isValid && <Route path='/review' component={ReviewPage} exact />}
             {isValid && <Route path='/confirm' component={ConfirmPage} exact />}
+            <Route
+              path={'/custom-cake/checkout'}
+              component={CustomCakeCheckOutPage}
+              exact
+            />
+            <Route
+              path={'/custom-cake/review'}
+              component={CustomCakeReviewPage}
+              exact
+            />
+            {isValid && (
+              <Route
+                path='/custom-cake/confirm'
+                component={CustomCakeConfirmPage}
+                exact
+              />
+            )}
             <Route component={NotFoundPage} />
           </Switch>
         </BodyContainer>
