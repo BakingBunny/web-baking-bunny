@@ -41,7 +41,7 @@ export const Category = (props: Props) => {
     loading,
     error,
   } = useFetch<ProductInterface[]>(
-    `${process.env.REACT_APP_BASE_URL}/api/category/${productCategory}`
+    `${process.env.REACT_APP_BASE_URL}/category/${productCategory}`
   );
 
   // check how many the specific items are already added to the cart
