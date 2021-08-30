@@ -27,6 +27,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Category } from '../CategoryPage';
 import { CakeType } from './CakeType';
 import { useFetch } from '../../hooks/useFetch';
+import { CategoryInterface } from '../../interface/CategoryInterface';
 
 toast.configure();
 
@@ -35,6 +36,11 @@ interface paramsInterface {
 }
 
 interface Props {}
+
+const initialCategory: CategoryInterface = {
+  id: -1,
+  name: '',
+};
 
 const initialProduct: ProductInterface = {
   productId: 0,
@@ -46,7 +52,7 @@ const initialProduct: ProductInterface = {
   tasteList: [],
   cakeTypeList: [],
   sizeList: [],
-  categoryList: [],
+  category: initialCategory,
 };
 
 const initialCart: CartInterface = {
@@ -185,18 +191,12 @@ export const Product: React.FC<Props> = () => {
           </>
         )}
       </Wrapper>
-      {productToCart.product.categoryList.length > 0 &&
-      productToCart.product.categoryList[0].id === 1 ? (
-        <Category
-          productCategory={'cakes'}
-          selectedProductId={productToCart.product.productId}
-        />
-      ) : (
-        <Category
-          productCategory={'dacquoises'}
-          selectedProductId={productToCart.product.productId}
-        />
-      )}
+      <Category
+        productCategory={
+          productToCart.product.category.name.toLowerCase() + 's'
+        }
+        selectedProductId={productToCart.product.productId}
+      />
     </Container>
   );
 };

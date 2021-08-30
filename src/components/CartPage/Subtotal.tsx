@@ -13,8 +13,6 @@ export const Subtotal = (props: Props) => {
   const history = useHistory();
   const dispatch = useAppDispatch();
 
-  // const orderListState = useAppSelector<OrderListInterface>(orderList);
-
   const onConfirmHandler = () => {
     dispatch(
       update({

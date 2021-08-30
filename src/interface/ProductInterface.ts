@@ -1,7 +1,7 @@
 import { SizeListInterface } from './SizeListInterface';
 import { TasteListInterface } from './TasteListInterface';
 import { CakeTypeListInterface } from './CakeTypeListInterface';
-import { CategoryListInterface } from './CategoryListInterface';
+import { CategoryInterface } from './CategoryInterface';
 
 //Product details (cake, dacquoise, etc.) - API GET
 export interface ProductInterface {
@@ -13,6 +13,6 @@ export interface ProductInterface {
   comment: string;
   tasteList: TasteListInterface[];
   sizeList: SizeListInterface[];
-  categoryList: CategoryListInterface[];
+  category: CategoryInterface;
   cakeTypeList: CakeTypeListInterface[];
 }

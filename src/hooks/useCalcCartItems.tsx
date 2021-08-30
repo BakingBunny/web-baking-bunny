@@ -31,13 +31,6 @@ export const useCalcCartItems = (): ReturnedData => {
         return total + priceOfSize * item.qty;
       }, 0)
     );
-
-    // dispatch(
-    //   update({
-    //     name: 'subtotal',
-    //     value: subtotal,
-    //   })
-    // );
   }, [cartListState, dispatch]);
 
   return { countCartItems, subtotal };
