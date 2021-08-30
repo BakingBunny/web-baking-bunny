@@ -15,7 +15,7 @@ export const Price = (props: Props) => {
       {
         cartItem.product.price === 0
           ? 'Various' // custum cakes
-          : cartItem.product.categoryList[0].id === 2 || cartItem.sizeId === 2
+          : cartItem.product.category.id === 2 || cartItem.sizeId === 2
           ? formatCurrency(cartItem.product.price) //regular cakes and dacquoise
           : formatCurrency(cartItem.product.price * 1.2) // cake 8 inch price
       }

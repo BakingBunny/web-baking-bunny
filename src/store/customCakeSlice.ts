@@ -3,6 +3,12 @@ import { RootState } from './store';
 import { CustomCakeInterface } from '../interface/CustomCakeInterface';
 import { OnChangeProps } from 'react-date-range';
 import { ProductInterface } from '../interface/ProductInterface';
+import { CategoryInterface } from '../interface/CategoryInterface';
+
+const initialCategory: CategoryInterface = {
+  id: -1,
+  name: '',
+};
 
 const initialProduct: ProductInterface = {
   productId: 0,
@@ -14,7 +20,7 @@ const initialProduct: ProductInterface = {
   tasteList: [],
   cakeTypeList: [],
   sizeList: [],
-  categoryList: [],
+  category: initialCategory,
 };
 
 const initialState: CustomCakeInterface = {
