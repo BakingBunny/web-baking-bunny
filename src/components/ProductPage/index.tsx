@@ -89,7 +89,7 @@ export const Product: React.FC<Props> = () => {
             ? productFetched.cakeTypeList[0].id
             : -1, // default taste is -1 (no taste option product is -1)
         sizeId: productFetched.sizeList.length
-          ? productFetched.sizeList[0].id
+          ? productFetched.sizeList[1].id
           : -1, // default size is -1 (dacquoise is -1)
         qty: 1,
       }));

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { products } from '../store/cartSlice';
-import { update } from '../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { CartInterface } from '../interface/CartInterface';
 

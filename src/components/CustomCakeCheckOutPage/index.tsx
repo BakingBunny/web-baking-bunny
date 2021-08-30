@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Slider from 'react-slick';
-import productList from '../../productList.json';
-// import '~slick-carousel/slick/slick.css';
-// import '~slick-carousel/slick/slick-theme.css';
+// import Slider from 'react-slick';
+// import productList from '../../productList.json';
 // import { NotFoundPage } from '../../pages/NotFoundPage';
 // import formatCurrency from '../../utils/formatCurrency';
 import {
@@ -93,7 +91,7 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
     loading,
     error,
   } = useFetch<ProductInterface>(
-    `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/1`
+    `${process.env.REACT_APP_BASE_URL}/api/product/1`
   );
 
   useEffect(() => {
@@ -107,15 +105,15 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
     );
   }, [dispatch, selectedProduct]);
 
-  const settings = {
-    className: 'center',
-    centerMode: true,
-    infinite: true,
-    centerPadding: '60px',
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    speed: 500,
-  };
+  // const settings = {
+  //   className: 'center',
+  //   centerMode: true,
+  //   infinite: true,
+  //   centerPadding: '60px',
+  //   slidesToShow: 3,
+  //   slidesToScroll: 3,
+  //   speed: 500,
+  // };
 
   return (
     <>
