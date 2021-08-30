@@ -90,9 +90,7 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
     data: selectedProduct,
     loading,
     error,
-  } = useFetch<ProductInterface>(
-    `${process.env.REACT_APP_BASE_URL}/api/product/1`
-  );
+  } = useFetch<ProductInterface>(`${process.env.REACT_APP_BASE_URL}/product/1`);
 
   useEffect(() => {
     window.scrollTo(0, 0); // scroll to top

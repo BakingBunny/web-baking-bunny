@@ -74,7 +74,7 @@ const Review = (props: Props) => {
       body: JSON.stringify(orderSummary),
     };
     const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/order`,
+      `${process.env.REACT_APP_BASE_URL}/order`,
       requestOptions
     );
 
