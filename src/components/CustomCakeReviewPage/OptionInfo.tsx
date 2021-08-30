@@ -24,19 +24,23 @@ export const OptionInfo = (props: Props) => {
         {customCakeState.product.cakeTypeList.map(
           (item) =>
             item.id === customCakeState.cakeTypeId && (
-              <OptionInfoText>Type: {item.type}</OptionInfoText>
+              <OptionInfoText key={item.id}>Type: {item.type}</OptionInfoText>
             )
         )}
         {customCakeState.product.tasteList.map(
           (item) =>
             item.id === customCakeState.tasteId && (
-              <OptionInfoText>Taste: {item.tasteName}</OptionInfoText>
+              <OptionInfoText key={item.id}>
+                Taste: {item.tasteName}
+              </OptionInfoText>
             )
         )}
         {customCakeState.product.sizeList.map(
           (item) =>
             item.id === customCakeState.sizeId && (
-              <OptionInfoText>Size: {item.sizeName}</OptionInfoText>
+              <OptionInfoText key={item.id}>
+                Size: {item.sizeName}
+              </OptionInfoText>
             )
         )}
       </FlexWrapper>

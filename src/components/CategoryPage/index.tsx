@@ -116,9 +116,9 @@ export const Category = (props: Props) => {
                         product.price !== 0 && ' / ' // divider
                       }
                       {
-                        product.categoryList[0].id === 1 && product.price !== 0
+                        product.category.id === 1 && product.price !== 0
                           ? formatCurrency(product.price * 1.2) // cake 8 inch price
-                          : product.categoryList[0].id === 2 && '1 Piece' // dacquoise piece
+                          : product.category.id === 2 && '1 Piece' // dacquoise piece
                       }
                     </Price>
                   </Detail>
