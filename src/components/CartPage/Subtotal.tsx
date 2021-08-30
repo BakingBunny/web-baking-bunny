@@ -4,7 +4,6 @@ import { update } from '../../store/orderListSlice';
 import { useAppDispatch } from '../../store/hooks';
 import formatCurrency from '../../utils/formatCurrency';
 import { SubtotalWrapper, SubtotalText, ProceedBtn } from './CartPageElements';
-import { OrderListInterface } from '../../interface/OrderListInterface';
 import { useHistory } from 'react-router-dom';
 
 interface Props {}

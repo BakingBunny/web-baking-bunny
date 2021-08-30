@@ -130,7 +130,8 @@ export const DeliveryRequirement = styled.div`
   font-size: 1rem;
 `;
 
-export const DateBtn = styled(CheckOutBtn)`
+export const DateBtn = styled(CheckOutBtn)<BtnProps>`
+  background-color: ${(props) => (props.isSelected ? '#133853' : '#426280')};
   font-size: 1.2rem;
   width: 270px;
 `;

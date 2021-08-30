@@ -46,7 +46,7 @@ export const CustomCakeReview: React.FC<Props> = (props: Props) => {
       body: JSON.stringify(orderSummary),
     };
     const response = await fetch(
-      'https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/customorder',
+      `${process.env.REACT_APP_BASE_URL}/api/customorder`,
       requestOptions
     );
 

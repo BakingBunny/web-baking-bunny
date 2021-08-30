@@ -23,8 +23,8 @@ const initialState: CustomCakeInterface = {
   requestDate: null,
   isDelivery: null,
   tasteId: -1,
-  cakeTypeId: -1,
-  sizeId: -1,
+  cakeTypeId: 1,
+  sizeId: 2,
 };
 
 export const customCakeSlice = createSlice({
