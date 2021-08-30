@@ -18,7 +18,10 @@ export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
   return (
     <OptionWrapper>
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
-      <DateBtn onClick={() => setShowModal(true)}>
+      <DateBtn
+        onClick={() => setShowModal(true)}
+        isSelected={customCakeState.requestDate !== null}
+      >
         {customCakeState.requestDate ? (
           <>
             {customCakeState.requestDate.toDateString()}

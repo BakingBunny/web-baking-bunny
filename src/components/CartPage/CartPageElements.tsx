@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -226,8 +225,7 @@ export const SubtotalText = styled.b`
   font-size: 1.5rem;
 `;
 
-// export const ProceedBtn = styled.button`
-export const ProceedBtn = styled(Link)`
+export const ProceedBtn = styled.button`
   border: 0;
   color: #000;
   background: #f4ba29;

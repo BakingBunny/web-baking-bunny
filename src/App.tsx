@@ -14,7 +14,7 @@ import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { Footer } from './components/Footer';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { useCountCartItems } from './hooks/useCountCartItems';
+import { useCalcCartItems } from './hooks/useCalcCartItems';
 import { ReviewPage } from './pages/ReviewPage';
 import useValid from './hooks/useCheckOutValid';
 import { ConfirmPage } from './pages/ConfirmPage';
@@ -27,7 +27,7 @@ const BodyContainer = styled.main`
 `;
 
 function App() {
-  const countCartItems = useCountCartItems();
+  const { countCartItems } = useCalcCartItems();
   const isValid: boolean = useValid();
 
   return (

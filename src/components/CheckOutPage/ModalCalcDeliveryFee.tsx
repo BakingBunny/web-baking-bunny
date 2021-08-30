@@ -48,7 +48,7 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
   const onCheckAddrHandler = async () => {
     try {
       const response = await fetch(
-        `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/delivery/${userInfoState.postalCode}`
+        `${process.env.REACT_APP_BASE_URL}/api/delivery/${userInfoState.postalCode}`
       );
       const fee = await response.json();
       setIsFeeFetched(true);

@@ -36,7 +36,7 @@ export const CartProducts = (props: Props) => {
             <OptionsWrapper>
               <ProductName>{item.product.productName}</ProductName>
               <PriceText>
-                {item.sizeId === 2
+                {item.sizeId === 3
                   ? formatCurrency(item.product.price * 1.2)
                   : formatCurrency(item.product.price)}
               </PriceText>
