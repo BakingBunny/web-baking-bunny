@@ -14,7 +14,7 @@ const initialProduct: ProductInterface = {
   tasteList: [],
   cakeTypeList: [],
   sizeList: [],
-  categoryId: 0,
+  categoryList: [],
 };
 
 const initialState: CustomCakeInterface = {
@@ -42,6 +42,7 @@ export const customCakeSlice = createSlice({
           | Date
           | OnChangeProps
           | ProductInterface
+          | undefined
           | null;
       }>
     ) => {

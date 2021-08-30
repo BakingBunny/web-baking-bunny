@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Slider from 'react-slick';
+import productList from '../../productList.json';
+// import '~slick-carousel/slick/slick.css';
+// import '~slick-carousel/slick/slick-theme.css';
 // import { NotFoundPage } from '../../pages/NotFoundPage';
 // import formatCurrency from '../../utils/formatCurrency';
 import {
@@ -35,23 +39,24 @@ import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { customCake, update } from '../../store/customCakeSlice';
 import { RequestDescription } from './RequestDescription';
 import { CheckOutQuestion, OptionWrapper, Title } from './CheckoutPageElements';
+import { useFetch } from '../../hooks/useFetch';
 
 toast.configure();
 
 interface Props {}
 
-const initialProduct: ProductInterface = {
-  productId: 0,
-  productName: '',
-  price: 0,
-  description: '',
-  productImage: '',
-  comment: '',
-  tasteList: [],
-  cakeTypeList: [],
-  sizeList: [],
-  categoryId: 0,
-};
+// const initialProduct: ProductInterface = {
+//   productId: 0,
+//   productName: '',
+//   price: 0,
+//   description: '',
+//   productImage: '',
+//   comment: '',
+//   tasteList: [],
+//   cakeTypeList: [],
+//   sizeList: [],
+//   categoryId: 0,
+// };
 
 // const initialCustomCake = {
 //   requestDescription: '';
@@ -71,8 +76,8 @@ const initialProduct: ProductInterface = {
 
 // export const Product: React.FC<Props> = ({ selectedProduct, setShowModal }) => {
 export const CustomCakeCheckOut: React.FC<Props> = () => {
-  const [selectedProduct, setSelectedProduct] =
-    useState<ProductInterface>(initialProduct);
+  // const [selectedProduct, setSelectedProduct] =
+  //   useState<ProductInterface>(initialProduct);
   const [showPickUpLocationModal, setShowPickUpLocationModal] =
     useState<boolean>(false);
   const [showCalcDeliveryFeeModal, setShowCalcDeliveryFeeModal] =
@@ -80,52 +85,56 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
   const [showCalendarModal, setShowCalendarModal] = useState<boolean>(false);
   // const [customOrderList, setCustomOrderList] = useState<CustomCakeInterface>();
   const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
 
-  // initialize product to add to the cart
+  const {
+    data: selectedProduct,
+    loading,
+    error,
+  } = useFetch<ProductInterface>(
+    `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/1`
+  );
+
   useEffect(() => {
-    try {
-      const fetchData = async () => {
-        setLoading(true);
-        window.scrollTo(0, 0); // scroll to top
-        // const result = await fetch(`/api/product/${productCategory}`);
-        const result = await fetch(
-          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/1`
-        );
-        const productFetched: ProductInterface = await result.json();
-        setSelectedProduct(productFetched);
+    window.scrollTo(0, 0); // scroll to top
 
-        dispatch(
-          update({
-            name: 'product',
-            value: productFetched,
-          })
-        );
+    dispatch(
+      update({
+        name: 'product',
+        value: selectedProduct,
+      })
+    );
+  }, [dispatch, selectedProduct]);
 
-        setLoading(false);
-      };
-      fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-    } catch (error) {
-      // toast('Sorry, something went wrong. Try it later.', { type: 'error' });
-      console.log(error);
-    }
-  }, [dispatch]);
-
-  // no product(id) found
-  // if (!customCakeInfo) return <NotFoundPage />;
+  const settings = {
+    className: 'center',
+    centerMode: true,
+    infinite: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    speed: 500,
+  };
 
   return (
     <>
+      {loading && <p>loading...</p>}
+      {error && <p>{error}</p>}
       <Container>
-        <Title>Custom Cake</Title>
-        <PriceWrapper>
-          The price is various according to your request.
-        </PriceWrapper>
-        {loading ? (
-          'Loading...'
-        ) : (
+        {selectedProduct && (
           <>
+            <Title>Custom Cake</Title>
+            <PriceWrapper>
+              The price is various according to your request.
+            </PriceWrapper>
+            {/* <div style={{ width: '100vw' }}>
+          <Slider {...settings}>
+            {productList.map((item) => (
+              <img src={item.productImage} width={200} alt={item.productName} />
+            ))}
+          </Slider>
+        </div> */}
             <Wrapper>
               <BasicOption>
                 <OptionWrapper>

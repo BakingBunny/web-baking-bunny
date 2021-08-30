@@ -26,6 +26,7 @@ import { Quantity } from './Quantity';
 import { v4 as uuidv4 } from 'uuid';
 import { Category } from '../CategoryPage';
 import { CakeType } from './CakeType';
+import { useFetch } from '../../hooks/useFetch';
 
 toast.configure();
 
@@ -45,7 +46,7 @@ const initialProduct: ProductInterface = {
   tasteList: [],
   cakeTypeList: [],
   sizeList: [],
-  categoryId: 0,
+  categoryList: [],
 };
 
 const initialCart: CartInterface = {
@@ -63,46 +64,36 @@ export const Product: React.FC<Props> = () => {
     useState<CartInterface>(initialCart);
   const dispatch = useAppDispatch();
   const { productId } = useParams<paramsInterface>();
-  const [loading, setLoading] = useState<boolean>(true);
+  const {
+    data: productFetched,
+    loading,
+    error,
+  } = useFetch<ProductInterface>(
+    `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productId}`
+  );
 
-  // initialize product to add to the cart
   useEffect(() => {
-    try {
-      const fetchData = async () => {
-        setLoading(true);
-        window.scrollTo(0, 0); // scroll to top
-        // const result = await fetch(`/api/product/${productCategory}`);
-        const result = await fetch(
-          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productId}`
-        );
-        const productFetched: ProductInterface = await result.json();
+    window.scrollTo(0, 0); // scroll to top
 
-        setproductToCart((prevState: CartInterface) => ({
-          ...prevState,
-          id: uuidv4(),
-          product: productFetched,
-          tasteId:
-            productFetched.tasteList.length > 0
-              ? productFetched.tasteList[0].id
-              : -1, // default taste is -1 (no taste option product is -1)
-          cakeTypeId:
-            productFetched.cakeTypeList.length > 0
-              ? productFetched.cakeTypeList[0].id
-              : -1, // default taste is -1 (no taste option product is -1)
-          sizeId: productFetched.sizeList.length
-            ? productFetched.sizeList[0].id
-            : -1, // default size is -1 (dacquoise is -1)
-          qty: 1,
-        }));
-
-        setLoading(false);
-      };
-      fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-    } catch (error) {
-      // toast('Sorry, something went wrong. Try it later.', { type: 'error' });
-      console.log(error);
-    }
-  }, [productId]);
+    productFetched &&
+      setproductToCart((prevState: CartInterface) => ({
+        ...prevState,
+        id: uuidv4(),
+        product: productFetched,
+        tasteId:
+          productFetched.tasteList.length > 0
+            ? productFetched.tasteList[0].id
+            : -1, // default taste is -1 (no taste option product is -1)
+        cakeTypeId:
+          productFetched.cakeTypeList.length > 0
+            ? productFetched.cakeTypeList[0].id
+            : -1, // default taste is -1 (no taste option product is -1)
+        sizeId: productFetched.sizeList.length
+          ? productFetched.sizeList[0].id
+          : -1, // default size is -1 (dacquoise is -1)
+        qty: 1,
+      }));
+  }, [productFetched]);
 
   const onClickHandler = (): void => {
     dispatch(add(productToCart));
@@ -126,11 +117,11 @@ export const Product: React.FC<Props> = () => {
 
   return (
     <Container>
-      {loading ? (
-        'Loading...'
-      ) : (
-        <>
-          <Wrapper>
+      <Wrapper>
+        {loading && <p>loading...</p>}
+        {error && <p>{error}</p>}
+        {productToCart && (
+          <>
             <ProductName>
               {productToCart.product.productName.replaceAll('-', ' ')}
             </ProductName>
@@ -168,7 +159,7 @@ export const Product: React.FC<Props> = () => {
                   />
                 </SubOptionWrapper>
                 <AddToCartBtn onClick={onClickHandler}>
-                  {productToCart.sizeId === 2
+                  {productToCart.sizeId === 3
                     ? formatCurrency(
                         productToCart.product.price * 1.2 * productToCart.qty
                       )
@@ -191,19 +182,20 @@ export const Product: React.FC<Props> = () => {
                 restrictions when you place on order.
               </p>
             </NoteWrapper>
-          </Wrapper>
-          {productToCart.product.categoryId === 1 ? (
-            <Category
-              productCategory={'cakes'}
-              selectedProductId={productToCart.product.productId}
-            />
-          ) : (
-            <Category
-              productCategory={'dacquoises'}
-              selectedProductId={productToCart.product.productId}
-            />
-          )}
-        </>
+          </>
+        )}
+      </Wrapper>
+      {productToCart.product.categoryList.length > 0 &&
+      productToCart.product.categoryList[0].id === 1 ? (
+        <Category
+          productCategory={'cakes'}
+          selectedProductId={productToCart.product.productId}
+        />
+      ) : (
+        <Category
+          productCategory={'dacquoises'}
+          selectedProductId={productToCart.product.productId}
+        />
       )}
     </Container>
   );

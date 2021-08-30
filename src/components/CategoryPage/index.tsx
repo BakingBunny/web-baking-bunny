@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +21,7 @@ import { products } from '../../store/cartSlice';
 import { useAppSelector } from '../../store/hooks';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { CartInterface } from '../../interface/CartInterface';
+import { useFetch } from '../../hooks/useFetch';
 // import { NotFoundPage } from '../../pages/NotFoundPage';
 // import productList from '../../productList.json';
 
@@ -32,31 +33,16 @@ interface Props {
 }
 
 export const Category = (props: Props) => {
-  const [productList, setProductList] = useState<ProductInterface[]>([]);
   const cartListState = useAppSelector<CartInterface[]>(products);
-  const [loading, setLoading] = useState<boolean>(true);
   const { productCategory, selectedProductId } = props;
   const history = useHistory();
-
-  // fetch product list from the server
-  useEffect(() => {
-    try {
-      const fetchData = async () => {
-        setLoading(true);
-        window.scrollTo(0, 0); // scroll to top
-        const result = await fetch(
-          `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/category/${productCategory}`
-        );
-        const body = await result.json();
-        setProductList(body);
-        setLoading(false);
-      };
-      fetchData(); //Cannot use async on useEffect, so made the fetchData and run it later.
-    } catch (error) {
-      // toast('Sorry, something went wrong. Try it later.', { type: 'error' });
-      console.log(error);
-    }
-  }, [productCategory]);
+  const {
+    data: productList,
+    loading,
+    error,
+  } = useFetch<ProductInterface[]>(
+    `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/category/${productCategory}`
+  );
 
   // check how many the specific items are already added to the cart
   const AddedNumberToCart = useCallback(
@@ -91,13 +77,15 @@ export const Category = (props: Props) => {
   };
 
   return (
-    <Container>
-      <Wrapper>
-        <Title>{productCategory.replace('/', '')}</Title>
-        <CardWrapper>
-          {loading
-            ? 'Loading...' // shows it while loading product list from the server.
-            : productList.map((product: ProductInterface) => (
+    <>
+      {loading && <p>loading...</p>}
+      {error && <p>{error}</p>}
+      <Container>
+        <Wrapper>
+          <Title>{productCategory.replace('/', '')}</Title>
+          <CardWrapper>
+            {productList &&
+              productList.map((product: ProductInterface) => (
                 <Card
                   key={product.productName}
                   isSelected={product.productId === selectedProductId}
@@ -128,9 +116,9 @@ export const Category = (props: Props) => {
                         product.price !== 0 && ' / ' // divider
                       }
                       {
-                        product.categoryId === 1 && product.price !== 0
+                        product.categoryList[0].id === 1 && product.price !== 0
                           ? formatCurrency(product.price * 1.2) // cake 8 inch price
-                          : product.categoryId === 2 && '1 Piece' // dacquoise piece
+                          : product.categoryList[0].id === 2 && '1 Piece' // dacquoise piece
                       }
                     </Price>
                   </Detail>
@@ -143,8 +131,9 @@ export const Category = (props: Props) => {
                   </OrderNowBtn>
                 </Card>
               ))}
-        </CardWrapper>
-      </Wrapper>
-    </Container>
+          </CardWrapper>
+        </Wrapper>
+      </Container>
+    </>
   );
 };

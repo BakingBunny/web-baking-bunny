@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCountCartItems } from '../../hooks/useCountCartItems';
+import { useCalcCartItems } from '../../hooks/useCalcCartItems';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import {
   Container,
@@ -16,7 +16,7 @@ interface Props {}
 
 export const Navbar = (props: Props) => {
   const isMobile: boolean = useWindowSize();
-  const countCartItems = useCountCartItems();
+  const { countCartItems } = useCalcCartItems();
 
   return (
     <Container>
