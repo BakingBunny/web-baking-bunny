@@ -20,6 +20,7 @@ export const useFetch = <FetchedData,>(
       try {
         const { data } = await axios.get(url, { cancelToken: source.token });
         setFetchedData({ data, loading: false, error: undefined });
+        // console.log(data); //TODO: delete it later;
       } catch {
         setFetchedData({
           data: undefined,

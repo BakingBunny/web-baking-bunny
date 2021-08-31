@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 import { CartProducts } from './CartProducts';
 import {
   Container,
@@ -33,19 +34,14 @@ const Review = (props: Props) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
 
   const onClickHandler = async () => {
-    // id: item.id,
     const orderSummary = {
       saleItems: cartListState.map((item) => ({
-        // id: 0,
         quantity: item.qty,
-        // discount: 0,
         productId: item.product.productId,
         sizeId: item.sizeId,
         tasteId: item.tasteId,
-        // orderListId: 0,
       })),
       user: {
-        // id: 0,
         firstname: userInfoState.firstname,
         lastname: userInfoState.lastname,
         email: userInfoState.email,
@@ -55,7 +51,6 @@ const Review = (props: Props) => {
         city: userInfoState.city,
       },
       orderlist: {
-        // id: 0,
         subtotal: orderListState.subtotal,
         deliveryFee: orderListState.deliveryFee,
         total: orderListState.subtotal + orderListState.deliveryFee,
@@ -64,7 +59,6 @@ const Review = (props: Props) => {
         comment: orderListState.inquiry,
         orderDate: new Date(),
         pickupDeliveryDate: orderListState.pickupDeliveryDate,
-        // userId: 0,
       },
     };
 
@@ -80,11 +74,16 @@ const Review = (props: Props) => {
 
     if (response.status === 200) {
       dispatch(removeAll()); // empty cart
-      const path = '/confirm';
-      history.push(path);
+      history.push('/confirm');
     } else {
       toast('Sorry, something went wrong. Try it later.', { type: 'error' });
     }
+
+    // const data = await axios.post(
+    //   `${process.env.REACT_APP_BASE_URL}/order`,
+    //   orderSummary
+    // );
+    // console.log(data);
   };
 
   return (

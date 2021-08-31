@@ -38,7 +38,7 @@ interface paramsInterface {
 interface Props {}
 
 const initialCategory: CategoryInterface = {
-  id: -1,
+  id: 0,
   name: '',
 };
 
