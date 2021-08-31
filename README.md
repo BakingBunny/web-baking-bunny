@@ -54,6 +54,10 @@
 - Other 1: Used Axios for REST API.
 - Other 2: Used Styled-Components for reusable styling.
 
+## Workflow
+
+![hero](./workflow/workflow.jpg?raw=true)
+
 ## Demo
 
 > Live Demo <a href="https://bakingbunny.netlify.app/" target="_blank"> HERE </a>
