@@ -39,7 +39,7 @@ export const CustomCakeReview: React.FC<Props> = (props: Props) => {
         city: userInfoState.city,
       },
     };
-
+    console.log(orderSummary);
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
