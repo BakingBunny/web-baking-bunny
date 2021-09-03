@@ -122,12 +122,14 @@ export const Product: React.FC<Props> = () => {
   if (!productToCart.product) return <NotFoundPage />;
 
   return (
-    <Container>
-      <Wrapper>
-        {loading && <p>loading...</p>}
-        {error && <p>{error}</p>}
-        {productToCart && (
-          <>
+    <>
+      {loading ? (
+        <p>loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <Container>
+          <Wrapper>
             <ProductName>
               {productToCart.product.productName.replaceAll('-', ' ')}
             </ProductName>
@@ -188,15 +190,15 @@ export const Product: React.FC<Props> = () => {
                 restrictions when you place on order.
               </p>
             </NoteWrapper>
-          </>
-        )}
-      </Wrapper>
-      <Category
-        productCategory={
-          productToCart.product.category.name.toLowerCase() + 's'
-        }
-        selectedProductId={productToCart.product.productId}
-      />
-    </Container>
+          </Wrapper>
+          <Category
+            productCategory={
+              productToCart.product.category.name.toLowerCase() + 's'
+            }
+            selectedProductId={productToCart.product.productId}
+          />
+        </Container>
+      )}
+    </>
   );
 };

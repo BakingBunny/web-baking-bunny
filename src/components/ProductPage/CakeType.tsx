@@ -15,20 +15,23 @@ export const CakeType = (props: Props) => {
 
   return (
     <TastesWrapper>
-      {selectedProduct.cakeTypeList.map((item: CakeTypeListInterface) => (
-        <TastesBtn
-          key={item.id}
-          isSelected={productToCart.cakeTypeId === item.id}
-          onClick={() =>
-            setproductToCart((prevState) => ({
-              ...prevState,
-              cakeTypeId: item.id,
-            }))
-          }
-        >
-          {item.type.replaceAll('-', ' ')}
-        </TastesBtn>
-      ))}
+      {selectedProduct.cakeTypeList.map(
+        (item: CakeTypeListInterface) =>
+          item.id !== 1 && (
+            <TastesBtn
+              key={item.id}
+              isSelected={productToCart.cakeTypeId === item.id}
+              onClick={() =>
+                setproductToCart((prevState) => ({
+                  ...prevState,
+                  cakeTypeId: item.id,
+                }))
+              }
+            >
+              {item.type.replaceAll('-', ' ')}
+            </TastesBtn>
+          )
+      )}
     </TastesWrapper>
   );
 };
