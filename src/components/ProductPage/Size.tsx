@@ -15,7 +15,7 @@ export const Size = (props: Props) => {
       <OptionTitle>Size</OptionTitle>
       {productToCart.product.sizeList.map(
         (item) =>
-          item.sizeName !== 'NA' && (
+          item.id !== 1 && (
             <SizeBtn
               isSelected={productToCart.sizeId === item.id}
               onClick={() =>

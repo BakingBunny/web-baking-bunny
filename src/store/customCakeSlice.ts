@@ -29,7 +29,7 @@ const initialState: CustomCakeInterface = {
   requestDate: null,
   isDelivery: null,
   tasteId: -1,
-  cakeTypeId: 1,
+  cakeTypeId: 2,
   sizeId: 2,
 };
 

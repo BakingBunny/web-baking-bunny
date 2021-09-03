@@ -1,9 +1,11 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 // import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
-import { Calendar } from 'react-date-range';
+// import { Calendar } from 'react-date-range';
 import { addDays } from 'date-fns';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+// import 'react-date-range/dist/styles.css'; // main style file
+// import 'react-date-range/dist/theme/default.css'; // theme css file
 import { orderList, update } from '../../store/orderListSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import {
@@ -25,6 +27,7 @@ const availableDeliveryHours: number[] = [11, 12, 13, 14, 15];
 const availablePickupHours: number[] = [14, 15, 16, 17, 18, 19];
 const availableMinutes: number[] = [0, 10, 20, 30, 40, 50];
 
+// const minDate = moment().subtract(7, 'day');
 const minDate = addDays(new Date(), 7);
 minDate.setHours(14, 0, 0, 0);
 const maxDate = addDays(new Date(), 60);
@@ -39,10 +42,10 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   // const onDateChangeHandler = (date: OnChangeProps): void => {
   const onDateChangeHandler = (date: any): void => {
     const newDate = new Date(date);
-    orderListState.isDelivery
-      ? newDate.setHours(availableDeliveryHours[0])
-      : newDate.setHours(availablePickupHours[0]);
-    newDate.setMinutes(0);
+    // orderListState.isDelivery
+    //   ? newDate.setHours(availableDeliveryHours[0])
+    //   : newDate.setHours(availablePickupHours[0]);
+    // newDate.setMinutes(0);
     setPickupDeliveryDate(newDate);
   };
 
@@ -87,12 +90,28 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
           ? 'Please select a date and time you want to be delivered.'
           : 'Please select a date and time you want to pick up.'}
       </DeliveryRequirement>
-      <Calendar
+      {/* <Calendar
         date={pickupDeliveryDate}
         onChange={onDateChangeHandler}
         minDate={minDate}
         maxDate={maxDate}
-        // disabledDates={[disd]}
+      /> */}
+      <Datetime
+        value={pickupDeliveryDate}
+        onChange={onDateChangeHandler}
+        isValidDate={(current) => {
+          return current > minDate && current < maxDate;
+        }}
+        // input={false}
+        timeFormat='HH:mm'
+        timeConstraints={{
+          hours: { min: 9, max: 15, step: 1 },
+          minutes: { min: 0, max: 59, step: 10 },
+        }}
+        // timeFormat={false}
+        // minDate={minDate}
+        // maxDate={maxDate}
+        // disabledDates={[addDays(new Date(), 10)]}
         // disabledDay={disabledDate}
       />
       <TimeWrapper>

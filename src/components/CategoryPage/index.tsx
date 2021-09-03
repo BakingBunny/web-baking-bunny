@@ -78,62 +78,67 @@ export const Category = (props: Props) => {
 
   return (
     <>
-      {loading && <p>loading...</p>}
-      {error && <p>{error}</p>}
-      <Container>
-        <Wrapper>
-          <Title>{productCategory.replace('/', '')}</Title>
-          <CardWrapper>
-            {productList &&
-              productList.map((product: ProductInterface) => (
-                <Card
-                  key={product.productName}
-                  isSelected={product.productId === selectedProductId}
-                  onClick={() => CardHandler(product.productId)}
-                >
-                  {AddedNumberToCart(product.productId) > 0 && (
-                    <CounterWrapper>
-                      <CountCartItems>
-                        {AddedNumberToCart(product.productId)}
-                      </CountCartItems>
-                    </CounterWrapper>
-                  )}
-                  <Image
-                    // src={require(`../../img/${product.productImage}`)?.default}
-                    src={product.productImage}
-                    alt={product.productName}
-                  />
-                  {/* {product.productId === selectedProductId && <CheckIcon />} */}
-                  <Detail>
-                    <Name>{product.productName.replaceAll('-', ' ')}</Name>
-                    <Price>
-                      {
-                        product.price === 0
-                          ? 'Various' // custum cakes
-                          : formatCurrency(product.price) //regular cakes and dacquoise
-                      }
-                      {
-                        product.price !== 0 && ' / ' // divider
-                      }
-                      {
-                        product.category.id === 1 && product.price !== 0
-                          ? formatCurrency(product.price * 1.2) // cake 8 inch price
-                          : product.category.id === 2 && '1 Piece' // dacquoise piece
-                      }
-                    </Price>
-                  </Detail>
-                  <OrderNowBtn
+      {loading ? (
+        <p>loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        productList && (
+          <Container>
+            <Wrapper>
+              <Title>{productCategory.replace('/', '')}</Title>
+              <CardWrapper>
+                {productList.map((product: ProductInterface) => (
+                  <Card
+                    key={product.productName}
                     isSelected={product.productId === selectedProductId}
+                    onClick={() => CardHandler(product.productId)}
                   >
-                    {product.productId === selectedProductId
-                      ? 'Selected'
-                      : 'Order Now'}
-                  </OrderNowBtn>
-                </Card>
-              ))}
-          </CardWrapper>
-        </Wrapper>
-      </Container>
+                    {AddedNumberToCart(product.productId) > 0 && (
+                      <CounterWrapper>
+                        <CountCartItems>
+                          {AddedNumberToCart(product.productId)}
+                        </CountCartItems>
+                      </CounterWrapper>
+                    )}
+                    <Image
+                      // src={require(`../../img/${product.productImage}`)?.default}
+                      src={product.productImage}
+                      alt={product.productName}
+                    />
+                    {/* {product.productId === selectedProductId && <CheckIcon />} */}
+                    <Detail>
+                      <Name>{product.productName.replaceAll('-', ' ')}</Name>
+                      <Price>
+                        {
+                          product.price === 0
+                            ? 'Various' // custum cakes
+                            : formatCurrency(product.price) //regular cakes and dacquoise
+                        }
+                        {
+                          product.price !== 0 && ' / ' // divider
+                        }
+                        {
+                          product.category.id === 1 && product.price !== 0
+                            ? formatCurrency(product.price * 1.2) // cake 8 inch price
+                            : product.category.id === 2 && '1 Piece' // dacquoise piece
+                        }
+                      </Price>
+                    </Detail>
+                    <OrderNowBtn
+                      isSelected={product.productId === selectedProductId}
+                    >
+                      {product.productId === selectedProductId
+                        ? 'Selected'
+                        : 'Order Now'}
+                    </OrderNowBtn>
+                  </Card>
+                ))}
+              </CardWrapper>
+            </Wrapper>
+          </Container>
+        )
+      )}
     </>
   );
 };

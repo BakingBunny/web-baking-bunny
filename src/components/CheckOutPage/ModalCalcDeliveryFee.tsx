@@ -73,15 +73,12 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
       })
     );
 
-    // if deliver and date is NOT Saturday then reset the date.
-    if (orderListState.pickupDeliveryDate?.getDay() !== 6)
-      dispatch(
-        //TODO: hour and minutes should be reset as well.
-        orderListUpdate({
-          name: 'pickupDeliveryDate',
-          value: null,
-        })
-      );
+    dispatch(
+      orderListUpdate({
+        name: 'pickupDeliveryDate',
+        value: undefined,
+      })
+    );
 
     setShowModal(false);
   };
