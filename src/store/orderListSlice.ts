@@ -23,7 +23,7 @@ export const orderListSlice = createSlice({
       state,
       action: PayloadAction<{
         name: string;
-        value: number | boolean | string | Date | OnChangeProps | null;
+        value: number | boolean | string | Date | OnChangeProps | undefined;
       }>
     ) => {
       const { name, value } = action.payload;

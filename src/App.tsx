@@ -27,7 +27,7 @@ const BodyContainer = styled.main`
 `;
 
 function App() {
-  const { countCartItems } = useCalcCartItems();
+  const { countCartItems, subtotal } = useCalcCartItems();
   const isValid: boolean = useValid();
 
   return (
@@ -44,7 +44,7 @@ function App() {
             />
             <Route path={'/product/:productId'} component={ProductPage} exact />
             <Route path='/cart' component={CartPage} exact />
-            {countCartItems > 0 && (
+            {countCartItems > 0 && subtotal > 0 && (
               <Route path='/checkout' component={CheckoutPage} exact />
             )}
             {isValid && <Route path='/review' component={ReviewPage} exact />}
