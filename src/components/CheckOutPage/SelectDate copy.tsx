@@ -1,6 +1,5 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import DayPicker, { DayModifiers } from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 // import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
 // import { Calendar } from 'react-date-range';
@@ -19,8 +18,6 @@ import {
   ConfirmBtn,
 } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
-import { CartInterface } from '../../interface/CartInterface';
-import { products } from '../../store/cartSlice';
 
 interface Props {
   setShowModal: Dispatch<SetStateAction<boolean>>;
@@ -30,42 +27,26 @@ const availableDeliveryHours: number[] = [11, 12, 13, 14, 15];
 const availablePickupHours: number[] = [14, 15, 16, 17, 18, 19];
 const availableMinutes: number[] = [0, 10, 20, 30, 40, 50];
 
+// const minDate = moment().subtract(7, 'day');
+const minDate = addDays(new Date(), 7);
+minDate.setHours(14, 0, 0, 0);
+const maxDate = addDays(new Date(), 60);
+
 export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
-  const cartListState = useAppSelector<CartInterface[]>(products);
   const dispatch = useAppDispatch();
-  const [minDate, setMinDate] = useState(addDays(new Date(), 7));
-  // minDate.setHours(14, 0, 0, 0);
-  const maxDate = addDays(new Date(), 60);
   const [pickupDeliveryDate, setPickupDeliveryDate] = useState<Date>(
     orderListState.pickupDeliveryDate || minDate
   );
-  const [isDacqInCart, setisDacqInCart] = useState<boolean>(false);
 
-  //TODO: doesn't work
-  /* set first available hour depends on pickup/delivery */
-  useEffect(() => {
-    const newDate = addDays(new Date(), 7);
-    orderListState.isDelivery
-      ? newDate.setHours(availableDeliveryHours[0], 0, 0, 0)
-      : newDate.setHours(availablePickupHours[0], 0, 0, 0);
-    setMinDate(newDate);
-  }, [orderListState.isDelivery]);
-
-  useEffect(() => {
-    setisDacqInCart(
-      /* Check if dacq in cart, when cart items changed */
-      cartListState.some((item) => item.product.category.id === 2)
-    );
-  }, [cartListState]);
-
-  const onDateChangeHandler = (
-    date: Date,
-    { disabled }: DayModifiers
-  ): void => {
-    if (!disabled) {
-      setPickupDeliveryDate(date);
-    }
+  // const onDateChangeHandler = (date: OnChangeProps): void => {
+  const onDateChangeHandler = (date: any): void => {
+    const newDate = new Date(date);
+    // orderListState.isDelivery
+    //   ? newDate.setHours(availableDeliveryHours[0])
+    //   : newDate.setHours(availablePickupHours[0]);
+    // newDate.setMinutes(0);
+    setPickupDeliveryDate(newDate);
   };
 
   const onTimeChangeHandler = (
@@ -90,6 +71,10 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
     setShowModal(false);
   };
 
+  // const disabledDate = (current: Date): boolean => {
+  //   return current > minDate;
+  // };
+
   const hoursOption = (hours: number[]): any => {
     return hours.map((hour) => (
       <option key={hour} value={hour}>
@@ -105,23 +90,29 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
           ? 'Please select a date and time you want to be delivered.'
           : 'Please select a date and time you want to pick up.'}
       </DeliveryRequirement>
-      <DayPicker
-        onDayClick={onDateChangeHandler}
-        selectedDays={pickupDeliveryDate || addDays(minDate, 1)}
-        enableOutsideDaysClick={false}
-        disabledDays={
-          orderListState.isDelivery
-            ? [
-                { daysOfWeek: [0, 1, 2, 3, 4, 5] },
-                { before: minDate, after: maxDate },
-              ]
-            : isDacqInCart
-            ? [
-                { daysOfWeek: [0, 1, 2, 3] },
-                { before: minDate, after: maxDate },
-              ]
-            : { before: minDate, after: maxDate }
-        }
+      {/* <Calendar
+        date={pickupDeliveryDate}
+        onChange={onDateChangeHandler}
+        minDate={minDate}
+        maxDate={maxDate}
+      /> */}
+      <Datetime
+        value={pickupDeliveryDate}
+        onChange={onDateChangeHandler}
+        isValidDate={(current) => {
+          return current > minDate && current < maxDate;
+        }}
+        // input={false}
+        timeFormat='HH:mm'
+        timeConstraints={{
+          hours: { min: 9, max: 15, step: 1 },
+          minutes: { min: 0, max: 59, step: 10 },
+        }}
+        // timeFormat={false}
+        // minDate={minDate}
+        // maxDate={maxDate}
+        // disabledDates={[addDays(new Date(), 10)]}
+        // disabledDay={disabledDate}
       />
       <TimeWrapper>
         TIME
