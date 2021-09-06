@@ -1,8 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 // import { Calendar, CalendarProps, OnChangeProps } from 'react-date-range';
 import { addDays } from 'date-fns';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
 import { customCake, update } from '../../store/customCakeSlice';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import {
