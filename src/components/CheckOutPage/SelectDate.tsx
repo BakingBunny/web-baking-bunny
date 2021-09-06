@@ -35,22 +35,9 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const cartListState = useAppSelector<CartInterface[]>(products);
   const dispatch = useAppDispatch();
   const [minDate, setMinDate] = useState(addDays(new Date(), 7));
-  // minDate.setHours(14, 0, 0, 0);
   const maxDate = addDays(new Date(), 60);
-  const [pickupDeliveryDate, setPickupDeliveryDate] = useState<Date>(
-    orderListState.pickupDeliveryDate || minDate
-  );
+  const [pickupDeliveryDate, setPickupDeliveryDate] = useState<Date>();
   const [isDacqInCart, setisDacqInCart] = useState<boolean>(false);
-
-  //TODO: doesn't work. dependency error
-  /* set first available hour depends on pickup/delivery */
-  useEffect(() => {
-    const newDate = addDays(new Date(), 7);
-    orderListState.isDelivery
-      ? newDate.setHours(availableDeliveryHours[0], 0, 0, 0)
-      : newDate.setHours(availablePickupHours[0], 0, 0, 0);
-    setMinDate(newDate);
-  }, [orderListState.isDelivery]);
 
   useEffect(() => {
     setisDacqInCart(
@@ -64,6 +51,10 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
     { disabled }: DayModifiers
   ): void => {
     if (!disabled) {
+      orderListState.isDelivery
+        ? date.setHours(availableDeliveryHours[0], 0, 0, 0)
+        : date.setHours(availablePickupHours[0], 0, 0, 0);
+      setMinDate(date);
       setPickupDeliveryDate(date);
     }
   };
@@ -71,22 +62,26 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   const onTimeChangeHandler = (
     e: React.ChangeEvent<HTMLSelectElement>
   ): void => {
-    const { name, value } = e.target;
-    const newDate = new Date(pickupDeliveryDate);
+    if (pickupDeliveryDate) {
+      const { name, value } = e.target;
+      const newDate = new Date(pickupDeliveryDate);
 
-    name === 'pickupHour'
-      ? newDate.setHours(Number(value))
-      : newDate.setMinutes(Number(value));
-    setPickupDeliveryDate(newDate);
+      name === 'pickupHour'
+        ? newDate.setHours(Number(value))
+        : newDate.setMinutes(Number(value));
+      setPickupDeliveryDate(newDate);
+    }
   };
 
   const onConfirmHandler = () => {
-    dispatch(
-      update({
-        name: 'pickupDeliveryDate',
-        value: pickupDeliveryDate,
-      })
-    );
+    if (pickupDeliveryDate) {
+      dispatch(
+        update({
+          name: 'pickupDeliveryDate',
+          value: pickupDeliveryDate,
+        })
+      );
+    }
     setShowModal(false);
   };
 
@@ -107,7 +102,7 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
       </DeliveryRequirement>
       <DayPicker
         onDayClick={onDateChangeHandler}
-        selectedDays={pickupDeliveryDate || addDays(minDate, 1)}
+        selectedDays={pickupDeliveryDate}
         enableOutsideDaysClick={false}
         disabledDays={
           orderListState.isDelivery
@@ -123,31 +118,35 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
             : { before: minDate, after: maxDate }
         }
       />
-      <TimeWrapper>
-        TIME
-        <TimeSelect
-          name={'pickupHour'}
-          value={pickupDeliveryDate.getHours()}
-          onChange={onTimeChangeHandler}
-        >
-          {orderListState.isDelivery
-            ? hoursOption(availableDeliveryHours)
-            : hoursOption(availablePickupHours)}
-        </TimeSelect>
-        :
-        <TimeSelect
-          name={'pickupMinute'}
-          value={pickupDeliveryDate.getMinutes()}
-          onChange={onTimeChangeHandler}
-        >
-          {availableMinutes.map((minute) => (
-            <option key={minute} value={minute}>
-              {minute.toString().padStart(2, '0')}
-            </option>
-          ))}
-        </TimeSelect>
-        {pickupDeliveryDate.getHours() < 12 ? ' AM' : ' PM'}
-      </TimeWrapper>
+      {pickupDeliveryDate && (
+        <TimeWrapper>
+          TIME
+          <TimeSelect
+            name={'pickupHour'}
+            value={pickupDeliveryDate?.getHours()}
+            onChange={onTimeChangeHandler}
+          >
+            {orderListState.isDelivery
+              ? hoursOption(availableDeliveryHours)
+              : hoursOption(availablePickupHours)}
+          </TimeSelect>
+          :
+          <TimeSelect
+            name={'pickupMinute'}
+            value={pickupDeliveryDate?.getMinutes()}
+            onChange={onTimeChangeHandler}
+          >
+            {availableMinutes.map((minute) => (
+              <option key={minute} value={minute}>
+                {minute.toString().padStart(2, '0')}
+              </option>
+            ))}
+          </TimeSelect>
+          {pickupDeliveryDate && pickupDeliveryDate.getHours() < 12
+            ? ' AM'
+            : ' PM'}
+        </TimeWrapper>
+      )}
       <BtnWrapper>
         <ConfirmBtn onClick={onConfirmHandler}>Confirm</ConfirmBtn>
         <CancelBtn onClick={() => setShowModal(false)}>Cancel</CancelBtn>

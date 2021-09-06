@@ -20,7 +20,7 @@ export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
       <DateBtn
         onClick={() => setShowModal(true)}
-        isSelected={customCakeState.requestDate !== null}
+        isSelected={customCakeState.requestDate !== undefined}
       >
         {customCakeState.requestDate ? (
           <>

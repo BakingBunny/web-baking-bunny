@@ -4,8 +4,8 @@ import { ProductInterface } from './ProductInterface';
 export interface CustomCakeInterface {
   product: ProductInterface;
   requestDescription: string;
-  requestDate: Date | null;
-  isDelivery: boolean | null;
+  requestDate: Date | undefined;
+  isDelivery: boolean | undefined;
   tasteId: number;
   cakeTypeId: number;
   sizeId: number;

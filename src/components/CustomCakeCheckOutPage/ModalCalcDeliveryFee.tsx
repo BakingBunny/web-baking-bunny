@@ -71,7 +71,7 @@ export const ModalCalcDeliveryFee: React.FC<Props> = ({ setShowModal }) => {
       dispatch(
         customCakeUpdate({
           name: 'pickupDeliveryDate',
-          value: null,
+          value: undefined,
         })
       );
 
