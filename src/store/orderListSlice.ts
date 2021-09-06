@@ -7,8 +7,8 @@ const initialState: OrderListInterface = {
   subtotal: 0,
   deliveryFee: 0,
   total: 0,
-  isDelivery: null,
-  pickupDeliveryDate: null,
+  isDelivery: undefined,
+  pickupDeliveryDate: undefined,
   // allergy: '',
   // inquiry: '',
   allergy: 'Milk, Peanut, Cheese, Egg',
@@ -23,7 +23,7 @@ export const orderListSlice = createSlice({
       state,
       action: PayloadAction<{
         name: string;
-        value: number | boolean | string | Date | OnChangeProps | null;
+        value: number | boolean | string | Date | OnChangeProps | undefined;
       }>
     ) => {
       const { name, value } = action.payload;

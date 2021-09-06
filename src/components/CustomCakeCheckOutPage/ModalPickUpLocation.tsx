@@ -25,6 +25,13 @@ export const ModalPickUpLocation: React.FC<Props> = ({ setShowModal }) => {
       })
     );
 
+    dispatch(
+      update({
+        name: 'requestDate',
+        value: undefined,
+      })
+    );
+
     setShowModal(false);
   };
   return (

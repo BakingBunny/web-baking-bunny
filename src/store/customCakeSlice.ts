@@ -26,10 +26,10 @@ const initialProduct: ProductInterface = {
 const initialState: CustomCakeInterface = {
   product: initialProduct,
   requestDescription: '',
-  requestDate: null,
-  isDelivery: null,
+  requestDate: undefined,
+  isDelivery: undefined,
   tasteId: -1,
-  cakeTypeId: 1,
+  cakeTypeId: 2,
   sizeId: 2,
 };
 

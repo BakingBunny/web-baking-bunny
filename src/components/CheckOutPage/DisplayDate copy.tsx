@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
-import { customCake } from '../../store/customCakeSlice';
+import { orderList } from '../../store/orderListSlice';
 import { useAppSelector } from '../../store/hooks';
+import { OrderListInterface } from '../../interface/OrderListInterface';
 import {
   CheckOutQuestion,
   DateBtn,
@@ -13,20 +13,20 @@ interface Props {
 }
 
 export const DisplayDate: React.FC<Props> = ({ setShowModal }) => {
-  const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
+  const orderListState = useAppSelector<OrderListInterface>(orderList);
 
   return (
     <OptionWrapper>
       <CheckOutQuestion>When would you like to take them?</CheckOutQuestion>
       <DateBtn
         onClick={() => setShowModal(true)}
-        isSelected={customCakeState.requestDate !== undefined}
+        isSelected={orderListState.pickupDeliveryDate !== null}
       >
-        {customCakeState.requestDate ? (
+        {orderListState.pickupDeliveryDate ? (
           <>
-            {customCakeState.requestDate.toDateString()}
+            {orderListState.pickupDeliveryDate.toDateString()}
             <br />
-            {customCakeState.requestDate.toLocaleTimeString([], {
+            {orderListState.pickupDeliveryDate.toLocaleTimeString([], {
               hour: '2-digit',
               minute: '2-digit',
             })}

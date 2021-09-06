@@ -38,7 +38,7 @@ export const CheckOut = (props: Props) => {
               setShowPickUpLocationModal={setShowPickUpLocationModal}
               setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
             />
-            {orderListState.isDelivery !== null && (
+            {orderListState.isDelivery !== undefined && (
               <DisplayDate setShowModal={setShowCalendarModal} />
             )}
           </BasicOption>

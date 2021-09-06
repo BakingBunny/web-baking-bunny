@@ -66,7 +66,7 @@ const initialCart: CartInterface = {
 
 // export const Product: React.FC<Props> = ({ selectedProduct, setShowModal }) => {
 export const Product: React.FC<Props> = () => {
-  const [productToCart, setproductToCart] =
+  const [productToCart, setProductToCart] =
     useState<CartInterface>(initialCart);
   const dispatch = useAppDispatch();
   const { productId } = useParams<paramsInterface>();
@@ -75,14 +75,14 @@ export const Product: React.FC<Props> = () => {
     loading,
     error,
   } = useFetch<ProductInterface>(
-    `https://7hq1iew2e2.execute-api.us-west-2.amazonaws.com/test-docker-dotnet-0715-api/api/product/${productId}`
+    `${process.env.REACT_APP_BASE_URL}/product/${productId}`
   );
 
   useEffect(() => {
     window.scrollTo(0, 0); // scroll to top
 
     productFetched &&
-      setproductToCart((prevState: CartInterface) => ({
+      setProductToCart((prevState: CartInterface) => ({
         ...prevState,
         id: uuidv4(),
         product: productFetched,
@@ -112,7 +112,7 @@ export const Product: React.FC<Props> = () => {
     );
 
     // Set a new cart ID for the next item (if add button clicked without change pages)
-    setproductToCart((prevState) => ({
+    setProductToCart((prevState) => ({
       ...prevState,
       id: uuidv4(),
     }));
@@ -122,12 +122,14 @@ export const Product: React.FC<Props> = () => {
   if (!productToCart.product) return <NotFoundPage />;
 
   return (
-    <Container>
-      <Wrapper>
-        {loading && <p>loading...</p>}
-        {error && <p>{error}</p>}
-        {productToCart && (
-          <>
+    <>
+      {loading ? (
+        <p>loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <Container>
+          <Wrapper>
             <ProductName>
               {productToCart.product.productName.replaceAll('-', ' ')}
             </ProductName>
@@ -142,26 +144,26 @@ export const Product: React.FC<Props> = () => {
                   <Tastes
                     selectedProduct={productToCart.product}
                     productToCart={productToCart}
-                    setproductToCart={setproductToCart}
+                    setproductToCart={setProductToCart}
                   />
                 )}
                 {productToCart.product.cakeTypeList.length > 0 && ( // display if product has multiple tastes (e.g. fruits cake or Dacquoise combo)
                   <CakeType
                     selectedProduct={productToCart.product}
                     productToCart={productToCart}
-                    setproductToCart={setproductToCart}
+                    setproductToCart={setProductToCart}
                   />
                 )}
                 <SubOptionWrapper>
                   {productToCart.product.sizeList.length > 0 && ( // display if product has multiple sizes (e.g. cake)
                     <Size
                       productToCart={productToCart}
-                      setproductToCart={setproductToCart}
+                      setproductToCart={setProductToCart}
                     />
                   )}
                   <Quantity
                     productToCart={productToCart}
-                    setproductToCart={setproductToCart}
+                    setproductToCart={setProductToCart}
                   />
                 </SubOptionWrapper>
                 <AddToCartBtn onClick={onClickHandler}>
@@ -188,15 +190,15 @@ export const Product: React.FC<Props> = () => {
                 restrictions when you place on order.
               </p>
             </NoteWrapper>
-          </>
-        )}
-      </Wrapper>
-      <Category
-        productCategory={
-          productToCart.product.category.name.toLowerCase() + 's'
-        }
-        selectedProductId={productToCart.product.productId}
-      />
-    </Container>
+          </Wrapper>
+          <Category
+            productCategory={
+              productToCart.product.category.name.toLowerCase() + 's'
+            }
+            selectedProductId={productToCart.product.productId}
+          />
+        </Container>
+      )}
+    </>
   );
 };
