@@ -42,7 +42,7 @@ export const SelectDate: React.FC<Props> = ({ setShowModal }) => {
   );
   const [isDacqInCart, setisDacqInCart] = useState<boolean>(false);
 
-  //TODO: doesn't work
+  //TODO: doesn't work. dependency error
   /* set first available hour depends on pickup/delivery */
   useEffect(() => {
     const newDate = addDays(new Date(), 7);
