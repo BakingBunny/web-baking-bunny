@@ -20,6 +20,13 @@ export const ModalPickUpLocation: React.FC<Props> = ({ setShowModal }) => {
   const onConfirmhandler = () => {
     dispatch(
       update({
+        name: 'deliveryFee',
+        value: 0,
+      })
+    );
+
+    dispatch(
+      update({
         name: 'isDelivery',
         value: false,
       })

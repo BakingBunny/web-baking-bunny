@@ -3,8 +3,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import Slider from 'react-slick';
 // import productList from '../../productList.json';
-// import { NotFoundPage } from '../../pages/NotFoundPage';
-// import formatCurrency from '../../utils/formatCurrency';
 import {
   Container,
   Wrapper,
@@ -25,12 +23,9 @@ import { ModalWindow } from '../../utils/ModalWindow';
 import { DisplayDate } from './DisplayDate';
 import { ModalCalcDeliveryFee } from './ModalCalcDeliveryFee';
 import { ModalPickUpLocation } from './ModalPickUpLocation';
-// import { OrderListInterface } from '../../interface/OrderListInterface';
 import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
-
 import { Tastes } from './Tastes';
 import { Size } from './Size';
-// import { v4 as uuidv4 } from 'uuid';
 import { CakeType } from './CakeType';
 import { ProductInterface } from '../../interface/ProductInterface';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
@@ -43,47 +38,13 @@ toast.configure();
 
 interface Props {}
 
-// const initialProduct: ProductInterface = {
-//   productId: 0,
-//   productName: '',
-//   price: 0,
-//   description: '',
-//   productImage: '',
-//   comment: '',
-//   tasteList: [],
-//   cakeTypeList: [],
-//   sizeList: [],
-//   categoryId: 0,
-// };
-
-// const initialCustomCake = {
-//   requestDescription: '';
-//   requestDate: Date | null;
-//   isDelivery: boolean | null;
-//   tasteId: number;
-//   cakeTypeId: number;
-//   sizeId: number;
-
-//   id: '',
-//   product: initialProduct,
-//   tasteId: -1,
-//   cakeTypeId: -1,
-//   sizeId: -1,
-//   qty: 1,
-// };
-
-// export const Product: React.FC<Props> = ({ selectedProduct, setShowModal }) => {
 export const CustomCakeCheckOut: React.FC<Props> = () => {
-  // const [selectedProduct, setSelectedProduct] =
-  //   useState<ProductInterface>(initialProduct);
   const [showPickUpLocationModal, setShowPickUpLocationModal] =
     useState<boolean>(false);
   const [showCalcDeliveryFeeModal, setShowCalcDeliveryFeeModal] =
     useState<boolean>(false);
   const [showCalendarModal, setShowCalendarModal] = useState<boolean>(false);
-  // const [customOrderList, setCustomOrderList] = useState<CustomCakeInterface>();
   const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
-  // const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
 
   const {
@@ -149,10 +110,12 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
                   setShowPickUpLocationModal={setShowPickUpLocationModal}
                   setShowCalcDeliveryFeeModal={setShowCalcDeliveryFeeModal}
                 />
-                {customCakeState.isDelivery !== null && (
+                {customCakeState.isDelivery !== undefined && (
                   <DisplayDate setShowModal={setShowCalendarModal} />
                 )}
-                {customCakeState.requestDate !== null && <RequestDescription />}
+                {customCakeState.requestDate !== undefined && (
+                  <RequestDescription />
+                )}
               </BasicOption>
               {customCakeState.requestDescription && (
                 <UserInfoForm>
