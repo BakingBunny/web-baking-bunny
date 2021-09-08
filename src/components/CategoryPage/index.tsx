@@ -28,20 +28,20 @@ import { useFetch } from '../../hooks/useFetch';
 toast.configure();
 
 interface Props {
-  productCategory: string;
+  categoryId: string;
   selectedProductId: number | null;
 }
 
 export const Category = (props: Props) => {
   const cartListState = useAppSelector<CartInterface[]>(products);
-  const { productCategory, selectedProductId } = props;
+  const { categoryId, selectedProductId } = props;
   const history = useHistory();
   const {
     data: productList,
     loading,
     error,
   } = useFetch<ProductInterface[]>(
-    `${process.env.REACT_APP_BASE_URL}/category/${productCategory}`
+    `${process.env.REACT_APP_BASE_URL}/category/${categoryId}`
   );
 
   // check how many the specific items are already added to the cart
@@ -86,7 +86,7 @@ export const Category = (props: Props) => {
         productList && (
           <Container>
             <Wrapper>
-              <Title>{productCategory.replace('/', '')}</Title>
+              <Title>{categoryId.replace('/', '')}</Title>
               <CardWrapper>
                 {productList.map((product: ProductInterface) => (
                   <Card

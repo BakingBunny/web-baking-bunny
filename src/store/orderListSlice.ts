@@ -7,7 +7,8 @@ const initialState: OrderListInterface = {
   subtotal: 0,
   deliveryFee: 0,
   total: 0,
-  isDelivery: undefined,
+  // isDelivery: undefined,
+  isDelivery: true, //delete
   pickupDeliveryDate: undefined,
   // allergy: '',
   // inquiry: '',

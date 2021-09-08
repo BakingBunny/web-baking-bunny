@@ -192,9 +192,7 @@ export const Product: React.FC<Props> = () => {
             </NoteWrapper>
           </Wrapper>
           <Category
-            productCategory={
-              productToCart.product.category.name.toLowerCase() + 's'
-            }
+            categoryId={productToCart.product.category.name.toLowerCase() + 's'}
             selectedProductId={productToCart.product.productId}
           />
         </Container>

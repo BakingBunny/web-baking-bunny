@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  // Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { Navbar } from './components/Navbar';
 import { HomePage } from './pages';
@@ -14,9 +9,7 @@ import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { Footer } from './components/Footer';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { useCalcCartItems } from './hooks/useCalcCartItems';
 import { ReviewPage } from './pages/ReviewPage';
-import useValid from './hooks/useCheckOutValid';
 import { ConfirmPage } from './pages/ConfirmPage';
 import { CustomCakeCheckOutPage } from './pages/CustomCakeCheckOutPage';
 import { CustomCakeReviewPage } from './pages/CustomCakeReviewPage';
@@ -27,9 +20,6 @@ const BodyContainer = styled.main`
 `;
 
 function App() {
-  const { countCartItems, subtotal } = useCalcCartItems();
-  const isValid: boolean = useValid();
-
   return (
     <>
       <Router>
@@ -38,17 +28,15 @@ function App() {
           <Switch>
             <Route path='/' component={HomePage} exact />
             <Route
-              path={'/category/:productCategory'}
+              path={'/category/:categoryId'}
               component={CategoryPage}
               exact
             />
             <Route path={'/product/:productId'} component={ProductPage} exact />
-            <Route path='/cart' component={CartPage} exact />
-            {countCartItems > 0 && subtotal > 0 && (
-              <Route path='/checkout' component={CheckoutPage} exact />
-            )}
-            {isValid && <Route path='/review' component={ReviewPage} exact />}
-            {isValid && <Route path='/confirm' component={ConfirmPage} exact />}
+            <Route path={'/cart'} component={CartPage} exact />
+            <Route path={'/checkout'} component={CheckoutPage} exact />
+            <Route path={'/review'} component={ReviewPage} exact />
+            <Route path={'/confirm'} component={ConfirmPage} exact />
             <Route
               path={'/custom-cake/checkout'}
               component={CustomCakeCheckOutPage}
@@ -59,13 +47,11 @@ function App() {
               component={CustomCakeReviewPage}
               exact
             />
-            {isValid && (
-              <Route
-                path='/custom-cake/confirm'
-                component={CustomCakeConfirmPage}
-                exact
-              />
-            )}
+            <Route
+              path='/custom-cake/confirm'
+              component={CustomCakeConfirmPage}
+              exact
+            />
             <Route component={NotFoundPage} />
           </Switch>
         </BodyContainer>

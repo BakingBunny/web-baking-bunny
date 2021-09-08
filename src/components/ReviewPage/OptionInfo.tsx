@@ -70,12 +70,16 @@ export const OptionInfo = (props: Props) => {
         </OptionInfoText>
       </FlexWrapper>
       <TotalWrapper>
-        {orderListState.isDelivery && orderListState.deliveryFee && (
+        {orderListState.isDelivery && (
           <>
             <TextLeft>Subtotal: </TextLeft>
             <TextRight>{formatCurrency(orderListState.subtotal)}</TextRight>
             <TextLeft>Delivery Fee: </TextLeft>
-            <TextRight>{formatCurrency(orderListState.deliveryFee)}</TextRight>
+            <TextRight>
+              {orderListState.deliveryFee > 0
+                ? formatCurrency(orderListState.deliveryFee)
+                : 'FREE'}
+            </TextRight>
           </>
         )}
         <TextLeft>
