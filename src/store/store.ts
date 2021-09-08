@@ -3,6 +3,7 @@ import cartReducer from './cartSlice';
 import userInfoReducer from './userInfoSlice';
 import orderListReducer from './orderListSlice';
 import customCakeReducer from './customCakeSlice';
+import orderProgressReducer from './orderProgressSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     userInfo: userInfoReducer,
     orderList: orderListReducer,
     customCake: customCakeReducer,
+    orderProgress: orderProgressReducer,
   },
   middleware: (
     getDefaultMiddleware // because react-date-range (orderListSlice)

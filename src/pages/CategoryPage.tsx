@@ -5,17 +5,17 @@ import { Category } from '../components/CategoryPage';
 interface Props {}
 
 interface paramsInterface {
-  productCategory: string;
+  categoryId: string;
 }
 
 export const CategoryPage = (props: Props) => {
-  const { productCategory } = useParams<paramsInterface>();
+  const { categoryId } = useParams<paramsInterface>();
 
   window.scrollTo(0, 0);
 
   return (
     <div>
-      <Category productCategory={productCategory} selectedProductId={null} />
+      <Category categoryId={categoryId} selectedProductId={null} />
     </div>
   );
 };

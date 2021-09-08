@@ -133,7 +133,7 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
                   </NoteWrapper>
                 </UserInfoForm>
               )}
-              <ConfirmLink to={'/custom-cake/review'}>Confirm</ConfirmLink>
+              {/* <ConfirmLink to={'/custom-cake/review'}>Confirm</ConfirmLink> */}
             </Wrapper>
           </>
         )}

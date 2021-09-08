@@ -7,7 +7,6 @@ import {
   UserInfoForm,
   Wrapper,
   Title,
-  ConfirmLink,
 } from './CheckoutPageElements';
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
@@ -17,6 +16,8 @@ import { DisplayDate } from './DisplayDate';
 import { ModalCalcDeliveryFee } from './ModalCalcDeliveryFee';
 import { ModalPickUpLocation } from './ModalPickUpLocation';
 import { OrderListInterface } from '../../interface/OrderListInterface';
+
+import { Confirm } from './ConfirmBtn';
 
 interface Props {}
 
@@ -47,7 +48,7 @@ export const CheckOut = (props: Props) => {
               <UserInfoForm>
                 <UserInfo />
               </UserInfoForm>
-              <ConfirmLink to={'/review'}>Confirm</ConfirmLink>
+              <Confirm />
             </>
           )}
         </Wrapper>
