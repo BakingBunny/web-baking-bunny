@@ -17,7 +17,7 @@ import { ModalCalcDeliveryFee } from './ModalCalcDeliveryFee';
 import { ModalPickUpLocation } from './ModalPickUpLocation';
 import { OrderListInterface } from '../../interface/OrderListInterface';
 
-import { Confirm } from './ConfirmBtn';
+import { Confirm } from './Confirm';
 
 interface Props {}
 

@@ -4,9 +4,7 @@ import { CustomCakeCheckOut } from '../components/CustomCakeCheckOutPage';
 interface Props {}
 
 export const CustomCakeCheckOutPage = (props: Props) => {
-  return (
-    <>
-      <CustomCakeCheckOut />
-    </>
-  );
+  window.scrollTo(0, 0);
+
+  return <CustomCakeCheckOut />;
 };
