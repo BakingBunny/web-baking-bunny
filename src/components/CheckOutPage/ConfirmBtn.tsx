@@ -3,10 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ConfirmLink, ConformLinkWrapper } from './CheckoutPageElements';
 import { OrderListInterface } from '../../interface/OrderListInterface';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { orderList } from '../../store/orderListSlice';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import { userInfo } from '../../store/userInfoSlice';
+import { update } from '../../store/orderProgressSlice';
+import { RegualrOrderEnum } from '../../interface/OrderProgressInterface';
 
 toast.configure();
 
@@ -16,6 +18,7 @@ export const Confirm = (props: Props) => {
   const orderListState = useAppSelector<OrderListInterface>(orderList);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
   const history = useHistory();
+  const dispatch = useAppDispatch();
 
   const isCheckOutValid = (): boolean => {
     if (orderListState.isDelivery === undefined) {
@@ -67,7 +70,16 @@ export const Confirm = (props: Props) => {
   };
 
   const onConfirmHandler = () => {
-    isCheckOutValid() && history.push('/review');
+    if (isCheckOutValid()) {
+      dispatch(
+        update({
+          type: 'regularOrder',
+          value: RegualrOrderEnum.review,
+        })
+      );
+
+      history.push('/review');
+    }
   };
 
   return (

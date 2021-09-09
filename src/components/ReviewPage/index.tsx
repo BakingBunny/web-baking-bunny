@@ -20,6 +20,8 @@ import { orderList } from '../../store/orderListSlice';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import { CartInterface } from '../../interface/CartInterface';
 import { OrderListInterface } from '../../interface/OrderListInterface';
+import { RegualrOrderEnum } from '../../interface/OrderProgressInterface';
+import { update } from '../../store/orderProgressSlice';
 
 toast.configure();
 
@@ -74,6 +76,14 @@ const Review = (props: Props) => {
 
     if (response.status === 200) {
       dispatch(removeAll()); // empty cart
+
+      dispatch(
+        update({
+          type: 'regularOrder',
+          value: RegualrOrderEnum.confirm,
+        })
+      );
+
       history.push('/confirm');
     } else {
       toast('Sorry, something went wrong. Try it later.', { type: 'error' });
