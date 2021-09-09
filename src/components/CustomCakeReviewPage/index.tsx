@@ -1,14 +1,21 @@
 import React from 'react';
-import { Container, Title, OrderBtn, Subtitle } from './ReviewPageElements';
+import {
+  Container,
+  Title,
+  OrderBtn,
+  Subtitle,
+} from './CustomCakeReviewPageElements';
 import { OptionInfo } from './OptionInfo';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { userInfo } from '../../store/userInfoSlice';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
 import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
 import { customCake } from '../../store/customCakeSlice';
+import { update } from '../../store/orderProgressSlice';
+import { CustomOrderEnum } from '../../interface/OrderProgressInterface';
 
 toast.configure();
 
@@ -17,6 +24,7 @@ interface Props {}
 export const CustomCakeReview: React.FC<Props> = (props: Props) => {
   // const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
   const history = useHistory();
+  const dispatch = useAppDispatch();
   const customCakeState = useAppSelector<CustomCakeInterface>(customCake);
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
 
@@ -51,8 +59,14 @@ export const CustomCakeReview: React.FC<Props> = (props: Props) => {
     );
 
     if (response.status === 200) {
-      const path = '/custom-cake/confirm';
-      history.push(path);
+      dispatch(
+        update({
+          type: 'customOrder',
+          value: CustomOrderEnum.confirm,
+        })
+      );
+
+      history.push('/custom-cake/confirm');
     } else {
       toast('Sorry, something went wrong. Try it later.', { type: 'error' });
     }

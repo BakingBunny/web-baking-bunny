@@ -363,7 +363,11 @@ export const CancelBtn = styled(CheckOutBtn)`
   background: #e4d3a6;
 `;
 
-export const ConfirmLink = styled(Link)`
+export const ConformLinkWrapper = styled.div`
+  grid-area: confirm;
+`;
+
+export const ConfirmLink = styled.button`
   grid-area: confirm;
   font-size: 1.5rem;
   text-transform: uppercase;

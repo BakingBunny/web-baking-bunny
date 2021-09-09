@@ -33,6 +33,7 @@ import { customCake, update } from '../../store/customCakeSlice';
 import { RequestDescription } from './RequestDescription';
 import { CheckOutQuestion, OptionWrapper, Title } from './CheckoutPageElements';
 import { useFetch } from '../../hooks/useFetch';
+import { Confirm } from './Confirm';
 
 toast.configure();
 
@@ -118,20 +119,23 @@ export const CustomCakeCheckOut: React.FC<Props> = () => {
                 )}
               </BasicOption>
               {customCakeState.requestDescription && (
-                <UserInfoForm>
-                  <UserInfo />
-                  <NoteWrapper>
-                    <h3>Note:</h3>
-                    <p>
-                      This item may contain or come into contact with eggs,
-                      peanuts, treenuts, and milk.
-                    </p>
-                    <p>
-                      Please let us know if you have any food allergies or
-                      restrictions.
-                    </p>
-                  </NoteWrapper>
-                </UserInfoForm>
+                <>
+                  <UserInfoForm>
+                    <UserInfo />
+                    <NoteWrapper>
+                      <h3>Note:</h3>
+                      <p>
+                        This item may contain or come into contact with eggs,
+                        peanuts, treenuts, and milk.
+                      </p>
+                      <p>
+                        Please let us know if you have any food allergies or
+                        restrictions.
+                      </p>
+                    </NoteWrapper>
+                  </UserInfoForm>
+                  <Confirm />
+                </>
               )}
               {/* <ConfirmLink to={'/custom-cake/review'}>Confirm</ConfirmLink> */}
             </Wrapper>

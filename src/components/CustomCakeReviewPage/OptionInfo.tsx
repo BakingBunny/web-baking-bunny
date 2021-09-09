@@ -8,7 +8,7 @@ import {
   OptionInfoText,
   GridWrapper,
   TextLeft,
-} from './ReviewPageElements';
+} from './CustomCakeReviewPageElements';
 import { CustomCakeInterface } from '../../interface/CustomCakeInterface';
 import { customCake } from '../../store/customCakeSlice';
 
