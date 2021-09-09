@@ -7,13 +7,12 @@ const initialState: OrderListInterface = {
   subtotal: 0,
   deliveryFee: 0,
   total: 0,
-  // isDelivery: undefined,
-  isDelivery: true, //delete
+  isDelivery: undefined,
   pickupDeliveryDate: undefined,
-  // allergy: '',
-  // inquiry: '',
-  allergy: 'Milk, Peanut, Cheese, Egg',
-  inquiry: 'Although I have the allergies, can I eat cake?',
+  allergy: '',
+  inquiry: '',
+  // allergy: 'Milk, Peanut, Cheese, Egg',
+  // inquiry: 'Although I have the allergies, can I eat cake?',
 };
 
 export const orderListSlice = createSlice({
