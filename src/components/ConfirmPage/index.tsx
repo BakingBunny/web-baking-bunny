@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { userInfo } from '../../store/userInfoSlice';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { UserInfoInterface } from '../../interface/UserInfoInterface';
+import { update } from '../../store/orderProgressSlice';
 import {
   Container,
   Wrapper,
@@ -11,11 +12,25 @@ import {
   MsgTitle,
   ConfirmLink,
 } from './ConfirmPageElements';
+import { RegualrOrderEnum } from '../../interface/OrderProgressInterface';
 
 interface Props {}
 
 export const Confirm = (props: Props) => {
   const userInfoState = useAppSelector<UserInfoInterface>(userInfo);
+  const dispatch = useAppDispatch();
+
+  /* When confirm page closed, reset order progress */
+  useEffect(() => {
+    return () => {
+      dispatch(
+        update({
+          type: 'regularOrder',
+          value: RegualrOrderEnum.cart,
+        })
+      );
+    };
+  }, [dispatch]);
 
   return (
     <Container>

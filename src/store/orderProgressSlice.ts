@@ -1,26 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  OrderProgressInterface,
+  CustomOrderEnum,
+  RegualrOrderEnum,
+} from '../interface/OrderProgressInterface';
 import { RootState } from './store';
 
-enum RegualrOrderEnum {
-  cart = 1,
-  checkout = 2,
-  review = 3,
-  confirm = 4,
-}
-
-enum CustomOrderEnum {
-  checkout = 1,
-  review = 2,
-  confirm = 3,
-}
-
-interface orderProgressInterface {
-  regularOrder: RegualrOrderEnum;
-  customOrder: CustomOrderEnum;
-}
-
 // check if savedCart exists, or return empty list.
-const initialState: orderProgressInterface = {
+const initialState: OrderProgressInterface = {
   regularOrder: RegualrOrderEnum.cart,
   customOrder: CustomOrderEnum.checkout,
 };
