@@ -11,10 +11,7 @@ import {
   NoteWrapper,
   PriceWrapper,
 } from './CustomCakeElements';
-import {
-  UserInfoForm,
-  ConfirmLink,
-} from '../CheckOutPage/CheckoutPageElements';
+import { UserInfoForm } from '../CheckOutPage/CheckoutPageElements';
 
 import { DeliveryOption } from './DeliveryOption';
 import { SelectDate } from './SelectDate';
