@@ -101,7 +101,7 @@ npm install
 ## Usage
 
 ```sh
-npm run start
+yarn start
 ```
 
 ## Author
