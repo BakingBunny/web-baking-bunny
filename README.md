@@ -108,7 +108,7 @@ yarn start
 
 👤 **Jaeyoung Kim**
 
-- Website: https://www.jaeyoungkim.ca/
+- Website: https://www.kimjaeyoung.netlify.app/
 - Github: [@jaeyoung-kim-dev](https://github.com/jaeyoung-kim-dev)
 - LinkedIn: [@jaeyoung-kim-dev](https://www.linkedin.com/in/jaeyoung-kim-dev/)
 - Medium(Blog): [@jaeyoung-kim-dev](https://jaeyoung-kim-dev.medium.com/)
